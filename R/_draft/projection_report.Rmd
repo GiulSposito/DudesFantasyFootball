@@ -14,7 +14,7 @@ library(ffanalytics)
 ```{r loaddata, cache=FALSE}
 
 source("score_settings.R")
-my_scrap <- readRDS("week7_scrap.rds")
+my_scrap <- readRDS("../../data/week7_scrap.rds")
 
 my_projections <- projections_table(my_scrap, scoring_rules = dudes.score.settings) %>% 
   filter(avg_type=="weighted") %>% 
@@ -24,13 +24,46 @@ my_projections <- projections_table(my_scrap, scoring_rules = dudes.score.settin
   group_by( id ) %>% 
   mutate( r_pos = max(ceiling, points) ) %>% 
   ungroup() %>% 
-  filter( !(team %in% c("FA","FA*")) )
+  filter( !(team %in% c("FA","FA*")) ) %>% 
+  mutate(id = as.integer(id))
 
-my_stats <- ffanalytics::aggregate_stats(my_scrap)  %>% 
-  filter(avg_type=="weighted") %>% 
-  add_player_info() %>% 
-  mutate( full_name = paste0(first_name, " ", last_name) ) %>%
-  filter( !(team %in% c("FA","FA*")) )
+my_projections %>% 
+  mutate( ceiling = case_when(
+    position=="K" ~ points,
+    TRUE ~ ceiling
+  )) %>% 
+  mutate( floor = case_when(
+    position=="K" ~ points,
+    TRUE ~ floor
+  )) -> my_projections
+
+# extrai o mapeamento ID do Fantasy versus ID da projecao
+my_scrap %>%
+  map(function(dft){
+    dft %>% 
+      filter(data_src=="NFL") %>% 
+      select(id, src_id, player, team, pos) %>% 
+      mutate_at(vars(id, src_id), as.integer) %>% 
+      return()
+  }) %>% 
+  bind_rows() %>%
+  distinct() %>% 
+  select(id, src_id) -> player.ids
+
+players.points <- readRDS("../../data/players_points.rds")
+
+players.points %>%
+  mutate( pts = as.numeric(fantasyPts.week.pts) ) %>% 
+  select( src_id, pts) %>% 
+  group_by( src_id ) %>% 
+  mutate( pts.med = median(pts) ) %>% 
+  ungroup() %>% 
+  inner_join(player.ids, by = "src_id") -> fantasy.points
+
+my_projections -> my_proj_org
+
+my_projections %>% 
+  left_join(fantasy.points, by = "id") -> my_projections
   
 ```
 
@@ -42,11 +75,16 @@ QB
 plotProjections <- function(.proj, .pos, .title, .subtitle) {
   require(magrittr)
   proj_data <- .proj %>% 
+    select(id, position, pos_rank ) %>% 
     filter(position==.pos) %>% 
-    arrange(pos_rank) %>% 
-    head(30)
+    distinct() %>% 
+    top_n(-35, pos_rank) %>% 
+    select(id)
   
-  nu_y <- max(proj_data$ceiling, na.rm = T) / 21
+  proj_data %>% 
+    inner_join(.proj, by="id") -> proj_data
+  
+  nu_y <- max(proj_data$ceiling, na.rm = T) / 8
   
   proj_data %>% 
     ggplot(aes(group=tier)) +
@@ -55,10 +93,14 @@ plotProjections <- function(.proj, .pos, .title, .subtitle) {
                       ymin=floor, 
                       ymax=ceiling, 
                       color=tier)) +
+      geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
+                     y=pts), color="black", alpha=.05) +
+      geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
+                     y = pts.med), color="black" ) +
       geom_text(aes(x=reorder(pos_rank,desc(pos_rank)), 
                 y=r_pos, 
                 color=tier, 
-                label=full_name), nudge_y = nu_y, nudge_x = 0.1, size=2.3) +
+                label=full_name), nudge_y = nu_y, nudge_x = 0.2, size=2.5) +
       theme_classic() + xlab("Rank") + ylab("Points") +
       theme( panel.grid.major.x=element_line(colour="#EEEEEE"),
          legend.position="none" ) +
@@ -68,7 +110,7 @@ plotProjections <- function(.proj, .pos, .title, .subtitle) {
   
 }
 
-plotProjections(my_projections, "QB", "Quaterbacks", "week 6")
+plotProjections(my_projections, "QB", "Quaterbacks", "week 7")
 
 ```
 
@@ -77,7 +119,7 @@ WR
 
 ```{r wr}
 
-plotProjections(my_projections, "WR", "Wide Receivers", "week 6")
+plotProjections(my_projections, "WR", "Wide Receivers", "week 7")
 
 ```
 
@@ -86,7 +128,7 @@ RB
 
 ```{r rb}
 
-plotProjections(my_projections, "RB", "Running Backs", "week 6")
+plotProjections(my_projections, "RB", "Running Backs", "week 7")
 
 ```
 
@@ -95,7 +137,7 @@ TE
 
 ```{r te}
 
-plotProjections(my_projections, "TE", "Tight Ends", "week 6")
+plotProjections(my_projections, "TE", "Tight Ends", "week 7")
 
 ```
 
@@ -105,7 +147,7 @@ K
 
 ```{r k}
 
-plotProjections(my_projections, "K", "Kickers", "week 6")
+plotProjections(my_projections, "K", "Kickers", "week 7")
 
 ```
 
@@ -115,7 +157,7 @@ DEF
 
 ```{r def}
 
-plotProjections(my_projections, "DST", "Defenses", "week 6")
+plotProjections(my_projections, "DST", "Defenses", "week 7")
 
 ```
 

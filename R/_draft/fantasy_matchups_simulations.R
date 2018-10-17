@@ -4,7 +4,7 @@ library(httr)
 library(jsonlite)
 library(glue)
 
-# lendo liga e token do yaml (para não versionar o access token)
+# lendo liga e token do yaml (para n?o versionar o access token)
 config <- yaml.load_file("./FantasyFootball/config.yml")
 leagueId <- config$leagueId
 authToken <- config$authToken
@@ -147,7 +147,7 @@ matchups.rosters.proj <- matchups.rosters %>%
       addProjPoints,
       .id_map   = player_ids,
       .pts_proj = players.points.projections)
-    )
+  )
 
 # sorteia uma das pontuacoes projetadas
 simPoints <- function(team_table){
@@ -164,7 +164,7 @@ simPoints <- function(team_table){
 }
 
 # sorteia uma das pontuacoes projetadas mas leva em conta
-# se o jogador já jogou
+# se o jogador j? jogou
 simPointsCurrent <- function(team_table){
   # time escalado
   team_table %>% 
@@ -182,7 +182,7 @@ simPointsCurrent <- function(team_table){
     unlist() %>% 
     sum(na.rm = T) -> sim.points
   
-  # para jogadore aque já jogaram
+  # para jogadore aque j? jogaram
   team.sloted %>% 
     filter(points>0) %>% 
     pull(points) %>% 

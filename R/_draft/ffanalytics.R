@@ -7,11 +7,11 @@ source("FantasyFootball/score_settings.R")
 
 my_scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "DST", "K"),
                         season = 2018, 
-                        week = 6)
+                        week = 7)
 
 
 my_scrap %>% 
-  saveRDS("./FantasyFootball/week7_scrap.rds")
+  saveRDS("./data/week7_scrap.rds")
 
 my_projections <- projections_table(my_scrap, scoring_rules = dudes.score.settings) 
   #%>% saveRDS("./FantasyFootball/my_projects.rds")
@@ -59,15 +59,15 @@ my_projections %>%
     full_name =paste0(first_name, " ", last_name),
     tier = as.factor(tier)
   ) -> proj.week2
-  
+
 
 proj.week2 %>% 
   filter(pos=="QB", avg_type=="weighted") %>%
   arrange(desc(tier), desc(points)) %>%
   plot_ly(type = "box") %>%
   add_trace(x=~points, y=~full_name, color=~tier)
-  
-  
+
+
 
 
 
