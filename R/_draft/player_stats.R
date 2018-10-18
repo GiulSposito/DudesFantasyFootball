@@ -8,16 +8,23 @@ library(glue)
 
 getPlayersPts <- function( .week, .season, .leagueId, .authToken){
   url <- glue("http://api.fantasy.nfl.com/v1/league/players?leagueId={.leagueId}&format=json&statSeason={.season}&statWeek={.week}&authToken={.authToken}&count=500")
-  httr::GET(url) %>% 
+  httr::GET(url) -> resp
+  
+  resp %>% 
     httr::content(as = "text") %>% 
     jsonlite::fromJSON(simplifyDataFrame = T) %$%
     leagues %$%
     players %>% 
     .[[1]] %>% 
     select(id, firstName, lastName, position, teamAbbr, fantasyPts) %>% 
+    rename(team=teamAbbr, x=fantasyPts) %>% 
     jsonlite::flatten() %>% 
-    as.tibble() %>% 
-    filter(fantasyPts.week.pts!=0) %>% 
+    select(-x.season.season, -x.season.pts) %>% 
+    rename(season=x.week.season, week=x.week.week, points=x.week.pts) %>% 
+    as.tibble() %>%
+    mutate_at(vars(id, season, week), as.integer) %>% 
+    mutate_at(vars(points), as.numeric) %>% 
+    rename( src_id=id ) %>% 
     return()
 }
 
@@ -34,7 +41,6 @@ weeks %>%
     .leagueId = leagueId,
     .authToken = authToken
   ) %>% 
-  bind_rows() %>% 
-  rename(src_id=id) -> player.points
+  bind_rows() -> player.points
 
 saveRDS(player.points,"./data/players_points.rds")
