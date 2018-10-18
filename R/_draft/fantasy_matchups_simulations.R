@@ -5,7 +5,7 @@ library(jsonlite)
 library(glue)
 
 # lendo liga e token do yaml (para n?o versionar o access token)
-config <- yaml.load_file("./FantasyFootball/config.yml")
+config <- yaml.load_file("./config/config.yml")
 leagueId <- config$leagueId
 authToken <- config$authToken
 
@@ -39,7 +39,7 @@ matchup.teams.json <- matchups$awayTeam.id %>%
   },
   .url=url.team.matchup)
 
-saveRDS(matchup.teams.json, "./FantasyFootball/week7_matchups_json.rds")
+saveRDS(matchup.teams.json, "./data/week7_matchups_json.rds")
 
 # funcao para extrar dados dos hosters dos times
 extractTeam <- . %>% 
@@ -73,16 +73,16 @@ matchups.rosters <- matchup.teams.json %>%
 ### scrap e pontuacao
 
 library(ffanalytics)
-source("FantasyFootball/score_settings.R")
+source("./R/_draft/score_settings.R")
 
-# # scrap todas as fontes, nas posicoes da liga
-scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
-                     season = 2018,
-                     week = week)
+# # # scrap todas as fontes, nas posicoes da liga
+# scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
+#                      season = 2018,
+#                      week = week)
+# 
+# saveRDS(scrap, "./FantasyFootball/week7_scrap.rds")
 
-saveRDS(scrap, "./FantasyFootball/week7_scrap.rds")
-
-scrap <- readRDS("./FantasyFootball/week7_scrap.rds")
+scrap <- readRDS("./data/week7_scrap.rds")
 
 # extrai o mapeamento ID do Fantasy versus ID da projecao
 scrap %>%
@@ -105,7 +105,7 @@ playerPointsProjections <- function(.scrap, .score.settings){
   source("../ffanalytics/R/make_scoring.R")
   source("../ffanalytics/R/recode_vars.R")
   source("../ffanalytics/R/impute_funcs.R")
-  source("./FantasyFootball/score_settings.R")
+  source("./R/_draft/score_settings.R")
   source_points(.scrap, .score.settings) 
 }
 
@@ -225,4 +225,4 @@ matchups.rosters.proj %>%
   ) -> matchups.simulation
 
 # salva dados da simulacao
-saveRDS(matchups.simulation, "./FantasyFootball/week7_simulation.rds")
+saveRDS(matchups.simulation, "./data/week7_simulation.rds")

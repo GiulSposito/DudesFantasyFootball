@@ -12,7 +12,7 @@ library(tidyverse)
 library(plotly)
 library(formattable)
 
-sim <- readRDS("week7_simulation.rds") 
+sim <- readRDS("../../data/week7_simulation.rds") 
 
 sim.summary <- tibble(
   team.id   = c(sim$home.teamId,   sim$away.teamId),
