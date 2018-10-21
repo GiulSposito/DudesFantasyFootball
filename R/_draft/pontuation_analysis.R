@@ -52,7 +52,7 @@ player.data %>%
 player.data %>% 
   filter(data_src=="CBS",position=="WR", !is.na(error)) %>% 
   pull(error) %>% 
-  sample(size=100, replace = T) %>% 
+  sample(size=200, replace = T) %>% 
   hist(col="red", breaks = 50)
 
 # quantos pontos ha por site e posicao ?
