@@ -10,6 +10,9 @@ nfl2ffa <- function(.dtf, .ids) {
     return()
 }
 
+# retorna um summary como um data.frame
+summaryAsTibble <- . %>% summary() %>% as.list() %>% as.tibble()
+
 # mapping src_id (nfl) <-> id (ffa)
 players_id <- readRDS("./data/nfl_players_id.rds")
 
@@ -68,18 +71,50 @@ addPlayerSimulation <- function(.team, .pts.proj, .error.dist){
     return()
 }
 
-
 matchups %>% 
-  mutate( home.roster = map(
-    home.roster,
-    addPlayerSimulation,
-    .pts.proj = pts.proj.week,
-    .error.dist = error.dist
-  ))
+  mutate(
+    home.roster = map(
+      home.roster,
+      addPlayerSimulation,
+      .pts.proj = pts.proj %>% filter(week == 7),
+      .error.dist = error.dist
+    ),
+    away.roster = map(
+      away.roster,
+      addPlayerSimulation,
+      .pts.proj = pts.proj %>% filter(week == 7),
+      .error.dist = error.dist
+    )
+  ) -> matchup.projs
 
 
-addPlayerSimulation(.team, pts.proj.week, error.dist) %>% 
-  filter(id==13614) %>% 
-  pull(pts.dist.array) %>% unlist() %>%  hist(breaks=50)
+simRosterPontuation <- function(.team) {
+  .team %>%
+    filter(rosterSlot != "BN") %>%
+    mutate(player.simulation = map(
+      pts.dist.array,
+      base::sample,
+      size = 2000,
+      replace = T
+    )) %>%
+    pull(player.simulation) %>%
+    bind_cols() %>%
+    as.matrix() %>%
+    rowSums(na.rm = T) %>%
+    return()
+}
 
+matchup.projs %>% 
+  mutate(
+    home.sim = map(home.roster, simRosterPontuation),
+    away.sim = map(away.roster, simRosterPontuation),
+    home.win = map2(home.sim, away.sim, function(h.scr, a.scr) (h.scr > a.scr)),
+    away.win = map(home.win, function(.x) !.x),
+    home.win.prob = map_dbl(home.win, function(.x) mean(.x)),
+    away.win.prob = map_dbl(away.win, function(.x) mean(.x)),
+    score.diff = map2(home.sim, away.sim, function(h.scr, a.scr) (h.scr - a.scr)),
+    home.points = map(home.sim, summaryAsTibble),
+    away.points = map(away.sim, summaryAsTibble)
+  ) -> matchup.simulation
 
+View(matchup.simulation)
