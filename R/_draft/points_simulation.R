@@ -5,13 +5,21 @@ source("./R/tidy/matchups.R")
 nfl2ffa <- function(.dtf, .ids) {
   .ids %>% 
     select(id, src_id) %>% 
-    inner_join(.dtf, by="src_id") %>% 
+    right_join(.dtf, by="src_id") %>% 
     select(-src_id) %>% 
     return()
 }
 
 # retorna um summary como um data.frame
 summaryAsTibble <- . %>% summary() %>% as.list() %>% as.tibble()
+
+quantileAsTibble <- function(x, probs){
+  quantile(x, probs, na.rm = T) %>% 
+    as.list() %>% 
+    as.tibble() %>% 
+    purrr::set_names(c("low","med","high")) %>% 
+    return()
+}
 
 # mapping src_id (nfl) <-> id (ffa)
 players_id <- readRDS("./data/nfl_players_id.rds")
@@ -39,11 +47,11 @@ errors <- points %>%
   mutate( error=points-pts.proj )
 
 # visualiza os numeros
-errors %>% 
-  ggplot() +
-  geom_density(aes(error, fill=position)) +
-  facet_grid(position~data_src) +
-  theme_minimal()
+# errors %>% 
+#   ggplot() +
+#   geom_density(aes(error, fill=position)) +
+#   facet_grid(position~data_src) +
+#   theme_minimal()
 
 # calcula distribuição de erros por posicao e source
 error.dist <- errors %>% 
@@ -68,7 +76,7 @@ addPlayerSimulation <- function(.team, .pts.proj, .error.dist){
     nest(pts.dist, .key="pts.dist") %>% 
     mutate( pts.range = map(pts.dist, unlist),
             pts.range.summary = map(pts.range, summaryAsTibble),
-            pts.range.80pct   = map(pts.range, quantile, probs=c(.10, .50, .80), na.rm=T) ) %>% 
+            pts.range.80pct   = map(pts.range, quantileAsTibble, probs=c(.125, .50, .875)) ) %>% 
     select(-pts.dist) %>% 
     return()
 }
@@ -124,11 +132,12 @@ matchup.projs %>%
 
 saveRDS(matchup.simulation, "./data/week7_simulation_v2.rds")
 
-team.sizes <- . %>% 
-  mutate(
-    hl = map_int(home.roster, nrow),
-    al = map_int(away.roster, nrow)
-  ) %>% 
-  select(home.name, hl, al, away.name)
-
-matchups %>% team.sizes
+# team.sizes <- . %>% 
+#   mutate(
+#     hl = map_int(home.roster, nrow),
+#     al = map_int(away.roster, nrow)
+#   ) %>% 
+#   select(home.name, hl, al, away.name)
+# 
+# matchups %>% team.sizes
+# matchups[4,]$home.roster[[1]] %>% View("home.hoster.json")

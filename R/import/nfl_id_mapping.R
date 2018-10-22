@@ -1,12 +1,6 @@
 library(ffanalytics)
 
-importNflIdMapping <- function(){
-  
-  # scrapping of NFL data from week 1 (all players)
-  .scrap <- scrape_data( src="NFL",
-                         pos = c("QB", "RB", "WR", "TE", "K", "DST"),
-                         season = 2018, week = 1 )
-  
+extract.nfl.id <- function(.scrap){
   # isolate ID of NFL and ID of ffanalytics
   .scrap %>%
     map(function(dft){
@@ -21,3 +15,16 @@ importNflIdMapping <- function(){
     as.tibble() %>% 
     return()
 }
+
+1:7 %>% 
+  map(function(.week){
+    scrape_data( src="NFL",
+                 pos = c("QB", "RB", "WR", "TE", "K", "DST"),
+                 season = 2018, week = .week )
+  }) %>% 
+  map(extract.nfl.id) %>% 
+  bind_rows() %>% 
+  distinct() -> player.ids
+
+saveRDS(player.ids, "./data/nfl_players_id.rds")
+

@@ -179,13 +179,19 @@ plotRoster <- function(.team_table, .slotLevels=slotLevels, .posLevels=posLevels
     mutate(
       position = factor(position, levels=posLevels),
       rosterSlot = factor(rosterSlot, levels=slotLevels)
+    ) %>%  
+    mutate(
+      points = case_when(
+        (points == 0) ~ as.numeric(NA),
+        (points !=  0) ~ points 
+      )
     ) %>% 
-    unnest(pts.range.summary) %>% 
+    unnest(pts.range.80pct) %>% 
     arrange(rosterSlot, position) %>% 
     mutate(display.order=1:nrow(.)) %>% 
     ggplot(aes(x=reorder(paste0(name," [", rosterSlot,"]"), -display.order), color=position)) +
-    geom_pointrange(aes(y=Median, ymin=Min., ymax=Max.)) +
-    geom_label(aes(y=Median, label=round(Median,1)), size = 3,
+    geom_pointrange(aes(y=med, ymin=low, ymax=high)) +
+    geom_label(aes(y=med, label=round(med,1)), size = 3,
                label.padding = unit(0.15, "lines"), show.legend = F) +
     geom_point(aes(y=points), size=2, color="black") +
     xlab("") +
