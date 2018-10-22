@@ -1,0 +1,224 @@
+---
+title: "Dudes Football League - Week 8 - Simulation"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(formattable)
+
+sim <- readRDS("../../data/week7_simulation_v2.rds") 
+
+sim.summary <- tibble(
+  team.id   = c(sim$home.teamId,   sim$away.teamId),
+  team.name = c(sim$home.name,     sim$away.name),
+  pts.summ  = c(sim$home.points,   sim$away.points),
+  points    = c(sim$home.sim,      sim$away.sim),
+  win.pc    = c(sim$home.win.prob, sim$away.win.prob)
+) #bug %>% unnest(win.pc)
+
+
+winGauge <- function(.teamId, .teamSummary) {
+  .teamSummary %>% 
+    filter(team.id == .teamId) %>% 
+    mutate( win.pc = round(100*win.pc) ) %>% 
+    pull(win.pc) %>%
+    gauge(min = 0, max = 100, symbol = '%', gaugeSectors(success = c(61, 100), warning = c(40, 60), danger = c(0, 39))) 
+} 
+
+
+```
+
+Win Probability {data-navmenu="Overview"}
+=======================
+
+Row
+------------------
+
+### Amparo Bikers
+```{r}
+winGauge(4,sim.summary)
+```
+
+### Campinas Giants
+```{r}
+winGauge(11,sim.summary)
+```
+
+### Change Robots         
+```{r}
+winGauge(1,sim.summary)
+```
+
+### Indaiatuba Riders
+```{r}
+winGauge(3,sim.summary)
+```
+
+Row
+------------------
+
+### NJ's Bugre
+```{r}
+winGauge(7,sim.summary)
+```
+
+### Rio Claro Pfeiferians
+```{r}
+winGauge(6,sim.summary)
+```
+
+### Sorocaba Steelers
+```{r}
+winGauge(5,sim.summary)
+```
+
+### Sorocaba Wild Mules 
+```{r}
+winGauge(2,sim.summary)
+```
+
+Week Matchups {data-navmenu="Overview"}
+======================
+
+```{r}
+sim %>%
+  # unnest(home.win.prob, away.win.prob) %>% 
+  unnest(home.points, away.points, .sep = ".") %>% 
+  mutate( home.win.prob = round(home.win.prob,2),
+          away.win.prob = round(away.win.prob,2),
+          home.pts.proj   = round(home.points.Median,1),
+          away.pts.proj   = round(away.points.Median,1),
+          home.pts        = round(as.numeric(home.pts),1),
+          away.pts        = round(as.numeric(away.pts),1)) %>% 
+  select(
+    away.name,
+    away.win.prob,
+    away.pts.proj,
+    away.pts,
+    home.pts,
+    home.pts.proj,
+    home.win.prob,
+    home.name
+  ) %>% 
+  formattable(list(
+    area(col=c(home.win.prob, away.win.prob)) ~ color_tile("pink","lightgreen"),
+    area(col=c(home.pts.proj, away.pts.proj)) ~ normalize_bar("palegoldenrod", 0.2)
+  ))
+```
+
+Points Distribution {data-navmenu="Overview"}
+=======================================
+
+```{r}
+
+sim.summary %>% 
+  select( team.name, points ) %>% 
+  unnest(points) %>% 
+  mutate(points = round(points,1)) %>% 
+  plot_ly(x=~team.name, y=~points, type = "box", color=~team.name)  
+
+```
+
+
+Score Difference {data-navmenu="Overview"}
+============================================
+
+```{r fig.width=8}
+
+sim %>% 
+  mutate(game=paste0(away.name, " @ ", home.name)) %>% 
+  select(game, score.diff, score.diff.org, home.pts, away.pts) %>%
+  mutate(current.score.diff = home.pts-away.pts) %>% 
+  unnest() %>% 
+  ggplot(aes(fill=game)) +
+  geom_density(aes(score.diff.org), fill="grey", color=NA, alpha=.2) +
+  geom_density(aes(score.diff), alpha=.6) +
+  geom_vline(aes(xintercept=current.score.diff),
+             linetype=2, color="black") +
+  facet_grid(rows=vars(game), switch = "x") +
+  theme_minimal() +
+  theme( legend.position = "right" )
+
+```
+
+
+Points Table {data-navmenu="Overview"}
+============================================
+
+```{r}
+
+sim.summary %>% 
+  select(team.name, points=pts.summ) %>% 
+  unnest(points, .sep = ".") %>% 
+  mutate_if(is.numeric, function(v) round(v,1)) %>% 
+  arrange(-points.Median) %>% 
+  formattable(list(
+    area(col=2:7) ~ normalize_bar("gold", 0.2)
+  ))
+
+```
+
+
+
+```{r results='asis'}
+
+slotLevels <- gl(8,1,labels=c("QB","RB","WR","TE","W/R","K","DEF","BN"))
+posLevels <- gl(6,1,labels=c("QB","RB","WR","TE","K","DEF"))
+
+plotRoster <- function(.team_table, .slotLevels=slotLevels, .posLevels=posLevels){
+  
+  if (class(.team_table)=="list") .team_table <- .team_table[[1]]
+  
+  .team_table %>% 
+    mutate(
+      position = factor(position, levels=posLevels),
+      rosterSlot = factor(rosterSlot, levels=slotLevels)
+    ) %>% 
+    unnest(pts.range.summary) %>% 
+    arrange(rosterSlot, position) %>% 
+    mutate(display.order=1:nrow(.)) %>% 
+    ggplot(aes(x=reorder(paste0(name," [", rosterSlot,"]"), -display.order), color=position)) +
+    geom_pointrange(aes(y=Median, ymin=Min., ymax=Max.)) +
+    geom_label(aes(y=Median, label=round(Median,1)), size = 3,
+               label.padding = unit(0.15, "lines"), show.legend = F) +
+    geom_point(aes(y=points), size=2, color="black") +
+    xlab("") +
+    ylab("Fantasy Points") +
+    coord_flip() +
+    theme_minimal() +
+    theme(legend.position = "bottom")
+}
+
+sim %>%
+  mutate( away.nickname = gsub("([a-zA-Z\']+ )?", "", away.name),
+          home.nickname = gsub("([a-zA-Z\']+ )?", "", home.name)) %>% 
+  mutate( game = paste0(away.nickname, " @ ", home.nickname)) -> matchups
+
+for(i in 1:nrow(matchups)){
+  matchup <- matchups[i,]
+
+  cat(paste0("\n",matchup$game," {data-navmenu=\"Roster Comparation\"  data-orientation=columns}\n"))
+  cat("============================================\n")
+  
+  cat("\nColumn\n--------------------------------------------\n")
+  cat(paste0("\n### ", matchup$away.name), "\n\n")
+  print(plotRoster(matchup$away.roster))
+  cat("\n")
+  
+  cat("\nColumn\n--------------------------------------------\n")
+  cat(paste0("\n### ", matchup$home.name), "\n\n")
+  print(plotRoster(matchup$home.roster))
+  cat("\n")
+}
+
+
+
+
+
+```
