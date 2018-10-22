@@ -1,7 +1,7 @@
 library(ffanalytics)
 source("./R/_draft/score_settings.R")
 
-weeks <- 1:6
+weeks <- 1:7
 
 weeks %>% 
   map( function(.week){
@@ -44,24 +44,33 @@ scraps %>%
   bind_rows(.id="week") %>% 
   mutate( season=2018,
           week = as.integer(week),
-          id = as.integer(id) ) -> points.projection
+          id = as.integer(id) ) %>% 
+  rename(pts.proj = points) -> points.projection
 
 
-# extrai o mapeamento ID do Fantasy versus ID da projecao
-scraps[[1]] %>%
-  map(function(dft){
-    dft %>% 
-      filter(data_src=="NFL") %>% 
-      select(id, src_id, player, team, pos) %>% 
-      return()
-  }) %>% 
-  bind_rows() %>%
-  distinct() %>% 
-  mutate_at(vars(id, src_id), as.integer) -> players.ids
+# salva pontuacao projetada
+saveRDS(points.projection, "./data/points_projection.rds")
 
-players.ids %>% 
-  inner_join(points.projection, by = c("id")) -> players.projection
-
-players.projection %>% 
-  saveRDS("./data/players_projections.rds")
-  
+# # extrai o mapeamento ID do Fantasy versus ID da projecao
+# scraps[[1]] %>%
+#   map(function(dft){
+#     dft %>% 
+#       filter(data_src=="NFL") %>% 
+#       select(id, src_id, player, team, pos) %>% 
+#       return()
+#   }) %>% 
+#   bind_rows() %>%
+#   distinct() %>% 
+#   mutate_at(vars(id, src_id), as.integer) -> players.ids
+# 
+# 
+# players.projection
+# 
+# 
+# 
+# players.ids %>% 
+#   inner_join(points.projection, by = c("id")) -> players.projection
+# 
+# players.projection %>% 
+#   saveRDS("./data/players_projections.rds")
+#   
