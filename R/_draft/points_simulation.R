@@ -66,7 +66,9 @@ addPlayerSimulation <- function(.team, .pts.proj, .error.dist){
     mutate( pts.proj.md = median(pts.proj, na.rm = T) ) %>% 
     group_by(id, name, position, rosterSlot, points, pts.proj.md) %>% 
     nest(pts.dist, .key="pts.dist") %>% 
-    mutate( pts.dist.array = map(pts.dist, unlist) ) %>% 
+    mutate( pts.range = map(pts.dist, unlist),
+            pts.range.summary = map(pts.range, summaryAsTibble),
+            pts.range.80pct   = map(pts.range, quantile, probs=c(.10, .50, .80), na.rm=T) ) %>% 
     select(-pts.dist) %>% 
     return()
 }
@@ -92,7 +94,7 @@ simRosterPontuation <- function(.team) {
   .team %>%
     filter(rosterSlot != "BN") %>%
     mutate(player.simulation = map(
-      pts.dist.array,
+      pts.range,
       base::sample,
       size = 2000,
       replace = T
@@ -108,13 +110,25 @@ matchup.projs %>%
   mutate(
     home.sim = map(home.roster, simRosterPontuation),
     away.sim = map(away.roster, simRosterPontuation),
+    home.sim.org = home.sim,
+    away.sim.org = away.sim,
     home.win = map2(home.sim, away.sim, function(h.scr, a.scr) (h.scr > a.scr)),
-    away.win = map(home.win, function(.x) !.x),
+    away.win = map(home.win, function(.x) (!.x) ),
     home.win.prob = map_dbl(home.win, function(.x) mean(.x)),
     away.win.prob = map_dbl(away.win, function(.x) mean(.x)),
-    score.diff = map2(home.sim, away.sim, function(h.scr, a.scr) (h.scr - a.scr)),
+    score.diff     = map2(home.sim, away.sim, function(h.scr, a.scr) (h.scr - a.scr)),
+    score.diff.org = score.diff,
     home.points = map(home.sim, summaryAsTibble),
     away.points = map(away.sim, summaryAsTibble)
   ) -> matchup.simulation
 
-View(matchup.simulation)
+saveRDS(matchup.simulation, "./data/week7_simulation_v2.rds")
+
+team.sizes <- . %>% 
+  mutate(
+    hl = map_int(home.roster, nrow),
+    al = map_int(away.roster, nrow)
+  ) %>% 
+  select(home.name, hl, al, away.name)
+
+matchups %>% team.sizes
