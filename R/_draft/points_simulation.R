@@ -1,15 +1,6 @@
 library(tidyverse)
 source("./R/tidy/matchups.R")
 
-# translatig NFL ID to FFA ID
-nfl2ffa <- function(.dtf, .ids) {
-  .ids %>% 
-    select(id, src_id) %>% 
-    right_join(.dtf, by="src_id") %>% 
-    select(-src_id) %>% 
-    return()
-}
-
 # retorna um summary como um data.frame
 summaryAsTibble <- . %>% summary() %>% as.list() %>% as.tibble()
 
@@ -21,8 +12,6 @@ quantileAsTibble <- function(x, probs){
     return()
 }
 
-# mapping src_id (nfl) <-> id (ffa)
-players_id <- readRDS("./data/nfl_players_id.rds")
 
 # matchups and rosters (nfl)
 matchups <- readRDS("./data/week7_matchups_json.rds") %>% 
