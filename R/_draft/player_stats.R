@@ -32,7 +32,7 @@ config <- yaml.load_file("./config/config.yml")
 leagueId  <- config$leagueId
 authToken <- config$authToken
 season <- 2018
-weeks <- 1:6
+weeks <- 1:7
 
 weeks %>% 
   map(
@@ -43,4 +43,7 @@ weeks %>%
   ) %>% 
   bind_rows() -> player.points
 
-saveRDS(player.points,"./data/players_points.rds")
+readRDS("./data/nfl_players_id.rds") %>% 
+  select(id, src_id) %>% 
+  inner_join(player.points, by="src_id") %>% 
+  saveRDS("./data/players_points.rds")
