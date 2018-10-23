@@ -1,0 +1,128 @@
+---
+title: "It's Football, dudes - Fantasy League"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ffanalytics)
+```
+
+```{r loaddata, cache=FALSE}
+
+# pega projecoes cria algumas colunas auxiliares
+projections <- readRDS("../../data/week8_players_projections.rds") %>% 
+  mutate( full_name = paste0(first_name, " ", last_name),
+          fantasy.team = as.factor(fantasy.team) ) %>%
+  group_by( id ) %>% 
+  mutate( r_pos = max(ceiling, points) ) %>% # posicao do label
+  ungroup() %>% 
+  filter( !(team %in% c("FA","FA*")) ) # havia lixo em alguns
+
+readRDS("../../data/players_points.rds") %>%
+  rename( pts = points ) %>% 
+  select( id, week, pts) %>% 
+  group_by( id ) %>% 
+  mutate( pts.med = median(pts) ) %>% 
+  ungroup() %>% 
+  right_join(projections, by = "id") -> projections
+  
+```
+
+QB 
+========================
+
+```{r qb}
+
+plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
+  require(magrittr)
+  proj_data <- .proj %>% 
+    select(id, position, pos_rank ) %>% 
+    filter(position==.pos) %>% 
+    distinct() %>% 
+    top_n(-.slice, pos_rank) %>% 
+    select(id)
+  
+  proj_data %>% 
+    inner_join(.proj, by="id") -> proj_data
+  
+  nu_y <- max(proj_data$ceiling, na.rm = T) / 8
+  
+  proj_data %>% 
+    ggplot(aes(group=fantasy.team)) +
+      geom_pointrange(aes(x=reorder(pos_rank,desc(pos_rank)),
+                      y=points, 
+                      ymin=floor, 
+                      ymax=ceiling, 
+                      color=fantasy.team)) +
+      # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
+      #                y=pts), color="black", alpha=.05) +
+      geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
+                     y = pts.med), color="black" ) +
+      geom_text(aes(x=reorder(pos_rank,desc(pos_rank)), 
+                y=r_pos, 
+                color=fantasy.team, 
+                label=full_name), nudge_y = nu_y, nudge_x = 0.2, size=2.5) +
+      theme_classic() + xlab("Rank") + ylab("Points") +
+      theme( panel.grid.major.x=element_line(colour="#EEEEEE") ) +
+      scale_x_discrete(breaks = seq(1,32,4) ) +
+      ggtitle(.title,.subtitle) +
+      coord_flip()
+  
+}
+
+plotProjections(projections, "QB", "Quaterbacks", "week 8")
+
+```
+
+WR
+========================
+
+```{r wr}
+
+plotProjections(projections, "WR", "Wide Receivers", "week 8")
+
+```
+
+RB
+========================
+
+```{r rb}
+
+plotProjections(projections, "RB", "Running Backs", "week 8")
+
+```
+
+TE
+========================
+
+```{r te}
+
+plotProjections(projections, "TE", "Tight Ends", "week 8")
+
+```
+
+
+K
+========================
+
+```{r k}
+
+plotProjections(projections, "K", "Kickers", "week 8")
+
+```
+
+
+DEF
+========================
+
+```{r def}
+
+plotProjections(projections, "DST", "Defenses", "week 8")
+
+```
+
+
