@@ -23,10 +23,9 @@ Por fim, o pacote faz a analise dos pontos obtidos possibilitando fazer [projeç
 
 Com todo o trabalho duro, de fazer o `data scrapping` e aplicar as regras do fantasy para calcular a pontuação já feita pelo pacote, podemos essa a informação para projetar os resultados dos times escalados nas ligas do fantasy para fazer forecast de placar dos jogos, bastando para isso obter os dados dos times, confrontos e escalações no próprio fantasy.
 
-## Fantasy API
+## Fantasy API - Getting the Team's Matchups and Rosters
 
 Para obter os times, a escação e os confrontos da rodada de uma liga do fantasy, podemos usar a [Web API](http://api.fantasy.nfl.com/) disponibilizada. Embora tenha alguns métodos *depreciated* eles ainda funcionam e atendem ao propósito de obter as informações desejadas. Em particular precisamos apenas acessar os métodos que diz quais os jogos  [`/league/matchups`](http://api.fantasy.nfl.com/v1/docs/service?serviceName=leagueMatchups) que recebe como parametros de entrada o `token` de autenticação, o `id` da liga e a `week` da rodada devolvendo os jogos programados para aquela semana, e a API [`/league/team/matchup`](http://api.fantasy.nfl.com/v1/docs/service?serviceName=leagueTeamMatchup) que, além dos parâmetros anteriores, também recebe o `id` do time para retornar o roster escalado. 
-
 Podemos invocar a API usando o pacote `httr` e processar o json de resposta usando o `jsonlite`.
 
 ```{r getMatchups, cache=TRUE}
@@ -78,16 +77,14 @@ resp %>%
 
 Fazemos novas chamadas à API para obter a escalação de cada um dos times nessa rodada.
 
-```{r getRosters}
+```{r getRosters, cache=TRUE, warning=FALSE, message=FALSE}
 
-# for all teamIds from the matchup
-c(matchups$awayTeam.id, matchups$homeTeam.id) 
-
-"1" %>%
+# for each teamIds in the matchup
+c(matchups$awayTeam.id) %>%
   map(
     function(.teamId, .week, .leagueId, .authToken, .url) {
       # make the API call
-      httr::GET(glue(url)) %>%
+      httr::GET(glue(.url)) %>%
         httr::content(as = "text") %>%
         fromJSON(simplifyDataFrame = T) %>% # transform response body in json
         return()
@@ -95,10 +92,60 @@ c(matchups$awayTeam.id, matchups$homeTeam.id)
     .week      = week,
     .leagueId  = leagueId,
     .authToken = authToken,
-    .url       = "http://api.fantasy.nfl.com/v1/league/team/roster?leagueId={.leagueId}&teamId={.teamId}&week={.week}&authToken={.authToken}&format=json"
+    .url       = "http://api.fantasy.nfl.com/v1/league/team/matchup?leagueId={.leagueId}&teamId={.teamId}&week={.week}&authToken={.authToken}&format=json"
   )  -> rosters.json
+```
 
-rosters.json[[1]]$leagues$matchups[[1]]$homeTeam$
+
+```{r checkResponse}
+# this is a list with the team rosters used in this week
+rosters.json[[1]]$leagues$matchup$homeTeam$name
+rosters.json[[1]]$leagues$matchup$homeTeam$players[[1]] %>%
+  select(id, name, position, teamAbbr) %>% 
+  as.tibble()
+```
+
+Com a escalação dos times na mão (em formato *json*) processamos os dados para facilitar o tratamento. 
+
+```{r}
+
+# auxiliar transformation to extract team roster
+extractTeam <- . %>% 
+  .$players %>% 
+  .[[1]] %>% 
+  select( src_id=id, name, position, rosterSlot, fantasyPts ) %>%
+  jsonlite::flatten() %>% 
+  select(-fantasyPts.week.season, -fantasyPts.week.week ) %>% 
+  rename(points = fantasyPts.week.pts) %>% 
+  mutate(points = as.numeric(points) )
+
+# extract each roster
+rosters.json %>% 
+  map(function(.json){
+    matchup <- .json$leagues$matchup
+    tibble(
+      home.teamId = matchup$homeTeam$id,
+      home.name   = matchup$homeTeam$name,
+      home.logo   = matchup$homeTeam$logoUrl,
+      home.pts    = as.numeric(matchup$homeTeam$pts),
+      home.roster = list(extractTeam(matchup$homeTeam)),
+      away.teamId = matchup$awayTeam$id,
+      away.name   = matchup$awayTeam$name,
+      away.logo   = matchup$awayTeam$logoUrl,
+      away.pts    = as.numeric(matchup$awayTeam$pts),
+      away.roster = list(extractTeam(matchup$awayTeam))
+    ) %>% 
+      return()
+  }) %>% bind_rows() -> matchups.rosters
+
+# check the matchups QBs for each team 
+matchups.rosters %>% 
+  mutate( away.qb = map(away.roster, function(roster) roster %>% filter(rosterSlot=="QB")),
+          home.qb = map(home.roster, function(roster) roster %>% filter(rosterSlot=="QB")) ) %>%
+  unnest(away.qb, home.qb, .sep=".") %>% 
+  select(away.team = away.name, away.qb.name, home.qb.name, home.team=home.name )
 
 ```
+
+Agora nós temos os jogos entre os times e suas escalações, para fazer o forecast de cada match precisamos usar o `ffanalytis` para obter a performance e pontuação de cada jogador.
 
