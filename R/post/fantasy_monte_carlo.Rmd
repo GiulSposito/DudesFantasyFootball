@@ -35,7 +35,7 @@ Podemos invocar a API usando o pacote `httr` e processar o json de resposta usan
 # or eventually version them in the GitHub :)
 library(yaml)
 
-config <- yaml.load_file("../../config/config.yml")
+config <- yaml.load_file("./config/config.yml")
 leagueId <- config$leagueId
 authToken <- config$authToken
 
@@ -148,4 +148,72 @@ matchups.rosters %>%
 ```
 
 Agora nós temos os jogos entre os times e suas escalações, para fazer o forecast de cada match precisamos usar o `ffanalytis` para obter a performance e pontuação de cada jogador.
+
+## Forecast players perform
+
+Vamos usar o pacote `ffanalytics` para fazer o `data scrapping` das previsões para cada jogador da liga feito pelos principais sites que acompanham e fazem esse tipo de previsão.
+
+```{r scrap, cache=TRUE, message=FALSE, warning=FALSE, error=FALSE}
+
+library(ffanalytics)
+scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
+                     season = 2018,
+                     week = week)
+
+```
+
+A função `scrape_data` devolve uma lista por posição, com as projeções de performance dos jogadores naquela posição. É assim porque as previsões para cada posição possuem atributos diferentes, por exemplo, *Kickers* são avaliados pelo número de *field goals* e distâncias dos chutes enquanto *Quaterbacks* pelos números de lançamentos e jardas lançadas.
+
+```{r scrapReturn}
+
+# Quaterback Projection Attributes
+scrap$QB %>%  
+  filter(player=="Drew Brees") %>% 
+  select(1:10)
+
+# Kickers Projection Attributes
+scrap$K %>%  
+  filter(player=="Justin Tucker") %>% 
+  select(1:10)
+
+```
+
+Com as projeções na mão, e usando o `ffanalytics` agora é possível calcular a quantidade de pontos que um jogador fará se fizer o que cada previsão estima que ele faça. Entretanto o pacote não exporta a função que faz o cálculo individual para aplicar somente a uma previsão, mas ela é uma etapa necessária para calcular a [tabela de projeções](https://github.com/FantasyFootballAnalytics/ffanalytics#calculating-projections) que o site usa em seus [gráficos](https://fantasyfootballanalytics.net/2018/10/gold-mining-week-7-2018.html).
+
+Mas como o projeto está no GitHub é possível baixar o código, carregar o script e acessar diretamente a função que faz o cálculo por jogador e site, ela se chama `source_points()`, presente no script [calc_projections.R](https://github.com/FantasyFootballAnalytics/ffanalytics/blob/master/R/calc_projections.R#L90). É possível carregar o script (e suas dependências) para poder invocá-la diretamente.
+
+```{r source_points, cache=TRUE}
+
+# function to access 'source_points' directly
+playerPointsProjections <- function(.scrap, .score_rules){
+  source("../ffanalytics/R/calc_projections.R")
+  source("../ffanalytics/R/stats_aggregation.R")
+  source("../ffanalytics/R/source_classes.R")
+  source("../ffanalytics/R/custom_scoring.R")
+  source("../ffanalytics/R/scoring_rules.R")
+  source("../ffanalytics/R/make_scoring.R")
+  source("../ffanalytics/R/recode_vars.R")
+  source("../ffanalytics/R/impute_funcs.R")
+  source_points(.scrap, .score_rules)
+}
+
+# customized scoring rules
+source("./R/post/score_settings.R") 
+players.points <- playerPointsProjections(scrap, dudes.score.settings)
+head(players.points)
+```
+
+```{r fixKickers, echo=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+# fix the kickers pontuation
+scrap$K %>%
+  mutate(pos="K") %>% 
+  select(pos, data_src, id, points=site_pts) %>% 
+  bind_rows(filter(players.points,pos!="K"))  -> players.points
+```
+
+```{r mergePlayers}
+players.points %>% 
+  group_by(id, pos) %>% 
+  nest(.key="points.range")
+```
 
