@@ -21,9 +21,84 @@ Este pacote faz o [`data scrapping`](https://fantasyfootballanalytics.net/2014/0
 
 Por fim, o pacote faz a analise dos pontos obtidos possibilitando fazer [projeções de performance](https://fantasyfootballanalytics.net/2014/06/custom-rankings-and-projections-for-your-league.html) dos resultados, aggregando numa so visão a projeção de vários sites. Isaac publica semanalmente o [ranking das projeções](https://fantasyfootballanalytics.net/2018/10/gold-mining-week-7-2018.html) por posição, para os jogos da rodada, usando algumas regras de pontuação `standard` e `PPR`. 
 
+Com todo o trabalho duro, de fazer o `data scrapping` e aplicar as regras do fantasy para calcular a pontuação já feita pelo pacote, podemos essa a informação para projetar os resultados dos times escalados nas ligas do fantasy para fazer forecast de placar dos jogos, bastando para isso obter os dados dos times, confrontos e escalações no próprio fantasy.
 
+## Fantasy API
 
+Para obter os times, a escação e os confrontos da rodada de uma liga do fantasy, podemos usar a [Web API](http://api.fantasy.nfl.com/) disponibilizada. Embora tenha alguns métodos *depreciated* eles ainda funcionam e atendem ao propósito de obter as informações desejadas. Em particular precisamos apenas acessar os métodos que diz quais os jogos  [`/league/matchups`](http://api.fantasy.nfl.com/v1/docs/service?serviceName=leagueMatchups) que recebe como parametros de entrada o `token` de autenticação, o `id` da liga e a `week` da rodada devolvendo os jogos programados para aquela semana, e a API [`/league/team/matchup`](http://api.fantasy.nfl.com/v1/docs/service?serviceName=leagueTeamMatchup) que, além dos parâmetros anteriores, também recebe o `id` do time para retornar o roster escalado. 
 
+Podemos invocar a API usando o pacote `httr` e processar o json de resposta usando o `jsonlite`.
 
+```{r getMatchups, cache=TRUE}
 
+# Storing the Access Token and League ID locally
+# I use a yalm file to avoid hard-code them 
+# or eventually version them in the GitHub :)
+library(yaml)
+
+config <- yaml.load_file("../../config/config.yml")
+leagueId <- config$leagueId
+authToken <- config$authToken
+
+# invoking the API
+library(httr)
+library(glue) # to easily replace vars in the url
+
+# league/matchups url
+url <- "http://api.fantasy.nfl.com/v1/league/matchups?leagueId={leagueId}&week={week}&format=json&authToken={authToken}"
+week <- 5
+
+# faz a chamada na api
+resp <- httr::GET(glue(url))
+
+# Is it ok?
+resp$status_code
+```
+
+Obtida a resposta da chamada, tratamos o *json* de retorno para organizar os dados e obter a escação de times.
+
+```{r matchupHandling, warning=FALSE, message=FALSE}
+
+library(jsonlite)
+library(tidyverse)
+
+# to convert the json in a "tabular-tibble form"
+resp %>% 
+  httr::content(as="text") %>%
+  fromJSON(simplifyDataFrame = T) %$%  
+  leagues %$%
+  matchups %>%
+  .[[1]] %>% 
+  jsonlite::flatten() %>% 
+  as.tibble() -> matchups
+
+ matchups %>% 
+   select(awayTeam.id, awayTeam.name, homeTeam.name, homeTeam.id)
+```
+
+Fazemos novas chamadas à API para obter a escalação de cada um dos times nessa rodada.
+
+```{r getRosters}
+
+# for all teamIds from the matchup
+c(matchups$awayTeam.id, matchups$homeTeam.id) 
+
+"1" %>%
+  map(
+    function(.teamId, .week, .leagueId, .authToken, .url) {
+      # make the API call
+      httr::GET(glue(url)) %>%
+        httr::content(as = "text") %>%
+        fromJSON(simplifyDataFrame = T) %>% # transform response body in json
+        return()
+    },
+    .week      = week,
+    .leagueId  = leagueId,
+    .authToken = authToken,
+    .url       = "http://api.fantasy.nfl.com/v1/league/team/roster?leagueId={.leagueId}&teamId={.teamId}&week={.week}&authToken={.authToken}&format=json"
+  )  -> rosters.json
+
+rosters.json[[1]]$leagues$matchups[[1]]$homeTeam$
+
+```
 
