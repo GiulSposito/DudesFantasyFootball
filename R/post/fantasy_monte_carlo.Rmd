@@ -1,0 +1,29 @@
+---
+title: "Using Monte Carlo to forecast NFL's fantasy results."
+output:
+  html_document:
+    df_print: paged
+editor_options:
+  chunk_output_type: console
+---
+
+Neste post, vamos simular o resultados dos jogos da minha liga de Fantasy para projetando a pontuação dos times fazendo `data scrapping` para obter as previsões da performance dos jogadores, projetar a pontuação dele na liga e usar `Monte Carlo` para projetar os resultados dos jogos.
+
+<!-- more -->
+
+A temporada de [futebol americano](https://en.wikipedia.org/wiki/American_football) está de volta, e com ela o [Fantasy](http://fantasy.nfl.com/), o já tradicional jogo online no qual você reune os amigos, ou a galera do trabalho, e em uma "liga" particular, para escalar jogadores em times virtuais e companhar a performance dos mesmos a pontuação de seu time durante a rodada da [NFL](https://www.nfl.com/).
+
+## ffanalytics package
+
+O PhD em psicologia clínica e professor assistente [Isaac Petersen])(https://fantasyfootballanalytics.net/2013/03/isaac-petersen.html) autor do site [Fantasy Football Analytics](https://fantasyfootballanalytics.net), que faz projeções e análise de resultados do fantasy, fez um grande trabalho com o pacote [ffanalytics](https://fantasyfootballanalytics.net/2016/06/ffanalytics-r-package-fantasy-football-data-analysis.html) disponibilizado no [GitHub](https://github.com/FantasyFootballAnalytics/ffanalytics). 
+
+Este pacote faz o [`data scrapping`](https://fantasyfootballanalytics.net/2014/06/scraping-fantasy-football-projections.html) de vários sites que fazem previsões de jogadores, como [ESPN](http://games.espn.com/ffl/tools/projections), [CBS](https://www.cbssports.com/fantasy/football/stats/sortable/points/QB/standard/projections/2018/3?print_rows=100), [Yahoo](https://sports.yahoo.com/news/week-8-fantasy-football-rankings-helping-set-lineup-210614393.html) e o próprio site da [NFL](http://m.fantasy.nfl.com/research/projections), aplica as regras de pontuações do fantasy (que inclusive [podem ser cutomizadas](https://github.com/FantasyFootballAnalytics/ffanalytics/blob/master/R/scoring_rules.R) para a sua Liga) e [calcula a pontuação](https://fantasyfootballanalytics.net/2014/06/custom-rankings-and-projections-for-your-league.html) possível para cada uma das projeções.
+
+Por fim, o pacote faz a analise dos pontos obtidos possibilitando fazer [projeções de performance](https://fantasyfootballanalytics.net/2014/06/custom-rankings-and-projections-for-your-league.html) dos resultados, aggregando numa so visão a projeção de vários sites. Isaac publica semanalmente o [ranking das projeções](https://fantasyfootballanalytics.net/2018/10/gold-mining-week-7-2018.html) por posição, para os jogos da rodada, usando algumas regras de pontuação `standard` e `PPR`. 
+
+
+
+
+
+
+
