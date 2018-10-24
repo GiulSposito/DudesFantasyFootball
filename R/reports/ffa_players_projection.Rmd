@@ -8,7 +8,9 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-library(ffanalytics)
+library(tidyverse)
+library(plotly)
+# library(ffanalytics)
 ```
 
 ```{r loaddata, cache=FALSE}
@@ -22,11 +24,14 @@ projections <- readRDS("../../data/week8_players_projections.rds") %>%
   ungroup() %>% 
   filter( !(team %in% c("FA","FA*")) ) # havia lixo em alguns
 
+
 readRDS("../../data/players_points.rds") %>%
   rename( pts = points ) %>% 
   select( id, week, pts) %>% 
   group_by( id ) %>% 
-  mutate( pts.med = median(pts) ) %>% 
+  mutate( pts.med = median(pts, na.rm = T),
+          pts.max = max(pts, na.rm=T),
+          pts.min = min(pts, na.rm = T)) %>% 
   ungroup() %>% 
   right_join(projections, by = "id") -> projections
   
@@ -49,7 +54,7 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
   proj_data %>% 
     inner_join(.proj, by="id") -> proj_data
   
-  nu_y <- max(proj_data$ceiling, na.rm = T) / 8
+  nu_y <- max(proj_data$ceiling, na.rm = T) / 12
   
   proj_data %>% 
     ggplot(aes(group=fantasy.team)) +
@@ -57,7 +62,7 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
                       y=points, 
                       ymin=floor, 
                       ymax=ceiling, 
-                      color=fantasy.team)) +
+                      color=fantasy.team), size=1.5) +
       # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
       #                y=pts), color="black", alpha=.05) +
       geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
@@ -65,16 +70,18 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
       geom_text(aes(x=reorder(pos_rank,desc(pos_rank)), 
                 y=r_pos, 
                 color=fantasy.team, 
-                label=full_name), nudge_y = nu_y, nudge_x = 0.2, size=2.5) +
+                label=full_name), nudge_y = nu_y, nudge_x = 0.0, size=2.9) +
+      scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00")) +
       theme_classic() + xlab("Rank") + ylab("Points") +
       theme( panel.grid.major.x=element_line(colour="#EEEEEE") ) +
       scale_x_discrete(breaks = seq(1,32,4) ) +
       ggtitle(.title,.subtitle) +
-      coord_flip()
+      coord_flip() -> g
+  ggplotly(g)
   
 }
 
-plotProjections(projections, "QB", "Quaterbacks", "week 8")
+plotProjections(projections, "QB", "Quaterbacks", "week 8", 20)
 
 ```
 
@@ -83,7 +90,7 @@ WR
 
 ```{r wr}
 
-plotProjections(projections, "WR", "Wide Receivers", "week 8")
+plotProjections(projections, "WR", "Wide Receivers", "week 8",50)
 
 ```
 
@@ -92,7 +99,7 @@ RB
 
 ```{r rb}
 
-plotProjections(projections, "RB", "Running Backs", "week 8")
+plotProjections(projections, "RB", "Running Backs", "week 8",50)
 
 ```
 
@@ -101,7 +108,7 @@ TE
 
 ```{r te}
 
-plotProjections(projections, "TE", "Tight Ends", "week 8")
+plotProjections(projections, "TE", "Tight Ends", "week 8",20)
 
 ```
 
@@ -111,7 +118,7 @@ K
 
 ```{r k}
 
-plotProjections(projections, "K", "Kickers", "week 8")
+plotProjections(projections, "K", "Kickers", "week 8",20)
 
 ```
 
@@ -121,7 +128,7 @@ DEF
 
 ```{r def}
 
-plotProjections(projections, "DST", "Defenses", "week 8")
+plotProjections(projections, "DST", "Defenses", "week 8",32)
 
 ```
 
