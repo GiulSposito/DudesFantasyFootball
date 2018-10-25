@@ -23,13 +23,17 @@ Por fim, o pacote faz a analise dos pontos obtidos possibilitando fazer [projeç
 
 Com todo o trabalho duro, de fazer o `data scrapping` e aplicar as regras do fantasy para calcular a pontuação já feita pelo pacote, podemos essa a informação para projetar os resultados dos times escalados nas ligas do fantasy para fazer forecast de placar dos jogos, bastando para isso obter os dados dos times, confrontos e escalações no próprio fantasy.
 
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+
 ## Fantasy API - Getting the Team's Matchups and Rosters
 
 Para obter os times, a escação e os confrontos da rodada de uma liga do fantasy, podemos usar a [Web API](http://api.fantasy.nfl.com/) disponibilizada. Embora tenha alguns métodos *depreciated* eles ainda funcionam e atendem ao propósito de obter as informações desejadas. Em particular precisamos apenas acessar os métodos que diz quais os jogos  [`/league/matchups`](http://api.fantasy.nfl.com/v1/docs/service?serviceName=leagueMatchups) que recebe como parametros de entrada o `token` de autenticação, o `id` da liga e a `week` da rodada devolvendo os jogos programados para aquela semana, e a API [`/league/team/matchup`](http://api.fantasy.nfl.com/v1/docs/service?serviceName=leagueTeamMatchup) que, além dos parâmetros anteriores, também recebe o `id` do time para retornar o roster escalado. 
 Podemos invocar a API usando o pacote `httr` e processar o json de resposta usando o `jsonlite`.
 
-```{r getMatchups, cache=TRUE}
-
+```{r config, cache=TRUE}
 # Storing the Access Token and League ID locally
 # I use a yalm file to avoid hard-code them 
 # or eventually version them in the GitHub :)
@@ -38,7 +42,13 @@ library(yaml)
 config <- yaml.load_file("./config/config.yml")
 leagueId <- config$leagueId
 authToken <- config$authToken
+```
 
+```{r restoreResp1, echo=FALSE}
+resp <- readRDS("./R/post/cache/league_matchups.rds")
+```
+
+```{r getMatchups, eval=FALSE}
 # invoking the API
 library(httr)
 library(glue) # to easily replace vars in the url
@@ -49,7 +59,9 @@ week <- 5
 
 # faz a chamada na api
 resp <- httr::GET(glue(url))
+```
 
+```{r respOk}
 # Is it ok?
 resp$status_code
 ```
@@ -77,7 +89,10 @@ resp %>%
 
 Fazemos novas chamadas à API para obter a escalação de cada um dos times nessa rodada.
 
-```{r getRosters, cache=TRUE, warning=FALSE, message=FALSE}
+```{r loadRosters, echo=FALSE}
+rosters.json <- readRDS("./R/post/cache/rosters_json.rds")
+```
+```{r getRosters, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
 
 # for each teamIds in the matchup
 c(matchups$awayTeam.id) %>%
@@ -153,13 +168,16 @@ Agora nós temos os jogos entre os times e suas escalações, para fazer o forec
 
 Vamos usar o pacote `ffanalytics` para fazer o `data scrapping` das previsões para cada jogador da liga feito pelos principais sites que acompanham e fazem esse tipo de previsão.
 
-```{r scrap, cache=TRUE, message=FALSE, warning=FALSE, error=FALSE}
+```{r scrap, eval=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 
 library(ffanalytics)
 scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
                      season = 2018,
                      week = week)
 
+```
+```{r loadScrap}
+scrap <- readRDS("./R/post/cache/scrap.rds")
 ```
 
 A função `scrape_data` devolve uma lista por posição, com as projeções de performance dos jogadores naquela posição. É assim porque as previsões para cada posição possuem atributos diferentes, por exemplo, *Kickers* são avaliados pelo número de *field goals* e distâncias dos chutes enquanto *Quaterbacks* pelos números de lançamentos e jardas lançadas.
@@ -182,7 +200,10 @@ Com as projeções na mão, e usando o `ffanalytics` agora é possível calcular
 
 Mas como o projeto está no GitHub é possível baixar o código, carregar o script e acessar diretamente a função que faz o cálculo por jogador e site, ela se chama `source_points()`, presente no script [calc_projections.R](https://github.com/FantasyFootballAnalytics/ffanalytics/blob/master/R/calc_projections.R#L90). É possível carregar o script (e suas dependências) para poder invocá-la diretamente.
 
-```{r source_points, cache=TRUE}
+```{r loadPoints, echo=FALSE}
+players.points <- readRDS("./R/post/cache/players_points.rds")
+```
+```{r source_points, eval=FALSE}
 
 # function to access 'source_points' directly
 playerPointsProjections <- function(.scrap, .score_rules){
