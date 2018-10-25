@@ -92,7 +92,7 @@ Fazemos novas chamadas à API para obter a escalação de cada um dos times ness
 ```{r loadRosters, echo=FALSE}
 rosters.json <- readRDS("./R/post/cache/rosters_json.rds")
 ```
-```{r getRosters, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+```{r getRosters, eval=FALSE,  warning=FALSE, message=FALSE}
 
 # for each teamIds in the matchup
 c(matchups$awayTeam.id) %>%
@@ -122,7 +122,7 @@ rosters.json[[1]]$leagues$matchup$homeTeam$players[[1]] %>%
 
 Com a escalação dos times na mão (em formato *json*) processamos os dados para facilitar o tratamento. 
 
-```{r}
+```{r extractTeams}
 
 # auxiliar transformation to extract team roster
 extractTeam <- . %>% 
@@ -130,21 +130,25 @@ extractTeam <- . %>%
   .[[1]] %>% 
   select( src_id=id, name, position, rosterSlot, fantasyPts ) %>%
   jsonlite::flatten() %>% 
+  as.tibble() %>% 
   select(-fantasyPts.week.season, -fantasyPts.week.week ) %>% 
   rename(points = fantasyPts.week.pts) %>% 
-  mutate(points = as.numeric(points) )
+  mutate(
+    src_id = as.integer(src_id), 
+    points = as.numeric(points)
+  )
 
 # extract each roster
 rosters.json %>% 
   map(function(.json){
     matchup <- .json$leagues$matchup
     tibble(
-      home.teamId = matchup$homeTeam$id,
+      home.teamId = as.integer(matchup$homeTeam$id),
       home.name   = matchup$homeTeam$name,
       home.logo   = matchup$homeTeam$logoUrl,
       home.pts    = as.numeric(matchup$homeTeam$pts),
       home.roster = list(extractTeam(matchup$homeTeam)),
-      away.teamId = matchup$awayTeam$id,
+      away.teamId = as.integer(matchup$awayTeam$id),
       away.name   = matchup$awayTeam$name,
       away.logo   = matchup$awayTeam$logoUrl,
       away.pts    = as.numeric(matchup$awayTeam$pts),
@@ -162,7 +166,7 @@ matchups.rosters %>%
 
 ```
 
-Agora nós temos os jogos entre os times e suas escalações, para fazer o forecast de cada match precisamos usar o `ffanalytis` para obter a performance e pontuação de cada jogador.
+Agora nós temos um `tibble` com os jogos entre os times e, aninhado no registro, as respectivas escalações. Agora será necessário usar o `ffanalytis` para obter a performance e pontuação de cada jogador.
 
 ## Forecast players perform
 
@@ -201,7 +205,8 @@ Com as projeções na mão, e usando o `ffanalytics` agora é possível calcular
 Mas como o projeto está no GitHub é possível baixar o código, carregar o script e acessar diretamente a função que faz o cálculo por jogador e site, ela se chama `source_points()`, presente no script [calc_projections.R](https://github.com/FantasyFootballAnalytics/ffanalytics/blob/master/R/calc_projections.R#L90). É possível carregar o script (e suas dependências) para poder invocá-la diretamente.
 
 ```{r loadPoints, echo=FALSE}
-players.points <- readRDS("./R/post/cache/players_points.rds")
+players.points <- readRDS("./R/post/cache/players_points.rds") %>% 
+  mutate(id = as.integer(id) )
 ```
 ```{r source_points, eval=FALSE}
 
@@ -221,20 +226,103 @@ playerPointsProjections <- function(.scrap, .score_rules){
 # customized scoring rules
 source("./R/post/score_settings.R") 
 players.points <- playerPointsProjections(scrap, dudes.score.settings)
+```
+```{r head_players_points, echo=FALSE}
 head(players.points)
 ```
 
-```{r fixKickers, echo=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+```{r fixKickers, echo=FALSE,  warning=FALSE, message=FALSE}
 # fix the kickers pontuation
 scrap$K %>%
   mutate(pos="K") %>% 
   select(pos, data_src, id, points=site_pts) %>% 
+  mutate(id = as.integer(id)) %>% 
   bind_rows(filter(players.points,pos!="K"))  -> players.points
 ```
 
-```{r mergePlayers}
-players.points %>% 
-  group_by(id, pos) %>% 
-  nest(.key="points.range")
+## Merging Rosters and Predictions
+
+Temos agora a escalação dos times e as projeções de pontuação dos sites para cada jogadores, precisamos unir os datasets, mas antes é necessário "combinar" os `ids` dos jogadores. Se vcs repararem nos dados mostrados, a identificação de cada um jogador é diferente em cada um dos sites, o `ffanalytics` da o nome à esse `id` de `src_id`, mas unifica os resultados a um `id` unificado, identificado como `id`.
+
+A escalação dos times foi obtida do site do `fantasy` então segue a identificação do `src_id` da `NFL`, para fazer o *merge* entre os dois será necessário mapear o `src_id` da `NFL` para o `id` do `ffanalytics`. Podemos extrair o mapeamento de 'ids' do scrapping de dados, pois tanto ambos estão lá quando o scrapping é originado do site da NFL:
+
+```{r ids}
+# look the presence of both ids in the projection table
+scrap$WR %>% 
+  filter( data_src=="NFL" ) %>% 
+  select(1:4) %>% 
+  head()
 ```
+
+```{r echo=FALSE}
+players.ids <- readRDS("./R/post/cache/nfl_players_id.rds")
+```
+
+```{r playerIdsTable, eval=FALSE}
+# extracting id and src_id from all positions
+scrap %>%
+  map(function(dft){
+    dft %>% 
+      filter(data_src=="NFL") %>% 
+      select(id, src_id, player, team, pos) %>% 
+      return()
+  }) %>% 
+  bind_rows() %>%
+  distinct() -> players.ids
+```
+
+```{r ids.mapping}
+# ID mapping
+head(players.ids)
+```
+
+Agora podemos fazer o *merging* das predições dos jogadores às escalações do time. 
+
+```{r mergePlayers}
+# nest by "id" and merge with "src_id"
+players.points %>% 
+  select(-pos) %>% 
+  group_by(id) %>% 
+  nest(.key="points.range") %>%
+  # merge ID with SRC_ID
+  inner_join(players.ids, by = c("id")) %>%
+  select(id, src_id, player, pos, team, points.range) %T>% 
+  # show the results
+  print(head()) %>% 
+  # keep only "ids" at top level
+  select(id, src_id, points.range) -> players.ids.points
+
+# auxiliary function to merge roster with player points
+mergePoints <- function(.roster, .points){
+  .roster %>% 
+    left_join(.points, by="src_id") %>% 
+    return()
+}
+
+# merge points in rosters
+matchups.rosters %>% 
+  mutate(
+    home.roster = map(home.roster, mergePoints, .points=players.ids.points),
+    away.roster = map(away.roster, mergePoints, .points=players.ids.points)
+  ) -> matchups.points
+
+```
+
+Convém notar que estamos usando uma estrutura de *data.frames* aninhados, mais conhecido como [*nested*](https://r4ds.had.co.nz/many-models.html), ou seja, nós temos um *data.frame* de *matchups* onde cada linha é uma partida. Em cada partida há duas colunas de escalação ("casa" e "visitante"), essas colunas guardam um outro *data.frame*, contendo a escalação. Neste *data.frame*, cada linha é um jogador, e para cada um há uma coluna chamada *points.range* que também contém um *data.frame*, contendo a previsão de pontuação de cada site.
+
+```{r nestedDataframeExplorer}
+
+# "father" dataframe and the first nested column
+matchups.points %>% 
+  select( home.name, home.roster )
+
+# seeing the first nested data.frame
+matchups.points[1,]$home.roster[[1]] 
+
+# look the second level dataframe
+matchups.points[1,]$home.roster[[1]][1,]$points.range[[1]] 
+
+```
+
+[Nested data.frames](https://r4ds.had.co.nz/many-models.html) é um modelo poderoso, permite manter os dados relacionais juntos e com fácil manipulação.
 
