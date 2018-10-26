@@ -341,53 +341,67 @@ Esse procedimento é repetido *N* vezes, simulando várias partidas, para se det
 
 Notas-se que adotamos que cada jogador tem iguais chance de ter qualquer uma das pontuações projetadas como pontuação da simulação, modelos mais sofisticados poderiam ponderar ranges diferentes com probabilidades diferentes entre as projeções, incluindo avaliar o histórico de performance da site, mas deixaremos isso para um outro post.
 
-```{r simulacao}
+```{r simulation}
+
+# It's better you read this code chunk from botton to up :)
+
+### Auxiliary functions
 
 # function to generate .n possible pontuations from .points.range
+# it's used to generate the .n simulations to each player
 simPlayer <- function(.points.range, .n){
 
+  # just check if the points.range isn't empty
   if(is.null(.points.range)) return( vector(mode = "numeric",.n) )
   if(nrow(.points.range)==0) return( vector(mode = "numeric",.n) )
 
+  # generate a .n vector samples from points.range
   .points.range$points %>% 
     sample(size = .n, replace = T) %>%
     return()
 
 }
 
-# function to generate the team pontuation
+# function to add the player pontuation to the team roster dataframe
 simTeam <- function(.roster, .n){
   .roster %>% 
     mutate( sim.player = map(points.range, simPlayer, .n=.n) )  %>% 
     return()
 }
 
+# this function is in charge to sum the pontuations from 
+# each player to generate the .n-size vector with team pontuation
 simTeamPoints <- function(.roster){
   .roster %>% 
-    filter(rosterSlot!="BN") %>% 
-    pull(sim.player) %>% 
-    bind_cols() %>% 
-    as.matrix() %>% 
-    rowSums(na.rm = T) %>% 
-    return()
+    filter(rosterSlot!="BN") %>%  # exclude player in bench
+    pull(sim.player) %>%          # get the player pontuation simulation
+    bind_cols() %>%               # binds the pontuation toghether 
+    as.matrix() %>%               # now we have an matrix with # players x # .n simulations
+    rowSums(na.rm = T) %>%        # sum each row (simuilation) to get a .n-vector 
+    return()                      # each position in this vector is a possible team pontuation
 }
 
+### Simulation Code
+
+# number of simulations
 n <- 2000
 
+# in the matchups dataframe
 matchups.points %>% 
   mutate(
-    home.roster = map(home.roster, simTeam, .n=n),
-    away.roster = map(away.roster, simTeam, .n=n),
-    home.sim    = map(home.roster, simTeamPoints),
-    away.sim    = map(away.roster, simTeamPoints)
+    home.roster = map(home.roster, simTeam, .n=n), # add players simulation pointes
+    away.roster = map(away.roster, simTeam, .n=n), # to each roster
+    home.sim    = map(home.roster, simTeamPoints), # computes the team simulation
+    away.sim    = map(away.roster, simTeamPoints)  # points
   ) %>% 
   mutate( 
-    home.win    = map2(home.sim, away.sim, function(.x,.y) (.x > .y) ),
-    away.win    = map(home.win, function(.x) (!.x)),
-    home.win.prob = map(home.win, mean, na.rm = T),
-    away.win.prob = map(away.win, mean, na.rm = T)
+    home.win    = map2(home.sim, away.sim, function(.x,.y) (.x > .y) ), # computes the 
+    away.win    = map(home.win, function(.x) (!.x)), # number of victures of each team
+    home.win.prob = map(home.win, mean, na.rm = T),  # computess the % of victories
+    away.win.prob = map(away.win, mean, na.rm = T)   # computess the % of victories
   ) %>%
   mutate(
+    # this calculate the difference of score points in each simulation
     score.diff    = map2(home.sim, away.sim, function(.x,.y){.x - .y})
   ) -> simulation
 
