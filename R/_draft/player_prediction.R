@@ -1,7 +1,7 @@
 library(ffanalytics)
 source("./R/_draft/score_settings.R")
 
-weeks <- 1:7
+weeks <- 1:8
 
 weeks %>% 
   map( function(.week){
@@ -46,7 +46,6 @@ scraps %>%
           week = as.integer(week),
           id = as.integer(id) ) %>% 
   rename(pts.proj = points) -> points.projection
-
 
 # salva pontuacao projetada
 saveRDS(points.projection, "./data/points_projection.rds")

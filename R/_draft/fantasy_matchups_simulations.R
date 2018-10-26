@@ -10,7 +10,7 @@ leagueId <- config$leagueId
 authToken <- config$authToken
 
 # contexto da semana
-week <- 7
+week <- 8
 
 # obtem os matchups
 url.matchups <- "http://api.fantasy.nfl.com/v1/league/matchups?leagueId={leagueId}&week={week}&format=json&authToken={authToken}"
@@ -39,7 +39,7 @@ matchup.teams.json <- matchups$awayTeam.id %>%
   },
   .url=url.team.matchup)
 
-saveRDS(matchup.teams.json, "./data/week7_matchups_json.rds")
+saveRDS(matchup.teams.json, glue("./data/week{week}_matchups_json.rds"))
 
 # funcao para extrar dados dos hosters dos times
 extractTeam <- . %>% 

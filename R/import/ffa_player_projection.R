@@ -44,7 +44,7 @@ kickers.attrib %>%
 
 # matchups and rosters (nfl)
 source("./R/tidy/matchups.R")
-teams <- readRDS("./data/week7_matchups_json.rds") %>% 
+teams <- readRDS("./data/week{.week}_matchups_json.rds") %>% 
   extractTeams() %>% 
   mutate( 
     home.roster = map(home.roster, nfl2ffa, .ids=players_id), # to ffa ids

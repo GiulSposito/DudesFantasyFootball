@@ -1,5 +1,8 @@
 library(tidyverse)
+library(glue)
 source("./R/tidy/matchups.R")
+
+.week <- 8
 
 # retorna um summary como um data.frame
 summaryAsTibble <- . %>% summary() %>% as.list() %>% as.tibble()
@@ -12,31 +15,29 @@ quantileAsTibble <- function(x, probs){
     return()
 }
 
-
 # matchups and rosters (nfl)
-matchups <- readRDS("./data/week7_matchups_json.rds") %>% 
+matchups <- readRDS(glue("./data/week{.week}_matchups_json.rds")) %>% 
   extractTeams() %>% 
   mutate( 
-    home.roster = map(home.roster, nfl2ffa, .ids=players_id), # to ffa ids
-    away.roster = map(away.roster, nfl2ffa, .ids=players_id)  # to ffa ids
+    home.roster = map(home.roster, nfl2ffa, .ids=.players_id), # to ffa ids
+    away.roster = map(away.roster, nfl2ffa, .ids=.players_id)  # to ffa ids
   )
   
 # historic fantasy points (nfl)
-points <- readRDS("./data/players_points.rds") %>% 
-  nfl2ffa(.ids=players_id) # to ffa ids
+points <- readRDS("./data/players_points.rds")
   
 # players projections (ffa)
 pts.proj <- readRDS("./data/points_projection.rds")
 
 # calcula distribuição do erro
 errors <- points %>%
-  filter(week!=7) %>% 
+  filter(week!=.week) %>% 
   inner_join(pts.proj, by = c("id", "season", "week")) %>% 
   select( id, position, week, season, data_src, points, pts.proj ) %>% 
   mutate( error=points-pts.proj )
 
 # visualiza os numeros
-# errors %>% 
+# errors %>%
 #   ggplot() +
 #   geom_density(aes(error, fill=position)) +
 #   facet_grid(position~data_src) +
@@ -75,13 +76,13 @@ matchups %>%
     home.roster = map(
       home.roster,
       addPlayerSimulation,
-      .pts.proj = pts.proj %>% filter(week == 7),
+      .pts.proj = pts.proj %>% filter(week == .week),
       .error.dist = error.dist
     ),
     away.roster = map(
       away.roster,
       addPlayerSimulation,
-      .pts.proj = pts.proj %>% filter(week == 7),
+      .pts.proj = pts.proj %>% filter(week == .week),
       .error.dist = error.dist
     )
   ) -> matchup.projs
@@ -119,7 +120,7 @@ matchup.projs %>%
     away.points = map(away.sim, summaryAsTibble)
   ) -> matchup.simulation
 
-saveRDS(matchup.simulation, "./data/week7_simulation_v2.rds")
+saveRDS(matchup.simulation, glue("./data/week{.week}_simulation_v2.rds"))
 
 # team.sizes <- . %>% 
 #   mutate(
