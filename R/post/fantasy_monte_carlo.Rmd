@@ -286,9 +286,7 @@ players.points %>%
   nest(.key="points.range") %>%
   # merge ID with SRC_ID
   inner_join(players.ids, by = c("id")) %>%
-  select(id, src_id, player, pos, team, points.range) %T>% 
-  # show the results
-  print(head()) %>% 
+  select(id, src_id, player, pos, team, points.range) %>% 
   # keep only "ids" at top level
   select(id, src_id, points.range) -> players.ids.points
 
@@ -325,4 +323,73 @@ matchups.points[1,]$home.roster[[1]][1,]$points.range[[1]]
 ```
 
 [Nested data.frames](https://r4ds.had.co.nz/many-models.html) é um modelo poderoso, permite manter os dados relacionais juntos e com fácil manipulação.
+
+## Monte Carlo
+
+Para simular o resultado das partidas da rodada, precisamos simular a pontuação obtida por cada um dos times e para tal precisamos simular a pontuação dos titulares desse time. Para tal, usaremos [Monte Carlo](https://en.wikipedia.org/wiki/Monte_Carlo_method).
+
+Para simular a pontuação dos jogadores vamos considerar que cada um dos jogadores pode fazer uma das pontuações projetadas pelos sites de previsão. Por motivos de simplicidade para nesse post, podemos assumir que as chances são iguais para qualquer uma das pontuações projetadas.
+
+Neste caso a simulação de UMA partirda usando Monte Carlo consiste então em:
+
+1. Para cada jogador do time, sorteia-se um dos números projetados possíveis
+2. Somam-se os pontos sorteados dos jogadores titulares: esse será a pontuação do time
+3. Compara-se a pontuação do time *home* com o time *away* para determinar quem ganhou
+4. Computa-se uma vitoria para o time com maior pontuação 
+
+Esse procedimento é repetido *N* vezes, simulando várias partidas, para se determinar as chances de vitória de um time, computa-se o total de vezes em que o time foi vencedor e divide-se pelo total de simulações. Assim teremos as chances de cada time ganhar a partida, pois as simulações refletirão as inúmeros combinações de pontuação entre os jogadores e entre os times.
+
+Notas-se que adotamos que cada jogador tem iguais chance de ter qualquer uma das pontuações projetadas como pontuação da simulação, modelos mais sofisticados poderiam ponderar ranges diferentes com probabilidades diferentes entre as projeções, incluindo avaliar o histórico de performance da site, mas deixaremos isso para um outro post.
+
+```{r simulacao}
+
+# function to generate .n possible pontuations from .points.range
+simPlayer <- function(.points.range, .n){
+
+  if(is.null(.points.range)) return( vector(mode = "numeric",.n) )
+  if(nrow(.points.range)==0) return( vector(mode = "numeric",.n) )
+
+  .points.range$points %>% 
+    sample(size = .n, replace = T) %>%
+    return()
+
+}
+
+# function to generate the team pontuation
+simTeam <- function(.roster, .n){
+  .roster %>% 
+    mutate( sim.player = map(points.range, simPlayer, .n=.n) )  %>% 
+    return()
+}
+
+simTeamPoints <- function(.roster){
+  .roster %>% 
+    filter(rosterSlot!="BN") %>% 
+    pull(sim.player) %>% 
+    bind_cols() %>% 
+    as.matrix() %>% 
+    rowSums(na.rm = T) %>% 
+    return()
+}
+
+n <- 2000
+
+matchups.points %>% 
+  mutate(
+    home.roster = map(home.roster, simTeam, .n=n),
+    away.roster = map(away.roster, simTeam, .n=n),
+    home.sim    = map(home.roster, simTeamPoints),
+    away.sim    = map(away.roster, simTeamPoints)
+  ) %>% 
+  mutate( 
+    home.win    = map2(home.sim, away.sim, function(.x,.y) (.x > .y) ),
+    away.win    = map(home.win, function(.x) (!.x)),
+    home.win.prob = map(home.win, mean, na.rm = T),
+    away.win.prob = map(away.win, mean, na.rm = T)
+  ) %>%
+  mutate(
+    score.diff    = map2(home.sim, away.sim, function(.x,.y){.x - .y})
+  ) -> simulation
+
+```
 
