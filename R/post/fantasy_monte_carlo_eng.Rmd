@@ -1,0 +1,559 @@
+---
+title: "Using Monte Carlo to forecast NFL's fantasy results."
+output:
+  html_document:
+    df_print: paged
+editor_options:
+  chunk_output_type: console
+---
+
+The football season is back, and with it the Fantasy Game! In this post, we will simulate the results and the scoring of my Fantasy League games. To do that, we'll project the scoring of teams using 'Monte Carlo' simulation with data scraped from sites that predicts players' performances. We will combine the various possible scores of a team's players to estimate the team's score distribution, and then compare with the opposing team, and finally compute each team's chances of winning and losing.
+
+<!-- more -->
+
+The season of [American football] (https://en.wikipedia.org/wiki/American_football) is back, and with it the [Fantasy] (http://fantasy.nfl.com/), the already traditional online game which you bring your friends or coworkers to play together in a virtual league, where each member rosters [NFL's](https://www.nfl.com/) players on virtual teams and hoping that they will score well in their real life games. The real life player's score goes to your virtual team score.
+
+## ffanalytics package
+
+The PhD in clinical psychology and assistant professor [Isaac Petersen](https://fantasyfootballanalytics.net/2013/03/isaac-petersen.html) author of the site [Fantasy Football Analytics](https://fantasyfootballanalytics.net), who does projections and analysis of Fantasy results, did a great job with the [ffanalytics package](https://fantasyfootballanalytics.net/2016/06/ffanalytics-r-package-fantasy-football-data-analysis.html) made available in [GitHub](https://github.com/FantasyFootballAnalytics/ffanalytics).
+
+This package does [`data scrapping`](https://fantasyfootballanalytics.net/2014/06/scraping-fantasy-football-projections.html) in various sites that make predictions of player's performances such as [ESPN](https://games.espn.com/ffl/tools/projections), [CBS](https://www.cbssports.com/fantasy/football/stats/sortable/points/QB/standard/projections/2018/3?print_rows= 100), [Yahoo](https://sports.yahoo.com/news/week-8-fantasy-football-rankings-helping-set-lineup-210614393.html) and the [NFL](http://m.fantasy.nfl.com/research/projections) website itself, after, applies the fantasy scoring rules (which can even be [cutomized](https://github.com/FantasyFootballAnalytics/ffanalytics/blob/master/R/scoring_rules.R) for your League) and [calculates the score](https://fantasyfootballanalytics.net/2014/06/custom-rankings-and-projections-for-your-league.html) possible for each of the projections.
+
+Finally, the package analyzes the points obtained by making [performance projections](https://fantasyfootballanalytics.net/2014/06/custom-rankings-and-projections-for-your-league.html) of the results, aggregating in one vision the predictions of several sites. Isaac publishes weekly the [ranking of projections](https://fantasyfootballanalytics.net/2018/10/gold-mining-week-7-2018.html) by position for the games of the round, using some standards scoring rules.
+
+With all the hard work of doing 'data scrapping' and apply the rules of fantasy to calculate the score already made by the package, we can use these informations to project the results of teams scaled in fantasy leagues and to forecast game results, remaining only to obtain the teams and their rosters from Fantasy itself.
+
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+## Fantasy API - Getting the Team's Matchups and Rosters
+
+In order to obtain the rounds of a fantasy league, we can use the [Web API](http://api.fantasy.nfl.com/) available by the Fantasy website. Although it has some *depreciated* methods they still work and serve the purpose of getting the information we want. In particular we need access the methods that tells us which games [`/league/matchups`](http://api.fantasy.nfl.com/v1/docs/service?serviceName=leagueMatchups) is schedule for a week. This API receives as input parameters the authentication `token`, the` id` of the league and the `week` of interest, returning the games scheduled for that week. We also will use the API [`/league/team/matchup`](http://api.fantasy.nfl .com/v1/docs/service?serviceName=leagueTeamMatchup) that, in addition to the above parameters, also gets the team id to return the team roster.
+
+We can invoke the API using the `httr` package and process the response json using` jsonlite`.
+
+```{r config, cache=TRUE}
+# Storing the Access Token and League ID locally
+# I use a yalm file to avoid hard-code them 
+# or eventually version them in the GitHub :)
+library(yaml)
+
+config <- yaml.load_file("./config/config.yml")
+leagueId <- config$leagueId
+authToken <- config$authToken
+```
+
+```{r restoreResp1, echo=FALSE}
+resp <- readRDS("./R/post/cache/league_matchups.rds")
+```
+
+```{r getMatchups, eval=FALSE}
+# invoking the API
+library(httr)
+library(glue) # to easily replace vars in the url
+
+# league/matchups url
+url <- "http://api.fantasy.nfl.com/v1/league/matchups?leagueId={leagueId}&week={week}&format=json&authToken={authToken}"
+week <- 5
+
+# call the api
+resp <- httr::GET(glue(url))
+```
+
+```{r respOk}
+# Is it ok?
+resp$status_code
+```
+
+Once the call response is obtained, we treat the return * json * to organize the data and obtain the team rosters.
+
+```{r matchupHandling, warning=FALSE, message=FALSE}
+
+library(jsonlite)
+library(tidyverse)
+
+# to convert the json in a "tabular-tibble form"
+resp %>% 
+  httr::content(as="text") %>%
+  fromJSON(simplifyDataFrame = T) %$%  
+  leagues %$%
+  matchups %>%
+  .[[1]] %>% 
+  jsonlite::flatten() %>% 
+  as.tibble() -> matchups
+
+ matchups %>% 
+   select(awayTeam.id, awayTeam.name, homeTeam.name, homeTeam.id)
+```
+
+We make new calls to the API to get the roster of each team in that week.
+
+```{r loadRosters, echo=FALSE}
+rosters.json <- readRDS("./R/post/cache/rosters_json.rds")
+```
+```{r getRosters, eval=FALSE,  warning=FALSE, message=FALSE}
+
+# for each teamIds in the matchup
+c(matchups$awayTeam.id) %>%
+  map(
+    function(.teamId, .week, .leagueId, .authToken, .url) {
+      # make the API call
+      httr::GET(glue(.url)) %>%
+        httr::content(as = "text") %>%
+        fromJSON(simplifyDataFrame = T) %>% # transform response body in json
+        return()
+    },
+    .week      = week,
+    .leagueId  = leagueId,
+    .authToken = authToken,
+    .url       = "http://api.fantasy.nfl.com/v1/league/team/matchup?leagueId={.leagueId}&teamId={.teamId}&week={.week}&authToken={.authToken}&format=json"
+  )  -> rosters.json
+```
+
+
+```{r checkResponse}
+# this is a list with the team rosters used in this week
+rosters.json[[1]]$leagues$matchup$homeTeam$name
+rosters.json[[1]]$leagues$matchup$homeTeam$players[[1]] %>%
+  select(id, name, position, teamAbbr) %>% 
+  as.tibble()
+```
+
+With the team's rosters (*json* format) we process the data to facilitate the handling.
+
+```{r extractTeams}
+
+# auxiliar transformation to extract team roster
+extractTeam <- . %>% 
+  .$players %>% 
+  .[[1]] %>% 
+  select( src_id=id, name, position, rosterSlot, fantasyPts ) %>%
+  jsonlite::flatten() %>% 
+  as.tibble() %>% 
+  select(-fantasyPts.week.season, -fantasyPts.week.week ) %>% 
+  rename(points = fantasyPts.week.pts) %>% 
+  mutate(
+    src_id = as.integer(src_id), 
+    points = as.numeric(points)
+  )
+
+# extract each roster
+rosters.json %>% 
+  map(function(.json){
+    matchup <- .json$leagues$matchup
+    tibble(
+      home.teamId = as.integer(matchup$homeTeam$id),
+      home.name   = matchup$homeTeam$name,
+      home.logo   = matchup$homeTeam$logoUrl,
+      home.pts    = as.numeric(matchup$homeTeam$pts),
+      home.roster = list(extractTeam(matchup$homeTeam)),
+      away.teamId = as.integer(matchup$awayTeam$id),
+      away.name   = matchup$awayTeam$name,
+      away.logo   = matchup$awayTeam$logoUrl,
+      away.pts    = as.numeric(matchup$awayTeam$pts),
+      away.roster = list(extractTeam(matchup$awayTeam))
+    ) %>% 
+      return()
+  }) %>% bind_rows() -> matchups.rosters
+
+# check the matchups QBs for each team 
+matchups.rosters %>% 
+  mutate( away.qb = map(away.roster, function(roster) roster %>% filter(rosterSlot=="QB")),
+          home.qb = map(home.roster, function(roster) roster %>% filter(rosterSlot=="QB")) ) %>%
+  unnest(away.qb, home.qb, .sep=".") %>% 
+  select(away.team = away.name, away.qb.name, home.qb.name, home.team=home.name )
+
+```
+
+Now we have a `tibble` with the games between the teams and, nested in each  registry, the respective rosters. Now you will need to use `ffanalytis package` to get the prediction performance and score of each player.
+
+## Forecast players perform
+
+Firstly, we will use the `ffanalytics package` to do the data scraping of the forecasts for each player in the league made by the main sites that follow and make this type of prediction.
+
+```{r scrap, eval=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+
+library(ffanalytics)
+scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
+                     season = 2018,
+                     week = week)
+
+```
+```{r loadScrap, echo=FALSE}
+scrap <- readRDS("./R/post/cache/scrap.rds")
+```
+
+The `scrape_data` function returns a list by position, with the performance projections of the players in that position. This is because the predictions for each position have different attributes, for example, *Kickers* are evaluated by the number of *field goals* and distances of the kicks, and *Quaterbacks* by the numbers and distances of the passes.
+
+```{r scrapReturn}
+
+# Quaterback Projection Attributes
+scrap$QB %>%  
+  filter(player=="Drew Brees") %>% 
+  select(1:10)
+
+# Kickers Projection Attributes
+scrap$K %>%  
+  filter(player=="Justin Tucker") %>% 
+  select(1:10)
+
+```
+
+Secondly, with projections in hand, we use `ffanalytics package` again to calculate how many points each player will make according with each prediction scraped from the sites. However, the package does not export the function that does the this individual calculation, but it is a necessary step to calculate the [projections table] (https://github.com/FantasyFootballAnalytics/ffanalytics#calculating-projections) that the site uses in its [graphics] (https://fantasyfootballanalytics.net/2018/10/gold-mining-week-7-2018.html).
+
+But the package project is in the GitHub, so, it is possible to download the code, load the scripts directly and access the function that calculates the points per player and projection site. The function is called `source_points()`, and is present in the script [calc_projections.R](https://github.com/FantasyFootballAnalytics/ffanalytics/blob/master/R/calc_projections.R#L90). You can load the script (and its dependencies) to invoke it directly.
+
+```{r loadPoints, echo=FALSE}
+players.points <- readRDS("./R/post/cache/players_points.rds") %>% 
+  mutate(id = as.integer(id) )
+```
+```{r source_points, eval=FALSE}
+
+# function to access 'source_points' directly
+playerPointsProjections <- function(.scrap, .score_rules){
+  source("../ffanalytics/R/calc_projections.R")
+  source("../ffanalytics/R/stats_aggregation.R")
+  source("../ffanalytics/R/source_classes.R")
+  source("../ffanalytics/R/custom_scoring.R")
+  source("../ffanalytics/R/scoring_rules.R")
+  source("../ffanalytics/R/make_scoring.R")
+  source("../ffanalytics/R/recode_vars.R")
+  source("../ffanalytics/R/impute_funcs.R")
+  source_points(.scrap, .score_rules)
+}
+
+# customized scoring rules
+source("./R/post/score_settings.R") 
+players.points <- playerPointsProjections(scrap, dudes.score.settings)
+```
+```{r head_players_points, echo=FALSE}
+head(players.points)
+```
+
+```{r fixKickers, echo=FALSE,  warning=FALSE, message=FALSE}
+# fix the kickers pontuation
+scrap$K %>%
+  mutate(pos="K") %>% 
+  select(pos, data_src, id, points=site_pts) %>% 
+  mutate(id = as.integer(id)) %>% 
+  bind_rows(filter(players.points,pos!="K"))  -> players.points
+```
+
+## Merging Rosters and Predictions
+
+We now have the teams rosters and the scoring projections of the sites for each player, so we need to join the datasets. But to do that it is necessary to *match* the players' ids. If you notice the data displayed, each player's ID is different on each of the sites, `ffanalytics package` names this `id` as `src_id`, but unifies the results to a unified, identificator named `id`.
+
+The teams' rosters were obtained from the `fantasy` site, it follows the `src_id` identification of the `NFL`, to make the *merge* between the two dataset it will be necessary to map the `src_id` of the `NFL` to `id` of  `ffanalytics package`. We can extract this 'ids' mapping from `NFL` prediction scraped data:
+
+```{r ids}
+# look the presence of both ids in the projection table
+scrap$WR %>% 
+  filter( data_src=="NFL" ) %>% 
+  select(1:4) %>% 
+  head()
+```
+
+```{r echo=FALSE}
+players.ids <- readRDS("./R/post/cache/nfl_players_id.rds")
+```
+
+```{r playerIdsTable, eval=FALSE}
+# extracting id and src_id from all positions
+scrap %>%
+  map(function(dft){
+    dft %>% 
+      filter(data_src=="NFL") %>% 
+      select(id, src_id, player, team, pos) %>% 
+      return()
+  }) %>% 
+  bind_rows() %>%
+  distinct() -> players.ids
+```
+
+```{r ids.mapping}
+# ID mapping
+head(players.ids)
+```
+
+Finally we can make the predictions *merging* of players to the team's rankings.
+
+```{r mergePlayers}
+# nest by "id" and merge with "src_id"
+players.points %>% 
+  select(-pos) %>% 
+  group_by(id) %>% 
+  nest(.key="points.range") %>%
+  # merge ID with SRC_ID
+  inner_join(players.ids, by = c("id")) %>%
+  select(id, src_id, player, pos, team, points.range) %>% 
+  # keep only "ids" at top level
+  select(id, src_id, points.range) -> players.ids.points
+
+# auxiliary function to merge roster with player points
+mergePoints <- function(.roster, .points){
+  .roster %>% 
+    left_join(.points, by="src_id") %>% 
+    return()
+}
+
+# merge points in rosters
+matchups.rosters %>% 
+  mutate(
+    home.roster = map(home.roster, mergePoints, .points=players.ids.points),
+    away.roster = map(away.roster, mergePoints, .points=players.ids.points)
+  ) -> matchups.points
+
+```
+
+Note that we are using a structure of [nested data.frames](https://r4ds.had.co.nz/many-models.html), i.e., we have a *matchups data.frame*  where each line is a match. In each match there are two rosters columns ("home" and "visitor"), these columns hold another *data.frame*, containing the roster itself. In this *data.frame*, each line is a player, and for each player there is a column called *points.range* which also contains another *data.frame*, with the prediction of each site's player scores.
+
+```{r nestedDataframeExplorer}
+
+# "father" dataframe and the first nested column
+matchups.points %>% 
+  select( home.name, home.roster )
+
+# seeing the first nested data.frame
+matchups.points[1,]$home.roster[[1]] 
+
+# look the second level dataframe
+matchups.points[1,]$home.roster[[1]][1,]$points.range[[1]] 
+
+```
+
+[Nested data.frames](https://r4ds.had.co.nz/many-models.html) is a convenient model because it allows you to keep the data together and manipulate them easily.
+
+## Monte Carlo Simulation
+
+To simulate the result of round matches, we need to simulate the score obtained by each teams and for this we will simulate the score of the team members using [Monte Carlo](https://en.wikipedia.org/wiki/Monte_Carlo_method) simulation.
+
+To simulate the players' scores we will consider that each of the players can make one of the scores projected by the forecast sites. For simplicity, in this post, we can assume that the odds are equal for any of the projected scores.
+
+In this case the simulation of a match using Monte Carlo then consists in:
+
+1. For each player of the team, draws one of the possible projected numbers
+2. We sum the players' points drawed: this will be the team score
+3. Compare the score of the *home* team with the *away* team to determine who won
+4. A win is computed for the team with the highest score
+
+This procedure is repeated *N* times, simulating several matchs, to determine the chances of winning a team, we sum the total number of times in which the team was a winner and divide by the total number of simulations. Thus we will have the chances of each team winning the match, once the simulations reflect the numerous combinations of scores between players and their teams.
+
+Note that we assume that each player has equal chance of having any of the projected scores as a simulation score, more sophisticated models could consider different ranges with different probabilities between projections, including assessing the performance history of the site, but I'll leave this considerations to another future post.
+
+```{r simulation}
+
+### Auxiliary functions
+
+# function to generate .n possible pontuations from .points.range
+# it's used to generate the .n simulations to each player
+simPlayer <- function(.points.range, .n){
+
+  # just check if the points.range isn't empty
+  if(is.null(.points.range)) return( vector(mode = "numeric",.n) )
+  if(nrow(.points.range)==0) return( vector(mode = "numeric",.n) )
+
+  # generate a .n vector samples from points.range
+  .points.range$points %>% 
+    sample(size = .n, replace = T) %>%
+    return()
+
+}
+
+# function to add the player pontuation to the team roster dataframe
+simTeam <- function(.roster, .n){
+  .roster %>% 
+    mutate( sim.player = map(points.range, simPlayer, .n=.n) )  %>% 
+    return()
+}
+
+# this function is in charge to sum the pontuations from 
+# each player to generate the .n-size vector with team pontuation
+simTeamPoints <- function(.roster){
+  .roster %>% 
+    filter(rosterSlot!="BN") %>%  # exclude player in bench
+    pull(sim.player) %>%          # get the player pontuation simulation
+    bind_cols() %>%               # binds the pontuation toghether 
+    as.matrix() %>%               # now we have an matrix with # players x # .n simulations
+    rowSums(na.rm = T) %>%        # sum each row (simuilation) to get a .n-vector 
+    return()                      # each position in this vector is a possible team pontuation
+}
+
+### Simulation Code
+
+# number of simulations
+n <- 2000
+
+# in the matchups dataframe
+matchups.points %>% 
+  mutate(
+    # just team nicknames to shorter legends :)
+    away.nickname = gsub("([a-zA-Z\']+ )?", "", away.name),
+    home.nickname = gsub("([a-zA-Z\']+ )?", "", home.name)
+  ) %>% 
+  mutate(
+    home.roster  = map(home.roster, simTeam, .n=n), # add players simulation points
+    away.roster  = map(away.roster, simTeam, .n=n), # to each roster
+    home.sim.pts = map(home.roster, simTeamPoints), # computes the team simulation
+    away.sim.pts = map(away.roster, simTeamPoints)  # points
+  ) %>% 
+  mutate( 
+    home.win    = map2(home.sim.pts, away.sim.pts, function(.x,.y) (.x > .y) ), # computes the 
+    away.win    = map(home.win, function(.x) (!.x)), # number of victures of each team
+    home.win.prob = map_dbl(home.win, mean, na.rm = T),  # the % of victories
+    away.win.prob = map_dbl(away.win, mean, na.rm = T)   # the % of victories
+  ) %>%
+  mutate(
+    # this calculate the difference of score points in each simulation
+    score.diff    = map2(home.sim.pts, away.sim.pts, function(.x,.y){.x - .y})
+  ) -> simulation
+
+```
+
+Now we have a pontuation curve for each player in the roster and also the pontuation curve of each team, let's see what are the results.
+
+## Simulation Results
+
+Let's compare the difference of score for each match in league, the difference of score will allow us to calculate the chances of victory that each team has, according to the amount of "winning" simulations.
+
+```{r pointsRange}
+
+# return a summary as a tibble
+summaryAsTibble <- . %>% summary() %>% as.list() %>% as.tibble()
+
+# first, lets build team simulation summary
+c("home","away") %>% 
+  map(function(.prefix, .matchups.sim){
+    .matchups.sim %>% 
+      select( starts_with(.prefix)) %>% 
+      set_names(gsub(pattern = paste0(.prefix,"\\."),replacement = "",x=names(.))) %>% 
+      mutate( points = map(sim.pts, summaryAsTibble) ) %>% 
+      select(-roster, -win) %>% 
+      unnest(points, .sep=".") %>% 
+      return()
+  },
+  .matchups.sim = simulation) %>% 
+  bind_rows() -> sim.results
+
+# visualizing the summary 
+sim.results %>% 
+  select(nickname, win.prob, points=points.Median) %>% 
+  mutate(win.prob = win.prob * 100) %>% 
+  mutate_at(2:3, round, digits=1) %>% 
+  arrange(desc(points))
+```
+
+We can see the points scored and the chance of victory (win.prob). We used the median of the distribution as the best projected score (the one who divides the simulated score by 50% chance). How "safe" is the projected score? We need to visualize the distribution of possible scores to get a better view of the certainty of the projected score.
+
+```{r scoreDistribution, warning=FALSE, message=FALSE}
+
+# lets plot the points distribution from simulation
+library(tidybayes) # stat_intervalh
+sim.results %>% 
+  select( nickname, med.pts = points.Median, sim.pts ) %>% 
+  mutate( 
+    nickname = as.factor(nickname),
+    sim.pts = map(sim.pts, base::sample, size=40) # just to reduce de number of point to be ploted
+  ) %>% 
+  unnest(sim.pts) %>% 
+  ggplot(aes(y=reorder(nickname, med.pts))) +
+  stat_intervalh(aes(x=sim.pts), .width = c(seq(.05,.95,.1))) +
+  scale_color_brewer() +
+  geom_point(aes(x=sim.pts), alpha=.1) +
+  theme_minimal() +
+  ylab("teams") + xlab("points") +
+  theme(legend.position = "none")
+
+```
+
+Showing the distribution of points instead of just the most probable score it is possible to see more details about the possibles performances of a team. The same can be visualized with the chances of victory, instead of just counting the number of times that the simulations of the matches point to the victory of a team, we can visualize the distribution of the difference in the score in each game, generating a curve of probability for each possible outcome.
+
+```{r scoreDiferences}
+
+simulation %>% 
+  mutate(game=paste0(away.nickname, " @ ", home.nickname)) %>% 
+  arrange(away.nickname) %>% 
+  select(game, score.diff) %>%
+  unnest() %>% 
+  ggplot(aes(fill=game)) +
+  geom_density(aes(score.diff), alpha=.6) +
+  geom_vline(aes(xintercept=0),
+             linetype=2, color="red") +
+  facet_grid(rows=vars(game), switch = "x") +
+  theme_minimal() +
+  theme( legend.position = "bottom" )
+
+
+simulation %>% 
+  arrange(away.nickname) %>% 
+  mutate_at(vars(away.win.prob, home.win.prob), function(x) round(100*x,1)) %>% 
+  select(away.nickname, away.win.prob, home.win.prob, home.nickname) 
+```
+
+## Conclusion
+
+We have seen that it is possible to use NFL players' performance projections, available on various websites, to calculate `fantasy` scores and to simulate, using *Monte Carlo*, the outcame of a league games. More sophisticated simulation models can be used, taking into account the historical distribution of the accuracy of the estimates of these sites to calculate a greater number of results possibilities.
+
+Today, in my league, before the start of the round, after *waivers* and the lineups, I I send a dashboard (made using [RMarkdown](https://rmarkdown.rstudio.com/) and [Flexdashboard](https: / /rmarkdown.rstudio.com/flexdashboard/using.html)) to members with simulation results and the performance of their *rosters*. You can see an example of it here: [http://rpubs.com/gsposito/ffsimulationDudes](http://rpubs.com/gsposito/ffsimulationDudes)]. As an evolution, in the future, I may tranform this in to a [ShinyApp] (http: //shiny.rstudio.com/) to members be abble to simulate several different rosters combinations to choose the most promising one.
+
+## Prediction Evaluation
+
+Before concluding it is worth comparing the simulation made with the actual scores, and evaluating how much the simulation projected came close to the obtained real result.
+
+```{r evalSim}
+
+# comparing simulated values with real values
+simulation %>% 
+  mutate( 
+    away.win.real   = away.pts > home.pts,
+    home.win.real   = home.pts > away.pts,
+    score.diff.real = home.pts - away.pts,
+    away.sim.pts = map_dbl(away.sim.pts, median, na.rm=T),
+    home.sim.pts = map_dbl(home.sim.pts, median, na.rm=T),
+    score.diff   = map_dbl(score.diff, median, na.rm=T )
+  ) %>% 
+  mutate_at( vars(away.win.prob, home.win.prob), function(x) round(100*x,2) )%>% 
+  select( away.nickname, away.win.prob, away.win.real, away.sim.pts, away.pts, score.diff, score.diff.real, 
+          home.pts, home.sim.pts, home.win.real, home.win.prob, home.nickname ) %>% 
+  arrange(away.nickname)
+```
+
+This was good! The simulated results were satisfactorily close to those obtained in 3 of the 4 games. All victories and defeats were correctly predicted. Only one of the games got a score difference far away from the one projected.
+
+```{r scoreDistr}
+
+# comparing score difference
+simulation %>% 
+  mutate(
+    game=paste0(away.nickname, " @ ", home.nickname),
+    score.diff.real = home.pts - away.pts
+  ) %>% 
+  arrange(away.nickname) %>% 
+  select(game, score.diff, score.diff.real) %>%
+  unnest() %>% 
+  ggplot(aes(fill=game)) +
+  geom_density(aes(score.diff), alpha=.6) +
+  geom_vline(aes(xintercept=score.diff.real),
+             linetype=1, size=1, color="black") +
+  geom_vline(aes(xintercept=0),
+             linetype=2, color="red") +
+  facet_grid(rows=vars(game), switch = "x") +
+  theme_minimal() +
+  theme( legend.position = "bottom" )
+
+```
+
+Perhaps the reason why the difference in scoring in the game between *Robots* and *Pfeiferians* has fallen so far from the most likely is also by such an unlikely event in the *Packers'* game against the *Lions*. Here's the lineup of the *house team*, the one who lost:
+
+```{r}
+
+# rosted home team
+simulation[1,]$home.roster[[1]] %>% 
+  filter(rosterSlot != "BN") %>% 
+  mutate(points.sim = map_dbl(sim.player,median, na.rm=T)) %>% 
+  select(name, position, points)
+
+```
+
+In this game, Mason Crosby, Packers' *Kicker* missed [4 fields goals and 1 extra point](https://www.youtube.com/watch?v=15rt2quS774), with a total of 13 points, an event rare, [which has not happened since 1997] (http://www.espn.com/nfl/story/_/id/24924994/mason-crosby-calls-4-missed-fg-1-missed-pat-anomaly- life? ex_cid = espnapi_public). If Crosby had hit the shots, which he habitually does, the score difference would be only 10 points away from the predicted score, not 23!
+
+But after all, who wants to [predict accurately] (https://www.youtube.com/watch?v=yGf6LNWY9AI) all possible situations?
