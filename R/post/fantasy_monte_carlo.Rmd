@@ -180,7 +180,7 @@ scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
                      week = week)
 
 ```
-```{r loadScrap}
+```{r loadScrap, echo=FALSE}
 scrap <- readRDS("./R/post/cache/scrap.rds")
 ```
 
@@ -343,8 +343,6 @@ Notas-se que adotamos que cada jogador tem iguais chance de ter qualquer uma das
 
 ```{r simulation}
 
-# It's better you read this code chunk from botton to up :)
-
 ### Auxiliary functions
 
 # function to generate .n possible pontuations from .points.range
@@ -389,21 +387,174 @@ n <- 2000
 # in the matchups dataframe
 matchups.points %>% 
   mutate(
-    home.roster = map(home.roster, simTeam, .n=n), # add players simulation pointes
-    away.roster = map(away.roster, simTeam, .n=n), # to each roster
-    home.sim    = map(home.roster, simTeamPoints), # computes the team simulation
-    away.sim    = map(away.roster, simTeamPoints)  # points
+    # just team nicknames to shorter legends :)
+    away.nickname = gsub("([a-zA-Z\']+ )?", "", away.name),
+    home.nickname = gsub("([a-zA-Z\']+ )?", "", home.name)
+  ) %>% 
+  mutate(
+    home.roster  = map(home.roster, simTeam, .n=n), # add players simulation points
+    away.roster  = map(away.roster, simTeam, .n=n), # to each roster
+    home.sim.pts = map(home.roster, simTeamPoints), # computes the team simulation
+    away.sim.pts = map(away.roster, simTeamPoints)  # points
   ) %>% 
   mutate( 
-    home.win    = map2(home.sim, away.sim, function(.x,.y) (.x > .y) ), # computes the 
+    home.win    = map2(home.sim.pts, away.sim.pts, function(.x,.y) (.x > .y) ), # computes the 
     away.win    = map(home.win, function(.x) (!.x)), # number of victures of each team
-    home.win.prob = map(home.win, mean, na.rm = T),  # computess the % of victories
-    away.win.prob = map(away.win, mean, na.rm = T)   # computess the % of victories
+    home.win.prob = map_dbl(home.win, mean, na.rm = T),  # the % of victories
+    away.win.prob = map_dbl(away.win, mean, na.rm = T)   # the % of victories
   ) %>%
   mutate(
     # this calculate the difference of score points in each simulation
-    score.diff    = map2(home.sim, away.sim, function(.x,.y){.x - .y})
+    score.diff    = map2(home.sim.pts, away.sim.pts, function(.x,.y){.x - .y})
   ) -> simulation
 
 ```
 
+Now we have a pontuation curve for each player in the roster and also the pontuation curve of each team, let's see what are the results.
+
+## Simulation Results
+
+Vamos comparar a diferença de pontuação para cada uma das partidas da liga, a diferença de score permitirá calcular as chances de vitória que cada time possue, de acordo com a quantidade de simluações "vencedoras" de cada um dos times.
+
+```{r pointsRange}
+
+# return a summary as a tibble
+summaryAsTibble <- . %>% summary() %>% as.list() %>% as.tibble()
+
+# first, lets build team simulation summary
+c("home","away") %>% 
+  map(function(.prefix, .matchups.sim){
+    .matchups.sim %>% 
+      select( starts_with(.prefix)) %>% 
+      set_names(gsub(pattern = paste0(.prefix,"\\."),replacement = "",x=names(.))) %>% 
+      mutate( points = map(sim.pts, summaryAsTibble) ) %>% 
+      select(-roster, -win) %>% 
+      unnest(points, .sep=".") %>% 
+      return()
+  },
+  .matchups.sim = simulation) %>% 
+  bind_rows() -> sim.results
+
+# visualizing the summary 
+sim.results %>% 
+  select(nickname, win.prob, points=points.Median) %>% 
+  mutate(win.prob = win.prob * 100) %>% 
+  mutate_at(2:3, round, digits=1) %>% 
+  arrange(desc(points))
+```
+
+Podemos ver a pontuação projetada (points) e a chance de vitória (win.prob). Nós usamos a mediana da distribuição como melhor pontuação projetada (a que divide a pontuação simulada em 50%). O quão "seguro" é a pontuação projetada? Precisamos visualizar a distribuição de pontuações possíveis para ter uma melhor visão da certeza da pontuação projetada.
+
+```{r scoreDistribution, warning=FALSE, message=FALSE}
+
+# lets plot the points distribution from simulation
+library(tidybayes) # stat_intervalh
+sim.results %>% 
+  select( nickname, med.pts = points.Median, sim.pts ) %>% 
+  mutate( 
+    nickname = as.factor(nickname),
+    sim.pts = map(sim.pts, base::sample, size=40) # just to reduce de number of point to be ploted
+  ) %>% 
+  unnest(sim.pts) %>% 
+  ggplot(aes(y=reorder(nickname, med.pts))) +
+  stat_intervalh(aes(x=sim.pts), .width = c(seq(.05,.95,.1))) +
+  scale_color_brewer() +
+  geom_point(aes(x=sim.pts), alpha=.1) +
+  theme_minimal() +
+  ylab("teams") + xlab("points") +
+  theme(legend.position = "none")
+
+```
+
+Mostrando a distribuição de pontos em vez apenas da pontuação mais provavel é possível ter mais detalhes sobre a possível performance de um time. O mesmo pode ser visualizado com as chances de vitória, em vez de apenas contar o número de vezes que as simulações dos matchups apontam para vitória de um outro time, podemos visualizar a distribuição da diferença no score em cada jogo, gerando uma curva de probabilidade para cada resultado possível.
+
+```{r scoreDiferences}
+
+simulation %>% 
+  mutate(game=paste0(away.nickname, " @ ", home.nickname)) %>% 
+  arrange(away.nickname) %>% 
+  select(game, score.diff) %>%
+  unnest() %>% 
+  ggplot(aes(fill=game)) +
+  geom_density(aes(score.diff), alpha=.6) +
+  geom_vline(aes(xintercept=0),
+             linetype=2, color="red") +
+  facet_grid(rows=vars(game), switch = "x") +
+  theme_minimal() +
+  theme( legend.position = "bottom" )
+
+
+simulation %>% 
+  arrange(away.nickname) %>% 
+  mutate_at(vars(away.win.prob, home.win.prob), function(x) round(100*x,1)) %>% 
+  select(away.nickname, away.win.prob, home.win.prob, home.nickname) 
+```
+
+## Conclusão
+
+Vimos que é possível utilizar as projeções de performance dos jogadores da NFL, disponibilizada em vários sites, para calcular a pontuação do *fantasy* e simular, usando *Monte Carlo*, os resultados dos jogos de uma liga. Modelos de simulação mais sofisticados podem ser usados, levando-se em conta a distribuição histórica da precisão das estimativas destes sites para calcular um número maior de possibilidades de resultados.
+
+Hoje, na minha liga, antes do início da rodada, após os *waivers* e as escalações, envio um dashboard (feito usando [RMarkdown](https://rmarkdown.rstudio.com/) e [Flexdashboard](https://rmarkdown.rstudio.com/flexdashboard/using.html)) aos membros com a simulação de resultados e a performance dos respectivos *rosters*. Você pode ver um exemplo dele aqui: [http://rpubs.com/gsposito/ffsimulationDudes](http://rpubs.com/gsposito/ffsimulationDudes), como evolução, futuramente, quem sabe fazer um [ShinyApp](http://shiny.rstudio.com/) para que os membros possam simular vários *rosters* diferentes e escalar o mais promissor. 
+
+## Avaliação do modelo
+
+Antes de encerrar vale a pena comparar a simulação feita com as pontuações reais, e avaliar o quanto a simulção projetou ou chegou perto do resultado obtido.
+
+```{r evalSim}
+
+# comparing simulated values with real values
+simulation %>% 
+  mutate( 
+    away.win.real   = away.pts > home.pts,
+    home.win.real   = home.pts > away.pts,
+    score.diff.real = home.pts - away.pts,
+    away.sim.pts = map_dbl(away.sim.pts, median, na.rm=T),
+    home.sim.pts = map_dbl(home.sim.pts, median, na.rm=T),
+    score.diff   = map_dbl(score.diff, median, na.rm=T )
+  ) %>% 
+  mutate_at( vars(away.win.prob, home.win.prob), function(x) round(100*x,2) )%>% 
+  select( away.nickname, away.win.prob, away.win.real, away.sim.pts, away.pts, score.diff, score.diff.real, 
+          home.pts, home.sim.pts, home.win.real, home.win.prob, home.nickname ) %>% 
+  arrange(away.nickname)
+```
+
+Como vemos, os resultados simulados foram satisfatoriamente próximos aos obtidos em 3 dos 4 jogos. As vitorias e derrotas foram previstas corretamente. Apenas um dos jogos obteve uma diferença de pontuação bem longe da projetada.
+
+```{r scoreDistr}
+
+# comparing score difference
+simulation %>% 
+  mutate(
+    game=paste0(away.nickname, " @ ", home.nickname),
+    score.diff.real = home.pts - away.pts
+  ) %>% 
+  arrange(away.nickname) %>% 
+  select(game, score.diff, score.diff.real) %>%
+  unnest() %>% 
+  ggplot(aes(fill=game)) +
+  geom_density(aes(score.diff), alpha=.6) +
+  geom_vline(aes(xintercept=score.diff.real),
+             linetype=1, size=1, color="black") +
+  geom_vline(aes(xintercept=0),
+             linetype=2, color="red") +
+  facet_grid(rows=vars(game), switch = "x") +
+  theme_minimal() +
+  theme( legend.position = "bottom" )
+
+```
+
+Talvez a razão pela qual a diferença de placar no jogo *Robots @ Pfeiferians* tenha caido tão longe da mais provável seja também por um envento tão improvável no jogo dos *Packers* contra os *Lions*. Veja a escação da equipe da casa:
+
+```{r}
+
+# rosted home team
+simulation[1,]$home.roster[[1]] %>% 
+  filter(rosterSlot != "BN") %>% 
+  mutate(points.sim = map_dbl(sim.player,median, na.rm=T)) %>% 
+  select(name, position, points)
+
+```
+
+Neste jogo, Mason Crosby, o  *Kicker* dos *Packers* errou [4 fields goals e 1 extra point](https://www.youtube.com/watch?v=15rt2quS774), um total de 13 pontos, um evento raro, [que não acontece desde 1997](http://www.espn.com/nfl/story/_/id/24924994/mason-crosby-calls-4-missed-fg-1-missed-pat-anomaly-life?ex_cid=espnapi_public). Se Crosby tivesse acertado os chutes, coisa que habitualmente ele faz, a diferença de pontuação seria apenas 10 pontos distantes da pontuação prevista e não de 23, como foi!
+
+Mas afinal, quem quer [prever com exatidão](https://www.youtube.com/watch?v=yGf6LNWY9AI) todas as situações possíveis? 
