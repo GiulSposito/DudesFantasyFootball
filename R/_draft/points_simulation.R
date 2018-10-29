@@ -88,46 +88,51 @@ matchups %>%
   ) -> matchup.projs
 
 
-simRosterPontuation <- function(.team) {
+simRosterPontuation <- function(.team, .currPoints=FALSE) {
   .team %>%
-    filter(rosterSlot != "BN") %>%
-    mutate(player.simulation = map(
-      pts.range,
-      base::sample,
-      size = 2000,
-      replace = T
-    )) %>%
-    pull(player.simulation) %>%
-    bind_cols() %>%
-    as.matrix() %>%
-    rowSums(na.rm = T) %>%
-    return()
+    filter(rosterSlot != "BN") %>% 
+    mutate(
+      player.simulation = map(
+        pts.range,
+        base::sample,
+        size = 2000,
+        replace = T
+      ),
+      points.made = map(points, rep, times=2000)
+    ) -> resp
+  
+    if (.currPoints) {
+      resp %>% 
+        mutate(
+          player.simulation = case_when(
+            points == 0 ~ player.simulation,
+            points != 0 ~ points.made
+          )
+        ) -> resp
+    }
+
+    resp %>% 
+      pull(player.simulation) %>%
+      bind_cols() %>%
+      as.matrix() %>%
+      rowSums(na.rm = T) %>%
+      return()
 }
 
 matchup.projs %>% 
   mutate(
-    home.sim = map(home.roster, simRosterPontuation),
-    away.sim = map(away.roster, simRosterPontuation),
-    home.sim.org = home.sim,
-    away.sim.org = away.sim,
+    home.sim = map(home.roster, simRosterPontuation, .currPoints=T),
+    away.sim = map(away.roster, simRosterPontuation, .currPoints=T),
+    home.sim.org = map(home.roster, simRosterPontuation),
+    away.sim.org = map(away.roster, simRosterPontuation),
     home.win = map2(home.sim, away.sim, function(h.scr, a.scr) (h.scr > a.scr)),
     away.win = map(home.win, function(.x) (!.x) ),
     home.win.prob = map_dbl(home.win, function(.x) mean(.x)),
     away.win.prob = map_dbl(away.win, function(.x) mean(.x)),
     score.diff     = map2(home.sim, away.sim, function(h.scr, a.scr) (h.scr - a.scr)),
-    score.diff.org = score.diff,
+    score.diff.org = map2(home.sim.org, away.sim.org, function(h.scr, a.scr) (h.scr - a.scr)),
     home.points = map(home.sim, summaryAsTibble),
     away.points = map(away.sim, summaryAsTibble)
   ) -> matchup.simulation
 
 saveRDS(matchup.simulation, glue("./data/week{.week}_simulation_v2.rds"))
-
-# team.sizes <- . %>% 
-#   mutate(
-#     hl = map_int(home.roster, nrow),
-#     al = map_int(away.roster, nrow)
-#   ) %>% 
-#   select(home.name, hl, al, away.name)
-# 
-# matchups %>% team.sizes
-# matchups[4,]$home.roster[[1]] %>% View("home.hoster.json")
