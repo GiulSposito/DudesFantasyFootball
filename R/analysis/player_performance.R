@@ -29,7 +29,7 @@ c("home","away") %>%
 players %>% 
   filter(points!=0) %>% 
   select(id, firstName, lastName, position, week, points) %>% 
-  inner_join(teams, by="id") %>% 
+  left_join(teams, by="id") %>% 
   mutate(
     name = paste0(firstName, " ", lastName)
   ) %>% 
@@ -69,14 +69,16 @@ c(3,4,5,8) %>%
   bind_rows() %>% 
   distinct() %>% # elimina casos (excepcionais) em que a janela pegou o mesmo numero de semanas
   filter( !is.na(pts.sd) & !is.na(pts.mean) ) %>% 
+  filter( pts.sd != 0 ) %>% 
   mutate( weeks.rng = as.factor(weeks.rng)) %>% 
   inner_join(players.key, by="id") -> players.stats
 
+# clustering the positions
 unique(players.stats$position) %>% 
   map(function(.pos, .players){
     .players %>% 
       filter(position==.pos) %>% 
-      select(pts.mean, pts.sd, weeks.rng, sharpe) %>% 
+      select(pts.mean, pts.sd, sharpe) %>% 
       mutate_all(as.numeric) %>% 
       kmeans(10) -> km 
     
@@ -88,7 +90,17 @@ unique(players.stats$position) %>%
   }, 
   .players=players.stats) %>% 
   bind_rows() %>% 
-  inner_join(players.stats, by="id")
+  inner_join(players.stats, by="id") -> players.performance
+
+
+players.performance %>% 
+  filter(position=="DEF", weeks.rng==4) %>% 
+  plot_ly(x=~pts.sd, y=~pts.mean, color=~cluster,
+          type="scatter", mode="markers", symbol = ~team,
+          text=~paste("Name: ", name)) 
+
+
+
 
 players.stats %>% 
   select(pts.mean, pts.sd, weeks.rng, sharpe) %>% 
@@ -130,9 +142,7 @@ team.players %>%
   select(id, firstName, lastName, position, team, week, points)
 
 
-  plot_ly(x=~pts.sd, y=~pts.mean, color=~team,
-          type="scatter", mode="markers", 
-          text=~paste("Name: ", name)) 
+
 
 
   saveRDS(team.players, "./data/team_players_stats.rds")
