@@ -11,6 +11,8 @@ library(flexdashboard)
 library(tidyverse)
 library(plotly)
 library(formattable)
+library(tidybayes)
+library(ggrepel)
 
 sim <- readRDS("../../data/week9_simulation_v2.rds") 
 
@@ -19,7 +21,8 @@ sim.summary <- tibble(
   team.name = c(sim$home.name,     sim$away.name),
   pts.summ  = c(sim$home.points,   sim$away.points),
   points    = c(sim$home.sim,      sim$away.sim),
-  win.pc    = c(sim$home.win.prob, sim$away.win.prob)
+  win.pc    = c(sim$home.win.prob, sim$away.win.prob),
+  roster    = c(sim$home.roster, sim$away.roster)
 ) #bug %>% unnest(win.pc)
 
 
@@ -166,7 +169,7 @@ sim.summary %>%
 
 
 
-```{r results='asis'}
+```{r rosterComparation, results='asis'}
 
 slotLevels <- gl(8,1,labels=c("QB","RB","WR","TE","W/R","K","DEF","BN"))
 posLevels <- gl(6,1,labels=c("QB","RB","WR","TE","K","DEF"))
@@ -223,8 +226,72 @@ for(i in 1:nrow(matchups)){
   cat("\n")
 }
 
+```
 
 
+```{r playerPerform, results="asis", message=FALSE, warning=FALSE, error=FALSE}
+
+plotPlayersDistribution <- function(.roster, .slotLevels=slotLevels, .posLevels=posLevels){
+  .roster %>% 
+    mutate(
+      position = factor(position, levels=.posLevels),
+      rosterSlot = factor(rosterSlot, levels=.slotLevels)
+    ) %>% 
+    arrange(rosterSlot, position) %>% 
+    mutate(display.order=1:nrow(.)) %>% 
+    select(id, name, display.order, position, pts.range) %>% 
+    mutate( pts.range = map(pts.range, base::sample, size=200, replace=T) ) %>%
+    unnest(pts.range) %>% 
+    ggplot(aes(x=pts.range, y=reorder(name, -display.order))) +
+    #geom_violin(aes(y=pts.range, x=name, fill=position), alpha=.5) +
+    stat_intervalh(.width = c(seq(.05,.95,.1))) +
+    scale_color_brewer()+
+    geom_point(alpha=.1) +
+    theme_minimal() +
+    theme(legend.position = "none") +
+    ylab("player") + xlab("points")
+}
+
+plotPlayersSharpe <- function(.roster, .slotLevels=slotLevels, .posLevels=posLevels){
+  
+  .roster %>% 
+    mutate(
+      position = factor(position, levels=.posLevels),
+      rosterSlot = factor(rosterSlot, levels=.slotLevels)
+    ) %>% 
+    arrange(rosterSlot, position) %>% 
+    mutate(display.order=1:nrow(.)) %>% 
+    select(id, name, display.order, position, rosterSlot, pts.range) %>% 
+    mutate(
+      pts.proj = map_dbl(pts.range, median, na.rm=T),
+      pts.sd   = map_dbl(pts.range, sd, na.rm=T)
+    ) %>% 
+    ggplot(aes(x=pts.sd, y=pts.proj, color=position)) +
+    geom_point() +
+    geom_text_repel(aes(label=paste0(name, " (", rosterSlot, ")")), show.legend = F, size=3, point.padding = .5) +
+    geom_label( aes(label=round(pts.proj,1)), size = 3, label.padding = unit(0.15, "lines"), show.legend = F) +
+    theme_minimal() +
+    xlab("varince") + ylab("projected points")
+  
+}
+
+for(i in 1:nrow(sim.summary)){
+  team <- sim.summary[i,]
+
+  cat(paste0("\n",team$team.name," {data-navmenu=\"Players Performance\"  data-orientation=columns}\n"))
+  cat("============================================\n")
+  
+  cat("\nColumn\n--------------------------------------------\n")
+  cat("\n### Points Distribution\n\n")
+  print(plotPlayersDistribution(team$roster[[1]]))
+  cat("\n")
+  
+  cat("\nColumn\n--------------------------------------------\n")
+  cat("\n### Sharpe Index\n\n")
+  print(plotPlayersSharpe(team$roster[[1]]))
+  cat("\n")
+}
 
 
 ```
+
