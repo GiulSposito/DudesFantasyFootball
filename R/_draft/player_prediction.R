@@ -1,7 +1,7 @@
 library(ffanalytics)
 source("./R/_draft/score_settings.R")
 
-weeks <- 1:8
+weeks <- 1:9
 
 weeks %>% 
   map( function(.week){
