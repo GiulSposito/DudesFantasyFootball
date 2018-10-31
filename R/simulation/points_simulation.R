@@ -2,7 +2,7 @@ library(tidyverse)
 library(glue)
 source("./R/tidy/matchups.R")
 
-.week <- 8
+.week <- 9
 
 # retorna um summary como um data.frame
 summaryAsTibble <- . %>% summary() %>% as.list() %>% as.tibble()

@@ -16,7 +16,7 @@ library(plotly)
 ```{r loaddata, cache=FALSE}
 
 # pega projecoes cria algumas colunas auxiliares
-projections <- readRDS("../../data/week8_players_projections.rds") %>% 
+projections <- readRDS("../../data/week9_players_projections.rds") %>% 
   mutate( full_name = paste0(first_name, " ", last_name),
           fantasy.team = as.factor(fantasy.team) ) %>%
   group_by( id ) %>% 
@@ -29,7 +29,7 @@ readRDS("../../data/players_points.rds") %>%
   rename( pts = points ) %>% 
   select( id, week, pts) %>% 
   group_by( id ) %>% 
-  mutate( pts.med = median(pts, na.rm = T),
+  mutate( pts.mean = mean(pts, na.rm = T),
           pts.max = max(pts, na.rm=T),
           pts.min = min(pts, na.rm = T)) %>% 
   ungroup() %>% 
@@ -37,7 +37,7 @@ readRDS("../../data/players_points.rds") %>%
   
 ```
 
-QB 
+QB
 ========================
 
 ```{r qb}
@@ -54,34 +54,34 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
   proj_data %>% 
     inner_join(.proj, by="id") -> proj_data
   
-  nu_y <- max(proj_data$ceiling, na.rm = T) / 12
+  nu_y <- max(proj_data$ceiling, na.rm = T) / 6
   
   proj_data %>% 
     ggplot(aes(group=fantasy.team)) +
-      geom_pointrange(aes(x=reorder(pos_rank,desc(pos_rank)),
-                      y=points, 
-                      ymin=floor, 
-                      ymax=ceiling, 
-                      color=fantasy.team), size=1.5) +
-      # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
-      #                y=pts), color="black", alpha=.05) +
-      geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
-                     y = pts.med), color="black" ) +
-      geom_text(aes(x=reorder(pos_rank,desc(pos_rank)), 
-                y=r_pos, 
-                color=fantasy.team, 
-                label=full_name), nudge_y = nu_y, nudge_x = 0.0, size=2.9) +
-      scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00")) +
-      theme_classic() + xlab("Rank") + ylab("Points") +
-      theme( panel.grid.major.x=element_line(colour="#EEEEEE") ) +
-      scale_x_discrete(breaks = seq(1,32,4) ) +
-      ggtitle(.title,.subtitle) +
-      coord_flip() -> g
-  ggplotly(g)
+    geom_pointrange(aes(x=reorder(pos_rank,desc(pos_rank)),
+                    y=points, 
+                    ymin=floor, 
+                    ymax=ceiling, 
+                    color=fantasy.team), size=.3) +
+    # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
+    #                y=pts), color="black", alpha=.05) +
+    geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
+                   y = pts.mean), color="black" ) +
+    geom_text(aes(x=reorder(pos_rank,desc(pos_rank)), 
+              y=r_pos, 
+              color=fantasy.team, 
+              label=full_name), nudge_y = nu_y, nudge_x = 0.0, size=1.9) +
+    scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00")) +
+    theme_classic() + xlab("Rank") + ylab("Points") +
+    theme( panel.grid.major.x=element_line(colour="#EEEEEE") ) +
+    scale_x_discrete(breaks = seq(1,32,4) ) +
+    ggtitle(.title,.subtitle) +
+    coord_flip() %>%
+    return()
   
 }
 
-plotProjections(projections, "QB", "Quaterbacks", "week 8", 20)
+plotProjections(projections, "QB", "Quaterbacks", "week 9", 20)
 
 ```
 
@@ -90,16 +90,16 @@ WR
 
 ```{r wr}
 
-plotProjections(projections, "WR", "Wide Receivers", "week 8",50)
+plotProjections(projections, "WR", "Wide Receivers", "week 9",50)
 
 ```
 
-RB
+RB{data-navmenu="ffanalytics"}
 ========================
 
 ```{r rb}
 
-plotProjections(projections, "RB", "Running Backs", "week 8",50)
+plotProjections(projections, "RB", "Running Backs", "week 9",50)
 
 ```
 
@@ -108,7 +108,7 @@ TE
 
 ```{r te}
 
-plotProjections(projections, "TE", "Tight Ends", "week 8",20)
+plotProjections(projections, "TE", "Tight Ends", "week 9",20)
 
 ```
 
@@ -118,7 +118,7 @@ K
 
 ```{r k}
 
-plotProjections(projections, "K", "Kickers", "week 8",20)
+plotProjections(projections, "K", "Kickers", "week 9",20)
 
 ```
 
@@ -128,8 +128,7 @@ DEF
 
 ```{r def}
 
-plotProjections(projections, "DST", "Defenses", "week 8",32)
+plotProjections(projections, "DST", "Defenses", "week 9",32)
 
 ```
-
 
