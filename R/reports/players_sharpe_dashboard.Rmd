@@ -1,0 +1,79 @@
+---
+title: "Player Sharpe Report"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(plotly)
+library(tidyverse)
+
+players.performance <- readRDS("../../data/team_players_performance.rds")
+```
+
+```{r}
+plotSharpe <- function(.weeks, .pos, .d){
+  .d %>%
+    filter(position==.pos, weeks.rng<=.weeks) %>%
+    group_by(id) %>% 
+    filter( weeks.rng==max(weeks.rng,na.rm = T)) %>% 
+    ungroup() %>% 
+    mutate( status = case_when(
+      team == "*FA" ~ "Free",
+      team == "Amparo Bikers" ~ "Bikers",
+      TRUE ~ "Unavaiable"
+    )) %>% 
+    plot_ly(x=~pts.sd, y=~pts.mean, color=~status,
+            text=~paste("name: ", name,
+                        "\nsharpe: ", round(sharpe,3),
+                        "\nweeks: ", weeks.rng,
+                        "\nteam: ", team)) %>%
+    return()
+}
+```
+
+
+page1
+=====================
+```{r}
+plotSharpe(8,"DEF",players.performance)
+```
+
+
+```{r}
+players.performance %>% 
+  arrange(position) %>% 
+  pull(position) %>% 
+  unique() -> positions
+
+# positions %>%
+#   map(function(.p,.d){
+#     c(2,4,6,8) %>% 
+#       map(function(.weeks, .pos, .d){
+#         cat(paste0("\n", .weeks, " last weeks {data-navmenu=\"",.pos,"\" data-orientation=columns}\n"))
+#         cat("============================================\n")
+#         cat("\nColumn\n--------------------------------------------\n")
+#         cat(paste0("\n### ",.pos, " @ ", .weeks ," last weeks \n\n"))
+#         
+#         
+#         .d %>%
+#           filter(position==.pos, weeks.rng==.weeks) %>% 
+#           mutate( status = case_when(
+#             team == "*FA" ~ "Free",
+#             team == "Amparo Bikers" ~ "Bikers",
+#             TRUE ~ "Unavaiable"
+#           )) %>% 
+#           plot_ly(x=~pts.sd, y=~pts.mean, color=~status) %>% 
+#           htmltools::tagList()
+#         
+#       },
+#       .pos = .p,
+#       .d = .d)
+#     },
+#     .d=players.performance
+#   ) -> void
+
+```

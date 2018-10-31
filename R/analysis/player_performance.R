@@ -70,7 +70,6 @@ c(3,4,5,8) %>%
   distinct() %>% # elimina casos (excepcionais) em que a janela pegou o mesmo numero de semanas
   filter( !is.na(pts.sd) & !is.na(pts.mean) ) %>% 
   filter( pts.sd != 0 ) %>% 
-  mutate( weeks.rng = as.factor(weeks.rng)) %>% 
   inner_join(players.key, by="id") -> players.stats
 
 # clustering the positions
@@ -92,57 +91,27 @@ unique(players.stats$position) %>%
   bind_rows() %>% 
   inner_join(players.stats, by="id") -> players.performance
 
+.position = "WR"
+.weeks = 8
 
 players.performance %>% 
-  filter(position=="DEF", weeks.rng==4) %>% 
-  plot_ly(x=~pts.sd, y=~pts.mean, color=~cluster,
-          type="scatter", mode="markers", symbol = ~team,
-          text=~paste("Name: ", name)) 
+  filter(position==.position, weeks.rng<=.weeks) %>%
+  group_by(id) %>% 
+  filter(weeks.rng==max(weeks.rng)) %>% 
+  ungroup() %>% 
+  mutate( status = case_when(
+    team == "*FA" ~ "Free",
+    team == "Amparo Bikers" ~ "Bikers",
+    TRUE ~ "Unavaiable"
+  )) %>%
+  plot_ly(x=~pts.sd, y=~pts.mean, 
+          color=~status, colors="Set1",
+          symbol = ~cluster,
+          text=~paste("id: ", id,
+                      "\nname: ", name,
+                      "\nsharpe: ", round(sharpe,2),
+                      "\nteam: ", team,
+                      "\nweeks: ", weeks.rng))
 
 
-
-
-players.stats %>% 
-  select(pts.mean, pts.sd, weeks.rng, sharpe) %>% 
-  mutate_all(as.numeric) %>% 
-  kmeans(10) -> km
-
-km$cluster
-
-c(3,4,6,8) %>% 
-  map(function(.nweeks, .teams){
-    .teams %>% 
-      filter( )
-      
-      
-      group_by(id, name, team, position) %>% 
-        top_n(.weeks,week) %>%
-        summarise(
-          pts.mean = mean(points, na.rm = T),
-          pts.sd   = sd(points, na.rm=T ),
-          week.rng = .weeks,
-          sharpe   = pts.mean/pts.sd
-        ) %>%
-        return()
-  },
-  .teams = team.players) %>% 
-  bind_rows() %>% 
-  filter( sharpe!=Inf ) -> players.sharp
-
-
-players.sharp %>% 
-  filter(position=="TE") %>% 
-  arrange(desc(pts.mean)) %>% View()
-
-players.sharp %>% 
-  filter(id==12391) %>% View()
-
-team.players %>% 
-  filter( id==12391 ) %>% 
-  select(id, firstName, lastName, position, team, week, points)
-
-
-
-
-
-  saveRDS(team.players, "./data/team_players_stats.rds")
+saveRDS(players.performance, "./data/team_players_performance.rds")

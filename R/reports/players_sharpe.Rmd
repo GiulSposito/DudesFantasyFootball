@@ -1,0 +1,43 @@
+---
+title: "Untitled"
+author: "Giuliano Sposito"
+date: "30/10/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(plotly)
+library(tidyverse)
+
+players.performance <- readRDS("../../data/team_players_performance.rds")
+
+players.performance %>% 
+  arrange(position) %>% 
+  pull(position) %>% 
+  unique() -> positions
+
+positions %>%
+  map(function(.p,.d){
+    c(2,4,6,8) %>%
+      map(function(.weeks, .pos, .d){
+
+        .d %>%
+          filter(position==.pos, weeks.rng==.weeks) %>%
+          mutate( status = case_when(
+            team == "*FA" ~ "Free",
+            team == "Amparo Bikers" ~ "Bikers",
+            TRUE ~ "Unavaiable"
+          )) %>%
+          plot_ly(x=~pts.sd, y=~pts.mean, color=~status, colors="Set1",
+                  symbol = ~cluster) %>% 
+          return()
+      },
+      .pos = .p,
+      .d = .d)
+    },
+    .d=players.performance
+  ) %>% htmltools::tagList()
+
+
+```
