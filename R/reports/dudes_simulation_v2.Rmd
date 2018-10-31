@@ -271,7 +271,7 @@ plotPlayersSharpe <- function(.roster, .slotLevels=slotLevels, .posLevels=posLev
     geom_text_repel(aes(label=paste0(name, " (", rosterSlot, ")")), show.legend = F, size=3, point.padding = .5) +
     geom_label( aes(label=round(pts.proj,1)), size = 3, label.padding = unit(0.15, "lines"), show.legend = F) +
     theme_minimal() +
-    xlab("varince") + ylab("projected points")
+    xlab("variance") + ylab("projected points")
   
 }
 

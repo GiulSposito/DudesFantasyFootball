@@ -37,7 +37,7 @@ readRDS("../../data/players_points.rds") %>%
   
 ```
 
-QB
+QB {data-navmenu="ffanalytics"}
 ========================
 
 ```{r qb}
@@ -54,7 +54,7 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
   proj_data %>% 
     inner_join(.proj, by="id") -> proj_data
   
-  nu_y <- max(proj_data$ceiling, na.rm = T) / 6
+  nu_y <- max(proj_data$ceiling, na.rm = T) / 18
   
   proj_data %>% 
     ggplot(aes(group=fantasy.team)) +
@@ -62,7 +62,7 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
                     y=points, 
                     ymin=floor, 
                     ymax=ceiling, 
-                    color=fantasy.team), size=.3) +
+                    color=fantasy.team), size=1) +
     # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
     #                y=pts), color="black", alpha=.05) +
     geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
@@ -70,13 +70,16 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
     geom_text(aes(x=reorder(pos_rank,desc(pos_rank)), 
               y=r_pos, 
               color=fantasy.team, 
-              label=full_name), nudge_y = nu_y, nudge_x = 0.0, size=1.9) +
+              label=full_name), nudge_y = nu_y, nudge_x = 0.0, size=3) +
     scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00")) +
     theme_classic() + xlab("Rank") + ylab("Points") +
     theme( panel.grid.major.x=element_line(colour="#EEEEEE") ) +
     scale_x_discrete(breaks = seq(1,32,4) ) +
     ggtitle(.title,.subtitle) +
-    coord_flip() %>%
+    coord_flip() -> g
+  
+  g %>% 
+    ggplotly() %>% 
     return()
   
 }
@@ -85,7 +88,7 @@ plotProjections(projections, "QB", "Quaterbacks", "week 9", 20)
 
 ```
 
-WR
+WR {data-navmenu="ffanalytics"}
 ========================
 
 ```{r wr}
@@ -94,7 +97,7 @@ plotProjections(projections, "WR", "Wide Receivers", "week 9",50)
 
 ```
 
-RB{data-navmenu="ffanalytics"}
+RB {data-navmenu="ffanalytics"}
 ========================
 
 ```{r rb}
@@ -103,7 +106,7 @@ plotProjections(projections, "RB", "Running Backs", "week 9",50)
 
 ```
 
-TE
+TE {data-navmenu="ffanalytics"}
 ========================
 
 ```{r te}
@@ -113,7 +116,7 @@ plotProjections(projections, "TE", "Tight Ends", "week 9",20)
 ```
 
 
-K
+K {data-navmenu="ffanalytics"}
 ========================
 
 ```{r k}
@@ -123,7 +126,7 @@ plotProjections(projections, "K", "Kickers", "week 9",20)
 ```
 
 
-DEF
+DEF {data-navmenu="ffanalytics"}
 ========================
 
 ```{r def}
