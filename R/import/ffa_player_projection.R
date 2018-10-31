@@ -1,8 +1,9 @@
 library(ffanalytics)
+library(glue)
 source("./R/_draft/score_settings.R")
 
 # semana para usar na projecao
-.week <- 8
+.week <- 9
 
 # faz o scraping de projeção dos sites
 scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "DST", "K"),
@@ -44,11 +45,11 @@ kickers.attrib %>%
 
 # matchups and rosters (nfl)
 source("./R/tidy/matchups.R")
-teams <- readRDS("./data/week{.week}_matchups_json.rds") %>% 
+teams <- readRDS(glue("./data/week{.week}_matchups_json.rds")) %>% 
   extractTeams() %>% 
   mutate( 
-    home.roster = map(home.roster, nfl2ffa, .ids=players_id), # to ffa ids
-    away.roster = map(away.roster, nfl2ffa, .ids=players_id)  # to ffa ids
+    home.roster = map(home.roster, nfl2ffa, .ids=.players_id), # to ffa ids
+    away.roster = map(away.roster, nfl2ffa, .ids=.players_id)  # to ffa ids
   )
 
 # tydi teams
@@ -76,4 +77,4 @@ players.team %>%
                              TRUE ~ fantasy.team)
   ) -> week.projections
 
-saveRDS(week.projections, "./data/week8_players_projections.rds")
+saveRDS(week.projections, glue("./data/week{.week}_players_projections.rds"))
