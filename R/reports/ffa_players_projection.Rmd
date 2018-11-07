@@ -16,7 +16,7 @@ library(plotly)
 ```{r loaddata, cache=FALSE}
 
 # pega projecoes cria algumas colunas auxiliares
-projections <- readRDS("../../data/week9_players_projections.rds") %>% 
+projections <- readRDS("../../data/week10_players_projections.rds") %>% 
   mutate( full_name = paste0(first_name, " ", last_name),
           fantasy.team = as.factor(fantasy.team) ) %>%
   group_by( id ) %>% 
@@ -29,7 +29,7 @@ readRDS("../../data/players_points.rds") %>%
   rename( pts = points ) %>% 
   select( id, week, pts) %>% 
   group_by( id ) %>% 
-  mutate( pts.mean = mean(pts, na.rm = T),
+  mutate( pts.mean = median(pts, na.rm = T),
           pts.max = max(pts, na.rm=T),
           pts.min = min(pts, na.rm = T)) %>% 
   ungroup() %>% 
@@ -133,5 +133,10 @@ DEF {data-navmenu="ffanalytics"}
 
 plotProjections(projections, "DST", "Defenses", "week 9",32)
 
+```
+
+
+```{r points}
+players.points <- readRDS("../../data/players_points.rds")
 ```
 

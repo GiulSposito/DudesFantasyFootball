@@ -1,5 +1,5 @@
 ---
-title: "Dudes Football League - Week 9 - Simulation"
+title: "Dudes Football League - week 10 - Simulation"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -14,7 +14,7 @@ library(formattable)
 library(tidybayes)
 library(ggrepel)
 
-sim <- readRDS("../../data/week9_simulation_v2.rds") 
+sim <- readRDS("../../data/week10_simulation_v2.rds") 
 
 sim.summary <- tibble(
   team.id   = c(sim$home.teamId,   sim$away.teamId),
