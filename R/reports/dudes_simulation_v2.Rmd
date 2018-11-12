@@ -140,10 +140,11 @@ sim %>%
   mutate(current.score.diff = home.pts-away.pts) %>% 
   unnest() %>% 
   ggplot(aes(fill=game)) +
-  geom_density(aes(score.diff.org), fill="grey", color=NA, alpha=.2) +
+  geom_density(aes(score.diff.org), fill="grey", color=NA, alpha=.4) +
   geom_density(aes(score.diff), alpha=.6) +
+  geom_vline(aes(xintercept=0), linetype=1, color="black", alpha=.5) +
   geom_vline(aes(xintercept=current.score.diff),
-             linetype=2, color="black") +
+             linetype=2, color="red") +
   facet_grid(rows=vars(game), switch = "x") +
   theme_minimal() +
   theme( legend.position = "right" )
