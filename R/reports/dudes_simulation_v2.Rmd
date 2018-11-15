@@ -14,7 +14,7 @@ library(formattable)
 library(tidybayes)
 library(ggrepel)
 
-sim <- readRDS("../../data/week10_simulation_v2.rds") 
+sim <- readRDS("../../data/week11_simulation_v3.rds") 
 
 sim.summary <- tibble(
   team.id   = c(sim$home.teamId,   sim$away.teamId),

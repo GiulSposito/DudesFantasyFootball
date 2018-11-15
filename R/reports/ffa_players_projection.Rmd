@@ -16,7 +16,7 @@ library(plotly)
 ```{r loaddata, cache=FALSE}
 
 # pega projecoes cria algumas colunas auxiliares
-projections <- readRDS("../../data/week10_players_projections.rds") %>% 
+projections <- readRDS("../../data/week11_players_projections.rds") %>% 
   mutate( full_name = paste0(first_name, " ", last_name),
           fantasy.team = as.factor(fantasy.team) ) %>%
   group_by( id ) %>% 
@@ -26,10 +26,12 @@ projections <- readRDS("../../data/week10_players_projections.rds") %>%
 
 
 readRDS("../../data/players_points.rds") %>%
+  filter( points!=0 ) %>% 
   rename( pts = points ) %>% 
   select( id, week, pts) %>% 
   group_by( id ) %>% 
   mutate( pts.mean = median(pts, na.rm = T),
+          pts.sd   = sd(pts, na.rm=T),
           pts.max = max(pts, na.rm=T),
           pts.min = min(pts, na.rm = T)) %>% 
   ungroup() %>% 
@@ -66,7 +68,14 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
     # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
     #                y=pts), color="black", alpha=.05) +
     geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
-                   y = pts.mean), color="black" ) +
+                   y = pts.mean), color="black", alpha=.5) +
+    # geom_pointrange(aes(x=reorder(pos_rank,desc(pos_rank)),
+    #                     y=pts.mean,
+    #                     ymin=pts.mean-pts.sd,
+    #                     ymax=pts.mean+pts.sd),
+    #                 color="grey",
+    #                 size=.5,
+    #                 alpha=.5) +
     geom_text(aes(x=reorder(pos_rank,desc(pos_rank)), 
               y=r_pos, 
               color=fantasy.team, 

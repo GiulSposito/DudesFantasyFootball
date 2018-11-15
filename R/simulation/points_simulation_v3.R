@@ -2,7 +2,7 @@ library(tidyverse)
 library(glue)
 source("./R/tidy/matchups.R")
 
-.week <- 10
+.week <- 11
 
 # retorna um summary como um data.frame
 summaryAsTibble <- . %>% summary() %>% as.list() %>% as.tibble()
@@ -96,10 +96,10 @@ simRosterPontuation <- function(.team, .currPoints=FALSE) {
       player.simulation = map(
         pts.range,
         base::sample,
-        size = 2000,
+        size = 5000,
         replace = T
       ),
-      points.made = map(points, rep, times=2000)
+      points.made = map(points, rep, times=5000)
     ) -> resp
   
     if (.currPoints) {

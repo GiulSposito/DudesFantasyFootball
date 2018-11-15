@@ -32,7 +32,7 @@ config <- yaml.load_file("./config/config.yml")
 leagueId  <- config$leagueId
 authToken <- config$authToken
 season <- 2018
-weeks <- 1:9
+weeks <- 1:10
 
 weeks %>% 
   map(
