@@ -1,5 +1,5 @@
 ---
-title: "Dudes Football League - week 10 - Simulation"
+title: "Dudes Football League - week 11 - Simulation"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -148,23 +148,6 @@ sim %>%
   facet_grid(rows=vars(game), switch = "x") +
   theme_minimal() +
   theme( legend.position = "right" )
-
-```
-
-
-Points Table {data-navmenu="Overview"}
-============================================
-
-```{r}
-
-sim.summary %>% 
-  select(team.name, points=pts.summ) %>% 
-  unnest(points, .sep = ".") %>% 
-  mutate_if(is.numeric, function(v) round(v,1)) %>% 
-  arrange(-points.Median) %>% 
-  formattable(list(
-    area(col=2:7) ~ normalize_bar("gold", 0.2)
-  ))
 
 ```
 
