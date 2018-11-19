@@ -123,8 +123,10 @@ Points Distribution {data-navmenu="Overview"}
 sim.summary %>% 
   select( team.name, points ) %>% 
   unnest(points) %>% 
-  mutate(points = round(points,1)) %>% 
-  plot_ly(x=~team.name, y=~points, type = "box", color=~team.name)  
+  mutate(points = round(points,1)) %>%
+  ggplot(aes(x=team.name, y=points, color=team.name)) +
+  geom_boxplot() +
+  theme_minimal()
 
 ```
 
