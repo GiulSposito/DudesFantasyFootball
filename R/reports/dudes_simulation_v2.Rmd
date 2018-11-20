@@ -1,5 +1,5 @@
 ---
-title: "Dudes Football League - week 11 - Simulation"
+title: "Dudes Football League - Simulation"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -13,8 +13,11 @@ library(plotly)
 library(formattable)
 library(tidybayes)
 library(ggrepel)
+library(glue)
 
-sim <- readRDS("../../data/week11_simulation_v3.rds") 
+week <- 11
+
+sim <- readRDS(glue("../../data/week{week}_simulation_v3.rds")) 
 
 sim.summary <- tibble(
   team.id   = c(sim$home.teamId,   sim$away.teamId),
@@ -152,6 +155,41 @@ sim %>%
   theme( legend.position = "right" )
 
 ```
+
+
+Team Strength  {data-navmenu="Overview"}
+========================
+```{r teamStrength, fig.width=10}
+
+p.stats <- readRDS("../../data/players_points.rds")
+
+p.projs <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
+  mutate( full_name = paste0(first_name, " ", last_name) ) %>% 
+  select(id, fantasy.team, full_name, team, position, avg_type, pos_rank, proj.points=points) %>% 
+  filter( avg_type == "weighted" )
+
+p.stats %>% 
+  inner_join(p.projs,by="id") %>% 
+  filter( fantasy.team!="*FreeAgent") %>% 
+  group_by(week, fantasy.team) %>%  
+  mutate( points = sum(points, na.rm = T)) %>% 
+  group_by(fantasy.team) %>% 
+  summarise(
+    mean = mean(points, na.rm = T),
+    sd   = sd(points, na.rm = T)
+  ) %>% 
+  mutate( mean=round(mean,1), sd=round(sd,1) ) %>% 
+  ggplot(aes(x=sd, y=mean, color=fantasy.team)) +
+  geom_point() +
+  geom_text_repel(aes(label=fantasy.team), show.legend = F, size=4.3, point.padding = .5) +
+  geom_label( aes(label=mean), size = 4, label.padding = unit(0.15, "lines"), show.legend = F) +
+  theme_minimal() +
+  xlab("variance") + ylab("strength") + ggtitle("Team Strength") +
+  theme( legend.position = "none" )
+
+
+```
+
 
 
 
