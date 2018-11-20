@@ -1,18 +1,6 @@
-library(ffanalytics)
 source("./R/_draft/score_settings.R")
 
-weeks <- 1:10
-
-weeks %>% 
-  map( function(.week){
-    scrape_data(pos = c("QB", "RB", "WR", "TE", "DST", "K"),season = 2018, week = .week)
-  }) -> scraps
-
-scraps %>% 
-  saveRDS("./data/weeklies_scraps.rds")
-
 scraps <- readRDS("./data/weeklies_scraps.rds")
-
 
 # funcao que aproveita o pacote ffanalytics para fazer a projecao de pontos por jogador
 playerPointsProjections <- function(.scrap, .score.settings){
@@ -51,27 +39,3 @@ scraps %>%
 
 # salva pontuacao projetada
 saveRDS(points.projection, "./data/points_projection.rds")
-
-# # extrai o mapeamento ID do Fantasy versus ID da projecao
-# scraps[[1]] %>%
-#   map(function(dft){
-#     dft %>% 
-#       filter(data_src=="NFL") %>% 
-#       select(id, src_id, player, team, pos) %>% 
-#       return()
-#   }) %>% 
-#   bind_rows() %>%
-#   distinct() %>% 
-#   mutate_at(vars(id, src_id), as.integer) -> players.ids
-# 
-# 
-# players.projection
-# 
-# 
-# 
-# players.ids %>% 
-#   inner_join(points.projection, by = c("id")) -> players.projection
-# 
-# players.projection %>% 
-#   saveRDS("./data/players_projections.rds")
-#   
