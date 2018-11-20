@@ -46,7 +46,7 @@ readRDS("../../data/players_points.rds") %>%
 QB {data-navmenu="ffanalytics"}
 ========================
 
-```{r qb}
+```{r qb, fig.width=10}
 
 plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
   require(magrittr)
@@ -104,7 +104,7 @@ plotProjections(projections, "QB", "Quaterbacks", "week 9", 20)
 WR {data-navmenu="ffanalytics"}
 ========================
 
-```{r wr}
+```{r wr, fig.width=10}
 
 plotProjections(projections, "WR", "Wide Receivers", "week 9",50)
 
@@ -113,7 +113,7 @@ plotProjections(projections, "WR", "Wide Receivers", "week 9",50)
 RB {data-navmenu="ffanalytics"}
 ========================
 
-```{r rb}
+```{r rb, fig.width=10}
 
 plotProjections(projections, "RB", "Running Backs", "week 9",50)
 
@@ -122,7 +122,7 @@ plotProjections(projections, "RB", "Running Backs", "week 9",50)
 TE {data-navmenu="ffanalytics"}
 ========================
 
-```{r te}
+```{r te, fig.width=10}
 
 plotProjections(projections, "TE", "Tight Ends", "week 9",20)
 
@@ -132,7 +132,7 @@ plotProjections(projections, "TE", "Tight Ends", "week 9",20)
 K {data-navmenu="ffanalytics"}
 ========================
 
-```{r k}
+```{r k, fig.width=10}
 
 plotProjections(projections, "K", "Kickers", "week 9",20)
 
@@ -142,7 +142,7 @@ plotProjections(projections, "K", "Kickers", "week 9",20)
 DEF {data-navmenu="ffanalytics"}
 ========================
 
-```{r def}
+```{r def, fig.width=10}
 
 plotProjections(projections, "DST", "Defenses", "week 9",32)
 
@@ -227,4 +227,27 @@ DEF {data-navmenu="historic"}
 plotSharpe(sharpe.data, "DST", 3*8)
 ```
 
+
+Team Strenght
+============================
+```{r teamStrength, fig.width=10}
+p.stats %>% 
+  inner_join(p.projs,by="id") %>% 
+  filter( fantasy.team!="*FreeAgent") %>% 
+  group_by(week, fantasy.team) %>%  
+  mutate( points = sum(points, na.rm = T)) %>% 
+  group_by(fantasy.team) %>% 
+  summarise(
+    mean = mean(points, na.rm = T),
+    sd   = sd(points, na.rm = T)
+  ) %>% 
+  mutate( mean=round(mean,1), sd=round(sd,1) ) %>% 
+  ggplot(aes(x=sd, y=mean, color=fantasy.team)) +
+  geom_point() +
+  geom_text_repel(aes(label=fantasy.team), show.legend = F, size=3.5, point.padding = 1) +
+  geom_label( aes(label=mean), size = 3.5, label.padding = unit(0.15, "lines"), show.legend = F) +
+  theme_minimal() +
+  xlab("variance") + ylab("strength") + ggtitle("Team Strength") +
+  theme( legend.position = "none" )
+```
 
