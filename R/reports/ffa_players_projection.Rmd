@@ -10,13 +10,17 @@ output:
 library(flexdashboard)
 library(tidyverse)
 library(plotly)
-# library(ffanalytics)
+library(glue)
+library(ggrepel)
+
+week <- 11
+
 ```
 
 ```{r loaddata, cache=FALSE}
 
 # pega projecoes cria algumas colunas auxiliares
-projections <- readRDS("../../data/week11_players_projections.rds") %>% 
+projections <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
   mutate( full_name = paste0(first_name, " ", last_name),
           fantasy.team = as.factor(fantasy.team) ) %>%
   group_by( id ) %>% 
@@ -145,7 +149,82 @@ plotProjections(projections, "DST", "Defenses", "week 9",32)
 ```
 
 
-```{r points}
-players.points <- readRDS("../../data/players_points.rds")
+```{r historicData}
+
+p.stats <- readRDS("../../data/players_points.rds") %>% 
+  mutate( points = case_when(
+    points==0 & position=="DST" ~ points,
+    points==0 & position!="DST" ~ as.numeric(NA),
+    points!=0 ~ points
+  ))
+
+p.projs <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
+  mutate( full_name = paste0(first_name, " ", last_name) ) %>% 
+  select(id, fantasy.team, full_name, team, position, avg_type, pos_rank, proj.points=points) %>% 
+  filter( avg_type == "weighted" )
+
+p.stats %>% 
+  group_by(id) %>% 
+  summarise(
+    mean = mean(points, na.rm = T),
+    sd   = sd(points, na.rm = T)
+  ) %>% 
+  inner_join(p.projs,by="id") -> sharpe.data
+
+plotSharpe <- function(.dtfm, .pos, .n) {
+  .dtfm %>% 
+    filter( position==.pos ) %>% 
+    top_n(-.n, pos_rank ) %>% 
+    mutate( mean=round(mean,1), sd=round(sd,1) ) %>% 
+    ggplot(aes(x=sd, y=mean, color=fantasy.team)) +
+    geom_point() +
+    geom_text_repel(aes(label=full_name), show.legend = F, size=3, point.padding = .5) +
+    geom_label( aes(label=mean), size = 3, label.padding = unit(0.15, "lines"), show.legend = F) +
+    theme_minimal() +
+    ggtitle(.pos) + xlab("variance") + ylab("mean points")  
+}
+
 ```
+
+
+QB {data-navmenu="historic"}
+========================
+```{r histQB, fig.width=10}
+plotSharpe(sharpe.data, "QB",8*3)
+```
+
+
+WR {data-navmenu="historic"}
+========================
+```{r histWR, fig.width=10}
+plotSharpe(sharpe.data, "WR", 8*5)
+```
+
+
+RB {data-navmenu="historic"}
+========================
+```{r histRB, fig.width=10}
+plotSharpe(sharpe.data, "RB", 8*5)
+```
+
+
+TE {data-navmenu="historic"}
+========================
+```{r histTE, fig.width=10}
+plotSharpe(sharpe.data, "TE", 3*8)
+```
+
+
+K {data-navmenu="historic"}
+========================
+```{r histK, fig.width=10}
+plotSharpe(sharpe.data, "K", 3*8)
+```
+
+DEF {data-navmenu="historic"}
+========================
+```{r histDEF, fig.width=10}
+plotSharpe(sharpe.data, "DST", 3*8)
+```
+
 
