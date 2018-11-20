@@ -227,27 +227,3 @@ DEF {data-navmenu="historic"}
 plotSharpe(sharpe.data, "DST", 3*8)
 ```
 
-
-Team Strenght
-============================
-```{r teamStrength, fig.width=10}
-p.stats %>% 
-  inner_join(p.projs,by="id") %>% 
-  filter( fantasy.team!="*FreeAgent") %>% 
-  group_by(week, fantasy.team) %>%  
-  mutate( points = sum(points, na.rm = T)) %>% 
-  group_by(fantasy.team) %>% 
-  summarise(
-    mean = mean(points, na.rm = T),
-    sd   = sd(points, na.rm = T)
-  ) %>% 
-  mutate( mean=round(mean,1), sd=round(sd,1) ) %>% 
-  ggplot(aes(x=sd, y=mean, color=fantasy.team)) +
-  geom_point() +
-  geom_text_repel(aes(label=fantasy.team), show.legend = F, size=3.5, point.padding = 1) +
-  geom_label( aes(label=mean), size = 3.5, label.padding = unit(0.15, "lines"), show.legend = F) +
-  theme_minimal() +
-  xlab("variance") + ylab("strength") + ggtitle("Team Strength") +
-  theme( legend.position = "none" )
-```
-
