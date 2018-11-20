@@ -10,7 +10,7 @@ leagueId <- config$leagueId
 authToken <- config$authToken
 
 # contexto da semana
-week <- 11
+week <- 12
 
 # obtem os matchups
 url.matchups <- "http://api.fantasy.nfl.com/v1/league/matchups?leagueId={leagueId}&week={week}&format=json&authToken={authToken}"

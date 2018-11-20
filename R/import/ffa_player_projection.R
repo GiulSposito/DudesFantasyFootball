@@ -3,7 +3,7 @@ library(glue)
 source("./R/_draft/score_settings.R")
 
 # semana para usar na projecao
-.week <- 11
+.week <- 12
 
 # faz o scraping de projeção dos sites
 scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "DST", "K"),
