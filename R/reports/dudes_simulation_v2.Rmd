@@ -15,7 +15,7 @@ library(tidybayes)
 library(ggrepel)
 library(glue)
 
-week <- 11
+week <- 12
 
 sim <- readRDS(glue("../../data/week{week}_simulation_v3.rds")) 
 

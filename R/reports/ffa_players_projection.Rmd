@@ -13,7 +13,7 @@ library(plotly)
 library(glue)
 library(ggrepel)
 
-week <- 11
+week <- 12
 
 ```
 
@@ -187,41 +187,41 @@ plotSharpe <- function(.dtfm, .pos, .n) {
 ```
 
 
-QB {data-navmenu="historic"}
+QB {data-navmenu="record"}
 ========================
 ```{r histQB, fig.width=10}
 plotSharpe(sharpe.data, "QB",8*3)
 ```
 
 
-WR {data-navmenu="historic"}
+WR {data-navmenu="record"}
 ========================
 ```{r histWR, fig.width=10}
 plotSharpe(sharpe.data, "WR", 8*5)
 ```
 
 
-RB {data-navmenu="historic"}
+RB {data-navmenu="record"}
 ========================
 ```{r histRB, fig.width=10}
 plotSharpe(sharpe.data, "RB", 8*5)
 ```
 
 
-TE {data-navmenu="historic"}
+TE {data-navmenu="record"}
 ========================
 ```{r histTE, fig.width=10}
 plotSharpe(sharpe.data, "TE", 3*8)
 ```
 
 
-K {data-navmenu="historic"}
+K {data-navmenu="record"}
 ========================
 ```{r histK, fig.width=10}
 plotSharpe(sharpe.data, "K", 3*8)
 ```
 
-DEF {data-navmenu="historic"}
+DEF {data-navmenu="record"}
 ========================
 ```{r histDEF, fig.width=10}
 plotSharpe(sharpe.data, "DST", 3*8)
