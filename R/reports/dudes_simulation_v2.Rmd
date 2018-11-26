@@ -36,6 +36,9 @@ winGauge <- function(.teamId, .teamSummary) {
     gauge(min = 0, max = 100, symbol = '%', gaugeSectors(success = c(61, 100), warning = c(40, 60), danger = c(0, 39))) 
 } 
 
+# fixed positions
+slotLevels <- gl(8,1,labels=c("QB","RB","WR","TE","W/R","K","DEF","BN"))
+posLevels <- gl(6,1,labels=c("QB","RB","WR","TE","K","DEF"))
 
 ```
 
@@ -194,9 +197,6 @@ p.stats %>%
 
 ```{r rosterComparation, results='asis'}
 
-slotLevels <- gl(8,1,labels=c("QB","RB","WR","TE","W/R","K","DEF","BN"))
-posLevels <- gl(6,1,labels=c("QB","RB","WR","TE","K","DEF"))
-
 plotRoster <- function(.team_table, .slotLevels=slotLevels, .posLevels=posLevels){
   
   if (class(.team_table)=="list") .team_table <- .team_table[[1]]
@@ -258,11 +258,15 @@ plotPlayersDistribution <- function(.roster, .slotLevels=slotLevels, .posLevels=
   .roster %>% 
     mutate(
       position = factor(position, levels=.posLevels),
-      rosterSlot = factor(rosterSlot, levels=.slotLevels)
+      rosterSlot = factor(rosterSlot, levels=.slotLevels),
+      points = case_when(
+        (points == 0) ~ as.numeric(NA),
+        (points !=  0) ~ points 
+      )
     ) %>% 
     arrange(rosterSlot, position) %>% 
     mutate(display.order=1:nrow(.)) %>% 
-    select(id, name, display.order, position, pts.range) %>% 
+    select(id, name, display.order, position, points, pts.range) %>% 
     mutate( pts.range = map(pts.range, base::sample, size=200, replace=T) ) %>%
     unnest(pts.range) %>% 
     ggplot(aes(x=pts.range, y=reorder(name, -display.order))) +
@@ -270,6 +274,8 @@ plotPlayersDistribution <- function(.roster, .slotLevels=slotLevels, .posLevels=
     stat_intervalh(.width = c(seq(.05,.95,.1))) +
     scale_color_brewer()+
     geom_point(alpha=.1) +
+    geom_label(aes(x=points, label=round(points,1)), color="red",
+               size=2.5,label.padding = unit(0.10, "lines")) +
     theme_minimal() +
     theme(legend.position = "none") +
     ylab("player") + xlab("points")
