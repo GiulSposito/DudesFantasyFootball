@@ -9,7 +9,6 @@ output:
 ```{r setup, include=FALSE}
 library(flexdashboard)
 library(tidyverse)
-library(plotly)
 library(formattable)
 library(tidybayes)
 library(ggrepel)
