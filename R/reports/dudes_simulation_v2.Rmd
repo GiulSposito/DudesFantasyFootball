@@ -4,6 +4,8 @@ output:
   flexdashboard::flex_dashboard:
     orientation: rows
     vertical_layout: fill
+params:
+  week: 0
 ---
 
 ```{r setup, include=FALSE}
@@ -14,7 +16,7 @@ library(tidybayes)
 library(ggrepel)
 library(glue)
 
-week <- 13
+week <- params$week
 
 sim <- readRDS(glue("../../data/week{week}_simulation_v3.rds")) 
 
