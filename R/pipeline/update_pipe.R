@@ -34,3 +34,12 @@ sim %>%
   ) %>% 
   bind_rows(hist) %>%
   saveRDS("./data/simulations_history.rds")
+
+
+## projection report
+rmarkdown::render(
+  input = "./R/reports/ffa_players_projection.Rmd",
+  output_file = glue("../../public/ffa_players_projection_week{week}.html"),
+  output_format = "flex_dashboard",
+  params = list(week=week)
+)

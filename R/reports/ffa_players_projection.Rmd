@@ -4,6 +4,8 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+params:
+  week: 0
 ---
 
 ```{r setup, include=FALSE}
@@ -13,7 +15,7 @@ library(plotly)
 library(glue)
 library(ggrepel)
 
-week <- 13
+week <- params$week
 
 ```
 
