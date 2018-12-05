@@ -4,7 +4,7 @@ library(httr)
 library(jsonlite)
 library(glue)
 
-importMatchups <- function(week){
+importMatchups <- function(week, saveToFile=T){
   
   # lendo liga e token do yaml (para n?o versionar o access token)
   config <- yaml.load_file("./config/config.yml")
@@ -38,7 +38,7 @@ importMatchups <- function(week){
     },
     .url=url.team.matchup)
   
-  saveRDS(matchup.teams.json, glue("./data/week{week}_matchups_json.rds"))
+  if (saveToFile) saveRDS(matchup.teams.json, glue("./data/week{week}_matchups_json.rds"))
 
   return(matchup.teams.json)  
 }
