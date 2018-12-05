@@ -1,0 +1,32 @@
+---
+title: "Point Record"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(plotly)
+```
+
+Rank
+============
+
+```{r rank}
+g <- readRDS("../../data/ggplot_points_rank.rds")
+ggplotly(g)
+
+```
+
+
+Points
+===========
+
+```{r record}
+g <- readRDS("../../data/ggplot_points_record.rds")
+ggplotly(g)
+
+```
