@@ -5,13 +5,15 @@ source("./R/_draft/score_settings.R")
 # semana para usar na projecao
 .week <- 14
 
-# faz o scraping de projeção dos sites
+# # faz o scraping de projeção dos sites
 scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "DST", "K"),
-                        season = 2018, 
+                        season = 2018,
                         week = .week)
 
 # salva scrap da semana
 scrap %>% saveRDS(glue("./data/week{.week}_scrap.rds"))
+
+scrap <- readRDS(glue("./data/week{.week}_scrap.rds"))
 
 # faz a tabela de projeção de resultados
 players.proj <- projections_table(scrap, scoring_rules = dudes.score.settings) 

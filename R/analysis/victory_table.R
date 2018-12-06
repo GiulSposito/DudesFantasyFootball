@@ -1,16 +1,18 @@
 source("./R/import/import_matchups.R")
 source("./R/tidy/matchups.R")
 
-1:13 %>% 
-  map(importMatchups,
-      saveToFile = F) -> rounds
-
 countVictory <- . %>% 
   select(home.name, home.pts, away.pts, away.name) %>% 
   mutate(
     home.win = as.integer(home.pts>away.pts),
     away.win = as.integer(away.pts>home.pts)
   )
+
+1:13 %>% 
+  map(importMatchups,
+      saveToFile = F) -> rounds
+
+
 
 rounds %>% 
   map(extractTeams) %>% 
@@ -38,8 +40,6 @@ victory.raw %>%
     win = sum(victory.BA),
     los = sum(victory.AB)
   ) %>% View()
-
-
 
 rounds %>% 
   map(extractTeams) %>% 

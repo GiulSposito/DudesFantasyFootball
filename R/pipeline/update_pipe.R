@@ -8,14 +8,22 @@ source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
 week <- 14
-prefix <- "preFA"
+prefix <- "preSNF"
 
 checkFantasyAPI(week)
 
 importMatchups(week) -> json
 
-simulateGames(week) -> sim
+## projection report
+source("./R/import/ffa_player_projection.R")
+rmarkdown::render(
+  input = "./R/reports/ffa_players_projection.Rmd",
+  output_file = glue("../../public/ffa_players_projection_week{week}.html"),
+  output_format = "flex_dashboard",
+  params = list(week=week)
+)
 
+simulateGames(week) -> sim
 
 rmarkdown::render(
     input = "./R/reports/dudes_simulation_v2.Rmd",
@@ -36,10 +44,3 @@ sim %>%
   saveRDS("./data/simulations_history.rds")
 
 
-## projection report
-rmarkdown::render(
-  input = "./R/reports/ffa_players_projection.Rmd",
-  output_file = glue("../../public/ffa_players_projection_week{week}.html"),
-  output_format = "flex_dashboard",
-  params = list(week=week)
-)

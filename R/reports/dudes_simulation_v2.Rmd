@@ -275,7 +275,7 @@ plotPlayersDistribution <- function(.roster, .slotLevels=slotLevels, .posLevels=
     #geom_violin(aes(y=pts.range, x=name, fill=position), alpha=.5) +
     stat_intervalh(.width = c(seq(.05,.95,.1))) +
     scale_color_brewer()+
-    geom_point(alpha=.1) +
+    #geom_point(alpha=.1) +
     geom_label(aes(x=points, label=round(points,1)), color="red",
                size=2.5,label.padding = unit(0.10, "lines")) +
     theme_minimal() +
