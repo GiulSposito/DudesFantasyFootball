@@ -12,14 +12,32 @@ countVictory <- . %>%
   map(importMatchups,
       saveToFile = F) -> rounds
 
-
+readRDS("./data/simulations_history.rds") %>% 
+  filter(timestamp==max(timestamp)) %>%
+  mutate(
+    week=as.integer(14),
+    home.points = home.sim %>% map(median, na.rm=T),
+    away.points = away.sim %>%  map(median, na.rm=T)
+  ) %>%
+  mutate(
+    home.win = as.integer(home.pts > away.pts),
+    away.win = as.integer(away.pts > home.pts)
+  ) %>% 
+  select( week, home.name, home.pts, away.pts, away.name, home.win, away.win ) -> curr.round
 
 rounds %>% 
   map(extractTeams) %>% 
   map(countVictory) %>% 
   bind_rows(.id="week") %>% 
+  mutate( week = as.integer(week) ) %>% 
+  bind_rows(curr.round) %>% 
   select(home.name, away.name, home.win, away.win) -> games
   
+
+
+
+games
+
 tibble(
   team.A = c(games$home.name, games$away.name),
   team.B = c(games$away.name, games$home.name),
@@ -34,12 +52,36 @@ victory.raw %>%
   spread(team.A, victories) %>% 
   rename(Row.wins.Col = team.B) %>% View()
 
+selTeams <- c("Change Robots",
+              "Indaiatuba Riders", "Rio Claro Pfeiferians",
+              "Sorocaba Steelers")
+
 victory.raw %>% 
   group_by(team.A, team.B) %>%
   summarise(
-    win = sum(victory.BA),
-    los = sum(victory.AB)
+    wins = sum(victory.BA),
+    loss = sum(victory.AB)
   ) %>% View()
+
+victory.raw %>% 
+  select(team.A, team.B, victory.AB) %>% 
+  filter( team.A %in% selTeams, team.B %in% selTeams ) %>% 
+  group_by(team.A, team.B) %>%
+  summarise(victories=sum(victory.AB)) %>% 
+  spread(team.A, victories) %>% 
+  rename(Row.wins.Col = team.B) %>%
+  mutate( Wins = rowSums(.[2:5], na.rm = T)  ) -> winTable
+
+winTable %>%
+  replace(is.na(.), 0) %>%
+  select(-1) %>% 
+  summarise_all(funs(sum)) %>% 
+  mutate(Row.wins.Col = "Losses",
+         Wins=NA) -> lossSums
+
+winTable %>% 
+  bind_rows(lossSums) %>% View()
+
 
 rounds %>% 
   map(extractTeams) %>% 
