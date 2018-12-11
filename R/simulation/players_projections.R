@@ -1,7 +1,5 @@
 source("./R/_draft/score_settings.R")
 
-scraps <- readRDS("./data/weeklies_scraps.rds")
-
 # funcao que aproveita o pacote ffanalytics para fazer a projecao de pontos por jogador
 playerPointsProjections <- function(.scrap, .score.settings){
   
@@ -28,7 +26,7 @@ playerPointsProjections <- function(.scrap, .score.settings){
   
 }
 
-scraps %>% 
+readRDS("./data/weeklies_scraps.rds") %>% 
   map(playerPointsProjections,
       .score.settings = dudes.score.settings) %>% 
   bind_rows(.id="week") %>% 
