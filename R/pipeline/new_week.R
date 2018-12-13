@@ -32,8 +32,14 @@ rmarkdown::render(
   params = list(week=week)
 )
 
+
+# calcula tabela de pontuacao para todos os jogadores usa na simulacao
+source("./R/simulation/players_projections.R")
+
+# simula as partidas
 simulateGames(week) -> sim
 
+# constroi o relatório
 rmarkdown::render(
     input = "./R/reports/dudes_simulation_v2.Rmd",
     output_file = glue("../../public/dudes_simulation_week{week}_{prefix}.html"),

@@ -7,8 +7,8 @@ source("./R/import/checkFantasyAPI.R")
 source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
-week <- 14
-prefix <- "posSNF"
+week <- 15
+prefix <- "preTNF"
 
 checkFantasyAPI(week)
 
