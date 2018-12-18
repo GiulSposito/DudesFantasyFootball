@@ -7,7 +7,7 @@ source("./R/import/checkFantasyAPI.R")
 source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
-week <- 15
+week <- 16
 prefix <- "preFA"
 
 checkFantasyAPI(week)
