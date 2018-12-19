@@ -7,14 +7,14 @@ source("./R/import/checkFantasyAPI.R")
 source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
-week <- 15
-prefix <- "posSNF"
+week <- 16
+prefix <- "posFA"
 
 checkFantasyAPI(week)
 
-importMatchups(week) -> json
+importMatchups(week) -> matchups
 
-## projection report
+# import predicions, calc projections and add Teams
 source("./R/import/ffa_player_projection.R")
 rmarkdown::render(
   input = "./R/reports/ffa_players_projection.Rmd",
