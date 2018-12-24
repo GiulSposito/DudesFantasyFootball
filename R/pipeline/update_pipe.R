@@ -8,7 +8,7 @@ source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
 week <- 16
-prefix <- "pos1stTNFonSaturday"
+prefix <- "preSNF"
 
 checkFantasyAPI(week)
 
