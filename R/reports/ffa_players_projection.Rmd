@@ -32,6 +32,7 @@ projections <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>
 
 
 readRDS("../../data/players_points.rds") %>%
+  mutate(id = as.integer(id)) %>% 
   filter( points!=0 ) %>% 
   rename( pts = points ) %>% 
   select( id, week, pts) %>% 
@@ -86,7 +87,7 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
               y=r_pos, 
               color=fantasy.team, 
               label=full_name), nudge_y = nu_y, nudge_x = 0.0, size=3) +
-    scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00")) +
+    scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00", "purple", "pink","gold","cyan")) +
     theme_classic() + xlab("Rank") + ylab("Points") +
     theme( panel.grid.major.x=element_line(colour="#EEEEEE") ) +
     scale_x_discrete(breaks = seq(1,32,4) ) +
@@ -154,14 +155,18 @@ plotProjections(projections, "DST", "Defenses", "week 9",32)
 ```{r historicData}
 
 p.stats <- readRDS("../../data/players_points.rds") %>% 
-  mutate( points = case_when(
+  mutate(
+    id = as.integer(id),
+    points = case_when(
     points==0 & position=="DST" ~ points,
     points==0 & position!="DST" ~ as.numeric(NA),
-    points!=0 ~ points
-  ))
+    points!=0 ~ points)
+  )
 
 p.projs <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
-  mutate( full_name = paste0(first_name, " ", last_name) ) %>% 
+  mutate( 
+    id = as.integer(id),
+    full_name = paste0(first_name, " ", last_name) ) %>% 
   select(id, fantasy.team, full_name, team, position, avg_type, pos_rank, proj.points=points) %>% 
   filter( avg_type == "weighted" )
 
