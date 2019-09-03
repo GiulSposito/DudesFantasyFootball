@@ -1,12 +1,12 @@
 library(tidyverse)
 
 # mapping src_id (nfl) <-> id (ffa)
-.players_id <- readRDS("./data/nfl_players_id.rds")
+.players_id <- player_ids # readRDS("./data/nfl_players_id.rds")
 
 # translatig NFL ID to FFA ID
 nfl2ffa <- function(.dtf, .ids=.players_id) {
   .ids %>% 
-    select(id, src_id) %>% 
+    mutate(src_id=as.integer(nfl_id)) %>% 
     right_join(.dtf, by="src_id") %>% 
     select(-src_id) %>% 
     return()
