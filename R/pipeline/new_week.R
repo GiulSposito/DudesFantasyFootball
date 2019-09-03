@@ -3,12 +3,14 @@ library(markdown)
 library(flexdashboard)
 library(lubridate)
 library(glue)
+library(ffanalytics)
+load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 source("./R/import/checkFantasyAPI.R")
 source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
-week <- 16
-prefix <- "preFA"
+week <- 1
+prefix <- "preTNF"
 
 checkFantasyAPI(week)
 
@@ -22,7 +24,10 @@ source("./R/import/import_player_stats.R")
 source("./R/import/ffa_player_projection.R")
 scraps <- scrapPlayersPredictions(week)
 projs  <- calcPlayersProjections(scraps)
-projs.team <- addTeams(projs, matchups, week)
+
+projs.team <- projs %>% 
+  inner_join(mutate(player_ids, id=as.integer(id)), by="id") %>% 
+  addTeams(matchups, week)
 
 ## projection report
 rmarkdown::render(

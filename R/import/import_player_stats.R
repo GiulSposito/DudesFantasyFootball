@@ -24,15 +24,15 @@ getPlayersPts <- function( .week, .season, .leagueId, .authToken){
     as.tibble() %>%
     mutate_at(vars(id, season, week), as.integer) %>% 
     mutate_at(vars(points), as.numeric) %>% 
-    rename( src_id=id ) %>% 
+    mutate( src_id=id ) %>% 
     return()
 }
 
 config <- yaml.load_file("./config/config.yml")
 leagueId  <- config$leagueId
 authToken <- config$authToken
-season <- 2018
-weeks <- 1:15
+season <- 2019
+weeks <- 1
 
 weeks %>% 
   map(
@@ -43,7 +43,8 @@ weeks %>%
   ) %>% 
   bind_rows() -> player.points
 
-readRDS("./data/nfl_players_id.rds") %>% 
-  select(id, src_id) %>% 
-  inner_join(player.points, by="src_id") %>% 
+player_ids %>% 
+  mutate(nfl_id=as.integer(nfl_id)) %>% 
+  inner_join(player.points, by=c("nfl_id"="id")) %>% 
+  as_tibble() %>% 
   saveRDS("./data/players_points.rds")
