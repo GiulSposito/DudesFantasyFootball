@@ -13,16 +13,8 @@ playerPointsProjections <- function(.scrap, .score.settings){
   source("../ffanalytics/R/impute_funcs.R")
   
   # calcula 
-  source_points(.scrap, .score.settings) %>% 
-    filter( pos!="K") -> players.projection 
-  
-  # pega a pontuacao dos kickers do scrap
-  # e junta com a projecao
-  .scrap$K %>%
-    mutate(pos="K") %>% 
-    select(pos, data_src, id, points=site_pts) %>% 
-    bind_rows(players.projection) %>% 
-    return()
+  players.projection  <- source_points(.scrap, .score.settings)
+  return(players.projection)
   
 }
 
