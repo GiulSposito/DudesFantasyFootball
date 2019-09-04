@@ -77,7 +77,7 @@ source("./R/_draft/score_settings.R")
 
 # # # scrap todas as fontes, nas posicoes da liga
 # scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
-#                      season = 2018,
+#                      season = 2019,
 #                      week = week)
 # 
 # saveRDS(scrap, "./FantasyFootball/week7_scrap.rds")

@@ -176,7 +176,7 @@ Vamos usar o pacote `ffanalytics` para fazer o `data scrapping` das previsões p
 
 library(ffanalytics)
 scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
-                     season = 2018,
+                     season = 2019,
                      week = week)
 
 ```

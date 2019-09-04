@@ -30,7 +30,7 @@ readRDS("./data/weeklies_scraps.rds") %>%
   map(playerPointsProjections,
       .score.settings = dudes.score.settings) %>% 
   bind_rows(.id="week") %>% 
-  mutate( season=2018,
+  mutate( season=2019,
           week = as.integer(week),
           id = as.integer(id) ) %>% 
   rename(pts.proj = points) -> points.projection

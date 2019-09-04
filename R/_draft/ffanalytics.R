@@ -6,7 +6,7 @@ source("FantasyFootball/score_settings.R")
 #         "FantasyFootballNerd", "FleaFlicker"), 
 
 my_scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "DST", "K"),
-                        season = 2018, 
+                        season = 2019, 
                         week = 7)
 
 
