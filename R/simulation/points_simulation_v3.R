@@ -29,12 +29,19 @@ simulateGames <- function(.week){
   pts.proj <- readRDS("./data/points_projection.rds")
   
   # calcula distribuição do erro
-  errors <- points %>%
-    mutate( id = as.integer(id) ) %>% 
-    #filter(week!=.week) %>% 
-    inner_join(pts.proj, by = c("id", "season", "week")) %>% 
-    select( id, position, week, season, data_src, points, pts.proj ) %>% 
-    mutate( error=points-pts.proj )
+  errors <- readRDS("./data/2018/players_points.rds") %>%
+    mutate( id = as.integer(id) ) %>%
+    #filter(week!=.week) %>%
+    inner_join(pts.proj, by = c("id","week")) %>%
+    select( id, position, week, season=season.x, data_src, points, pts.proj ) %>%
+    mutate( error=0, season=2019 ) 
+  
+  # errors <- points %>%
+  #   mutate( id = as.integer(id) ) %>% 
+  #   filter(week!=.week) %>% 
+  #   inner_join(pts.proj, by = c("id", "season", "week")) %>% 
+  #   select( id, position, week, season, data_src, points, pts.proj ) %>% 
+  #   mutate( error=points-pts.proj )
   
   # visualiza os numeros
   # errors %>%
@@ -58,7 +65,7 @@ simulateGames <- function(.week){
       mutate(id=as.integer(id)) %>% 
       inner_join(mutate(.pts.proj, id=as.integer(id)), by="id") %>% 
       select(-week, -pos, -season) %>% 
-      left_join(.error.dist, by = c("id", "data_src")) %>% glimpse()
+      inner_join(.error.dist, by = c("id", "data_src")) %>% 
       mutate(
         pts.dist = map2(pts.proj, error, function(.pts,.dst) .pts+.dst),
         pts.dist = map(pts.dist, base::sample, size=100, replace=T)
