@@ -5,6 +5,12 @@ library(lubridate)
 library(glue)
 library(ffanalytics)
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
+
+player_ids <- player_ids %>% 
+  mutate(id=as.integer(id),
+         nfl_id=as.integer(nfl_id)) %>% 
+  as_tibble()
+
 source("./R/import/checkFantasyAPI.R")
 source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
