@@ -59,7 +59,6 @@ rmarkdown::render(
   )
 
 hist <- readRDS("./data/simulations_history.rds")
-
 sim %>% 
   mutate(
     week = week,
