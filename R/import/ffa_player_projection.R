@@ -12,9 +12,9 @@ scrapPlayersPredictions <- function(.week) {
   scrap %>% saveRDS(glue("./data/week{.week}_scrap.rds"))
   
   # adiciona scrap da semana no banco de projecoes
-  # wscraps <- readRDS("./data/weeklies_scraps.rds")
-  # wscraps[[.week]] <- scrap
-  # saveRDS(wscraps,"./data/weeklies_scraps.rds")
+  wscraps <- readRDS("./data/weeklies_scraps.rds")
+  wscraps[[.week]] <- scrap
+  saveRDS(wscraps,"./data/weeklies_scraps.rds")
   
   return(scrap)
 }
