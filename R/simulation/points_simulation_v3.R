@@ -30,7 +30,8 @@ simulateGames <- function(.week){
   
   # calcula distribuição do erro
   errors <- points %>%
-    filter(week!=.week) %>% 
+    mutate( id = as.integer(id) ) %>% 
+    #filter(week!=.week) %>% 
     inner_join(pts.proj, by = c("id", "season", "week")) %>% 
     select( id, position, week, season, data_src, points, pts.proj ) %>% 
     mutate( error=points-pts.proj )
@@ -47,17 +48,19 @@ simulateGames <- function(.week){
     select(data_src, id, error) %>% 
     group_by(data_src, id) %>% 
     nest(error) %>% 
-    mutate( error.dist = map(data, function(.data) pull(.data,error)) ) %>% 
+    mutate( error = map(data, function(.data) pull(.data,error)) ) %>% 
     select(-data)
   
   # adicionar projeção e curva de probabilidade
   addPlayerSimulation <- function(.team, .pts.proj, .error.dist){
     .team %>% 
-      inner_join(.pts.proj, by="id") %>% 
+      as_tibble() %>% 
+      mutate(id=as.integer(id)) %>% 
+      inner_join(mutate(.pts.proj, id=as.integer(id)), by="id") %>% 
       select(-week, -pos, -season) %>% 
-      inner_join(.error.dist, by = c("id", "data_src")) %>% 
+      left_join(.error.dist, by = c("id", "data_src")) %>% glimpse()
       mutate(
-        pts.dist = map2(pts.proj, error.dist, function(.pts,.dst) .pts+.dst),
+        pts.dist = map2(pts.proj, error, function(.pts,.dst) .pts+.dst),
         pts.dist = map(pts.dist, base::sample, size=100, replace=T)
       ) %>% 
       group_by(id) %>%
@@ -90,6 +93,7 @@ simulateGames <- function(.week){
   
   simRosterPontuation <- function(.team, .currPoints=FALSE) {
     .team %>%
+      mutate( id = as.integer(id)) %>% 
       filter(rosterSlot != "BN") %>% 
       mutate(
         player.simulation = map(
