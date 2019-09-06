@@ -50,22 +50,17 @@ Win Probability {data-navmenu="Overview"}
 Row
 ------------------
 
-### Amparo Bikers
-```{r}
-winGauge(4,sim.summary)
-```
-
-### Campinas Giants
-```{r}
-winGauge(11,sim.summary)
-```
-
-### Change Robots         
+### Paulinia Robots 
 ```{r}
 winGauge(1,sim.summary)
 ```
 
-### Indaiatuba Riders
+### Sorocaba Wild Mules
+```{r}
+winGauge(2,sim.summary)
+```
+
+### Indaiatuba Riders         
 ```{r}
 winGauge(3,sim.summary)
 ```
@@ -73,9 +68,14 @@ winGauge(3,sim.summary)
 Row
 ------------------
 
-### NJ's Bugre
+### Amparo Bikers
 ```{r}
-winGauge(7,sim.summary)
+winGauge(4,sim.summary)
+```
+
+### Sorocaba Steelers 
+```{r}
+winGauge(5,sim.summary)
 ```
 
 ### Rio Claro Pfeiferians
@@ -83,14 +83,30 @@ winGauge(7,sim.summary)
 winGauge(6,sim.summary)
 ```
 
-### Sorocaba Steelers
+Row
+------------------
+
+### London Knights
 ```{r}
-winGauge(5,sim.summary)
+winGauge(7,sim.summary)
 ```
 
-### Sorocaba Wild Mules 
+### Jersey Boys
 ```{r}
-winGauge(2,sim.summary)
+winGauge(8,sim.summary)
+```
+
+Row
+------------------
+
+### Indaiatuba Blues 
+```{r}
+winGauge(9,sim.summary)
+```
+
+### Campinas Giants
+```{r}
+winGauge(11,sim.summary)
 ```
 
 Week Matchups {data-navmenu="Overview"}
