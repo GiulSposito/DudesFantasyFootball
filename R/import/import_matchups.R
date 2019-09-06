@@ -24,7 +24,7 @@ importMatchups <- function(week, saveToFile=T){
   # processa o json
   matchups <- matchups.json$leagues$matchups[[1]] %>% 
     jsonlite::flatten() %>% 
-    as.tibble()
+    as_tibble()
   
   # para cada um dos times, faz a chamada para pegar os times escalados no matchup
   url.team.matchup <- "http://api.fantasy.nfl.com/v1/league/team/matchup?leagueId={leagueId}&teamId={teamId}&week={week}&authToken={authToken}&format=json"
