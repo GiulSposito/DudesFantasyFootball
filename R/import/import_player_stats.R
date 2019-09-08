@@ -21,7 +21,7 @@ getPlayersPts <- function( .week, .season, .leagueId, .authToken){
     jsonlite::flatten() %>% 
     select(-x.season.season, -x.season.pts) %>% 
     rename(season=x.week.season, week=x.week.week, points=x.week.pts) %>% 
-    as.tibble() %>%
+    as_tibble() %>%
     mutate_at(vars(id, season, week), as.integer) %>% 
     mutate_at(vars(points), as.numeric) %>% 
     mutate( src_id=id ) %>% 
