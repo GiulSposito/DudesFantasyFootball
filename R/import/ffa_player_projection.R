@@ -2,7 +2,7 @@ library(ffanalytics)
 library(glue)
 source("./R/_draft/score_settings.R")
 
-scrapPlayersPredictions <- function(.week, saveToFile=T) {
+scrapPlayersPredictions <- function(.week, .saveToFile=T) {
   # # faz o scraping de projeção dos sites
   scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
                           src= c("CBS", "ESPN", "FantasyData", "FantasyPros",
@@ -12,7 +12,7 @@ scrapPlayersPredictions <- function(.week, saveToFile=T) {
                           week = .week)
   
   # salva arquivos temporariamente
-  if(saveToFile){
+  if(.saveToFile){
     # salva scrap da semana
     scrap %>% saveRDS(glue("./data/week{.week}_scrap.rds"))
     

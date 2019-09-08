@@ -4,7 +4,7 @@ library(httr)
 library(jsonlite)
 library(glue)
 
-importMatchups <- function(week, saveToFile=T){
+importMatchups <- function(.week, .saveToFile=T){
   
   # lendo liga e token do yaml (para n?o versionar o access token)
   config <- yaml.load_file("./config/config.yml")
@@ -12,7 +12,7 @@ importMatchups <- function(week, saveToFile=T){
   authToken <- config$authToken
   
   # obtem os matchups
-  url.matchups <- "http://api.fantasy.nfl.com/v1/league/matchups?leagueId={leagueId}&week={week}&format=json&authToken={authToken}"
+  url.matchups <- "http://api.fantasy.nfl.com/v1/league/matchups?leagueId={leagueId}&week={.week}&format=json&authToken={authToken}"
   
   # faz a chamada na api
   httr::GET(glue(url.matchups)) -> resp
@@ -27,7 +27,7 @@ importMatchups <- function(week, saveToFile=T){
     as_tibble()
   
   # para cada um dos times, faz a chamada para pegar os times escalados no matchup
-  url.team.matchup <- "http://api.fantasy.nfl.com/v1/league/team/matchup?leagueId={leagueId}&teamId={teamId}&week={week}&authToken={authToken}&format=json"
+  url.team.matchup <- "http://api.fantasy.nfl.com/v1/league/team/matchup?leagueId={leagueId}&teamId={teamId}&week={.week}&authToken={authToken}&format=json"
   
   matchup.teams.json <- matchups$awayTeam.id %>% 
     map(function(teamId, .url){
@@ -38,7 +38,7 @@ importMatchups <- function(week, saveToFile=T){
     },
     .url=url.team.matchup)
   
-  if (saveToFile) saveRDS(matchup.teams.json, glue("./data/week{week}_matchups_json.rds"))
+  if (.saveToFile) saveRDS(matchup.teams.json, glue("./data/week{.week}_matchups_json.rds"))
 
   return(matchup.teams.json)  
 }

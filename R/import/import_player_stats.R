@@ -28,23 +28,33 @@ getPlayersPts <- function( .week, .season, .leagueId, .authToken){
     return()
 }
 
-config <- yaml.load_file("./config/config.yml")
-leagueId  <- config$leagueId
-authToken <- config$authToken
-season <- 2019
-weeks <- 1
+importPlayerStatistics <- function(.weeks, .saveToFile=T){
+  
+  # api basic access
+  config <- yaml.load_file("./config/config.yml")
+  leagueId  <- config$leagueId
+  authToken <- config$authToken
+  season <- config$season
 
-weeks %>% 
-  map(
-    getPlayersPts,
-    .season   = season,
-    .leagueId = leagueId,
-    .authToken = authToken
-  ) %>% 
-  bind_rows() -> player.points
+  # for each week.. 
+  player.points <- .weeks %>% 
+    map(
+      getPlayersPts,
+      .season   = season,
+      .leagueId = leagueId,
+      .authToken = authToken
+    ) %>% 
+    bind_rows()
+  
+  player_points_proj <-  player.points %>% 
+    inner_join(player_ids, by=c("id"="nfl_id")) %>% 
+    as_tibble()
+  
+  if (.saveToFile) saveRDS(player_points_proj, "./data/players_points.rds")
+  
+  return(player_points_proj)
+}
 
-player_ids %>% 
-  mutate(nfl_id=as.integer(nfl_id)) %>% 
-  inner_join(player.points, by=c("nfl_id"="id")) %>% 
-  as_tibble() %>% 
-  saveRDS("./data/players_points.rds")
+
+
+

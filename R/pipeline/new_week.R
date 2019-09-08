@@ -1,36 +1,41 @@
-library(knitr)
-library(markdown)
-library(flexdashboard)
+library(tidyverse)
 library(lubridate)
 library(glue)
 library(ffanalytics)
-load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 
+# parametros de execucao
+week <- 2
+prefix <- "preTNF"
+
+# check Fantasy API
+source("./R/import/checkFantasyAPI.R")
+if(!checkFantasyAPI(week)) stop("Unable to access Fantasy API!")
+
+# carregando tabelas de "de para" correcao do ID de jogadores
+load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 player_ids <- player_ids %>% 
   mutate(id=as.integer(id),
          nfl_id=as.integer(nfl_id)) %>% 
   as_tibble()
 
-source("./R/import/checkFantasyAPI.R")
-source("./R/import/import_matchups.R")
-source("./R/simulation/points_simulation_v3.R")
-
-week <- 1
-prefix <- "preTNF"
-
-checkFantasyAPI(week)
 
 # import matchups
-importMatchups(week) -> matchups
+source("./R/import/import_matchups.R")
+matchups <- importMatchups(week, .saveToFile = F)
+saveRDS(matchups, glue("./data/week{week}_matchups_json.rds"))
+
 
 # import player statistics
 source("./R/import/import_player_stats.R")
+player_stats <- importPlayerStatistics(1:week, .saveToFile = F)
+saveRDS(player_stats, "./data/players_points.rds")
 
 # import predicions, calc projections and add Teams
 source("./R/import/ffa_player_projection.R")
 scraps <- scrapPlayersPredictions(week)
 projs  <- calcPlayersProjections(scraps)
 
+# cola informacao de times as projecoes de pontos dos jogadores
 projs.team <- projs %>% 
   inner_join(mutate(player_ids, id=as.integer(id)), by="id") %>% 
   addTeams(matchups, week)
@@ -48,7 +53,8 @@ rmarkdown::render(
 source("./R/simulation/players_projections.R")
 
 # simula as partidas
-simulateGames(week) -> sim
+source("./R/simulation/points_simulation_v3.R")
+sim <- simulateGames(week)
 
 # constroi o relatório
 rmarkdown::render(
