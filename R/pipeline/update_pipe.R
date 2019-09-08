@@ -1,6 +1,4 @@
-library(knitr)
-library(markdown)
-library(flexdashboard)
+library(tidyverse)
 library(lubridate)
 library(glue)
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
@@ -16,7 +14,7 @@ source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
 week <- 1
-prefix <- "posTNF"
+prefix <- "sunday1stRound"
 
 checkFantasyAPI(week)
 
