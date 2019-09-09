@@ -15,7 +15,7 @@ source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
 week <- 1
-prefix <- "sunday2stRound"
+prefix <- "PreMNF"
 
 checkFantasyAPI(week)
 
@@ -30,7 +30,7 @@ importMatchups(week) -> matchups
 #   params = list(week=week)
 # )
 
-simulateGames(week) -> sim
+sim <- simulateGames(week)
 
 rmarkdown::render(
     input = "./R/reports/dudes_simulation_v2.Rmd",
