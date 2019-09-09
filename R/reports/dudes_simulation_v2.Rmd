@@ -170,7 +170,7 @@ sim %>%
   geom_vline(aes(xintercept=0), linetype=1, color="black", alpha=.5) +
   geom_vline(aes(xintercept=current.score.diff),
              linetype=2, color="red") +
-  facet_grid(rows=vars(game), switch = "x") +
+  facet_grid(rows=vars(game), switch = "x", scales="free") +
   theme_minimal() +
   theme( legend.position = "right" )
 
