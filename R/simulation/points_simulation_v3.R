@@ -4,12 +4,12 @@ source("./R/tidy/matchups.R")
 
 simulateGames <- function(.week){
   # retorna um summary como um data.frame
-  summaryAsTibble <- . %>% summary() %>% as.list() %>% as.tibble()
+  summaryAsTibble <- . %>% summary() %>% as.list() %>% as_tibble()
   
   quantileAsTibble <- function(x, probs){
     quantile(x, probs, na.rm = T) %>% 
       as.list() %>% 
-      as.tibble() %>% 
+      as_tibble() %>% 
       purrr::set_names(c("low","med","high")) %>% 
       return()
   }
