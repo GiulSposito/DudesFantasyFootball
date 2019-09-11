@@ -6,7 +6,7 @@ library(flexdashboard)
 
 # parametros de execucao
 week <- 2
-prefix <- "preWaivers"
+prefix <- "posWaivers"
 
 # check Fantasy API
 source("./R/import/checkFantasyAPI.R")
