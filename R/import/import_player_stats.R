@@ -47,6 +47,8 @@ importPlayerStatistics <- function(.weeks, .saveToFile=T){
     bind_rows()
   
   player_points_proj <-  player.points %>% 
+    # rename( nfl_id = id ) %>% 
+    # inner_join(player_ids, by=c("nfl_id"="nfl_id")) %>% 
     inner_join(player_ids, by=c("id"="nfl_id")) %>% 
     as_tibble()
   
