@@ -16,11 +16,12 @@ getPlayersPts <- function( .week, .season, .leagueId, .authToken){
     leagues %$%
     players %>% 
     .[[1]] %>% 
-    select(id, firstName, lastName, position, teamAbbr, fantasyPts) %>% 
-    rename(team=teamAbbr, x=fantasyPts) %>% 
-    jsonlite::flatten() %>% 
-    select(-x.season.season, -x.season.pts) %>% 
-    rename(season=x.week.season, week=x.week.week, points=x.week.pts) %>% 
+    # select(id, firstName, lastName, position, teamAbbr, fantasyPts) %>%
+    select( -weekStats, -seasonStats ) %>% 
+    rename(team=teamAbbr) %>% #, x=fantasyPts) %>% 
+    jsonlite::flatten()  %>%  
+    # select(-x.season.season, -x.season.pts) %>% 
+    mutate(season=fantasyPts.week.season, week=fantasyPts.week.week, points=fantasyPts.week.pts) %>% 
     as_tibble() %>%
     mutate_at(vars(id, season, week), as.integer) %>% 
     mutate_at(vars(points), as.numeric) %>% 
@@ -47,9 +48,9 @@ importPlayerStatistics <- function(.weeks, .saveToFile=T){
     bind_rows()
   
   player_points_proj <-  player.points %>% 
-    # rename( nfl_id = id ) %>% 
-    # inner_join(player_ids, by=c("nfl_id"="nfl_id")) %>% 
-    inner_join(player_ids, by=c("id"="nfl_id")) %>% 
+    rename( nfl_id = id ) %>%
+    inner_join(player_ids, by=c("nfl_id"="nfl_id")) %>%
+    # inner_join(player_ids, by=c("id"="nfl_id")) %>% 
     as_tibble()
   
   if (.saveToFile) saveRDS(player_points_proj, "./data/players_points.rds")

@@ -6,7 +6,7 @@ library(flexdashboard)
 
 # parametros de execucao
 week <- 2
-prefix <- "posWaivers"
+prefix <- "preTNF"
 
 # check Fantasy API
 source("./R/import/checkFantasyAPI.R")
