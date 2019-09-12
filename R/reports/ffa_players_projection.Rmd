@@ -74,8 +74,8 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
                     color=fantasy.team), size=1) +
     # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
     #                y=pts), color="black", alpha=.05) +
-    geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
-                   y = pts.mean), color="black", alpha=.5) +
+    # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
+    #                y = pts.mean), color="black", alpha=.5) +
     # geom_pointrange(aes(x=reorder(pos_rank,desc(pos_rank)),
     #                     y=pts.mean,
     #                     ymin=pts.mean-pts.sd,
