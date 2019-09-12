@@ -17,6 +17,7 @@ load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 player_ids <- player_ids %>% 
   mutate(id=as.integer(id),
          nfl_id=as.integer(nfl_id)) %>% 
+  mutate(nfl_id = ifelse(id==14600,2563132, nfl_id)) %>%  # Joey Slye Fix
   as_tibble()
 
 
