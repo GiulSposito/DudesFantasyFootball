@@ -6,7 +6,7 @@ scrapPlayersPredictions <- function(.week, .saveToFile=T) {
   # # faz o scraping de projeção dos sites
   scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
                           src= c("CBS", "ESPN", "FantasyData", "FantasyPros",
-                                 "FantasySharks", "FFToday", "FleaFlicker", "NumberFire", # "Yahoo",
+                                 "FantasySharks", "FFToday", "FleaFlicker", "NumberFire", "Yahoo",
                                  "FantasyFootballNerd", "NFL", "RTSports", "Walterfootball"),
                           season = 2019,
                           week = .week)
