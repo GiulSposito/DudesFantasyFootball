@@ -7,6 +7,10 @@ scraps[["K"]] %>%
   mutate(id=as.integer(id)) %>%
   glimpse()
 
+scraps[["K"]] %>% 
+  filter(id==14600) %>% 
+  glimpse()
+
 # PLAYER ID 
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 player_ids <- player_ids %>% 
@@ -16,9 +20,13 @@ player_ids <- player_ids %>%
   as_tibble()
 
 player_ids %>%
-  filter(numfire_id=="joey-slye") %>% 
+  filter(numfire_id=="robbie-gould") %>% 
   glimpse()
   
+player_ids %>%
+  filter(numfire_id=="joey-slye") %>% 
+  glimpse()
+
 # FANTASY
 matchups <- readRDS("./data/week2_matchups_json.rds")
 
