@@ -16,7 +16,7 @@ if(!checkFantasyAPI(week)) stop("Unable to access Fantasy API!")
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 player_ids <- player_ids %>% 
   mutate( 
-    id     =a s.integer(id), 
+    id     = as.integer(id), 
     nfl_id = as.integer(nfl_id)) %>%
   # joey slye fixies
   mutate(
