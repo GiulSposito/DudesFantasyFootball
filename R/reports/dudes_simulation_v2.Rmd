@@ -21,7 +21,7 @@ week <- params$week
 sim <- readRDS(glue("../../data/week{week}_simulation_v3.rds")) 
 
 sim.summary <- tibble(
-  team.id   = c(sim$home.teamId,   sim$away.teamId),
+  team.id   = c(sim$home.id,   sim$away.id),
   team.name = c(sim$home.name,     sim$away.name),
   pts.summ  = c(sim$home.points,   sim$away.points),
   points    = c(sim$home.sim,      sim$away.sim),

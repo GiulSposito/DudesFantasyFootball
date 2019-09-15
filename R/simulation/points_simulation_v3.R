@@ -18,8 +18,8 @@ simulateGames <- function(.week){
   matchups <- readRDS(glue("./data/week{.week}_matchups_json.rds")) %>% 
     extractTeams() %>% 
     mutate( 
-      home.roster = map(home.roster, nfl2ffa, .ids=.players_id), # to ffa ids
-      away.roster = map(away.roster, nfl2ffa, .ids=.players_id)  # to ffa ids
+      home.roster = map(home.players, nfl2ffa, .ids=.players_id), # to ffa ids
+      away.roster = map(away.players, nfl2ffa, .ids=.players_id)  # to ffa ids
     )
   
   # historic fantasy points (nfl)
