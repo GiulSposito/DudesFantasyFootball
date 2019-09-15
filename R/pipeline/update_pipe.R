@@ -2,11 +2,20 @@ library(tidyverse)
 library(lubridate)
 library(flexdashboard)
 library(glue)
-load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 
+
+# carregando tabelas de "de para" correcao do ID de jogadores
+load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 player_ids <- player_ids %>% 
-  mutate(id=as.integer(id),
-         nfl_id=as.integer(nfl_id)) %>% 
+  mutate( 
+    id     = as.integer(id), 
+    nfl_id = as.integer(nfl_id)) %>%
+  # joey slye fixies
+  mutate(
+    nfl_id        = ifelse(id==14600, 2563132,     nfl_id),
+    fantasypro_id = ifelse(id==14600, "joey-slye", fantasypro_id),
+    fftoday_id    = ifelse(id==14600, "16763",     fftoday_id),
+  ) %>%  
   as_tibble()
 
 
@@ -14,21 +23,12 @@ source("./R/import/checkFantasyAPI.R")
 source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
-week <- 1
-prefix <- "PreMNF"
+week <- 2
+prefix <- "Sunday1stRound"
 
 checkFantasyAPI(week)
 
 importMatchups(week) -> matchups
-
-# # import predicions, calc projections and add Teams
-# source("./R/import/ffa_player_projection.R")
-# rmarkdown::render(
-#   input = "./R/reports/ffa_players_projection.Rmd",
-#   output_file = glue("../../public/ffa_players_projection_week{week}.html"),
-#   output_format = "flex_dashboard",
-#   params = list(week=week)
-# )
 
 sim <- simulateGames(week)
 
