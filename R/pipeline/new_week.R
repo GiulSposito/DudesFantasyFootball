@@ -46,7 +46,8 @@ projs  <- calcPlayersProjections(scraps)
 # cola informacao de times as projecoes de pontos dos jogadores
 projs.team <- projs %>% 
   inner_join(mutate(player_ids, id=as.integer(id)), by="id") %>% 
-  addTeams(matchups, week)
+  addTeams(matchups, week, F)
+saveRDS(projs.team, glue("./data/week{week}_players_projections.rds"))
 
 ## projection report
 rmarkdown::render(
