@@ -289,7 +289,7 @@ plotPlayersDistribution <- function(.roster, .slotLevels=slotLevels, .posLevels=
     unnest(pts.range) %>% 
     ggplot(aes(x=pts.range, y=reorder(name, -display.order))) +
     #geom_violin(aes(y=pts.range, x=name, fill=position), alpha=.5) +
-    stat_intervalh(.width = c(seq(.05,.95,.2))) +
+    stat_intervalh(.width = c(seq(.05,.95,.4))) +
     scale_color_brewer()+
     #geom_point(alpha=.1) +
     geom_label(aes(x=points, label=round(points,1)), color="red",
