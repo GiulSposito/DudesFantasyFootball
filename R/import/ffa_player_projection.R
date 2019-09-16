@@ -61,7 +61,7 @@ calcPlayersProjections <- function(.week_scrap, .scoring_rules = dudes.score.set
 }
 
 
-addTeams <- function(.projections, .weekMatchups, .week){
+addTeams <- function(.projections, .weekMatchups, .week, .saveFile=T){
   # matchups and rosters (nfl)
   source("./R/tidy/matchups.R")
   teams <- .weekMatchups %>% 
@@ -97,7 +97,7 @@ addTeams <- function(.projections, .weekMatchups, .week){
                                TRUE ~ fantasy.team)
     ) -> week.projections
   
-  saveRDS(week.projections, glue("./data/week{.week}_players_projections.rds"))
+  if (.saveFile) saveRDS(week.projections, glue("./data/week{.week}_players_projections.rds"))
   return(week.projections)
 }
 
