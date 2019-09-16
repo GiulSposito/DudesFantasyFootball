@@ -67,8 +67,8 @@ addTeams <- function(.projections, .weekMatchups, .week){
   teams <- .weekMatchups %>% 
     extractTeams() %>% 
     mutate( 
-      home.roster = map(home.roster, nfl2ffa, .ids=.players_id), # to ffa ids
-      away.roster = map(away.roster, nfl2ffa, .ids=.players_id)  # to ffa ids
+      home.roster = map(home.players, nfl2ffa, .ids=.players_id), # to ffa ids
+      away.roster = map(away.players, nfl2ffa, .ids=.players_id)  # to ffa ids
     )
   
   # tydi teams
@@ -86,7 +86,7 @@ addTeams <- function(.projections, .weekMatchups, .week){
     ) %>% 
     bind_rows() %>% 
     unnest(roster) %>% 
-    select(id, fantasy.team = teamName) -> players.team
+    select(id=id1, fantasy.team = teamName) -> players.team
   
   players.team %>%
     mutate(id=as.integer(id)) %>% 
