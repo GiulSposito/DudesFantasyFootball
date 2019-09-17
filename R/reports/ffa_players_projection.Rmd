@@ -108,7 +108,7 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
   
 }
 
-plotProjections(projections, "QB", "Quaterbacks", "week 9", 20)
+plotProjections(projections, "QB", "Quaterbacks", "week 9", 30)
 
 ```
 
@@ -117,7 +117,7 @@ WR {data-navmenu="ffanalytics"}
 
 ```{r wr, fig.width=10}
 
-plotProjections(projections, "WR", "Wide Receivers", "week 9",50)
+plotProjections(projections, "WR", "Wide Receivers", "week 9",60)
 
 ```
 
@@ -126,7 +126,7 @@ RB {data-navmenu="ffanalytics"}
 
 ```{r rb, fig.width=10}
 
-plotProjections(projections, "RB", "Running Backs", "week 9",50)
+plotProjections(projections, "RB", "Running Backs", "week 9",60)
 
 ```
 
@@ -135,7 +135,7 @@ TE {data-navmenu="ffanalytics"}
 
 ```{r te, fig.width=10}
 
-plotProjections(projections, "TE", "Tight Ends", "week 9",20)
+plotProjections(projections, "TE", "Tight Ends", "week 9",25)
 
 ```
 
@@ -145,7 +145,7 @@ K {data-navmenu="ffanalytics"}
 
 ```{r k, fig.width=10}
 
-plotProjections(projections, "K", "Kickers", "week 9",20)
+plotProjections(projections, "K", "Kickers", "week 9",25)
 
 ```
 
