@@ -86,7 +86,7 @@ addTeams <- function(.projections, .weekMatchups, .week, .saveFile=T){
     ) %>% 
     bind_rows() %>% 
     unnest(roster) %>% 
-    select(id=id1, fantasy.team = teamName) -> players.team
+    select(id=id1, fantasy.team = teamName, injuryGameStatus) -> players.team
   
   players.team %>%
     mutate(id=as.integer(id)) %>% 
