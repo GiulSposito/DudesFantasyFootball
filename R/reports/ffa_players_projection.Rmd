@@ -23,12 +23,20 @@ week <- params$week
 
 # pega projecoes cria algumas colunas auxiliares
 projections <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
+  mutate(injuryCod = str_extract_all(injuryGameStatus, "[A-Z]")) %>% 
+  mutate(injuryCod = map_chr(injuryCod, paste, sep="", collapse="")) %>% 
   mutate( full_name = paste0(first_name, " ", last_name),
           fantasy.team = as.factor(fantasy.team) ) %>%
+  mutate( 
+    full_name = case_when(
+      !is.na(injuryGameStatus) ~ paste0(full_name, " (", injuryCod, ")"),
+       is.na(injuryGameStatus) ~ full_name
+    )
+  ) %>% 
   group_by( id ) %>% 
   mutate( r_pos = max(ceiling, points) ) %>% # posicao do label
   ungroup() %>% 
-  filter( !(team %in% c("FA","FA*")) ) # havia lixo em alguns
+  filter( !(team %in% c("FA","FA*")) )  # havia lixo em alguns
 
 
 readRDS("../../data/players_points.rds") %>%
