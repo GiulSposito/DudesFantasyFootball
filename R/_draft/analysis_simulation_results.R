@@ -40,13 +40,13 @@ sim.pts.eval <- bind_rows(
   ) %>% 
   set_names(c("team","real.points", "pred.points", "pred.min", "pred.max"))
 
-g <- sim.pts.eval %>% 
+sim.pts.eval %>% 
   ggplot(aes(x=real.points, y=pred.points, color=team)) +
   geom_point(size=2) +
   geom_errorbar(aes(ymin=pred.min, ymax=pred.max), size=1) +
   geom_abline(intercept=c(0,0), slope=1, color="darkgrey", size=1, linetype="dotted") +
-  ylim(75,150) +
-  xlim(75,150) +
+  ylim(70,160) +
+  xlim(70,160) +
   ggtitle("Pontuação Real x Pontuacao Previsa", subtitle = "90% CI") +
   theme_minimal()
 
@@ -55,4 +55,5 @@ ggplotly(g)
 
 sim.pts.eval %>% 
   select(team, real.points, pred.min, pred.points, pred.max) %>% 
+  arrange(desc(real.points)) %>% 
   View()
