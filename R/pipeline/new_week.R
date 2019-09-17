@@ -43,10 +43,20 @@ source("./R/import/ffa_player_projection.R")
 scraps <- scrapPlayersPredictions(week)
 projs  <- calcPlayersProjections(scraps)
 
+# tipos de status que zera a pontuacao
+injuryStatus <- c("Suspended","Injured Reserve","Not With Team")
+
 # cola informacao de times as projecoes de pontos dos jogadores
 projs.team <- projs %>% 
   inner_join(mutate(player_ids, id=as.integer(id)), by="id") %>% 
-  addTeams(matchups, week, F)
+  addTeams(matchups, week, F) %>% 
+  ## Zera Estatisticas de quem estah machucado
+  mutate(
+    points  = ifelse(injuryGameStatus %in% injuryStatus, 0, points),
+    floor   = ifelse(injuryGameStatus %in% injuryStatus, 0, floor),
+    ceiling = ifelse(injuryGameStatus %in% injuryStatus, 0, ceiling),
+    sd_pts  = ifelse(injuryGameStatus %in% injuryStatus, 0, sd_pts),
+  )
 saveRDS(projs.team, glue("./data/week{week}_players_projections.rds"))
 
 ## projection report
