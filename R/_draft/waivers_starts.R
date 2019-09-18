@@ -24,8 +24,7 @@ starters <- players %>%
   top_n(1, floor) %>% 
   bind_rows(starters,.)
 
-starters %>% 
-  filter(position!="DST")
+starters 
 
 ## bench
 tibble(
