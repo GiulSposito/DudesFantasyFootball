@@ -1,11 +1,14 @@
 library(tidyverse)
+library(glue)
 
-sim <- readRDS("./data/week2_simulation_v3.rds")
+cur.week <- 3
+
+sim <- readRDS(glue("./data/week{cur.week}_simulation_v3.rds"))
 
 proj <- readRDS("./data/points_projection.rds")
 pts  <- readRDS("./data/players_points.rds")
 
-cur.week <- 2
+
 
 dtf <- pts %>% 
   #rename(nfl_id=id.y) %>% 
@@ -19,17 +22,22 @@ dtf %>%
   geom_point(aes(x=pts.proj, y=points, color=pos)) +
   facet_grid(pos~data_src, scales = "free") +
   geom_abline(intercept=0, slope=1, linetype="dashed") + 
-  ggtitle("Week 1 - Projection", subtitle = "By Position and Source Site") +
+  ggtitle(glue("Weeks 1 e 2 - Projection"), subtitle = "By Position and Source Site") +
   xlim(0,30) + ylim(0,30)
+
+ggsave("./public/img/week2_players_proj_points.png", device = "png", 
+       units = "in", width = 18.5, height = 10.7, dpi = 70 )
 
 dtf %>% 
   ggplot() +
   geom_density(aes(x=error, fill=pos)) +
   facet_grid(pos~data_src, scales = "free") +
   geom_vline(xintercept = 0, color="black", linetype="dashed") +
-  ggtitle("Week 1 - Error Distribution", subtitle = "By Position and Source Site") +
+  ggtitle("Week 1 e 2 - Error Distribution", subtitle = "By Position and Source Site") +
   theme_minimal()
 
+ggsave("./public/img/week2_projection_errors.png", device = "png", 
+       units = "in", width = 18.5, height = 10.7, dpi = 70 )
 
 dtf %>% 
   group_by(data_src, pos) %>% 
