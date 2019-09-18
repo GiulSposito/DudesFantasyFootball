@@ -29,29 +29,6 @@ scrapPlayersPredictions <- function(.week, .saveToFile=T) {
 calcPlayersProjections <- function(.week_scrap, .scoring_rules = dudes.score.settings) {
   players.proj <- projections_table(.week_scrap, scoring_rules = .scoring_rules) 
   
-  # players.proj %>% 
-  #   filter(avg_type=="weighted") %>%
-  #   select(pos,id,avg_type ,pos_rank, tier) %>% 
-  #   distinct() %>% 
-  #   arrange(id) -> kickers.attrib
-  # 
-  # .week_scrap$K %>% 
-  #   as.tibble() %>% 
-  #   select(id, site_pts) %>% 
-  #   group_by(id) %>% 
-  #   summarise(
-  #     points   = median(site_pts, na.rm = T),
-  #     drop_off = NA,
-  #     sd_pts   = sd(site_pts, na.rm = T),
-  #     floor    = min(site_pts, na.rm = T),
-  #     ceiling  = max(site_pts, na.rm = T)
-  #   ) %>% 
-  #   arrange(id) -> kickers.points
-  # 
-  # kickers.attrib %>% 
-  #   inner_join(kickers.points, by = "id") %>% 
-  # bind_rows(players.proj %>% filter(avg_type=="weighted",pos!="K")) %>% 
-  
   players.proj %>% 
     filter(avg_type=="weighted") %>%
     add_player_info() %>% 
