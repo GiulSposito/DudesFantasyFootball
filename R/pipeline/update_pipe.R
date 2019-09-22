@@ -24,7 +24,7 @@ source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
 week <- 3
-prefix <- "PosTNF"
+prefix <- "Sunday1stRound"
 
 checkFantasyAPI(week)
 
