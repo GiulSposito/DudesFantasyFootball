@@ -1,6 +1,6 @@
 library(tidyverse)
 
-players <- readRDS("./data/week3_players_projections.rds") %>% 
+players <- readRDS("./data/week4_players_projections.rds") %>% 
   filter(
     fantasy.team %in% c("*FreeAgent","Bikers"),
     !(team %in% c("FA", "FA*"))
@@ -35,6 +35,6 @@ tibble(
   map_df(function(.x, .players){
     .players %>% 
       filter(position==.x$pos) %>% 
-      top_n(.x$qtd, floor)
+      top_n(.x$qtd, ceiling)
   }, .players = anti_join(players, starters) )
 
