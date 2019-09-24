@@ -1,35 +1,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>simulation - It&#39;s Football, Dudes!</title>
-    <link>https://dudesfootball.netlify.com/tags/simulation/</link>
+    <link>/tags/simulation/</link>
     <description>Recent content in simulation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 24 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://dudesfootball.netlify.com/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 02] Simulation Evaluation</title>
+      <link>/post/week-2-simulation-evaluation/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week-2-simulation-evaluation/</guid>
+      <description> Evaluation Matchup Winner Accuracy: 60%
+Players Points vs Projection Projection Error Distribution] Matchups Winner Predictions Score Prediction Chart Score Prediction Table </description>
+    </item><item>
       <title>[Week 02] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week02/</link>
+      <link>/post/week02/</link>
       <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week02/</guid>
+      <guid>/post/week02/</guid>
       <description> Projections  Individual Players Projections  Simulations  Pos-SNF Pre-SNF Sunday 1st Round Pos-TNF Pre-TNF  </description>
     </item><item>
       <title>[Week 01] Simulation Evaluation</title>
-      <link>https://dudesfootball.netlify.com/post/week01_eval/</link>
+      <link>/post/week01_eval/</link>
       <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week01_eval/</guid>
+      <guid>/post/week01_eval/</guid>
       <description> Evaluation Matchup Winner Accuracy: 80%
 Players Points vs Projection Projection Error Distribution] Matchups Winner Predictions Score Prediction Chart Score Prediction Table </description>
-    </item><item>
-      <title>[Week 01] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</link>
-      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>

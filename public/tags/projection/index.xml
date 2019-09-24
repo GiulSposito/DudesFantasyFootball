@@ -1,34 +1,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>projection - It&#39;s Football, Dudes!</title>
-    <link>https://dudesfootball.netlify.com/tags/projection/</link>
+    <link>/tags/projection/</link>
     <description>Recent content in projection on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 18 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://dudesfootball.netlify.com/tags/projection/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/projection/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 04] Players Projection and Matchups Simulation</title>
+      <link>/post/week04/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week04/</guid>
+      <description>Projections  Individual Players Projections  asdfadsasdv</description>
+    </item><item>
       <title>[Week 03] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week03/</link>
+      <link>/post/week03/</link>
       <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week03/</guid>
+      <guid>/post/week03/</guid>
       <description> Projections  Individual Players Projections  Simulations  Pos-SNF Pre-SNF Sunday 1st Round Pos-TNF Pre-TNF  </description>
     </item><item>
       <title>[Week 02] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week02/</link>
+      <link>/post/week02/</link>
       <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week02/</guid>
+      <guid>/post/week02/</guid>
       <description> Projections  Individual Players Projections  Simulations  Pos-SNF Pre-SNF Sunday 1st Round Pos-TNF Pre-TNF  </description>
-    </item><item>
-      <title>[Week 01] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</link>
-      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
