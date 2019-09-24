@@ -8,13 +8,11 @@ sim <- readRDS(glue("./data/week{cur.week}_simulation_v3.rds"))
 proj <- readRDS("./data/points_projection.rds")
 pts  <- readRDS("./data/players_points.rds")
 
-
-
 dtf <- pts %>% 
   #rename(nfl_id=id.y) %>% 
   inner_join(proj, by=c("id"="id", "week", "season"))  %>% 
   select(id, nfl_id, season, week, pos, data_src, pts.proj, points )  %>% 
-  filter(week!=cur.week) %>% 
+  #filter(week<cur.week) %>% 
   mutate(error=points-pts.proj)
 
 dtf %>% 
@@ -25,7 +23,7 @@ dtf %>%
   ggtitle(glue("Weeks 1 e 2 - Projection"), subtitle = "By Position and Source Site") +
   xlim(0,30) + ylim(0,30)
 
-ggsave("./public/img/week2_players_proj_points.png", device = "png", 
+ggsave("./public/img/week3_players_proj_points.png", device = "png", 
        units = "in", width = 18.5, height = 10.7, dpi = 70 )
 
 dtf %>% 
@@ -36,7 +34,7 @@ dtf %>%
   ggtitle("Week 1 e 2 - Error Distribution", subtitle = "By Position and Source Site") +
   theme_minimal()
 
-ggsave("./public/img/week2_projection_errors.png", device = "png", 
+ggsave("./public/img/week3_projection_errors.png", device = "png", 
        units = "in", width = 18.5, height = 10.7, dpi = 70 )
 
 dtf %>% 

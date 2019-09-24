@@ -3,6 +3,11 @@ library(lubridate)
 library(flexdashboard)
 library(glue)
 
+week <- 3
+prefix <- "final"
+
+source("./R/import/checkFantasyAPI.R")
+checkFantasyAPI(week)
 
 # carregando tabelas de "de para" correcao do ID de jogadores
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
@@ -19,14 +24,9 @@ player_ids <- player_ids %>%
   as_tibble()
 
 
-source("./R/import/checkFantasyAPI.R")
 source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
-week <- 3
-prefix <- "PosSNF"
-
-checkFantasyAPI(week)
 
 importMatchups(week) -> matchups
 
