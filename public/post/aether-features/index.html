@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Aether Features &middot; It&#39;s Football, Dudes!</title>
+  <meta name="description" content="Hugo combined with the Aether theme turns easy to write markdown into powerful web pages.  KaTeX, Highlight.js, and Hugo provides the ability to create mathmatical symobols, equations, highlighted code, tables, lists, and much more." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  
+  
+  <link href="/css/concated.min.css" rel="stylesheet">
+  
+  <style>
+    body {
+      background: #ecedef url("/img/wilson_background_w.jpg") repeat;
+    }
+  </style>
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <h1 class="nav-header"><a href="/" class="nav-text">It&#39;s Football, Dudes! Fantasy League</a></h1>
+  <div class="hamburger-menu">
+    <button onclick="hamburgerMenuPressed.call(this)" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
+    <ul id="menu" class="hamburger-menu-overlay">
+      <li><a href="/" class="hamburger-menu-overlay-link">Home</a></li>
+      <li><a href="/post/trophy-room/it-s-fantasy-league-trophy-room/" class="hamburger-menu-overlay-link">It&#39;s Fantasy League Trophy Room</a></li>
+      <li><a href="/categories/development" class="hamburger-menu-overlay-link">Development</a></li><li><a href="/categories/features" class="hamburger-menu-overlay-link">Features</a></li><li><a href="/categories/golang" class="hamburger-menu-overlay-link">Golang</a></li><li><a href="/categories/r" class="hamburger-menu-overlay-link">R</a></li><li><a href="/categories/web" class="hamburger-menu-overlay-link">Web</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">Aether Features</h1>
+          <p class="post-date">Posted <time datetime="2018-12-19">Dec 19, 2018</time></p>
+        </header>
+        
+        <picture class="post-figure">
+          
+          
+          <source srcset="/post/aether-features/mdd-iphone_hu84a3e811f2069d8ee93a6de645aedba9_796307_800x0_resize_q75_lanczos.jpg">
+          <img src="/post/aether-features/mdd-iphone_hu84a3e811f2069d8ee93a6de645aedba9_796307_800x0_resize_q75_lanczos.jpg" >
+        </picture>
+        
+        
+
+<p>Hugo combined with the Aether theme turns easy to write markdown into powerful web pages.  KaTeX, Highlight.js, and Hugo provides the ability to create mathmatical symobols, equations, highlighted code, tables, lists, and much more.</p>
+
+<p>For each feature below, the first line is the markdown and the second line is the result after Hugo, KaTeX, and Highlight.js process the markdown.  You can find many more features in the Hugo documentation.</p>
+
+<h2 id="latex-style-math-typsetting-with-katex">LaTeX style math typsetting with KaTeX</h2>
+
+<pre><code class="language-md">{{&lt; raw &gt;}}
+\[u(t) = K_p e(t) + K_i \int_{0}^{t} e(\tau) d\tau + K_d \frac{de(t)}{dt} \]
+{{&lt; /raw &gt;}}
+</code></pre>
+
+
+\[u(t) = K_p e(t) + K_i \int_{0}^{t} e(\tau) d\tau + K_d \frac{de(t)}{dt} \]
+
+
+<h2 id="code-supports-many-programming-languages-and-formats">Code (Supports many programming languages and formats)</h2>
+
+<pre><code class="language-md">```javascript
+var s = &quot;JavaScript syntax highlighting&quot;;
+alert(s);
+```
+</code></pre>
+
+<pre><code class="language-javascript">var s = &quot;JavaScript syntax highlighting&quot;;
+alert(s);
+</code></pre>
+
+<h2 id="inline-code">Inline code</h2>
+
+<pre><code class="language-md">Here is `var s = &quot;Hello World&quot;` inline code
+</code></pre>
+
+<p>Here is <code>var s = &quot;Hello World&quot;</code> inline code</p>
+
+<h2 id="tables">Tables</h2>
+
+<pre><code class="language-md">| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th align="center">Are</th>
+<th align="right">Cool</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td align="center">right-aligned</td>
+<td align="right">$1600</td>
+</tr>
+
+<tr>
+<td>col 2 is</td>
+<td align="center">centered</td>
+<td align="right">$12</td>
+</tr>
+
+<tr>
+<td>zebra stripes</td>
+<td align="center">are neat</td>
+<td align="right">$1</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="ordered-list">Ordered List</h2>
+
+<pre><code class="language-md">1. Number one
+2. Number Two
+    1. Indented Number 1
+    2. Indented Number 2
+</code></pre>
+
+<ol>
+<li>Number one</li>
+<li>Number Two
+
+<ol>
+<li>Indented Number 1</li>
+<li>Indented Number 2</li>
+</ol></li>
+</ol>
+
+<h2 id="unordered-list">Unordered List</h2>
+
+<pre><code class="language-md">* Get groceries at Harris Teeter before the party
+* Get a Spider Man cake
+    * Chocolate or marble
+    * Whipped cream frosting
+* Don't forget to walk the dog before you leave
+* Bring lots of plates and silverware so that we don't run out
+    * Plastic Dixie brand is fine
+</code></pre>
+
+<ul>
+<li>Get groceries at Harris Teeter before the party</li>
+<li>Get a Spider Man cake
+
+<ul>
+<li>Chocolate or marble</li>
+<li>Whipped cream frosting</li>
+</ul></li>
+<li>Don&rsquo;t forget to walk the dog before you leave</li>
+<li>Bring lots of plates and silverware so that we don&rsquo;t run out
+
+<ul>
+<li>Plastic Dixie brand is fine</li>
+</ul></li>
+</ul>
+
+<h2 id="comments">Comments</h2>
+
+<pre><code class="language-md">&gt; This is some text that should show up as a comment. Someone may have made this comment but i'm not sure.
+</code></pre>
+
+<blockquote>
+<p>This is some text that should show up as a comment. Someone may have made this comment but i&rsquo;m not sure.</p>
+</blockquote>
+
+<h2 id="images">Images</h2>
+
+<pre><code class="language-md">![NYC Skyline](/post/aether-features/mdd-iphone.jpg)
+</code></pre>
+
+<p><img src="/post/aether-features/mdd-iphone.jpg" alt="NYC Skyline" /></p>
+
+<h2 id="small-images">Small Images</h2>
+
+<pre><code class="language-md">{{&lt; smallimg src=&quot;featuredImage&quot; alt=&quot;NYC Skyline&quot; smartfloat=&quot;left&quot; width=&quot;250px&quot; &gt;}}
+</code></pre>
+
+<picture>
+    
+    
+    
+        
+        
+        <source srcset="/post/aether-features/mdd-iphone_hu84a3e811f2069d8ee93a6de645aedba9_796307_250x0_resize_q75_lanczos.jpg">
+        <img src="/post/aether-features/mdd-iphone_hu84a3e811f2069d8ee93a6de645aedba9_796307_250x0_resize_q75_lanczos.jpg" alt="aether theme displayed on an iPhone" class="small-img smartfloat-left" style="width: 250px;"/>
+    
+</picture>
+
+<p>This image floats to the left of this paragraph and is 250px wide. Its aspect ratio is maintained so it will not stretch. The picture shows the New York skyline. You can see how the design is responsive and how the cards intelligently fit to the display. With flexbox and css grid, heavy frameworks such as bootstrap aren&rsquo;t necessary to create beautiful responsive designs. The cards in aether use flexbox to change the image from the right side on desktops to the top on mobile.</p>
+
+<h2 id="links">Links</h2>
+
+<pre><code class="language-md">[Aether's Github page](https://github.com/josephhutch/aether)
+</code></pre>
+
+<p><a href="https://github.com/josephhutch/aether">Aether&rsquo;s Github page</a></p>
+
+      </article>
+      
+    </main>
+    <nav class="end-nav side-padding">
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/post/aether-theme/" class="card blog-card" rel="bookmark" >
+  
+  <div class="card-img-container">
+    <p class="card-img-overlay">Next Article</p>
+    <picture>
+      
+      <source srcset="/post/aether-theme/mdd-macbook.jpg">
+      <img src="/post/aether-theme/mdd-macbook.jpg" class="card-img" alt="A MacBook showing a website using the aether theme">
+    </picture>
+  </div>
+  
+  <article class="card-body">
+    <h2 class="card-title">Aether: A Clean Theme for Hugo</h2>
+    <p class="card-text"> Aether is new theme for Hugo that emphasizes motion, material, and depth as design elements. Distracting styling and page elements are forgone to focus on the content.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2018-05-02 52:00">May 2, 2018</time></p>
+      <p>#Web </p>
+    </div>
+  </article>
+</a>
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/" class="card home-card" style="background-image: url( /img/grey-cloud.jpg )" rel="bookmark" >
+  Home
+</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+  
+  <script src="/js/core.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+  </body>
+</html>

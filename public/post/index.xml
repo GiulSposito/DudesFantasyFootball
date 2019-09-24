@@ -1,0 +1,36 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts - It&#39;s Football, Dudes!</title>
+    <link>https://dudesfootball.netlify.com/post/</link>
+    <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 24 Sep 2019 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://dudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>[Week 03] Simulation Evaluation</title>
+      <link>https://dudesfootball.netlify.com/post/week-3-simulation-evaluation/</link>
+      <pubDate>Tue, 24 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/post/week-3-simulation-evaluation/</guid>
+      <description> Evaluation Matchup Winner Accuracy: 80%
+Historic    week Winner Accuracy     3 80%   2 60%   1 80%    Players Points vs Projection Projection Error Distribution] Matchups Winner Predictions Score Prediction Chart Score Prediction Table </description>
+    </item><item>
+      <title>[Week 03] Players Projection and Matchups Simulation</title>
+      <link>https://dudesfootball.netlify.com/post/week03/</link>
+      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/post/week03/</guid>
+      <description> Projections  Individual Players Projections  Simulations  Pos-SNF Pre-SNF Sunday 1st Round Pos-TNF Pre-TNF  </description>
+    </item><item>
+      <title>[Week 02] Simulation Evaluation</title>
+      <link>https://dudesfootball.netlify.com/post/week-2-simulation-evaluation/</link>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/post/week-2-simulation-evaluation/</guid>
+      <description> Evaluation Matchup Winner Accuracy: 60%
+Players Points vs Projection Projection Error Distribution] Matchups Winner Predictions Score Prediction Chart Score Prediction Table </description>
+    </item>
+  </channel>
+</rss>

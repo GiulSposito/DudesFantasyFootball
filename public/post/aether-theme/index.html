@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Aether: A Clean Theme for Hugo &middot; It&#39;s Football, Dudes!</title>
+  <meta name="description" content=" Aether is new theme for Hugo that emphasizes motion, material, and depth as design elements. Distracting styling and page elements are forgone to focus on the content." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  
+  
+  <link href="/css/concated.min.css" rel="stylesheet">
+  
+  <style>
+    body {
+      background: #ecedef url("/img/wilson_background_w.jpg") repeat;
+    }
+  </style>
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <h1 class="nav-header"><a href="/" class="nav-text">It&#39;s Football, Dudes! Fantasy League</a></h1>
+  <div class="hamburger-menu">
+    <button onclick="hamburgerMenuPressed.call(this)" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
+    <ul id="menu" class="hamburger-menu-overlay">
+      <li><a href="/" class="hamburger-menu-overlay-link">Home</a></li>
+      <li><a href="/post/trophy-room/it-s-fantasy-league-trophy-room/" class="hamburger-menu-overlay-link">It&#39;s Fantasy League Trophy Room</a></li>
+      <li><a href="/categories/development" class="hamburger-menu-overlay-link">Development</a></li><li><a href="/categories/features" class="hamburger-menu-overlay-link">Features</a></li><li><a href="/categories/golang" class="hamburger-menu-overlay-link">Golang</a></li><li><a href="/categories/r" class="hamburger-menu-overlay-link">R</a></li><li><a href="/categories/web" class="hamburger-menu-overlay-link">Web</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">Aether: A Clean Theme for Hugo</h1>
+          <p class="post-date">Posted <time datetime="2018-05-02">May 2, 2018</time></p>
+        </header>
+        
+        <picture class="post-figure">
+          
+          
+          <source srcset="/post/aether-theme/mdd-macbook_hu52943d9d8af2e9940e7ffd12ce76fba4_564068_800x0_resize_q75_lanczos.jpg">
+          <img src="/post/aether-theme/mdd-macbook_hu52943d9d8af2e9940e7ffd12ce76fba4_564068_800x0_resize_q75_lanczos.jpg" alt="A MacBook showing a website using the aether theme">
+        </picture>
+        
+        
+
+<p>Today&rsquo;s web is a frustrating mess of pop-ups, intrusive banners, and ads obstructing the content. I designed aether to be free of all these distractions and simply highlight the content. The result feels more like a native application than a website. Interactions are intuitive, content is the focus, and distractions are omitted.</p>
+
+<p>Aether is a Hugo theme for blogs that elevates good writing and photography. If you use Hugo for your blog, give aether a try.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>In the root directory of your Hugo Project, clone the aether repo into the themes directory.</p>
+
+<pre><code class="language-shell">git clone https://github.com/josephhutch/aether.git themes/aether
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+
+<h3 id="website-configuration">Website Configuration</h3>
+
+<p>Add the following parameters to your config file if they are not present already.</p>
+
+<pre><code class="language-toml">baseURL = &quot;https://yourwebsitenamegoeshere.com&quot;
+languageCode = &quot;your language code&quot;
+title = &quot;your website title&quot;
+theme = &quot;aether&quot;
+googleAnalytics = &quot;Your google analytics tracking ID&quot;
+
+[params]
+brand = &quot;the title displayed in the nav bar - optional&quot;
+description = &quot;your website's description&quot;
+homeimg = &quot;url to the image used for the home button - optional&quot;
+bgimg = &quot;url to the image used for the background - optional&quot;
+</code></pre>
+
+<p>The <code>title</code> parameter is used for each page title, the title that seach engines display in search results. If you would like the title shown in the top left of the page to be different from the page title, use the <code>brand</code> parameter. For instance, the title parameter for my site is <code>Joe Hutchinson</code> but the brand parameter is set to <code>joehutch</code>.</p>
+
+<p>The <code>homeimg</code> and <code>bgimg</code> parameters give you the ability to customize the look of your site further. The homeimg parameter is the image used for the home button at the bottom of every page. Since the text used on the home button is white, a darker background image is preferred. If the homeimg parameter is not specified, a fallback image is used. Similarly, the bgimg parameter is used for the background of each webpage. Aether is designed to look best with a subtle tiling image for the background. If no background image is specified, the background will be a solid gray color.</p>
+
+<p>That is the only configuration required at the site level! You can now begin writing content for your site.</p>
+
+<h3 id="creating-content">Creating content</h3>
+
+<p>Make a new blog post by executing <code>hugo new post/postnamehere.md</code> in your shell. At the top of the new markdown file, is what&rsquo;s called the front matter. The front matter is the page&rsquo;s metadata that determines how Hugo and aether generate the HTML for your post. Below you can find what the front matter should contain for a new post and what each of the parameters mean.</p>
+
+<pre><code class="language-properties">---
+title: &quot;The title of your post&quot;
+date: date the post was generated
+description: &quot;Description of the post (displayed in the post's card)&quot;
+categories: [&quot;add comma separated categories here&quot;, &quot;another category&quot;]
+featuredImage: &quot;url to the page's featured image&quot;
+featuredImageDescription: &quot;Description for the featured image, used as the alt text&quot;
+dropCap: if the first letter should be a large decorative capital letter (true, false)
+displayInMenu: if post is listed in the navigation menu (true, false)
+displayInList: if post is listed on the home page and category pages (true, false)
+draft: if the page is a draft (true, false)
+---
+</code></pre>
+
+<p>The <code>displayInMenu</code> and <code>displayInList</code> parameters are used to determine where your content is displayed. Posts typically have displayInMenu set to false so that the post is not a menu option, and displayInList set to true so it shows up on the homepage&rsquo;s list of posts and in category page lists. An About Me page, on the other hand, would have displayInMenu set to true and displayInList set to false.  That will allow the About Me page to be accessible from the menu but not displayed in the homepage&rsquo;s list of posts.</p>
+
+<p>The <code>categories</code> parameter is used to group similar posts in category pages. Category pages are accessible from the menu and list all posts with the same category.</p>
+
+<p>The <code>dropCap</code> parameter is used to determine if the first letter of a post should be a dropped capital. A dropped capital letter is the large decorative letter at the beginning of a book or section.</p>
+
+<p>Add an interesting description and a good image to each post to get the most value from this theme.</p>
+
+<p>Posts are written in markdown and LaTeX (for math symbols and equations). You can find tons of information on how to format your posts with markdown and LaTeX on the web.</p>
+
+<h3 id="further-customization">Further Customization</h3>
+
+<p>To change the heading and subtext at the top of list pages just add a _index.md file in the folder that the list page is generated from. For example to change the heading at the top of the homepage, add an _index.md file to the content folder with the following parameters.</p>
+
+<pre><code class="language-properties">---
+title: &quot;This is the main heading text in big letters&quot;
+date: the date
+description: &quot;This is the subtext above the main heading in small letters&quot;
+---
+</code></pre>
+
+<h3 id="learn-more">Learn  More</h3>
+
+<p>To learn more about aether, visit <a href="https://github.com/josephhutch/aether">aether&rsquo;s Github page</a>. To learn more about Hugo, visit <a href="https://gohugo.io/">Hugo&rsquo;s website</a>.</p>
+
+      </article>
+      
+    </main>
+    <nav class="end-nav side-padding">
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/post/2015-07-23-r-rmarkdown/" class="card blog-card" rel="bookmark" >
+  
+  <article class="card-body">
+    <h2 class="card-title">Hello R Markdown</h2>
+    <p class="card-text">R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2015-07-23 723:00">Jul 23, 2015</time></p>
+      <p>#R </p>
+    </div>
+  </article>
+</a>
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/" class="card home-card" style="background-image: url( /img/grey-cloud.jpg )" rel="bookmark" >
+  Home
+</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+  
+  <script src="/js/core.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+  </body>
+</html>
