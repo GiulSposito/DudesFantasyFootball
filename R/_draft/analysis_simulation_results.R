@@ -46,8 +46,8 @@ sim.pts.eval %>%
   geom_point(size=2) +
   geom_errorbar(aes(ymin=pred.min, ymax=pred.max), size=1) +
   geom_abline(intercept=c(0,0), slope=1, color="darkgrey", size=1, linetype="dotted") +
-  ylim(70,160) +
-  xlim(70,160) +
+  ylim(90,180) +
+  xlim(90,180) +
   ggtitle("Pontuação Real x Pontuacao Previsa", subtitle = "90% CI") +
   theme_minimal()
 
