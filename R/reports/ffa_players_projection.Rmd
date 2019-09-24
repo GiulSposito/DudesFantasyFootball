@@ -22,7 +22,7 @@ week <- params$week
 ```{r loaddata, cache=FALSE}
 
 # pega projecoes cria algumas colunas auxiliares
-projections <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
+pprojs <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
   mutate(injuryCod = str_extract_all(injuryGameStatus, "[A-Z]")) %>% 
   mutate(injuryCod = map_chr(injuryCod, paste, sep="", collapse="")) %>% 
   mutate( full_name = paste0(first_name, " ", last_name),
@@ -30,7 +30,7 @@ projections <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>
   mutate( 
     full_name = case_when(
       !is.na(injuryGameStatus) ~ paste0(full_name, " (", injuryCod, ")"),
-       is.na(injuryGameStatus) ~ full_name
+      is.na(injuryGameStatus) ~ full_name
     )
   ) %>% 
   group_by( id ) %>% 
@@ -38,8 +38,7 @@ projections <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>
   ungroup() %>% 
   filter( !(team %in% c("FA","FA*")) )  # havia lixo em alguns
 
-
-projections <- readRDS("../../data/players_points.rds") %>%
+ppoints <- readRDS("../../data/players_points.rds") %>%
   mutate(id = as.integer(id)) %>% 
   filter( points!=0 ) %>% 
   rename( pts = points ) %>% 
@@ -49,8 +48,10 @@ projections <- readRDS("../../data/players_points.rds") %>%
           pts.sd   = sd(pts, na.rm=T),
           pts.max = max(pts, na.rm=T),
           pts.min = min(pts, na.rm = T)) %>% 
-  ungroup() %>% 
-  right_join(projections, by = "id")
+  ungroup() 
+
+projections <- points %>% 
+  right_join(pprojs, by = "id")
   
 ```
 
@@ -74,23 +75,12 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
   nu_y <- max(proj_data$ceiling, na.rm = T) / 18
   
   proj_data %>% 
-    ggplot(aes(group=fantasy.team)) +
+    ggplot(aes(team=team)) +
     geom_pointrange(aes(x=reorder(pos_rank,desc(pos_rank)),
                     y=points, 
                     ymin=floor, 
                     ymax=ceiling, 
                     color=fantasy.team), size=1) +
-    # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
-    #                y=pts), color="black", alpha=.05) +
-    # geom_point(aes(x=reorder(pos_rank,desc(pos_rank)),
-    #                y = pts.mean), color="black", alpha=.5) +
-    # geom_pointrange(aes(x=reorder(pos_rank,desc(pos_rank)),
-    #                     y=pts.mean,
-    #                     ymin=pts.mean-pts.sd,
-    #                     ymax=pts.mean+pts.sd),
-    #                 color="grey",
-    #                 size=.5,
-    #                 alpha=.5) +
     geom_text(aes(x=reorder(pos_rank,desc(pos_rank)), 
               y=r_pos, 
               color=fantasy.team, 
