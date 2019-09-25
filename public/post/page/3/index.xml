@@ -1,33 +1,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts - It&#39;s Football, Dudes!</title>
-    <link>/post/</link>
+    <link>https://dudesfootball.netlify.com/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 25 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://dudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 01] Players Projection and Matchups Simulation</title>
-      <link>/post/week1-players-projection-and-matchups-simulation/</link>
+      <link>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week1-players-projection-and-matchups-simulation/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</guid>
       <description></description>
     </item><item>
       <title>Draft Week</title>
-      <link>/post/draft-week/</link>
+      <link>https://dudesfootball.netlify.com/post/draft-week/</link>
       <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/draft-week/</guid>
+      <guid>https://dudesfootball.netlify.com/post/draft-week/</guid>
       <description>Fantasy Draft Grades Dudes Analytics Draft Projecton Individual Players Season Projection Season Projection | Draft Ranking</description>
     </item><item>
       <title>Trophy Room</title>
-      <link>/post/it-s-football-dudes-trophy-room/</link>
+      <link>https://dudesfootball.netlify.com/post/it-s-football-dudes-trophy-room/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/it-s-football-dudes-trophy-room/</guid>
+      <guid>https://dudesfootball.netlify.com/post/it-s-football-dudes-trophy-room/</guid>
       <description> Champions Season 2018  (1st) Rio Claro Pfeiferians - Owner: Vini (2nd) Paulínia Robots - Onwer: Leonel (3rd) Sorocaba Wild Mules - Owner: Hilton  Season 2017  (1st) Sorocaba Steelers - Onwer: Marcão (2nd) Paulínia Robots - Onwer: Leonel (3rd) Amparo Bikers - Owner: Giul  Season 2016  (1st) Campinas Giants - Onwer: Teixeira (2nd) Brotas Alligators - Onwer: Gilson (3rd) Rio Claro Pfeiferians - Owner: Vini  Season 2015  (1st) Amparo Bikers - Onwer: Giul (2nd) Brotas Alligators - Onwer: Gilson (3rd) Paulínia Robots - Owner: Leonel  </description>
     </item>
   </channel>
