@@ -25,7 +25,13 @@ resources:
 
 ## Simulations
 
-- [Pre-Waivers](/reports/dudes_simulation_week4_preWaivers.html)
+- [Pre-TNF](/reports/dudes_simulation_week4_preTNF.html)
+
+## Public Fantasy Analytics
+
+{{< tweet 1176561001359118338 >}}
+{{< tweet 1176570048342892545 >}}
+
 
 
 
