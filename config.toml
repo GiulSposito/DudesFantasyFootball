@@ -1,0 +1,12 @@
+baseurl = "https://dudesfootball.netlify.com/"
+title = "It's Football, Dudes!"
+author = "Giuliano sposito"
+canonifyurls = true
+paginate = 3
+theme = "aether"
+googleAnalytics = "UA-148711241-1"
+
+[params]
+brand = "It's Football, Dudes! Fantasy League"
+description = "Fantasy Football Analytics"
+bgimg = "img/wilson_background_w.jpg"
