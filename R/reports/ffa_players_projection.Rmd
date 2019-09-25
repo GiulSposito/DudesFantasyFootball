@@ -15,7 +15,7 @@ library(plotly)
 library(glue)
 library(ggrepel)
 
-week <- 4 #params$week
+week <- params$week
 
 ```
 
