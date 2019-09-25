@@ -23,7 +23,9 @@ resources:
 
 - [Individual Players Projections](/reports/ffa_players_projection_week4.html)
 
+## Simulations
 
+- [Pre-Waivers](/reports/dudes_simulation_week4_preWaivers.html)
 
 
 

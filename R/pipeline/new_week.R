@@ -78,7 +78,7 @@ sim <- simulateGames(week)
 # constroi o relatório
 rmarkdown::render(
     input = "./R/reports/dudes_simulation_v2.Rmd",
-    output_file = glue("../../public/dudes_simulation_week{week}_{prefix}.html"),
+    output_file = glue("../../static/reports/dudes_simulation_week{week}_{prefix}.html"),
     output_format = "flex_dashboard",
     params = list(week=week)
   )
