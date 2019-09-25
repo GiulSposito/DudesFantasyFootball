@@ -46,7 +46,7 @@ resources:
 
 ## Score Prediction Chart
 
-![Score Prediction Chart](/img/points_vs_prediction_w3_chart.jpg)
+![Score Prediction Chart](/img/points_vs_prediction_w3_chart.png)
 
 ## Score Prediction Table
 

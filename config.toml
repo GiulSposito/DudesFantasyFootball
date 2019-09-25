@@ -5,6 +5,7 @@ canonifyurls = true
 paginate = 3
 theme = "aether"
 googleAnalytics = "UA-148711241-1"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params]
 brand = "It's Football, Dudes! Fantasy League"

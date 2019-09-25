@@ -1,0 +1,20 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ranking - It&#39;s Football, Dudes!</title>
+    <link>https://dudesfootball.netlify.com/categories/ranking/</link>
+    <description>Recent content in ranking on It&#39;s Football, Dudes!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://dudesfootball.netlify.com/categories/ranking/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Trophy Room</title>
+      <link>https://dudesfootball.netlify.com/post/it-s-football-dudes-trophy-room/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/post/it-s-football-dudes-trophy-room/</guid>
+      <description> Champions Season 2018  (1st) Rio Claro Pfeiferians - Owner: Vini (2nd) Paulínia Robots - Onwer: Leonel (3rd) Sorocaba Wild Mules - Owner: Hilton  Season 2017  (1st) Sorocaba Steelers - Onwer: Marcão (2nd) Paulínia Robots - Onwer: Leonel (3rd) Amparo Bikers - Owner: Giul  Season 2016  (1st) Campinas Giants - Onwer: Teixeira (2nd) Brotas Alligators - Onwer: Gilson (3rd) Rio Claro Pfeiferians - Owner: Vini  Season 2015  (1st) Amparo Bikers - Onwer: Giul (2nd) Brotas Alligators - Onwer: Gilson (3rd) Paulínia Robots - Owner: Leonel  </description>
+    </item>
+  </channel>
+</rss>

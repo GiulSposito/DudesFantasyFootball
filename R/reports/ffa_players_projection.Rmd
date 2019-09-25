@@ -50,7 +50,7 @@ ppoints <- readRDS("../../data/players_points.rds") %>%
           pts.min = min(pts, na.rm = T)) %>% 
   ungroup() 
 
-projections <- points %>% 
+projections <- ppoints %>% 
   right_join(pprojs, by = "id")
   
 ```

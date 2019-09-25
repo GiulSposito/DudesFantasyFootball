@@ -1,0 +1,20 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>It&#39;s Football, Dudes!</title>
+    <link>https://dudesfootball.netlify.com/</link>
+    <description>Recent content on It&#39;s Football, Dudes!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 27 Apr 2018 09:46:15 -0400</lastBuildDate>
+    
+        <atom:link href="https://dudesfootball.netlify.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Posts</title>
+      <link>https://dudesfootball.netlify.com/post/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/post/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
