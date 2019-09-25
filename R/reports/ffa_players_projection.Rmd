@@ -15,7 +15,7 @@ library(plotly)
 library(glue)
 library(ggrepel)
 
-week <- params$week
+week <- 4 #params$week
 
 ```
 
@@ -150,7 +150,7 @@ plotProjections(projections, "DST", "Defenses", "week 9",32)
 ```
 
 
-```{r historicData}
+```{r historicSharpe}
 
 p.stats <- readRDS("../../data/players_points.rds") %>% 
   mutate(
@@ -193,43 +193,167 @@ plotSharpe <- function(.dtfm, .pos, .n) {
 ```
 
 
-QB {data-navmenu="record"}
+QB {data-navmenu="sharpe"}
 ========================
-```{r histQB, fig.width=10}
+```{r sharpeQB, fig.width=10}
 plotSharpe(sharpe.data, "QB",3*10)
 ```
 
 
-WR {data-navmenu="record"}
+WR {data-navmenu="sharpe"}
 ========================
-```{r histWR, fig.width=10}
+```{r sharpeWR, fig.width=10}
 plotSharpe(sharpe.data, "WR", 5*10)
 ```
 
 
-RB {data-navmenu="record"}
+RB {data-navmenu="sharpe"}
 ========================
-```{r histRB, fig.width=10}
+```{r sharpeRB, fig.width=10}
 plotSharpe(sharpe.data, "RB", 5*10)
 ```
 
 
-TE {data-navmenu="record"}
+TE {data-navmenu="sharpe"}
 ========================
-```{r histTE, fig.width=10}
+```{r sharpeTE, fig.width=10}
 plotSharpe(sharpe.data, "TE", 3*10)
 ```
 
 
-K {data-navmenu="record"}
+K {data-navmenu="sharpe"}
 ========================
-```{r histK, fig.width=10}
+```{r sharpeK, fig.width=10}
 plotSharpe(sharpe.data, "K", 3*10)
 ```
 
-DEF {data-navmenu="record"}
+DEF {data-navmenu="sharpe"}
 ========================
-```{r histDEF, fig.width=10}
+```{r sharpeDEF, fig.width=10}
 plotSharpe(sharpe.data, "DST", 3*10)
 ```
 
+```{r historicRank}
+# get fantasy team and week projection
+pprojs  <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
+  filter(avg_type=="weighted") %>% 
+  mutate( fantasy.team = as.factor(fantasy.team) ) %>%
+  select(id, nfl_id, fantasy.team, proj.floor=floor,
+         proj.points=points, proj.ceiling=ceiling)
+
+# calc historic data, and calculates 90% CI
+points_stats <- readRDS("../../data/players_points.rds") %>% 
+  select( id, nfl_id, fweek = fantasyPts.week.week, points = fantasyPts.week.pts ) %>% 
+  mutate( 
+    fweek = as.integer(fweek), 
+    points = as.numeric(points)    
+  ) %>%  
+  filter( fweek < week ) %>% 
+  group_by(id, nfl_id) %>% 
+  summarise(
+    pts.floor   = quantile(points, .05), 
+    pts.median  = quantile(points, .5),
+    pts.ceiling = quantile(points, .95)
+  ) %>% 
+  ungroup()
+
+# get current players attributes
+pattrib <- readRDS("../../data/players_points.rds") %>% 
+  rename( fweek = week ) %>% 
+  filter (fweek == week ) %>% 
+  # seleciona o que interessa
+  select(
+    id, nfl_id, name, position, team, op.team = opponentTeamAbbr, injuryStatus,
+    total.points = fantasyPts.season.pts 
+  ) %>% 
+  # converte tipo e trata "BYE"
+  mutate( 
+    total.points = as.numeric(total.points),
+    op.team = ifelse(op.team=="FALSE", "BYE", op.team)
+  ) %>% 
+  # adiciona sigla de Injury ou "BYE" no fim
+  mutate( injuryCod = str_extract_all(injuryStatus, "[A-Z]")) %>% 
+  mutate( injuryCod = map_chr(injuryCod, paste, sep="", collapse="")) %>%
+  mutate( 
+    name = case_when(
+      !is.na(injuryStatus) ~ paste0(name, " (", injuryCod, ")"),
+      op.team == "BYE" ~ paste0(name, " (bye)"),
+      T ~ name
+    )
+  ) %>% 
+  # rankeia por posicao
+  group_by(position) %>% 
+  mutate( pos.rank = row_number(desc(total.points))) %>% 
+  ungroup() %>% 
+  arrange(id)
+
+# junta os atributos, junto com o time do fantasy e os dados historicos 
+players_history <- pattrib %>% 
+  inner_join( pprojs, by = c("id", "nfl_id") ) %>% 
+  inner_join( points_stats, by = c("id", "nfl_id") ) 
+
+# limpa memoria
+rm(pattrib, points_stats, pprojs); gc()
+
+# define função para plotar o grafico
+plotHistoricRank <- function(.data, .pos, .n, .title){
+  
+  # filtra os dados por posicao
+  .data %>% 
+    filter( position == .pos ) %>% 
+    arrange(pos.rank) %>% # na ordem do rank
+    slice(1:.n) %>%  # corta os dados
+    ggplot(aes(x=reorder(pos.rank, desc(pos.rank)), y=pts.median, color=fantasy.team,
+               team=team, total.pts=total.points)) +
+      geom_pointrange(aes(ymin=pts.floor, ymax=pts.ceiling), size=.5) +
+      geom_text(aes(label=paste0("[", team, "] ", name), 
+                    y=pts.ceiling), hjust="left", vjust="middle", 
+                nudge_y = 0.1, nudge_x = 0.1, size=1.9) +
+      scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00", "purple", "pink","gold","cyan")) +
+      ylab("historic peformance") + xlab("rank (total points)") +
+      ggtitle(.title, glue("Top {.n} {.pos}s by Total Points - Historic Peformance (90% CI)")) +
+      coord_flip() +
+      theme_classic()
+}
+
+```
+
+QB {data-navmenu="historic"}
+========================
+```{r histQB, fig.width=10}
+plotHistoricRank(players_history, "QB",3*10, "Quaterbacks")
+```
+
+
+WR {data-navmenu="historic"}
+========================
+```{r histWR, fig.width=10}
+plotHistoricRank(players_history, "WR", 4.5*10, "Wide Receivers")
+```
+
+
+RB {data-navmenu="historic"}
+========================
+```{r histRB, fig.width=10}
+plotHistoricRank(players_history, "RB", 5*10, "Running Backs")
+```
+
+
+TE {data-navmenu="historic"}
+========================
+```{r histTE, fig.width=10}
+plotHistoricRank(players_history, "TE", 3*10, "Tight Ends")
+```
+
+
+K {data-navmenu="historic"}
+========================
+```{r histK, fig.width=10}
+plotHistoricRank(players_history, "K", 3*10, "Kickers")
+```
+
+DEF {data-navmenu="historic"}
+========================
+```{r histDEF, fig.width=10}
+plotHistoricRank(players_history, "DEF", 30*10, "Defenses")
+```
