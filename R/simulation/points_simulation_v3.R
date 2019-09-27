@@ -128,12 +128,26 @@ simulateGames <- function(.week, .playerGameStatus=NULL){
       return()
   }
   
+  addPlayerGameStatus <- function(.team, .gameStatus=NULL){
+
+    if (!is.null(.gameStatus)) {
+      resp <- left_join(.team, select(.gameStatus, -teamId), by = c("id", "nfl_id"))
+    } else {
+      resp <- mutate(.team, played=F)
+    }
+      
+    return(resp)
+    
+  }
+  
   matchup.projs %>% 
     mutate(
       home.sim = map(home.roster, simRosterPontuation, .gameStatus=.playerGameStatus),
       away.sim = map(away.roster, simRosterPontuation, .gameStatus=.playerGameStatus),
       home.sim.org = map(home.roster, simRosterPontuation),
       away.sim.org = map(away.roster, simRosterPontuation),
+      home.roster = map(home.roster, addPlayerGameStatus, .gameStatus=.playerGameStatus),
+      away.roster = map(away.roster, addPlayerGameStatus, .gameStatus=.playerGameStatus),
       home.win = map2(home.sim, away.sim, function(h.scr, a.scr) (h.scr > a.scr)),
       away.win = map(home.win, function(.x) (!.x) ),
       home.win.prob = map_dbl(home.win, function(.x) mean(.x)),
