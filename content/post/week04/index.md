@@ -25,6 +25,7 @@ resources:
 
 ## Simulations
 
+- [Pos-TNF](/reports/dudes_simulation_week4_posTNF.html)
 - [Pre-TNF](/reports/dudes_simulation_week4_preTNF.html)
 
 ## Public Fantasy Analytics
