@@ -27,14 +27,15 @@ player_ids <- player_ids %>%
 source("./R/import/import_matchups.R")
 source("./R/simulation/points_simulation_v3.R")
 
+matchups <- importMatchups(week)
+playerGameStatus <- importPlayerGameStatus(week, player_ids)
+saveRDS(playerGameStatus, glue("./data/week{week}_player_game_status.rds"))
 
-importMatchups(week) -> matchups
-
-sim <- simulateGames(week)
+sim <- simulateGames(week,playerGameStatus)
 
 rmarkdown::render(
     input = "./R/reports/dudes_simulation_v2.Rmd",
-    output_file = glue("../../static/reports/dudes_simulation_week{week}_{prefix}.html"),
+    output_file = glue("../../public/reports/dudes_simulation_week{week}_{prefix}.html"),
     output_format = "flex_dashboard",
     params = list(week=week)
   )

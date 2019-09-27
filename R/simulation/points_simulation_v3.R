@@ -2,7 +2,7 @@ library(tidyverse)
 library(glue)
 source("./R/tidy/matchups.R")
 
-simulateGames <- function(.week){
+simulateGames <- function(.week, .playerGameStatus=NULL){
   # retorna um summary como um data.frame
   summaryAsTibble <- . %>% summary() %>% as.list() %>% as_tibble()
   
@@ -97,7 +97,7 @@ simulateGames <- function(.week){
     ) -> matchup.projs
   
   
-  simRosterPontuation <- function(.team, .currPoints=FALSE) {
+  simRosterPontuation <- function(.team, .gameStatus=NULL) {
     .team %>%
       mutate( id = as.integer(id)) %>% 
       filter(rosterSlot != "BN") %>% 
@@ -111,16 +111,15 @@ simulateGames <- function(.week){
         points.made = map(points, rep, times=5000)
       ) -> resp
     
-    if (.currPoints) {
-      resp %>% 
-        mutate(
-          player.simulation = case_when(
-            points == 0 ~ player.simulation,
-            points != 0 ~ points.made
-          )
-        ) -> resp
+    # foi passado uma tabela de game status, leva em conta
+    # para checar se deve usar o valor da simulacao ou o 
+    # valor da pontuacao
+    if (!is.null(.gameStatus)) {
+        resp <- left_join(resp,.gameStatus, by = c("id", "nfl_id")) %>% 
+          mutate( player.simulation = ifelse(played, points.made, player.simulation) )
     }
     
+    # devolve a simulacao
     resp %>% 
       pull(player.simulation) %>%
       bind_cols() %>%
@@ -131,8 +130,8 @@ simulateGames <- function(.week){
   
   matchup.projs %>% 
     mutate(
-      home.sim = map(home.roster, simRosterPontuation, .currPoints=T),
-      away.sim = map(away.roster, simRosterPontuation, .currPoints=T),
+      home.sim = map(home.roster, simRosterPontuation, .gameStatus=.playerGameStatus),
+      away.sim = map(away.roster, simRosterPontuation, .gameStatus=.playerGameStatus),
       home.sim.org = map(home.roster, simRosterPontuation),
       away.sim.org = map(away.roster, simRosterPontuation),
       home.win = map2(home.sim, away.sim, function(h.scr, a.scr) (h.scr > a.scr)),
