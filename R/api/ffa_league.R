@@ -40,12 +40,13 @@ ffa_league_teams <- function(.authToken, .leagueId){
 ffa_league_matchups <- function(.authToken, .leagueId, .week){
   
   players <- ffa_api(
-    .path = "/league/matchups",
+    .path = "/v2/league/matchups",
     .query = list(
-       #"appKey"    = "internalemailuse",
+      "appKey"    = "internalemailuse",
       "authToken" = .authToken,
       "leagueId"  = .leagueId,
-      "week"      =  .week
+      "week"      =  .week,
+      "includeRosters" = 1
     ))
   
 }
@@ -63,4 +64,10 @@ ffa_league_standings <- function(.authToken, .leagueId, .week){
     ))
   
 }
+
+
+
+
+
+
 

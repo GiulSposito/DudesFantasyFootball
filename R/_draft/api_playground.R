@@ -4,17 +4,21 @@ config <- yaml.load_file("./config/config.yml")
 leagueId <- config$leagueId
 authToken <- config$authToken
 
-
+library(tidyverse)
 source("./R/api/ffa_league.R")
-resp <- ffa_league_standings(.authToken = config$authToken, .week = 1, .leagueId = config$leagueId )
+
+resp <- ffa_league_matchups(authToken, leagueId, 4)
 
 json <- resp$content
 
-json$games$`102019`$leagues$`3940933`$teamIds
-json$games$`102019`$leagues$`3940933`$teams[[1]] %>% flatten()
+teams <- json$games$`102019`$leagues$`3940933`$teams
 
-
-resp$response %>% 
-  content("text") %>% 
-  fromJSON(T)
+teams %>% 
+  map_df(function(.team){
+    team$rosters[[1]] %>% 
+      bind_rows() %>%
+      return()
+  }, .id="teamId") %>% 
+  as_tibble() %>% 
+  mutate_at(vars(teamId, rosterSlotId, playerId), as.integer)
 
