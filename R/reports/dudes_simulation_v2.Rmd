@@ -226,8 +226,8 @@ plotRoster <- function(.team_table, .slotLevels=slotLevels, .posLevels=posLevels
     ) %>%  
     mutate(
       points = case_when(
-        (points == 0) ~ as.numeric(NA),
-        (points !=  0) ~ points 
+        played==F ~ as.numeric(NA),
+        played==T ~ points 
       )
     ) %>% 
     unnest(pts.range.80pct) %>% 
@@ -278,8 +278,8 @@ plotPlayersDistribution <- function(.roster, .slotLevels=slotLevels, .posLevels=
       position = factor(position, levels=.posLevels),
       rosterSlot = factor(rosterSlot, levels=.slotLevels),
       points = case_when(
-        (points == 0) ~ as.numeric(NA),
-        (points !=  0) ~ points 
+        played == F ~ as.numeric(NA),
+        played == T ~ points 
       )
     ) %>% 
     arrange(rosterSlot, position) %>% 

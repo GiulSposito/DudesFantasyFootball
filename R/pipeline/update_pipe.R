@@ -31,7 +31,7 @@ matchups <- importMatchups(week)
 playerGameStatus <- importPlayerGameStatus(week, player_ids)
 saveRDS(playerGameStatus, glue("./data/week{week}_player_game_status.rds"))
 
-sim <- simulateGames(week,playerGameStatus)
+sim <- simulateGames(week, playerGameStatus)
 
 rmarkdown::render(
     input = "./R/reports/dudes_simulation_v2.Rmd",
