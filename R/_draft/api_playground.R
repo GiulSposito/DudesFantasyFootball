@@ -13,12 +13,15 @@ json <- resp$content
 
 teams <- json$games$`102019`$leagues$`3940933`$teams
 
-teams %>% 
+playerGameStatus <- teams %>% 
   map_df(function(.team){
-    team$rosters[[1]] %>% 
+    .team$rosters[[1]] %>% 
       bind_rows() %>%
       return()
   }, .id="teamId") %>% 
   as_tibble() %>% 
   mutate_at(vars(teamId, rosterSlotId, playerId), as.integer)
 
+player_ids %>% 
+  select(id, nfl_id, numfire_id) %>%
+  inner_join(playerGameStatus, by=c("nfl_id"="playerId")) %>% View()
