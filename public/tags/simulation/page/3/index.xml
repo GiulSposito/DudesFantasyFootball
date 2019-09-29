@@ -1,19 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>simulation - It&#39;s Football, Dudes!</title>
-    <link>https://dudesfootball.netlify.com/tags/simulation/</link>
+    <link>/tags/simulation/</link>
     <description>Recent content in simulation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 25 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://dudesfootball.netlify.com/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 01] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</link>
+      <link>/post/week1-players-projection-and-matchups-simulation/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</guid>
+      <guid>/post/week1-players-projection-and-matchups-simulation/</guid>
       <description></description>
     </item>
   </channel>

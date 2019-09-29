@@ -4,7 +4,7 @@ library(flexdashboard)
 library(glue)
 
 week <- 4
-prefix <- "posTNF"
+prefix <- "sunday1stRound"
 
 source("./R/import/checkFantasyAPI.R")
 checkFantasyAPI(week)
@@ -35,7 +35,7 @@ sim <- simulateGames(week, playerGameStatus)
 
 rmarkdown::render(
     input = "./R/reports/dudes_simulation_v2.Rmd",
-    output_file = glue("../../public/reports/dudes_simulation_week{week}_{prefix}.html"),
+    output_file = glue("../../static/reports/dudes_simulation_week{week}_{prefix}.html"),
     output_format = "flex_dashboard",
     params = list(week=week)
   )
