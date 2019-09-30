@@ -1,26 +1,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>projection - It&#39;s Football, Dudes!</title>
-    <link>/tags/projection/</link>
+    <link>https://dudesfootball.netlify.com/tags/projection/</link>
     <description>Recent content in projection on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 25 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/projection/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://dudesfootball.netlify.com/tags/projection/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 01] Players Projection and Matchups Simulation</title>
-      <link>/post/week1-players-projection-and-matchups-simulation/</link>
+      <link>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week1-players-projection-and-matchups-simulation/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</guid>
       <description></description>
     </item><item>
       <title>Draft Week</title>
-      <link>/post/draft-week/</link>
+      <link>https://dudesfootball.netlify.com/post/draft-week/</link>
       <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/draft-week/</guid>
+      <guid>https://dudesfootball.netlify.com/post/draft-week/</guid>
       <description>Fantasy Draft Grades Dudes Analytics Draft Projecton Individual Players Season Projection Season Projection | Draft Ranking</description>
     </item>
   </channel>

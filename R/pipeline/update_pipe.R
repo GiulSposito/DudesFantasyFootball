@@ -4,7 +4,7 @@ library(flexdashboard)
 library(glue)
 
 week <- 4
-prefix <- "sunday1stRound"
+prefix <- "preSNF"
 
 source("./R/import/checkFantasyAPI.R")
 checkFantasyAPI(week)

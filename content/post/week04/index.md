@@ -25,6 +25,7 @@ resources:
 
 ## Simulations
 
+- [Pre-SNF](/reports/dudes_simulation_week4_preSNF.html)
 - [Pos-Sunday-1s-Round](/reports/dudes_simulation_week4_sunday1stRound.html)
 - [Pos-TNF](/reports/dudes_simulation_week4_posTNF.html)
 - [Pre-TNF](/reports/dudes_simulation_week4_preTNF.html)
