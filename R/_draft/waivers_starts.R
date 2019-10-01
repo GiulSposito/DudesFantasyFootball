@@ -7,7 +7,7 @@ library(glue)
 players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
   filter(
     fantasy.team %in% c("*FreeAgent",.team),
-    !(team %in% c("FA", "FA*"))
+    !(team %in% c("FA", "FA*","DET"))
   ) 
 
 # starts
@@ -39,7 +39,7 @@ bench <- tibble(
   map_df(function(.x, .players){
     .players %>% 
       filter(position==.x$pos) %>% 
-      top_n(.x$qtd, floor)
+      top_n(.x$qtd, ceiling)
   }, .players = anti_join(players, starters) )
 
 # releases
