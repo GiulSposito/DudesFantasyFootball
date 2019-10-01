@@ -19,9 +19,9 @@ resources:
     description: "War Games Movie"
 ---
 
-## Evaluation
-
 **Matchup Winner Accuracy: 80%**
+
+<!--more-->
 
 ## Players Points vs Projection
 

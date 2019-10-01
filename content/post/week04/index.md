@@ -19,6 +19,8 @@ resources:
     description: "Saquon Barkley Foot Injury"
 ---
 
+<!--more-->
+
 ## Projections
 
 - [Individual Players Projections](/reports/ffa_players_projection_week4.html)

@@ -3,12 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/week-4-simulation-evaluation/</loc>
-    <lastmod>2019-10-01T00:00:00+00:00</lastmod>
+    <loc>/post/week05/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/projection/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/projection/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/simulation/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/simulation/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/week-4-simulation-evaluation/</loc>
     <lastmod>2019-10-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -23,37 +58,7 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2019-10-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/simulation/</loc>
-    <lastmod>2019-10-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/simulation/</loc>
-    <lastmod>2019-10-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-10-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/week04/</loc>
-    <lastmod>2019-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/projection/</loc>
-    <lastmod>2019-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/projection/</loc>
     <lastmod>2019-09-25T00:00:00+00:00</lastmod>
   </url>
   

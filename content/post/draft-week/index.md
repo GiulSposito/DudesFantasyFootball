@@ -15,6 +15,7 @@ resources:
 title: Draft Week
 ---
 
+<!--more-->
 
 ## Fantasy Draft Grades
 

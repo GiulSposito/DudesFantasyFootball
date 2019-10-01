@@ -19,6 +19,8 @@ resources:
     description: "Daniel Jones"
 ---
 
+<!--more-->
+
 ## Projections
 
 - [Individual Players Projections](/reports/ffa_players_projection_week3.html)

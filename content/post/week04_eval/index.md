@@ -19,9 +19,9 @@ resources:
     description: War Games Movie
 ---
 
-## Evaluation 
+**Matchup Winner Accuracy: 60%**
 
-**Matchup Winner Accuracy: 80%**
+<!--more-->
 
 ### Historic
 
@@ -32,6 +32,22 @@ resources:
 | 2    |       60%       |
 | 1    |       80%       |
 
+
+## League Ranking
+
+![Rank](/img/rank_week4.jpg)
+
+## Week Trophies
+
+![Trophies](/img/trophies_week4.jpg)
+
+## Score Prediction Chart
+
+![Score Prediction Chart](/img/points_vs_prediction_w4_chart.png)
+
+## Score Prediction Table
+
+![Score Prediction Table](/img/points_vs_prediction_w4_table.jpg)
 
 ## Players Points vs Projection
 
@@ -44,14 +60,6 @@ resources:
 ## Matchups Winner Predictions
 
 ![Matchups Winner Predictions](/img/predictions_eval_week4.jpg)
-
-## Score Prediction Chart
-
-![Score Prediction Chart](/img/points_vs_prediction_w4_chart.png)
-
-## Score Prediction Table
-
-![Score Prediction Table](/img/points_vs_prediction_w4_table.jpg)
 
 ## Madden Curse
 

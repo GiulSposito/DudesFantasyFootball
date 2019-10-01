@@ -19,6 +19,8 @@ resources:
     description: "Drew Brees"
 ---
 
+<!--more-->
+
 ## Projections
 
 - [Individual Players Projections](/reports/ffa_players_projection_week2.html)

@@ -20,6 +20,8 @@ resources:
     description: "Lamar Jackson"
 ---
 
+<!--more-->
+
 ## Projections
 
 - [Individual Players Projections](/reports/ffa_players_projection_week1.html)

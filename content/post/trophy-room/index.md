@@ -18,6 +18,8 @@ resources:
     description: "Its football, dudes! Trophy Room"
 ---
 
+<!--more-->
+
 ## Champions
 
 ### Season 2018
