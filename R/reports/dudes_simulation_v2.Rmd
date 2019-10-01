@@ -141,15 +141,21 @@ sim %>%
 Points Distribution {data-navmenu="Overview"}
 =======================================
 
-```{r}
+```{r teamPtsDist, fig.width=9}
 
 sim.summary %>% 
   select( team.name, points ) %>% 
+  mutate( mean.pts = map_dbl(points, mean) ) %>% 
   unnest(points) %>% 
   mutate(points = round(points,1)) %>%
-  ggplot(aes(x=team.name, y=points, color=team.name)) +
+  ggplot(aes(x=reorder(team.name,mean.pts), y=points, color=team.name)) +
   geom_boxplot() +
-  theme_minimal()
+  coord_flip() +
+  theme_minimal() +
+  ggtitle("Simulated Points Distribution") +
+  xlab( "fantasy team" ) +
+  ylab( "simulation points" ) +
+  theme( legend.position = "none" )
 
 ```
 
@@ -157,7 +163,7 @@ sim.summary %>%
 Score Difference {data-navmenu="Overview"}
 ============================================
 
-```{r fig.width=8}
+```{r matchupScoreDiffDist, fig.width=9}
 
 sim %>% 
   mutate(game=paste0(away.name, " @ ", home.name)) %>% 
@@ -172,7 +178,10 @@ sim %>%
              linetype=2, color="red") +
   facet_grid(rows=vars(game), switch = "x", scales="free") +
   theme_minimal() +
-  theme( legend.position = "right" )
+  ggtitle("Matchups Score Difference") +
+  ylab("Probability Distribution") +
+  xlab("Score Difference") +
+  theme( legend.position = "none", strip.text.y = element_text(angle=0) )
 
 ```
 
