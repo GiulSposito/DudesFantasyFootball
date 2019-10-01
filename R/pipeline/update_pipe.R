@@ -4,7 +4,7 @@ library(flexdashboard)
 library(glue)
 
 week <- 4
-prefix <- "posSNF"
+prefix <- "posMNF"
 
 source("./R/import/checkFantasyAPI.R")
 checkFantasyAPI(week)
