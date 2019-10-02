@@ -19,6 +19,8 @@ matchups <- weeks %>%
     .saveToFile = F
   )
 
+saveRDS(matchups, "./data/weekly_matchups.rds")
+
 # para cada time do roster tira informacoes de ponto, se ganhou e qual o rank
 extractTeam <- . %>% 
   select(id, team=name, logoUrl, pts, outcome) %>% 
