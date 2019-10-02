@@ -20,14 +20,14 @@ starters <- tibble(
     .players %>% 
       # filter(!id %in% c(13604,8153, 530) ) %>%  # barkley 13604
       filter(position==.x$pos) %>% 
-      top_n(.x$qtd, floor)
+      top_n(.x$qtd, ceiling)
   }, .players=players)
 
 starters <- players %>% 
   # filter(!id %in% c(13604,8153, 530) ) %>%  # barkley 13604
   filter(pos %in% c("WR","RB")) %>% 
   anti_join(starters) %>% 
-  top_n(1, floor) %>% 
+  top_n(1, ceiling) %>% 
   bind_rows(starters,.)
 
 ## bench
@@ -39,7 +39,7 @@ bench <- tibble(
   map_df(function(.x, .players){
     .players %>% 
       filter(position==.x$pos) %>% 
-      top_n(.x$qtd, ceiling)
+      top_n(.x$qtd, floor)
   }, .players = anti_join(players, starters) )
 
 # releases
