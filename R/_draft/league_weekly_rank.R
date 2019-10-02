@@ -21,10 +21,26 @@ matchups <- weeks %>%
 
 # para cada time do roster tira informacoes de ponto, se ganhou e qual o rank
 extractTeam <- . %>% 
-  select(id, team=name, logoUrl, rank, pts, outcome) %>% 
-  mutate_at(vars(id, rank), as.integer) %>% 
-  mutate( win=(outcome=="win"), loss=(outcome!="win"), pts=as.numeric(pts) ) %>% 
+  select(id, team=name, logoUrl, pts, outcome) %>% 
+  mutate(
+    id = as.integer(id),
+    win=(outcome=="win"),
+    loss=(outcome!="win"),
+    pts=as.numeric(pts)
+  ) %>% 
   as_tibble()
+
+# adiciona informacoes do oponente para fazer o ranking H2H
+addOpponent <- function(.t, .o){ 
+  .t %>% 
+    mutate(
+      pts.ctr = .o$pts,
+      op.id   = .o$id,
+      op.team = .o$team,
+      op.out  = .o$outcome
+    ) %>% 
+    return()
+}
 
 # para cada jogo dentro da semana
 # processa os times
@@ -35,8 +51,8 @@ extractGame <- function(.game) {
   at <- extractTeam(.teams$awayTeam)
   ht <- extractTeam(.teams$homeTeam)
   
-  at$pts.ctr <- ht$pts
-  ht$pts.ctr <- at$pts
+  at <- addOpponent(at, ht)
+  ht <- addOpponent(ht, at)
   
   bind_rows(at,ht) %>% 
     return()
@@ -55,14 +71,21 @@ wrank <- matchups %>%
   map_df(
     extractWeekGames,
     .id="week"
-  ) %>% 
-  mutate( id=factor(id), team=factor(team) ) %>%
-  arrange(week, rank)
+  ) # %>% 
+  # mutate( id=factor(id), team=factor(team) )
+
+# cria a tabela (long) de confrontos diretos
+h2h.table <- wrank %>% 
+  select(week, id, team, outcome, op.out, op.team, op.id) %>% 
+  mutate( h2h.balance = (outcome=="win") - (op.out=="win") ) %>% 
+  group_by(id, team, op.id, op.team) %>% 
+  summarise( balance = sum(h2h.balance)) %>% 
+  ungroup()
 
 # salva dados
-saveRDS(wrank, "./data/weekly_results.rds")
+# saveRDS(wrank, "./data/weekly_results.rds")
 
-wrank %>% 
+wrank <- wrank %>% 
   group_by(team) %>% 
   arrange(team,week) %>% 
   mutate( 
@@ -73,6 +96,28 @@ wrank %>%
   ) %>% 
   ungroup()
 
+wrank <- wrank %>% 
+  group_by(week, wins, losses) %>% 
+  nest() %>% 
+  mutate(
+    data = map(data, function(.x, .h2ht){
+      expand.grid(id=.x$id, op.id=.x$id) %>% 
+        inner_join(.h2ht, by = c("id", "op.id")) %>% 
+        group_by(id, team) %>% 
+        summarise(h2h.balance=sum(balance)) %>% 
+        ungroup() %>% 
+        right_join(.x, by = c("id", "team")) %>% 
+        mutate( h2h.balance = ifelse(is.na(h2h.balance),0,h2h.balance) ) %>% 
+        return()
+    },
+    .h2ht=h2h.table)
+  ) %>% 
+  unnest(data) %>% 
+  arrange(week, desc(wins), desc(h2h.balance), desc(pts.pro), pts.ag) %>% 
+  mutate( wrank = rep(1:10,4) ) %>% 
+  select(-op.id, -op.team, -op.out) %>% 
+  View()
+  
 wrank %>%
   ggplot(aes(x=week, y=pts, group=team)) +
   geom_line(aes(color=team), size=1) +
