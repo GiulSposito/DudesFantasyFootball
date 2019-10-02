@@ -115,36 +115,24 @@ wrank <- wrank %>%
   unnest(data) %>% 
   arrange(week, desc(wins), desc(h2h.balance), desc(pts.pro), pts.ag) %>% 
   mutate( wrank = rep(1:10,4) ) %>% 
-  select(-op.id, -op.team, -op.out) %>% 
-  View()
+  select(-op.id, -op.team, -op.out)
   
 wrank %>%
   ggplot(aes(x=week, y=pts, group=team)) +
   geom_line(aes(color=team), size=1) +
   geom_image(aes(image=logoUrl)) +
+  ggtitle("Pontuação dos Times", "por semana") +
   theme_minimal()
 
 wrank %>% 
-  group_by(team) %>% 
-  arrange(team, week) %>% 
-  mutate( pts.cum = cumsum(pts) ) %>% 
-  ungroup() %>% 
-  ggplot(aes(x=week, y=pts.cum, group=team)) +
+  ggplot(aes(x=week, y=pts.pro, group=team)) +
   geom_line(aes(color=team), size=1) +
   geom_image(aes(image=logoUrl), size=.03) +
+  ggtitle("Pontuação Acumulada dos Times", "semana à semana") +
   theme_minimal()
 
+
 wrank %>% 
-  group_by(team) %>% 
-  arrange(team,week) %>% 
-  mutate( 
-    wins = cumsum(win),
-    pts.pro = cumsum(pts),
-    pts.ag  = cumsum(pts.ctr)
-  ) %>% 
-  ungroup() %>% 
-  arrange(week, desc(wins), desc(pts.pro)) %>% 
-  mutate( wrank = rep(1:10,4) ) %>% 
   ggplot(aes(x=week, y=reorder(wrank,-wrank), group=team)) +
   geom_line(aes(color=team), size=2) +
   geom_image(aes(image=logoUrl), size=.04) +
