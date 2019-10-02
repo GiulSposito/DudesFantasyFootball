@@ -4,41 +4,71 @@
   
   <url>
     <loc>/post/week05/</loc>
-    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/projection/</loc>
-    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/projection/</loc>
-    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/simulation/</loc>
-    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/simulation/</loc>
-    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2019-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/simulation/</loc>
+    <lastmod>2019-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2019-10-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/rank-week-4/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/playoffs/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/points/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/rank/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/ranking/</loc>
+    <lastmod>2019-10-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/wins-and-losses/</loc>
     <lastmod>2019-10-02T00:00:00+00:00</lastmod>
   </url>
   
@@ -48,12 +78,12 @@
   </url>
   
   <url>
-    <loc>/categories/evaluation/</loc>
+    <loc>/tags/evaluation/</loc>
     <lastmod>2019-10-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/evaluation/</loc>
+    <loc>/categories/evaluation/</loc>
     <lastmod>2019-10-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -99,11 +129,6 @@
   
   <url>
     <loc>/tags/championship/</loc>
-    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/ranking/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
   

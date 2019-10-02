@@ -1,7 +1,7 @@
 ---
 title: '[Week 05] Players Projection and Matchups Simulation'
 author: 'Giuliano Sposito'
-date: '2019-10-02'
+date: '2019-10-03'
 categories:
   - projection
   - simulation
