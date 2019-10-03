@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>About This Site &middot; It&#39;s Football, Dudes!</title>
+  <meta name="description" content="" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  
+  
+  <link href="/css/concated.min.css" rel="stylesheet">
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-148711241-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  <style>
+    body {
+      background: #ecedef url("/img/wilson_background_w.jpg") repeat;
+    }
+  </style>
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <h1 class="nav-header"><a href="/" class="nav-text">It&#39;s Football, Dudes! Fantasy League</a></h1>
+  <div class="hamburger-menu">
+    <button onclick="hamburgerMenuPressed.call(this)" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
+    <ul id="menu" class="hamburger-menu-overlay">
+      <li><a href="/" class="hamburger-menu-overlay-link">Home</a></li>
+      <li><a href="/post/it-s-football-dudes-trophy-room/" class="hamburger-menu-overlay-link">Trophy Room</a></li>
+      <li><a href="/categories/about" class="hamburger-menu-overlay-link">About</a></li><li><a href="/categories/evaluation" class="hamburger-menu-overlay-link">Evaluation</a></li><li><a href="/categories/projection" class="hamburger-menu-overlay-link">Projection</a></li><li><a href="/categories/ranking" class="hamburger-menu-overlay-link">Ranking</a></li><li><a href="/categories/simulation" class="hamburger-menu-overlay-link">Simulation</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post ">
+        <header class="post-header">
+        	<h1 class="post-title">About This Site</h1>
+          <p class="post-date">Posted <time datetime="2018-10-28">Oct 28, 2018</time></p>
+        </header>
+        
+        <div id="abstract" class="section level2">
+<h2>Abstract</h2>
+<p>The season of <a href="https://en.wikipedia.org/wiki/American_football">American football</a> is back, and with it the <a href="http://fantasy.nfl.com/">Fantasy</a>, the already traditional online game which you bring your friends or coworkers to play together in a virtual league, where each member rosters <a href="https://www.nfl.com/">NFL’s</a> players on virtual teams and hoping that they will score well in their real life games. The real life player’s score goes to your virtual team score.</p>
+</div>
+<div id="ffanalytics-package" class="section level2">
+<h2>ffanalytics package</h2>
+<p>The PhD in clinical psychology and assistant professor <a href="https://fantasyfootballanalytics.net/2013/03/isaac-petersen.html">Isaac Petersen</a> author of the site <a href="https://fantasyfootballanalytics.net">Fantasy Football Analytics</a>, who does projections and analysis of Fantasy results, did a great job with the <a href="https://fantasyfootballanalytics.net/2016/06/ffanalytics-r-package-fantasy-football-data-analysis.html">ffanalytics package</a> made available in <a href="https://github.com/FantasyFootballAnalytics/ffanalytics">GitHub</a>.</p>
+<p>This package does <a href="https://fantasyfootballanalytics.net/2014/06/scraping-fantasy-football-projections.html"><code>data scrapping</code></a> in various sites that make predictions of player’s performances such as <a href="https://games.espn.com/ffl/tools/projections">ESPN</a>, <a href="https://www.cbssports.com/fantasy/football/stats/sortable/points/QB/standard/projections/2018/3?print_rows=%20100">CBS</a>, <a href="https://sports.yahoo.com/news/week-8-fantasy-football-rankings-helping-set-lineup-210614393.html">Yahoo</a> and the <a href="http://m.fantasy.nfl.com/research/projections">NFL</a> website itself, after, applies the fantasy scoring rules (which can even be <a href="https://github.com/FantasyFootballAnalytics/ffanalytics/blob/master/R/scoring_rules.R">cutomized</a> for your League) and <a href="https://fantasyfootballanalytics.net/2014/06/custom-rankings-and-projections-for-your-league.html">calculates the score</a> possible for each of the projections.</p>
+<p>Finally, the package analyzes the points obtained by making <a href="https://fantasyfootballanalytics.net/2014/06/custom-rankings-and-projections-for-your-league.html">performance projections</a> of the results, aggregating in one vision the predictions of several sites. Isaac publishes weekly the <a href="https://fantasyfootballanalytics.net/2018/10/gold-mining-week-7-2018.html">ranking of projections</a> by position for the games of the round, using some standards scoring rules.</p>
+<p>With all the hard work of doing <code>data scrapping</code> and apply the rules of fantasy to calculate the score already made by the package, we can use these informations to project the results of teams scaled in fantasy leagues and to forecast game results, remaining only to obtain the teams and their rosters from Fantasy itself.</p>
+</div>
+<div id="fantasy-api---getting-the-teams-matchups-and-rosters" class="section level2">
+<h2>Fantasy API - Getting the Team’s Matchups and Rosters</h2>
+<p>In order to obtain the rounds of a fantasy league, we can use the <a href="http://api.fantasy.nfl.com/">Web API</a> available by the Fantasy website. Although it has some <em>depreciated</em> methods they still work and serve the purpose of getting the information we want. In particular we need access the methods that tells us which games <a href="http://api.fantasy.nfl.com/v1/docs/service?serviceName=leagueMatchups"><code>/league/matchups</code></a> is schedule for a week. This API receives as input parameters the authentication <code>token</code>, the<code>id</code> of the league and the <code>week</code> of interest, returning the games scheduled for that week. We also will use the API <a href="http://api.fantasy.nfl%20.com/v1/docs/service?serviceName=leagueTeamMatchup"><code>/league/team/matchup</code></a> that, in addition to the above parameters, also gets the team id to return the team roster.</p>
+<p>We can invoke the API using the <code>httr</code> package and process the response json using<code>jsonlite</code>.</p>
+<pre class="r"><code># Storing the Access Token and League ID locally
+# I use a yalm file to avoid hard-code them 
+# or eventually version them in the GitHub :)
+library(yaml)
+
+config &lt;- yaml.load_file(&quot;../../../config/config.yml&quot;)
+leagueId &lt;- config$leagueId
+authToken &lt;- config$authToken</code></pre>
+<pre class="r"><code># invoking the API
+library(httr)
+library(glue) # to easily replace vars in the url
+
+# league/matchups url
+url &lt;- &quot;http://api.fantasy.nfl.com/v1/league/matchups?leagueId={leagueId}&amp;week={week}&amp;format=json&amp;authToken={authToken}&quot;
+week &lt;- 5
+
+# call the api
+resp &lt;- httr::GET(glue(url))</code></pre>
+<pre class="r"><code># Is it ok?
+resp$status_code</code></pre>
+<pre><code>## [1] 200</code></pre>
+<p>Once the call response is obtained, we treat the return * json * to organize the data and obtain the team rosters.</p>
+<pre class="r"><code>library(jsonlite)
+library(tidyverse)
+library(kableExtra)
+
+# to convert the json in a &quot;tabular-tibble form&quot;
+resp %&gt;% 
+  httr::content(as=&quot;text&quot;) %&gt;%
+  fromJSON(simplifyDataFrame = T) %$%  
+  leagues %$%
+  matchups %&gt;%
+  .[[1]] %&gt;% 
+  jsonlite::flatten() %&gt;% 
+  as.tibble() -&gt; matchups
+
+ matchups %&gt;% 
+   select(awayTeam.id, awayTeam.name, homeTeam.name, homeTeam.id) %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+awayTeam.id
+</th>
+<th style="text-align:left;">
+awayTeam.name
+</th>
+<th style="text-align:left;">
+homeTeam.name
+</th>
+<th style="text-align:left;">
+homeTeam.id
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Change Robots
+</td>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+<td style="text-align:left;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+NJ’s Bugre
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:left;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+<td style="text-align:left;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:left;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+<p>We make new calls to the API to get the roster of each team in that week.</p>
+<pre class="r"><code># for each teamIds in the matchup
+c(matchups$awayTeam.id) %&gt;%
+  map(
+    function(.teamId, .week, .leagueId, .authToken, .url) {
+      # make the API call
+      httr::GET(glue(.url)) %&gt;%
+        httr::content(as = &quot;text&quot;) %&gt;%
+        fromJSON(simplifyDataFrame = T) %&gt;% # transform response body in json
+        return()
+    },
+    .week      = week,
+    .leagueId  = leagueId,
+    .authToken = authToken,
+    .url       = &quot;http://api.fantasy.nfl.com/v1/league/team/matchup?leagueId={.leagueId}&amp;teamId={.teamId}&amp;week={.week}&amp;authToken={.authToken}&amp;format=json&quot;
+  )  -&gt; rosters.json</code></pre>
+<pre class="r"><code># this is a list with the team rosters used in this week
+rosters.json[[1]]$leagues$matchup$homeTeam$name</code></pre>
+<pre><code>## [1] &quot;Rio Claro Pfeiferians&quot;</code></pre>
+<pre class="r"><code>rosters.json[[1]]$leagues$matchup$homeTeam$players[[1]] %&gt;%
+  select(id, name, position, teamAbbr) %&gt;% 
+  as.tibble() %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+id
+</th>
+<th style="text-align:left;">
+name
+</th>
+<th style="text-align:left;">
+position
+</th>
+<th style="text-align:left;">
+teamAbbr
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2558125
+</td>
+<td style="text-align:left;">
+Patrick Mahomes
+</td>
+<td style="text-align:left;">
+QB
+</td>
+<td style="text-align:left;">
+KC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2507164
+</td>
+<td style="text-align:left;">
+Adrian Peterson
+</td>
+<td style="text-align:left;">
+RB
+</td>
+<td style="text-align:left;">
+WAS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2543773
+</td>
+<td style="text-align:left;">
+James White
+</td>
+<td style="text-align:left;">
+RB
+</td>
+<td style="text-align:left;">
+NE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2508061
+</td>
+<td style="text-align:left;">
+Antonio Brown
+</td>
+<td style="text-align:left;">
+WR
+</td>
+<td style="text-align:left;">
+PIT
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2556370
+</td>
+<td style="text-align:left;">
+Michael Thomas
+</td>
+<td style="text-align:left;">
+WR
+</td>
+<td style="text-align:left;">
+NO
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2558266
+</td>
+<td style="text-align:left;">
+George Kittle
+</td>
+<td style="text-align:left;">
+TE
+</td>
+<td style="text-align:left;">
+SF
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2555430
+</td>
+<td style="text-align:left;">
+Alex Collins
+</td>
+<td style="text-align:left;">
+RB
+</td>
+<td style="text-align:left;">
+BAL
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1581
+</td>
+<td style="text-align:left;">
+DeSean Jackson
+</td>
+<td style="text-align:left;">
+WR
+</td>
+<td style="text-align:left;">
+TB
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2540158
+</td>
+<td style="text-align:left;">
+Zach Ertz
+</td>
+<td style="text-align:left;">
+TE
+</td>
+<td style="text-align:left;">
+PHI
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2540160
+</td>
+<td style="text-align:left;">
+Jordan Reed
+</td>
+<td style="text-align:left;">
+TE
+</td>
+<td style="text-align:left;">
+WAS
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2558063
+</td>
+<td style="text-align:left;">
+Deshaun Watson
+</td>
+<td style="text-align:left;">
+QB
+</td>
+<td style="text-align:left;">
+HOU
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2558865
+</td>
+<td style="text-align:left;">
+Chris Carson
+</td>
+<td style="text-align:left;">
+RB
+</td>
+<td style="text-align:left;">
+SEA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2559169
+</td>
+<td style="text-align:left;">
+Austin Ekeler
+</td>
+<td style="text-align:left;">
+RB
+</td>
+<td style="text-align:left;">
+LAC
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2507232
+</td>
+<td style="text-align:left;">
+Mason Crosby
+</td>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+GB
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+100011
+</td>
+<td style="text-align:left;">
+Green Bay Packers
+</td>
+<td style="text-align:left;">
+DEF
+</td>
+<td style="text-align:left;">
+GB
+</td>
+</tr>
+</tbody>
+</table>
+<p>With the team’s rosters (<em>json</em> format) we process the data to facilitate the handling.</p>
+<pre class="r"><code># auxiliar transformation to extract team roster
+extractTeam &lt;- . %&gt;% 
+  .$players %&gt;% 
+  .[[1]] %&gt;% 
+  select( src_id=id, name, position, rosterSlot, fantasyPts ) %&gt;%
+  jsonlite::flatten() %&gt;% 
+  as.tibble() %&gt;% 
+  select(-fantasyPts.week.season, -fantasyPts.week.week ) %&gt;% 
+  rename(points = fantasyPts.week.pts) %&gt;% 
+  mutate(
+    src_id = as.integer(src_id), 
+    points = as.numeric(points)
+  )
+
+# extract each roster
+rosters.json %&gt;% 
+  map(function(.json){
+    matchup &lt;- .json$leagues$matchup
+    tibble(
+      home.teamId = as.integer(matchup$homeTeam$id),
+      home.name   = matchup$homeTeam$name,
+      home.logo   = matchup$homeTeam$logoUrl,
+      home.pts    = as.numeric(matchup$homeTeam$pts),
+      home.roster = list(extractTeam(matchup$homeTeam)),
+      away.teamId = as.integer(matchup$awayTeam$id),
+      away.name   = matchup$awayTeam$name,
+      away.logo   = matchup$awayTeam$logoUrl,
+      away.pts    = as.numeric(matchup$awayTeam$pts),
+      away.roster = list(extractTeam(matchup$awayTeam))
+    ) %&gt;% 
+      return()
+  }) %&gt;% bind_rows() -&gt; matchups.rosters
+
+# check the matchups QBs for each team 
+matchups.rosters %&gt;% 
+  mutate( away.qb = map(away.roster, function(roster) roster %&gt;% filter(rosterSlot==&quot;QB&quot;)),
+          home.qb = map(home.roster, function(roster) roster %&gt;% filter(rosterSlot==&quot;QB&quot;)) ) %&gt;%
+  unnest(away.qb, home.qb, .sep=&quot;.&quot;) %&gt;% 
+  select(away.team = away.name, away.qb.name, home.qb.name, home.team=home.name ) %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+away.team
+</th>
+<th style="text-align:left;">
+away.qb.name
+</th>
+<th style="text-align:left;">
+home.qb.name
+</th>
+<th style="text-align:left;">
+home.team
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Change Robots
+</td>
+<td style="text-align:left;">
+Aaron Rodgers
+</td>
+<td style="text-align:left;">
+Patrick Mahomes
+</td>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NJ’s Bugre
+</td>
+<td style="text-align:left;">
+Russell Wilson
+</td>
+<td style="text-align:left;">
+Ben Roethlisberger
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:left;">
+Tom Brady
+</td>
+<td style="text-align:left;">
+Drew Brees
+</td>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:left;">
+Matt Ryan
+</td>
+<td style="text-align:left;">
+Cam Newton
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+</tr>
+</tbody>
+</table>
+<p>Now we have a <code>tibble</code> with the games between the teams and, nested in each registry, the respective rosters. Now you will need to use <code>ffanalytis package</code> to get the prediction performance and score of each player.</p>
+</div>
+<div id="forecast-players-perform" class="section level2">
+<h2>Forecast players perform</h2>
+<p>Firstly, we will use the <code>ffanalytics package</code> to do the data scraping of the forecasts for each player in the league made by the main sites that follow and make this type of prediction.</p>
+<pre class="r"><code>library(ffanalytics)
+scrap &lt;- scrape_data(pos = c(&quot;QB&quot;, &quot;RB&quot;, &quot;WR&quot;, &quot;TE&quot;, &quot;K&quot;, &quot;DST&quot;),
+                     season = 2018,
+                     week = week)</code></pre>
+<p>The <code>scrape_data</code> function returns a list by position, with the performance projections of the players in that position. This is because the predictions for each position have different attributes, for example, <em>Kickers</em> are evaluated by the number of <em>field goals</em> and distances of the kicks, and <em>Quaterbacks</em> by the numbers and distances of the passes.</p>
+<pre class="r"><code># Quaterback Projection Attributes
+scrap$QB %&gt;%  
+  filter(player==&quot;Drew Brees&quot;) %&gt;% 
+  select(4:10) %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+player
+</th>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+pass_att
+</th>
+<th style="text-align:right;">
+pass_comp
+</th>
+<th style="text-align:right;">
+pass_yds
+</th>
+<th style="text-align:right;">
+pass_tds
+</th>
+<th style="text-align:right;">
+pass_int
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Drew Brees
+</td>
+<td style="text-align:left;">
+NO
+</td>
+<td style="text-align:right;">
+37.60
+</td>
+<td style="text-align:right;">
+26.10
+</td>
+<td style="text-align:right;">
+287.00
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Drew Brees
+</td>
+<td style="text-align:left;">
+NO
+</td>
+<td style="text-align:right;">
+37.30
+</td>
+<td style="text-align:right;">
+26.20
+</td>
+<td style="text-align:right;">
+272.70
+</td>
+<td style="text-align:right;">
+1.70
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Drew Brees
+</td>
+<td style="text-align:left;">
+NO
+</td>
+<td style="text-align:right;">
+38.20
+</td>
+<td style="text-align:right;">
+26.50
+</td>
+<td style="text-align:right;">
+305.00
+</td>
+<td style="text-align:right;">
+1.90
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Drew Brees
+</td>
+<td style="text-align:left;">
+NO
+</td>
+<td style="text-align:right;">
+44.00
+</td>
+<td style="text-align:right;">
+29.00
+</td>
+<td style="text-align:right;">
+305.00
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Drew Brees
+</td>
+<td style="text-align:left;">
+NO
+</td>
+<td style="text-align:right;">
+38.20
+</td>
+<td style="text-align:right;">
+26.60
+</td>
+<td style="text-align:right;">
+305.00
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Drew Brees
+</td>
+<td style="text-align:left;">
+NO
+</td>
+<td style="text-align:right;">
+39.51
+</td>
+<td style="text-align:right;">
+25.99
+</td>
+<td style="text-align:right;">
+309.47
+</td>
+<td style="text-align:right;">
+2.51
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Drew Brees
+</td>
+<td style="text-align:left;">
+NO
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+283.36
+</td>
+<td style="text-align:right;">
+1.94
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># Kickers Projection Attributes
+scrap$K %&gt;%  
+  filter(player==&quot;Justin Tucker&quot;) %&gt;% 
+  select(4:10) %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+player
+</th>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+fg
+</th>
+<th style="text-align:right;">
+fg_att
+</th>
+<th style="text-align:right;">
+fglg
+</th>
+<th style="text-align:right;">
+xp
+</th>
+<th style="text-align:right;">
+xpatt
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Justin Tucker
+</td>
+<td style="text-align:left;">
+BAL
+</td>
+<td style="text-align:right;">
+1.80
+</td>
+<td style="text-align:right;">
+1.90
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2.60
+</td>
+<td style="text-align:right;">
+2.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Justin Tucker
+</td>
+<td style="text-align:left;">
+Bal
+</td>
+<td style="text-align:right;">
+1.90
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2.20
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Justin Tucker
+</td>
+<td style="text-align:left;">
+BAL
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+2.30
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2.30
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Justin Tucker
+</td>
+<td style="text-align:left;">
+BAL
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Justin Tucker
+</td>
+<td style="text-align:left;">
+BAL
+</td>
+<td style="text-align:right;">
+1.86
+</td>
+<td style="text-align:right;">
+2.25
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2.29
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Justin Tucker
+</td>
+<td style="text-align:left;">
+Bal
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2.50
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Justin Tucker
+</td>
+<td style="text-align:left;">
+BAL
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1.94
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+<p>Secondly, with projections in hand, we use <code>ffanalytics package</code> again to calculate how many points each player will make according with each prediction scraped from the sites. However, the package does not export the function that does the this individual calculation, but it is a necessary step to calculate the <a href="https://github.com/FantasyFootballAnalytics/ffanalytics#calculating-projections">projections table</a> that the site uses in its <a href="https://fantasyfootballanalytics.net/2018/10/gold-mining-week-7-2018.html">graphics</a>.</p>
+<p>But the package project is in the GitHub, so, it is possible to download the code, load the scripts directly and access the function that calculates the points per player and projection site. The function is called <code>source_points()</code>, and is present in the script <a href="https://github.com/FantasyFootballAnalytics/ffanalytics/blob/master/R/calc_projections.R#L90">calc_projections.R</a>. You can load the script (and its dependencies) to invoke it directly.</p>
+<pre class="r"><code># function to access &#39;source_points&#39; directly
+playerPointsProjections &lt;- function(.scrap, .score_rules){
+  source(&quot;../ffanalytics/R/calc_projections.R&quot;)
+  source(&quot;../ffanalytics/R/stats_aggregation.R&quot;)
+  source(&quot;../ffanalytics/R/source_classes.R&quot;)
+  source(&quot;../ffanalytics/R/custom_scoring.R&quot;)
+  source(&quot;../ffanalytics/R/scoring_rules.R&quot;)
+  source(&quot;../ffanalytics/R/make_scoring.R&quot;)
+  source(&quot;../ffanalytics/R/recode_vars.R&quot;)
+  source(&quot;../ffanalytics/R/impute_funcs.R&quot;)
+  source_points(.scrap, .score_rules)
+}
+
+# customized scoring rules
+source(&quot;./score_settings.R&quot;) 
+players.points &lt;- playerPointsProjections(scrap, dudes.score.settings)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+pos
+</th>
+<th style="text-align:left;">
+data_src
+</th>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:right;">
+points
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+CBS
+</td>
+<td style="text-align:right;">
+8359
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+CBS
+</td>
+<td style="text-align:right;">
+12956
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+CBS
+</td>
+<td style="text-align:right;">
+11936
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+CBS
+</td>
+<td style="text-align:right;">
+6789
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+CBS
+</td>
+<td style="text-align:right;">
+8930
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+CBS
+</td>
+<td style="text-align:right;">
+11384
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="merging-rosters-and-predictions" class="section level2">
+<h2>Merging Rosters and Predictions</h2>
+<p>We now have the teams rosters and the scoring projections of the sites for each player, so we need to join the datasets. But to do that it is necessary to <em>match</em> the players’ ids. If you notice the data displayed, each player’s ID is different on each of the sites, <code>ffanalytics package</code> names this <code>id</code> as <code>src_id</code>, but unifies the results to a unified, identificator named <code>id</code>.</p>
+<p>The teams’ rosters were obtained from the <code>fantasy</code> site, it follows the <code>src_id</code> identification of the <code>NFL</code>, to make the <em>merge</em> between the two dataset it will be necessary to map the <code>src_id</code> of the <code>NFL</code> to <code>id</code> of <code>ffanalytics package</code>. We can extract this ‘ids’ mapping from <code>NFL</code> prediction scraped data:</p>
+<pre class="r"><code># look the presence of both ids in the projection table
+scrap$WR %&gt;% 
+  filter( data_src==&quot;NFL&quot; ) %&gt;% 
+  select(1:4) %&gt;% 
+  head() %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+data_src
+</th>
+<th style="text-align:left;">
+id
+</th>
+<th style="text-align:left;">
+src_id
+</th>
+<th style="text-align:left;">
+player
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+NFL
+</td>
+<td style="text-align:left;">
+11675
+</td>
+<td style="text-align:left;">
+2543495
+</td>
+<td style="text-align:left;">
+Davante Adams
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NFL
+</td>
+<td style="text-align:left;">
+12181
+</td>
+<td style="text-align:left;">
+2552600
+</td>
+<td style="text-align:left;">
+Nelson Agholor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NFL
+</td>
+<td style="text-align:left;">
+10651
+</td>
+<td style="text-align:left;">
+2530660
+</td>
+<td style="text-align:left;">
+Kamar Aiken
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NFL
+</td>
+<td style="text-align:left;">
+11222
+</td>
+<td style="text-align:left;">
+2540154
+</td>
+<td style="text-align:left;">
+Keenan Allen
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NFL
+</td>
+<td style="text-align:left;">
+9308
+</td>
+<td style="text-align:left;">
+2649
+</td>
+<td style="text-align:left;">
+Danny Amendola
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NFL
+</td>
+<td style="text-align:left;">
+12930
+</td>
+<td style="text-align:left;">
+2556462
+</td>
+<td style="text-align:left;">
+Robby Anderson
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># extracting id and src_id from all positions
+scrap %&gt;%
+  map(function(dft){
+    dft %&gt;% 
+      filter(data_src==&quot;NFL&quot;) %&gt;% 
+      select(id, src_id, player, team, pos) %&gt;% 
+      return()
+  }) %&gt;% 
+  bind_rows() %&gt;%
+  distinct() -&gt; players.ids</code></pre>
+<pre class="r"><code># ID mapping
+head(players.ids) %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:right;">
+src_id
+</th>
+<th style="text-align:left;">
+player
+</th>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:left;">
+pos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+13589
+</td>
+<td style="text-align:right;">
+2560955
+</td>
+<td style="text-align:left;">
+Josh Allen
+</td>
+<td style="text-align:left;">
+BUF
+</td>
+<td style="text-align:left;">
+QB
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13125
+</td>
+<td style="text-align:right;">
+2557922
+</td>
+<td style="text-align:left;">
+C.J. Beathard
+</td>
+<td style="text-align:left;">
+SF
+</td>
+<td style="text-align:left;">
+QB
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11642
+</td>
+<td style="text-align:right;">
+2543477
+</td>
+<td style="text-align:left;">
+Blake Bortles
+</td>
+<td style="text-align:left;">
+JAX
+</td>
+<td style="text-align:left;">
+QB
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9817
+</td>
+<td style="text-align:right;">
+497095
+</td>
+<td style="text-align:left;">
+Sam Bradford
+</td>
+<td style="text-align:left;">
+ARI
+</td>
+<td style="text-align:left;">
+QB
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5848
+</td>
+<td style="text-align:right;">
+2504211
+</td>
+<td style="text-align:left;">
+Tom Brady
+</td>
+<td style="text-align:left;">
+NE
+</td>
+<td style="text-align:left;">
+QB
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4925
+</td>
+<td style="text-align:right;">
+2504775
+</td>
+<td style="text-align:left;">
+Drew Brees
+</td>
+<td style="text-align:left;">
+NO
+</td>
+<td style="text-align:left;">
+QB
+</td>
+</tr>
+</tbody>
+</table>
+<p>Finally we can make the predictions <em>merging</em> of players to the team’s rankings.</p>
+<pre class="r"><code># nest by &quot;id&quot; and merge with &quot;src_id&quot;
+players.points %&gt;% 
+  select(-pos) %&gt;% 
+  group_by(id) %&gt;% 
+  nest(.key=&quot;points.range&quot;) %&gt;%
+  # merge ID with SRC_ID
+  inner_join(players.ids, by = c(&quot;id&quot;)) %&gt;%
+  select(id, src_id, player, pos, team, points.range) %&gt;% 
+  # keep only &quot;ids&quot; at top level
+  select(id, src_id, points.range) -&gt; players.ids.points
+
+# auxiliary function to merge roster with player points
+mergePoints &lt;- function(.roster, .points){
+  .roster %&gt;% 
+    left_join(.points, by=&quot;src_id&quot;) %&gt;% 
+    return()
+}
+
+# merge points in rosters
+matchups.rosters %&gt;% 
+  mutate(
+    home.roster = map(home.roster, mergePoints, .points=players.ids.points),
+    away.roster = map(away.roster, mergePoints, .points=players.ids.points)
+  ) -&gt; matchups.points</code></pre>
+<p>Note that we are using a structure of <a href="https://r4ds.had.co.nz/many-models.html">nested data.frames</a>, i.e., we have a <em>matchups data.frame</em> where each line is a match. In each match there are two rosters columns (“home” and “visitor”), these columns hold another <em>data.frame</em>, containing the roster itself. In this <em>data.frame</em>, each line is a player, and for each player there is a column called <em>points.range</em> which also contains another <em>data.frame</em>, with the prediction of each site’s player scores.</p>
+<pre class="r"><code># &quot;father&quot; dataframe and the first nested column
+matchups.points %&gt;% 
+  select( home.name, home.roster ) </code></pre>
+<pre><code>## # A tibble: 4 x 2
+##   home.name             home.roster      
+##   &lt;chr&gt;                 &lt;list&gt;           
+## 1 Rio Claro Pfeiferians &lt;tibble [15 x 7]&gt;
+## 2 Sorocaba Steelers     &lt;tibble [15 x 7]&gt;
+## 3 Amparo Bikers         &lt;tibble [15 x 7]&gt;
+## 4 Indaiatuba Riders     &lt;tibble [15 x 7]&gt;</code></pre>
+<pre class="r"><code># seeing the first nested data.frame
+matchups.points[1,]$home.roster[[1]]</code></pre>
+<pre><code>## # A tibble: 15 x 7
+##     src_id name            position rosterSlot points    id points.range   
+##      &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt; &lt;list&gt;         
+##  1 2558125 Patrick Mahomes QB       QB           15.8 13116 &lt;tibble [9 x 2~
+##  2 2507164 Adrian Peterson RB       RB            4.2  8658 &lt;tibble [9 x 2~
+##  3 2543773 James White     RB       RB           13.7 11747 &lt;tibble [9 x 2~
+##  4 2508061 Antonio Brown   WR       WR           22.1  9988 &lt;tibble [9 x 2~
+##  5 2556370 Michael Thomas  WR       WR            7.4 12652 &lt;tibble [9 x 2~
+##  6 2558266 George Kittle   TE       TE            8.3 13299 &lt;tibble [9 x 2~
+##  7 2555430 Alex Collins    RB       W/R           6.6 12628 &lt;tibble [8 x 2~
+##  8    1581 DeSean Jackson  WR       BN            0    9075 &lt;tibble [4 x 2~
+##  9 2540158 Zach Ertz       TE       BN           17   11247 &lt;tibble [10 x ~
+## 10 2540160 Jordan Reed     TE       BN            2.1 11248 &lt;tibble [9 x 2~
+## 11 2558063 Deshaun Watson  QB       BN           21   13113 &lt;tibble [9 x 2~
+## 12 2558865 Chris Carson    RB       BN           12.7 13364 &lt;tibble [8 x 2~
+## 13 2559169 Austin Ekeler   RB       BN           11.9 13404 &lt;tibble [6 x 2~
+## 14 2507232 Mason Crosby    K        K             3    8742 &lt;tibble [10 x ~
+## 15  100011 Green Bay Pack~ DEF      DEF           2     523 &lt;tibble [8 x 2~</code></pre>
+<pre class="r"><code># look the second level dataframe
+matchups.points[1,]$home.roster[[1]][1,]$points.range[[1]]</code></pre>
+<pre><code>## # A tibble: 9 x 2
+##   data_src      points
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 CBS             16  
+## 2 ESPN            18.7
+## 3 FantasyPros     22.3
+## 4 FantasySharks   19.5
+## 5 FFToday         20.5
+## 6 FleaFlicker     24.7
+## 7 NFL             19.1
+## 8 NumberFire      24.6
+## 9 Yahoo           18.8</code></pre>
+<p><a href="https://r4ds.had.co.nz/many-models.html">Nested data.frames</a> is a convenient model because it allows you to keep the data together and manipulate them easily.</p>
+</div>
+<div id="monte-carlo-simulation" class="section level2">
+<h2>Monte Carlo Simulation</h2>
+<p>To simulate the result of round matches, we need to simulate the score obtained by each teams and for this we will simulate the score of the team members using <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> simulation.</p>
+<p>To simulate the players’ scores we will consider that each of the players can make one of the scores projected by the forecast sites. For simplicity, in this post, we can assume that the odds are equal for any of the projected scores.</p>
+<p>In this case the simulation of a match using Monte Carlo then consists in:</p>
+<ol style="list-style-type: decimal">
+<li>For each player of the team, draws one of the possible projected numbers</li>
+<li>We sum the players’ points drawed: this will be the team score</li>
+<li>Compare the score of the <em>home</em> team with the <em>away</em> team to determine who won</li>
+<li>A win is computed for the team with the highest score</li>
+</ol>
+<p>This procedure is repeated <em>N</em> times, simulating several matchs, to determine the chances of winning a team, we sum the total number of times in which the team was a winner and divide by the total number of simulations. Thus we will have the chances of each team winning the match, once the simulations reflect the numerous combinations of scores between players and their teams.</p>
+<p>Note that we assume that each player has equal chance of having any of the projected scores as a simulation score, more sophisticated models could consider different ranges with different probabilities between projections, including assessing the performance history of the site, but I’ll leave this considerations to another future post.</p>
+<pre class="r"><code>### Auxiliary functions
+
+# function to generate .n possible pontuations from .points.range
+# it&#39;s used to generate the .n simulations to each player
+simPlayer &lt;- function(.points.range, .n){
+
+  # just check if the points.range isn&#39;t empty
+  if(is.null(.points.range)) return( vector(mode = &quot;numeric&quot;,.n) )
+  if(nrow(.points.range)==0) return( vector(mode = &quot;numeric&quot;,.n) )
+
+  # generate a .n vector samples from points.range
+  .points.range$points %&gt;% 
+    sample(size = .n, replace = T) %&gt;%
+    return()
+
+}
+
+# function to add the player pontuation to the team roster dataframe
+simTeam &lt;- function(.roster, .n){
+  .roster %&gt;% 
+    mutate( sim.player = map(points.range, simPlayer, .n=.n) )  %&gt;% 
+    return()
+}
+
+# this function is in charge to sum the pontuations from 
+# each player to generate the .n-size vector with team pontuation
+simTeamPoints &lt;- function(.roster){
+  .roster %&gt;% 
+    filter(rosterSlot!=&quot;BN&quot;) %&gt;%  # exclude player in bench
+    pull(sim.player) %&gt;%          # get the player pontuation simulation
+    bind_cols() %&gt;%               # binds the pontuation toghether 
+    as.matrix() %&gt;%               # now we have an matrix with # players x # .n simulations
+    rowSums(na.rm = T) %&gt;%        # sum each row (simuilation) to get a .n-vector 
+    return()                      # each position in this vector is a possible team pontuation
+}
+
+### Simulation Code
+
+# number of simulations
+n &lt;- 2000
+
+# in the matchups dataframe
+matchups.points %&gt;% 
+  mutate(
+    # just team nicknames to shorter legends :)
+    away.nickname = gsub(&quot;([a-zA-Z\&#39;]+ )?&quot;, &quot;&quot;, away.name),
+    home.nickname = gsub(&quot;([a-zA-Z\&#39;]+ )?&quot;, &quot;&quot;, home.name)
+  ) %&gt;% 
+  mutate(
+    home.roster  = map(home.roster, simTeam, .n=n), # add players simulation points
+    away.roster  = map(away.roster, simTeam, .n=n), # to each roster
+    home.sim.pts = map(home.roster, simTeamPoints), # computes the team simulation
+    away.sim.pts = map(away.roster, simTeamPoints)  # points
+  ) %&gt;% 
+  mutate( 
+    home.win    = map2(home.sim.pts, away.sim.pts, function(.x,.y) (.x &gt; .y) ), # computes the 
+    away.win    = map(home.win, function(.x) (!.x)), # number of victures of each team
+    home.win.prob = map_dbl(home.win, mean, na.rm = T),  # the % of victories
+    away.win.prob = map_dbl(away.win, mean, na.rm = T)   # the % of victories
+  ) %&gt;%
+  mutate(
+    # this calculate the difference of score points in each simulation
+    score.diff    = map2(home.sim.pts, away.sim.pts, function(.x,.y){.x - .y})
+  ) -&gt; simulation</code></pre>
+<p>Now we have a pontuation curve for each player in the roster and also the pontuation curve of each team, let’s see what are the results.</p>
+</div>
+<div id="simulation-results" class="section level2">
+<h2>Simulation Results</h2>
+<p>Let’s compare the difference of score for each match in league, the difference of score will allow us to calculate the chances of victory that each team has, according to the amount of “winning” simulations.</p>
+<pre class="r"><code># return a summary as a tibble
+summaryAsTibble &lt;- . %&gt;% summary() %&gt;% as.list() %&gt;% as.tibble()
+
+# first, lets build team simulation summary
+c(&quot;home&quot;,&quot;away&quot;) %&gt;% 
+  map(function(.prefix, .matchups.sim){
+    .matchups.sim %&gt;% 
+      select( starts_with(.prefix)) %&gt;% 
+      set_names(gsub(pattern = paste0(.prefix,&quot;\\.&quot;),replacement = &quot;&quot;,x=names(.))) %&gt;% 
+      mutate( points = map(sim.pts, summaryAsTibble) ) %&gt;% 
+      select(-roster, -win) %&gt;% 
+      unnest(points, .sep=&quot;.&quot;) %&gt;% 
+      return()
+  },
+  .matchups.sim = simulation) %&gt;% 
+  bind_rows() -&gt; sim.results
+
+# visualizing the summary 
+sim.results %&gt;% 
+  select(nickname, win.prob, points=points.Median) %&gt;% 
+  mutate(win.prob = win.prob * 100) %&gt;% 
+  mutate_at(2:3, round, digits=1) %&gt;% 
+  arrange(desc(points)) %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+nickname
+</th>
+<th style="text-align:right;">
+win.prob
+</th>
+<th style="text-align:right;">
+points
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mules
+</td>
+<td style="text-align:right;">
+90.6
+</td>
+<td style="text-align:right;">
+106.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Steelers
+</td>
+<td style="text-align:right;">
+91.6
+</td>
+<td style="text-align:right;">
+106.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Robots
+</td>
+<td style="text-align:right;">
+78.0
+</td>
+<td style="text-align:right;">
+105.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Giants
+</td>
+<td style="text-align:right;">
+67.4
+</td>
+<td style="text-align:right;">
+104.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bikers
+</td>
+<td style="text-align:right;">
+32.6
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Pfeiferians
+</td>
+<td style="text-align:right;">
+22.1
+</td>
+<td style="text-align:right;">
+98.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Riders
+</td>
+<td style="text-align:right;">
+9.4
+</td>
+<td style="text-align:right;">
+95.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bugre
+</td>
+<td style="text-align:right;">
+8.4
+</td>
+<td style="text-align:right;">
+92.4
+</td>
+</tr>
+</tbody>
+</table>
+<p>We can see the points scored and the chance of victory (win.prob). We used the median of the distribution as the best projected score (the one who divides the simulated score by 50% chance). How “safe” is the projected score? We need to visualize the distribution of possible scores to get a better view of the certainty of the projected score.</p>
+<pre class="r"><code># lets plot the points distribution from simulation
+library(tidybayes) # stat_intervalh
+sim.results %&gt;% 
+  select( nickname, med.pts = points.Median, sim.pts ) %&gt;% 
+  mutate( 
+    nickname = as.factor(nickname),
+    sim.pts = map(sim.pts, base::sample, size=40) # just to reduce de number of point to be ploted
+  ) %&gt;% 
+  unnest(sim.pts) %&gt;% 
+  ggplot(aes(y=reorder(nickname, med.pts))) +
+  stat_intervalh(aes(x=sim.pts), .width = c(seq(.05,.95,.1))) +
+  scale_color_brewer() +
+  geom_point(aes(x=sim.pts), alpha=.1) +
+  theme_minimal() +
+  ylab(&quot;teams&quot;) + xlab(&quot;points&quot;) +
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="/post/about/2018-10-28-about-this-site_files/figure-html/scoreDistribution-1.png" width="672" /></p>
+<p>Showing the distribution of points instead of just the most probable score it is possible to see more details about the possibles performances of a team. The same can be visualized with the chances of victory, instead of just counting the number of times that the simulations of the matches point to the victory of a team, we can visualize the distribution of the difference in the score in each game, generating a curve of probability for each possible outcome.</p>
+<pre class="r"><code>simulation %&gt;% 
+  mutate(game=paste0(away.nickname, &quot; @ &quot;, home.nickname)) %&gt;% 
+  arrange(away.nickname) %&gt;% 
+  select(game, score.diff) %&gt;%
+  unnest() %&gt;% 
+  ggplot(aes(fill=game)) +
+  geom_density(aes(score.diff), alpha=.6) +
+  geom_vline(aes(xintercept=0),
+             linetype=2, color=&quot;red&quot;) +
+  facet_grid(rows=vars(game), switch = &quot;x&quot;) +
+  theme_minimal() +
+  theme( legend.position = &quot;bottom&quot; )</code></pre>
+<p><img src="/post/about/2018-10-28-about-this-site_files/figure-html/scoreDiferences-1.png" width="672" /></p>
+<pre class="r"><code>simulation %&gt;% 
+  arrange(away.nickname) %&gt;% 
+  mutate_at(vars(away.win.prob, home.win.prob), function(x) round(100*x,1)) %&gt;% 
+  select(away.nickname, away.win.prob, home.win.prob, home.nickname)  %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+away.nickname
+</th>
+<th style="text-align:right;">
+away.win.prob
+</th>
+<th style="text-align:right;">
+home.win.prob
+</th>
+<th style="text-align:left;">
+home.nickname
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Bugre
+</td>
+<td style="text-align:right;">
+8.4
+</td>
+<td style="text-align:right;">
+91.6
+</td>
+<td style="text-align:left;">
+Steelers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Giants
+</td>
+<td style="text-align:right;">
+67.4
+</td>
+<td style="text-align:right;">
+32.6
+</td>
+<td style="text-align:left;">
+Bikers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mules
+</td>
+<td style="text-align:right;">
+90.6
+</td>
+<td style="text-align:right;">
+9.4
+</td>
+<td style="text-align:left;">
+Riders
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Robots
+</td>
+<td style="text-align:right;">
+78.0
+</td>
+<td style="text-align:right;">
+22.1
+</td>
+<td style="text-align:left;">
+Pfeiferians
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>We have seen that it is possible to use NFL players’ performance projections, available on various websites, to calculate <code>fantasy</code> scores and to simulate, using <em>Monte Carlo</em>, the outcame of a league games. More sophisticated simulation models can be used, taking into account the historical distribution of the accuracy of the estimates of these sites to calculate a greater number of results possibilities.</p>
+<p>Today, in my league, before the start of the round, after <em>waivers</em> and the lineups, I I send a dashboard (made using <a href="https://rmarkdown.rstudio.com/">RMarkdown</a> and <a href="https:%20/%20/rmarkdown.rstudio.com/flexdashboard/using.html">Flexdashboard</a>) to members with simulation results and the performance of their <em>rosters</em>. You can see an example of it here: <a href="http://rpubs.com/gsposito/ffsimulationDudes" class="uri">http://rpubs.com/gsposito/ffsimulationDudes</a>]. As an evolution, in the future, I may tranform this in to a <a href="http://shiny.rstudio.com/">ShinyApp</a> to members be abble to simulate several different rosters combinations to choose the most promising one.</p>
+</div>
+<div id="prediction-evaluation" class="section level2">
+<h2>Prediction Evaluation</h2>
+<p>Before concluding it is worth comparing the simulation made with the actual scores, and evaluating how much the simulation projected came close to the obtained real result.</p>
+<pre class="r"><code># comparing simulated values with real values
+simulation %&gt;% 
+  mutate( 
+    away.win.real   = away.pts &gt; home.pts,
+    home.win.real   = home.pts &gt; away.pts,
+    score.diff.real = home.pts - away.pts,
+    away.sim.pts = map_dbl(away.sim.pts, median, na.rm=T),
+    home.sim.pts = map_dbl(home.sim.pts, median, na.rm=T),
+    score.diff   = map_dbl(score.diff, median, na.rm=T )
+  ) %&gt;% 
+  mutate_at( vars(away.win.prob, home.win.prob), function(x) round(100*x,2) )%&gt;% 
+  select( away.nickname, away.win.prob, away.win.real, away.sim.pts, away.pts, score.diff, score.diff.real, 
+          home.pts, home.sim.pts, home.win.real, home.win.prob, home.nickname ) %&gt;% 
+  mutate_if(is.numeric, round, digits=1) %&gt;% 
+  arrange(away.nickname) %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+away.nickname
+</th>
+<th style="text-align:right;">
+away.win.prob
+</th>
+<th style="text-align:left;">
+away.win.real
+</th>
+<th style="text-align:right;">
+away.sim.pts
+</th>
+<th style="text-align:right;">
+away.pts
+</th>
+<th style="text-align:right;">
+score.diff
+</th>
+<th style="text-align:right;">
+score.diff.real
+</th>
+<th style="text-align:right;">
+home.pts
+</th>
+<th style="text-align:right;">
+home.sim.pts
+</th>
+<th style="text-align:left;">
+home.win.real
+</th>
+<th style="text-align:right;">
+home.win.prob
+</th>
+<th style="text-align:left;">
+home.nickname
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Bugre
+</td>
+<td style="text-align:right;">
+8.4
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+92.4
+</td>
+<td style="text-align:right;">
+112.6
+</td>
+<td style="text-align:right;">
+13.4
+</td>
+<td style="text-align:right;">
+13.7
+</td>
+<td style="text-align:right;">
+126.3
+</td>
+<td style="text-align:right;">
+106.2
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+91.6
+</td>
+<td style="text-align:left;">
+Steelers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Giants
+</td>
+<td style="text-align:right;">
+67.4
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+104.2
+</td>
+<td style="text-align:right;">
+108.7
+</td>
+<td style="text-align:right;">
+-4.0
+</td>
+<td style="text-align:right;">
+-11.5
+</td>
+<td style="text-align:right;">
+97.2
+</td>
+<td style="text-align:right;">
+100.0
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+32.6
+</td>
+<td style="text-align:left;">
+Bikers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mules
+</td>
+<td style="text-align:right;">
+90.6
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+106.8
+</td>
+<td style="text-align:right;">
+98.4
+</td>
+<td style="text-align:right;">
+-11.6
+</td>
+<td style="text-align:right;">
+-8.3
+</td>
+<td style="text-align:right;">
+90.1
+</td>
+<td style="text-align:right;">
+95.7
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+9.4
+</td>
+<td style="text-align:left;">
+Riders
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Robots
+</td>
+<td style="text-align:right;">
+78.0
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+105.0
+</td>
+<td style="text-align:right;">
+113.6
+</td>
+<td style="text-align:right;">
+-7.2
+</td>
+<td style="text-align:right;">
+-30.4
+</td>
+<td style="text-align:right;">
+83.1
+</td>
+<td style="text-align:right;">
+98.1
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+22.1
+</td>
+<td style="text-align:left;">
+Pfeiferians
+</td>
+</tr>
+</tbody>
+</table>
+<p>This was good! The simulated results were satisfactorily close to those obtained in 3 of the 4 games. All victories and defeats were correctly predicted. Only one of the games got a score difference far away from the one projected.</p>
+<pre class="r"><code># comparing score difference
+simulation %&gt;% 
+  mutate(
+    game=paste0(away.nickname, &quot; @ &quot;, home.nickname),
+    score.diff.real = home.pts - away.pts
+  ) %&gt;% 
+  arrange(away.nickname) %&gt;% 
+  select(game, score.diff, score.diff.real) %&gt;%
+  unnest() %&gt;% 
+  ggplot(aes(fill=game)) +
+  geom_density(aes(score.diff), alpha=.6) +
+  geom_vline(aes(xintercept=score.diff.real),
+             linetype=1, size=1, color=&quot;black&quot;) +
+  geom_vline(aes(xintercept=0),
+             linetype=2, color=&quot;red&quot;) +
+  facet_grid(rows=vars(game), switch = &quot;x&quot;) +
+  theme_minimal() +
+  theme( legend.position = &quot;bottom&quot; )</code></pre>
+<p><img src="/post/about/2018-10-28-about-this-site_files/figure-html/scoreDistr-1.png" width="672" /></p>
+<p>Perhaps the reason why the difference in scoring in the game between <em>Robots</em> and <em>Pfeiferians</em> has fallen so far from the most likely is also by such an unlikely event in the <em>Packers’</em> game against the <em>Lions</em>. Here’s the lineup of the <em>house team</em>, the one who lost:</p>
+<pre class="r"><code># rosted home team
+simulation[1,]$home.roster[[1]] %&gt;% 
+  filter(rosterSlot != &quot;BN&quot;) %&gt;% 
+  mutate(points.sim = map_dbl(sim.player,median, na.rm=T)) %&gt;% 
+  select(name, position, points) %&gt;% 
+   kable() %&gt;%
+   kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+name
+</th>
+<th style="text-align:left;">
+position
+</th>
+<th style="text-align:right;">
+points
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Patrick Mahomes
+</td>
+<td style="text-align:left;">
+QB
+</td>
+<td style="text-align:right;">
+15.82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adrian Peterson
+</td>
+<td style="text-align:left;">
+RB
+</td>
+<td style="text-align:right;">
+4.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+James White
+</td>
+<td style="text-align:left;">
+RB
+</td>
+<td style="text-align:right;">
+13.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Antonio Brown
+</td>
+<td style="text-align:left;">
+WR
+</td>
+<td style="text-align:right;">
+22.10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Michael Thomas
+</td>
+<td style="text-align:left;">
+WR
+</td>
+<td style="text-align:right;">
+7.40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+George Kittle
+</td>
+<td style="text-align:left;">
+TE
+</td>
+<td style="text-align:right;">
+8.30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alex Collins
+</td>
+<td style="text-align:left;">
+RB
+</td>
+<td style="text-align:right;">
+6.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mason Crosby
+</td>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:right;">
+3.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Green Bay Packers
+</td>
+<td style="text-align:left;">
+DEF
+</td>
+<td style="text-align:right;">
+2.00
+</td>
+</tr>
+</tbody>
+</table>
+<p>In this game, Mason Crosby, Packers’ <em>Kicker</em> missed <a href="https://www.youtube.com/watch?v=15rt2quS774">4 fields goals and 1 extra point</a>, with a total of 13 points, an event rare, <a href="http://www.espn.com/nfl/story/_/id/24924994/mason-crosby-calls-4-missed-fg-1-missed-pat-anomaly-%20life?%20ex_cid%20=%20espnapi_public">which has not happened since 1997</a>. If Crosby had hit the shots, which he habitually does, the score difference would be only 10 points away from the predicted score, not 23!</p>
+<p>But after all, who wants to <a href="https://www.youtube.com/watch?v=yGf6LNWY9AI">predict accurately</a> all possible situations?</p>
+</div>
+
+      </article>
+      
+    </main>
+    <nav class="end-nav side-padding">
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/" class="card home-card" style="background-image: url( /img/grey-cloud.jpg )" rel="bookmark" >
+  Home
+</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+  
+  <script src="/js/core.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+  </body>
+</html>

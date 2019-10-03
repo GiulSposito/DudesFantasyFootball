@@ -1,7 +1,7 @@
 library(tidyverse)
 library(glue)
 
-.team <- "Bikers"
+.team <- "Pfeiferians"
 .week <- 5
 
 players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
@@ -39,7 +39,7 @@ bench <- tibble(
   map_df(function(.x, .players){
     .players %>% 
       filter(position==.x$pos) %>% 
-      top_n(.x$qtd, floor)
+      top_n(.x$qtd, ceiling)
   }, .players = anti_join(players, starters) )
 
 # releases
