@@ -33,14 +33,6 @@ resources:
 | 1    |       80%       |
 
 
-## League Ranking
-
-![Rank](/img/rank_week4.jpg)
-
-## Week Trophies
-
-![Trophies](/img/trophies_week4.jpg)
-
 ## Score Prediction Chart
 
 ![Score Prediction Chart](/img/points_vs_prediction_w4_chart.png)
@@ -60,7 +52,3 @@ resources:
 ## Matchups Winner Predictions
 
 ![Matchups Winner Predictions](/img/predictions_eval_week4.jpg)
-
-## Madden Curse
-
-![Madden Curse](/img/maldicao_madden.jpeg)

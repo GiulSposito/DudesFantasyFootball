@@ -23,6 +23,14 @@ resources:
 
 <!--more-->
 
+## League Ranking
+
+![Rank](/img/rank_week4.jpg)
+
+## Week Trophies
+
+![Trophies](/img/trophies_week4.jpg)
+
 ```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
 # put rnotbook in the same workdir
 knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
@@ -210,3 +218,6 @@ finalrank %>%
   theme_minimal()
 ```
 
+## Madden Curse
+
+![Madden Curse](/img/maldicao_madden.jpeg)
