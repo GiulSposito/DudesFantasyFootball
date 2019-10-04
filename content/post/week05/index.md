@@ -19,7 +19,7 @@ resources:
     description: "Nick Chubb TD against Ravens"
 ---
 
-*Last Update: Pre-TNF*
+*Last Update: Pos-TNF*
 
 <!--more-->
 
@@ -29,6 +29,7 @@ resources:
 
 ## Simulations
 
+- [Pos-TNF](/reports/dudes_simulation_week5_posTNF.html)
 - [Pre-TNF](/reports/dudes_simulation_week5_preTNF.html)
 - [Pre-Waivers](/reports/dudes_simulation_week5_preWaivers.html)
 
