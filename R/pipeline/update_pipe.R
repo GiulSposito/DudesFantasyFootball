@@ -5,7 +5,7 @@ library(glue)
 
 # parametros de execucao
 week <- 5
-prefix <- "posTNF"
+prefix <- "pos1stRoundSunday"
 destPath <- "static"
 
 source("./R/import/checkFantasyAPI.R")
