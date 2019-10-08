@@ -5,7 +5,7 @@ library(ffanalytics)
 library(flexdashboard)
 
 # parametros de execucao
-week <- 8
+week <- 6
 prefix <- "preWaivers"
 destPath <- "static"
 
