@@ -14,7 +14,7 @@ displayInMenu: no
 displayInList: yes
 resources:
 - name: featuredImage
-  src: "war_games.jpg"
+  src: "war_games_control_room.jpg"
   params:
     description: War Games Movie
 params:

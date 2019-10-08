@@ -9,6 +9,13 @@
         <atom:link href="/categories/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 03] Players Projection and Matchups Simulation</title>
+      <link>/post/week03/</link>
+      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week03/</guid>
+      <description></description>
+    </item><item>
       <title>[Week 02] Simulation Evaluation</title>
       <link>/post/week-2-simulation-evaluation/</link>
       <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
@@ -22,13 +29,6 @@
       
       <guid>/post/week02/</guid>
       <description></description>
-    </item><item>
-      <title>[Week 01] Simulation Evaluation</title>
-      <link>/post/week01_eval/</link>
-      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week01_eval/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 80%&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

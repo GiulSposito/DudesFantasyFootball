@@ -18,17 +18,12 @@
   </url>
   
   <url>
-    <loc>/categories/projection/</loc>
-    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/projection/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/simulation/</loc>
+    <loc>/categories/projection/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,8 +33,28 @@
   </url>
   
   <url>
+    <loc>/categories/simulation/</loc>
+    <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/week-5-simulation-evaluation/</loc>
+    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/evaluation/</loc>
+    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/evaluation/</loc>
+    <lastmod>2019-10-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -84,16 +99,6 @@
   
   <url>
     <loc>/post/week-4-simulation-evaluation/</loc>
-    <lastmod>2019-10-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/evaluation/</loc>
-    <lastmod>2019-10-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/evaluation/</loc>
     <lastmod>2019-10-01T00:00:00+00:00</lastmod>
   </url>
   
