@@ -50,11 +50,11 @@ library(knitr)
 library(kableExtra)
 
 # PARAMETERS
-week <- params$week
+.week <- params$week
 
 # SIMULATION
 
-sim <- readRDS(glue("./data/week{week}_simulation_v3.rds"))
+sim <- readRDS(glue("./data/week{.week}_simulation_v3.rds"))
 
 sim.eval <- sim %>% 
   select ( home.name, home.pts, home.sim.org, away.name, away.pts, away.sim.org) %>% 

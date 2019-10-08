@@ -19,6 +19,8 @@ tags:
 - wins and losses
 categories:
 - ranking
+params:
+  week: 5
 ---
 
 <!--more-->
@@ -42,7 +44,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(tidyverse)
 library(ggimage)
 library(knitr)
-library(kableExtra)
+library(glue)
 
 # parameter
 curr.week <- 5
@@ -239,6 +241,70 @@ finalrank %>%
   ylab("points") +
   theme_minimal()
 ```
+
+## Best League Players of Week
+
+```{r bestTeamPlayers}
+
+# so para pegar o time da liga do jogador
+player.team <- readRDS(glue("./data/week{curr.week}_players_projections.rds")) %>% 
+  select(id, nfl_id, fantasy.team)
+
+# estatisticas do jogador
+player.points <- readRDS("./data/players_points.rds") %>% 
+  filter(week==curr.week)
+
+# junta
+players <- inner_join(player.team, player.points, by = c("id", "nfl_id")) %>% 
+  select(-rosterSlots)  
+
+buildTeam <- function(.players){
+  # starters - slots unicos
+  st01 <- tibble(
+    pos=c("QB","RB","WR","TE","K","DEF"),
+    qtd=c(1,2,2,1,1,1)
+  ) %>% 
+    split(1:nrow(.)) %>% 
+    map_df(function(.x, .p){
+      .p %>% 
+        filter(position==.x$pos) %>%
+        top_n(.x$qtd, points)
+    }, .p=.players)
+  
+  # starters - slot versatil
+  starters <- .players %>% 
+    filter(position %in% c("WR","RB")) %>% 
+    anti_join(st01) %>% 
+    top_n(1, points) %>% 
+    bind_rows(st01,.)
+  
+  ideal_team <- starters %>% 
+    mutate(fullName = paste0(firstName, " ", lastName)) %>% 
+    select(position, fullName, team, points, fantasy.team)
+}
+
+# filtra melhores players com time
+players %>% 
+  filter(fantasy.team!="*FreeAgent") %>% 
+  buildTeam() %>% 
+  kable()
+  
+```
+
+
+## Best Free Agents of Week
+
+```{r bestFAPlayers}
+
+# filtra melhores players com time
+players %>% 
+  filter(fantasy.team=="*FreeAgent") %>% 
+  buildTeam() %>% 
+  kable()
+
+```
+
+
 
 ## Madden Curse
 
