@@ -45,7 +45,7 @@ resources:
 
 ![Players Points vs Projection](/img/week4_players_proj_points.png)
 
-## Projection Error Distribution]
+## Projection Error Distribution
 
 ![Projection Error Distribution](/img/week4_projection_errors.png)
 

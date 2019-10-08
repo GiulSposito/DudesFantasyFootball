@@ -20,7 +20,8 @@ sim.eval %>%
   mutate( prediction = case_when(home.win.pred==T ~ home.name,
                                  away.win.pred==T ~ away.name) ) %>% 
   mutate( who.won = case_when(home.win==T ~ home.name,
-                              away.win==T ~ away.name) ) %>% 
+                              away.win==T ~ away.name) ) %T>% 
+  saveRDS(glue("./data/simulation_winner_evaluation_week{week}.rds")) %>% 
   select(game, prediction, who.won) %>% 
   View()
   
@@ -42,17 +43,19 @@ sim.pts.eval <- bind_rows(
   set_names(c("team","real.points", "pred.points", "pred.min", "pred.max"))
 
 sim.pts.eval %>% 
+  saveRDS(glue("./data/simulation_points_evaluation_week{week}.rds"))
+
+sim.pts.eval %>% 
   ggplot(aes(x=real.points, y=pred.points, color=team)) +
   geom_point(size=2) +
   geom_errorbar(aes(ymin=pred.min, ymax=pred.max), size=1) +
   geom_abline(intercept=c(0,0), slope=1, color="darkgrey", size=1, linetype="dotted") +
-  ylim(70,160) +
-  xlim(70,160) +
+  ylim(80,200) +
+  xlim(80,200) +
   ggtitle("Pontuação Real x Pontuacao Previsa", subtitle = "90% CI") +
   theme_minimal()
 
 ggplotly(g)
-
 
 sim.pts.eval %>% 
   select(team, real.points, pred.min, pred.points, pred.max) %>% 

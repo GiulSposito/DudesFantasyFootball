@@ -4,7 +4,6 @@ library(glue)
 cur.week <- 4
 
 sim <- readRDS(glue("./data/week{cur.week}_simulation_v3.rds"))
-
 proj <- readRDS("./data/points_projection.rds")
 pts  <- readRDS("./data/players_points.rds")
 
