@@ -1,24 +1,24 @@
 ---
 title: '[Week 05] League Standings'
-author: Giuliano Sposito
+author: "Giuliano Sposito"
 date: '2019-10-08'
-slug: rank-week-5
-categories:
-  - ranking
-tags:
-  - playoffs
-  - rank
-  - points
-  - wins and losses
 description: ''
-dropCap: yes
-displayInMenu: no
 displayInList: yes
+displayInMenu: no
+dropCap: yes
 resources:
 - name: featuredImage
-  src: "mahomes_on_ground.jpg"
   params:
     description: Mahomes bad times!
+  src: mahomes_on_ground.jpg
+slug: rank-week-5
+tags:
+- playoffs
+- rank
+- points
+- wins and losses
+categories:
+- ranking
 ---
 
 <!--more-->
@@ -41,6 +41,8 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 # libs
 library(tidyverse)
 library(ggimage)
+library(knitr)
+library(kableExtra)
 
 # parameter
 curr.week <- 5
@@ -175,7 +177,27 @@ finalrank <- wrank %>%
 ```
 
 
-## League Standings
+
+```{r weekrank, eval=FALSE}
+
+## League Standing
+
+#  width='50' height='50' style='{ width: 50px; height: 50px; }'
+
+finalrank %>% 
+  filter(week==curr.week) %>% 
+  arrange(wrank) %>% 
+  select(wrank, logoUrl , team, wins, losses, pts.pro, pts.ag) %>%
+  mutate( logoUrl = str_c("<img src='", logoUrl, "' style='width:50px;height:50px;' />") ) %>% 
+  set_names("position", "flag", "team","wins", "losses", "pts.for","pts.against") %>% 
+  kable() %>%
+  kable_styling(font_size = 7)
+
+```
+
+
+
+## League Standings Evolution
 
 ```{r leagueStanding}
 finalrank %>% 

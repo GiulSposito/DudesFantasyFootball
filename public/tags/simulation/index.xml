@@ -4,11 +4,18 @@
     <link>/tags/simulation/</link>
     <description>Recent content in simulation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Oct 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 06] Players Projection and Matchups Simulation</title>
+      <link>/post/week06/</link>
+      <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week06/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Last Update: Pre Waivers&lt;/em&gt;&lt;/p&gt;</description>
+    </item><item>
       <title>[Week 05] Players Projection and Matchups Simulation</title>
       <link>/post/week05/</link>
       <pubDate>Thu, 03 Oct 2019 00:00:00 +0000</pubDate>
@@ -22,13 +29,6 @@
       
       <guid>/post/week-4-simulation-evaluation/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;</description>
-    </item><item>
-      <title>[Week 04] Players Projection and Matchups Simulation</title>
-      <link>/post/week04/</link>
-      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week04/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
