@@ -4,9 +4,9 @@ library(flexdashboard)
 library(glue)
 
 # parametros de execucao
-week <- 5
-prefix <- "posSNF"
-destPath <- "static"
+week <- 6
+prefix <- "preTNF"
+destPath <- "public"
 
 source("./R/import/checkFantasyAPI.R")
 checkFantasyAPI(week)
