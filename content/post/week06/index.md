@@ -19,7 +19,7 @@ resources:
     description: "Eagles Defense"
 ---
 
-*Last Update: Pre Waivers*
+*Last Update: Pos Waivers*
 
 <!--more-->
 
@@ -27,6 +27,9 @@ resources:
 
 - [Individual Players Projections](/reports/ffa_players_projection_week6.html)
 
+## Simulations
+
+- [Pre TNF](/reports/dudes_simulation_week6_preTNF.html)
 
 
 ## Twitter Mood
