@@ -29,6 +29,7 @@ resources:
 
 ## Simulations
 
+- [Pos TNF](/reports/dudes_simulation_week6_posTNF.html)
 - [Pre TNF](/reports/dudes_simulation_week6_preTNF.html)
 
 
