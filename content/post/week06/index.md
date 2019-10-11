@@ -19,7 +19,7 @@ resources:
     description: "Eagles Defense"
 ---
 
-*Last Update: Pos Waivers*
+*Last Update: Pos TNF*
 
 <!--more-->
 
