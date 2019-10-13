@@ -6,7 +6,7 @@ library(flexdashboard)
 
 # parametros de execucao
 week <- 6
-prefix <- "preTNF"
+prefix <- "posLondonGame"
 destPath <- "static"
 
 # check Fantasy API
