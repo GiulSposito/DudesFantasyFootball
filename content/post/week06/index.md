@@ -19,7 +19,7 @@ resources:
     description: "Eagles Defense"
 ---
 
-*Last Update: Pre SNF*
+*Last Update: Pos SNF*
 
 <!--more-->
 
@@ -29,6 +29,7 @@ resources:
 
 ## Simulations
 
+- [Pos SNF](/reports/dudes_simulation_week6_posSNF.html)
 - [Pre SNF](/reports/dudes_simulation_week6_preSNF.html)
 - [Pos London Game](/reports/dudes_simulation_week6_posLondonGame.html)
 - [Pos TNF](/reports/dudes_simulation_week6_posTNF.html)
