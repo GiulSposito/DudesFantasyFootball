@@ -9,6 +9,14 @@ params:
 ---
 
 ```{r setup, include=FALSE}
+
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+```
+
+```{r libs, include=FALSE}
 library(flexdashboard)
 library(tidyverse)
 library(plotly)
@@ -22,7 +30,7 @@ week <- params$week
 ```{r loaddata, cache=FALSE}
 
 # pega projecoes cria algumas colunas auxiliares
-pprojs <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
+pprojs <- readRDS(glue("./data/week{week}_players_projections.rds")) %>% 
   mutate(injuryCod = str_extract_all(injuryGameStatus, "[A-Z]")) %>% 
   mutate(injuryCod = map_chr(injuryCod, paste, sep="", collapse="")) %>% 
   mutate( full_name = paste0(first_name, " ", last_name),
@@ -38,7 +46,7 @@ pprojs <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>%
   ungroup() %>% 
   filter( !(team %in% c("FA","FA*")) )  # havia lixo em alguns
 
-ppoints <- readRDS("../../data/players_points.rds") %>%
+ppoints <- readRDS("./data/players_points.rds") %>%
   mutate(id = as.integer(id)) %>% 
   filter( points!=0 ) %>% 
   rename( pts = points ) %>% 
@@ -152,7 +160,7 @@ plotProjections(projections, "DST", "Defenses", "week 9",32)
 
 ```{r historicSharpe}
 
-p.stats <- readRDS("../../data/players_points.rds") %>% 
+p.stats <- readRDS("./data/players_points.rds") %>% 
   mutate(
     id = as.integer(id),
     points = case_when(
@@ -161,7 +169,7 @@ p.stats <- readRDS("../../data/players_points.rds") %>%
     points!=0 ~ points)
   )
 
-p.projs <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
+p.projs <- readRDS(glue("./data/week{week}_players_projections.rds")) %>% 
   mutate( 
     id = as.integer(id),
     full_name = paste0(first_name, " ", last_name) ) %>% 
@@ -177,6 +185,7 @@ p.stats %>%
   inner_join(p.projs,by="id") -> sharpe.data
 
 plotSharpe <- function(.dtfm, .pos, .n) {
+  
   .dtfm %>% 
     filter( position==.pos ) %>% 
     top_n(-round(.n), pos_rank ) %>% 
@@ -188,6 +197,7 @@ plotSharpe <- function(.dtfm, .pos, .n) {
     scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00", "purple", "pink","gold","cyan")) +
     theme_minimal() +
     ggtitle(.pos) + xlab("variance") + ylab("mean points")  
+  
 }
 
 ```
@@ -235,14 +245,14 @@ plotSharpe(sharpe.data, "DST", 3*10)
 
 ```{r historicRank}
 # get fantasy team and week projection
-pprojs  <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
+pprojs  <- readRDS(glue("./data/week{week}_players_projections.rds")) %>% 
   filter(avg_type=="weighted") %>% 
   mutate( fantasy.team = as.factor(fantasy.team) ) %>%
   select(id, nfl_id, fantasy.team, proj.floor=floor,
          proj.points=points, proj.ceiling=ceiling)
 
 # calc historic data, and calculates 90% CI
-points_stats <- readRDS("../../data/players_points.rds") %>% 
+points_stats <- readRDS("./data/players_points.rds") %>% 
   select( id, nfl_id, fweek = fantasyPts.week.week, points = fantasyPts.week.pts ) %>% 
   mutate( 
     fweek = as.integer(fweek), 
@@ -258,7 +268,7 @@ points_stats <- readRDS("../../data/players_points.rds") %>%
   ungroup()
 
 # get current players attributes
-pattrib <- readRDS("../../data/players_points.rds") %>% 
+pattrib <- readRDS("./data/players_points.rds") %>% 
   rename( fweek = week ) %>% 
   filter (fweek == week ) %>% 
   # seleciona o que interessa
@@ -298,22 +308,28 @@ rm(pattrib, points_stats, pprojs); gc()
 # define função para plotar o grafico
 plotHistoricRank <- function(.data, .pos, .n, .title){
   
+  nu_y <- max(.data$pts.ceiling, na.rm = T) / 16
+  
   # filtra os dados por posicao
-  .data %>% 
+  g <- .data %>% 
     filter( position == .pos ) %>% 
     arrange(pos.rank) %>% # na ordem do rank
     slice(1:.n) %>%  # corta os dados
     ggplot(aes(x=reorder(pos.rank, desc(pos.rank)), y=pts.median, color=fantasy.team,
                team=team, total.pts=total.points)) +
-      geom_pointrange(aes(ymin=pts.floor, ymax=pts.ceiling), size=.5) +
+      geom_pointrange(aes(ymin=pts.floor, ymax=pts.ceiling), size=1) +
       geom_text(aes(label=paste0("[", team, "] ", name), 
-                    y=pts.ceiling), hjust="left", vjust="middle", 
-                nudge_y = 0.1, nudge_x = 0.1, size=1.9) +
+                    y=pts.ceiling+nu_y), hjust="left", vjust="middle", 
+                nudge_y = 0.1, nudge_x = 0.1, size=3) +
       scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00", "purple", "pink","gold","cyan")) +
       ylab("historic peformance") + xlab("rank (total points)") +
       ggtitle(.title, glue("Top {.n} {.pos}s by Total Points - Historic Peformance (90% CI)")) +
       coord_flip() +
       theme_classic()
+  
+  g %>% 
+    ggplotly() %>% 
+    return()
 }
 
 ```
