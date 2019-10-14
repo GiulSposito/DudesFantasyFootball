@@ -9,16 +9,26 @@ params:
 ---
 
 ```{r setup, include=FALSE}
+
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+```
+
+
+
+```{r libs}
 library(flexdashboard)
 library(tidyverse)
 library(formattable)
-library(tidybayes)
 library(ggrepel)
 library(glue)
+library(broom)
 
 week <- params$week
 
-sim <- readRDS(glue("../../data/week{week}_simulation_v3.rds")) 
+sim <- readRDS(glue("./data/week{week}_simulation_v3.rds")) 
 
 sim.summary <- tibble(
   team.id   = c(sim$home.id,   sim$away.id),
@@ -190,9 +200,9 @@ Team Strength  {data-navmenu="Overview"}
 ========================
 ```{r teamStrength, fig.width=10}
 
-p.stats <- readRDS("../../data/players_points.rds")
+p.stats <- readRDS("./data/players_points.rds")
 
-p.projs <- readRDS(glue("../../data/week{week}_players_projections.rds")) %>% 
+p.projs <- readRDS(glue("./data/week{week}_players_projections.rds")) %>% 
   mutate( full_name = paste0(first_name, " ", last_name) ) %>% 
   select(id, fantasy.team, full_name, team, position, avg_type, pos_rank, proj.points=points) %>% 
   filter( avg_type == "weighted" )
@@ -294,12 +304,13 @@ plotPlayersDistribution <- function(.roster, .slotLevels=slotLevels, .posLevels=
     arrange(rosterSlot, position) %>% 
     mutate(display.order=1:nrow(.)) %>% 
     select(id, name, display.order, position, points, pts.range) %>% 
-    mutate( pts.range = map(pts.range, base::sample, size=150, replace=T) ) %>%
-    unnest(pts.range) %>% 
-    ggplot(aes(x=pts.range, y=reorder(name, -display.order))) +
-    stat_intervalh(.width = seq(0.1,.9,.2)) +
-    scale_color_brewer()+
-    geom_label(aes(x=points, label=round(points,1)), color="red",
+    mutate( pts.range = map(pts.range, function(.x) tidy(summary(.x))))  %>%  
+    unnest( pts.range ) %>% 
+    ggplot(aes(y=reorder(name, -display.order), color=position)) +
+    geom_errorbarh(aes(xmin=minimum, xmax=maximum), alpha=.5, size=2, height=0) +
+    geom_errorbarh(aes(xmin=q1, xmax=q3), alpha=.5, size=4, height=0) +
+    geom_point(aes(x=median), size=2) +
+    geom_label(aes(x=points, label=round(points,1)),
                size=2.5,label.padding = unit(0.10, "lines")) +
     theme_minimal() +
     theme(legend.position = "none") +
@@ -329,6 +340,9 @@ plotPlayersSharpe <- function(.roster, .slotLevels=slotLevels, .posLevels=posLev
   
 }
 
+# pts.dist <- vector(mode = "numeric", length = nrow(sim.summary))
+# plr.sharp <- vector(mode = "numeric", length = nrow(sim.summary))
+
 for(i in 1:nrow(sim.summary)){
   team <- sim.summary[i,]
 
@@ -337,15 +351,18 @@ for(i in 1:nrow(sim.summary)){
   
   cat("\nColumn\n--------------------------------------------\n")
   cat("\n### Points Distribution\n\n")
+  # start <- Sys.time()
   print(plotPlayersDistribution(team$roster[[1]]))
+  # pts.dist[i] <- Sys.time() - start
   cat("\n")
   
   cat("\nColumn\n--------------------------------------------\n")
   cat("\n### Sharpe Index\n\n")
+  # start <- Sys.time()
   print(plotPlayersSharpe(team$roster[[1]]))
+  # plr.sharp[i] <- Sys.time() - start
   cat("\n")
 }
 
 
 ```
-
