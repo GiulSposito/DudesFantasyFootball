@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>[Week 06] Simulation Evaluation &middot; It&#39;s Football, Dudes!</title>
+  <meta name="description" content="" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  
+  
+  <link href="/css/concated.min.css" rel="stylesheet">
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-148711241-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  <style>
+    body {
+      background: #ecedef url("/img/wilson_background_w.jpg") repeat;
+    }
+  </style>
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <h1 class="nav-header"><a href="/" class="nav-text">It&#39;s Football, Dudes! Fantasy League</a></h1>
+  <div class="hamburger-menu">
+    <button onclick="hamburgerMenuPressed.call(this)" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
+    <ul id="menu" class="hamburger-menu-overlay">
+      <li><a href="/" class="hamburger-menu-overlay-link">Home</a></li>
+      <li><a href="/post/it-s-football-dudes-trophy-room/" class="hamburger-menu-overlay-link">Trophy Room</a></li>
+      <li><a href="/categories/about" class="hamburger-menu-overlay-link">About</a></li><li><a href="/categories/evaluation" class="hamburger-menu-overlay-link">Evaluation</a></li><li><a href="/categories/projection" class="hamburger-menu-overlay-link">Projection</a></li><li><a href="/categories/ranking" class="hamburger-menu-overlay-link">Ranking</a></li><li><a href="/categories/simulation" class="hamburger-menu-overlay-link">Simulation</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post ">
+        <header class="post-header">
+        	<h1 class="post-title">[Week 06] Simulation Evaluation</h1>
+          <p class="post-date">Posted <time datetime="2019-10-14">Oct 14, 2019</time></p>
+        </header>
+        
+        <picture class="post-figure">
+          
+          
+          <source srcset="/post/week-6-simulation-evaluation/WarGames-1983-Movie-Poster-720x340_hu8db8911451c13b639159651d4daf79d4_85078_800x0_resize_q75_lanczos.jpg">
+          <img src="/post/week-6-simulation-evaluation/WarGames-1983-Movie-Poster-720x340_hu8db8911451c13b639159651d4daf79d4_85078_800x0_resize_q75_lanczos.jpg" alt="War Games Movie Poster">
+        </picture>
+        
+        <div id="historic" class="section level3">
+<h3>Historic</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="center">week</th>
+<th align="center">Winner Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">6</td>
+<td align="center">100%</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">80%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="matchups-winner-predictions" class="section level2">
+<h2>Matchups Winner Predictions</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+game
+</th>
+<th style="text-align:left;">
+prediction
+</th>
+<th style="text-align:left;">
+who.won
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+London Knights @ Paulinia Robots
+</td>
+<td style="text-align:left;">
+London Knights
+</td>
+<td style="text-align:left;">
+London Knights
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Pfeiferians @ Jersey Boys
+</td>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers @ Indaiatuba Blues
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers @ Campinas Giants
+</td>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders @ Sorocaba Wild Mules
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="score-prediction-chart" class="section level2">
+<h2>Score Prediction Chart</h2>
+<p><img src="/post/week06_eval/index_files/figure-html/scorePredChart-1.png" width="672" /></p>
+</div>
+<div id="score-prediction-table" class="section level2">
+<h2>Score Prediction Table</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+real.points
+</th>
+<th style="text-align:right;">
+pred.min
+</th>
+<th style="text-align:right;">
+pred.points
+</th>
+<th style="text-align:right;">
+pred.max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:right;">
+147.70
+</td>
+<td style="text-align:right;">
+131.67969
+</td>
+<td style="text-align:right;">
+141.2330
+</td>
+<td style="text-align:right;">
+150.3814
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+<td style="text-align:right;">
+141.44
+</td>
+<td style="text-align:right;">
+116.73637
+</td>
+<td style="text-align:right;">
+125.1486
+</td>
+<td style="text-align:right;">
+140.8043
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:right;">
+136.10
+</td>
+<td style="text-align:right;">
+122.43907
+</td>
+<td style="text-align:right;">
+132.4245
+</td>
+<td style="text-align:right;">
+141.7531
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London Knights
+</td>
+<td style="text-align:right;">
+131.20
+</td>
+<td style="text-align:right;">
+118.79403
+</td>
+<td style="text-align:right;">
+129.6250
+</td>
+<td style="text-align:right;">
+141.0767
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+<td style="text-align:right;">
+125.92
+</td>
+<td style="text-align:right;">
+129.40261
+</td>
+<td style="text-align:right;">
+135.3842
+</td>
+<td style="text-align:right;">
+141.9795
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:right;">
+115.72
+</td>
+<td style="text-align:right;">
+110.71455
+</td>
+<td style="text-align:right;">
+119.8525
+</td>
+<td style="text-align:right;">
+128.5329
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues
+</td>
+<td style="text-align:right;">
+115.20
+</td>
+<td style="text-align:right;">
+96.82512
+</td>
+<td style="text-align:right;">
+112.0775
+</td>
+<td style="text-align:right;">
+123.5257
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+<td style="text-align:right;">
+108.44
+</td>
+<td style="text-align:right;">
+115.09967
+</td>
+<td style="text-align:right;">
+121.3737
+</td>
+<td style="text-align:right;">
+128.4403
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+<td style="text-align:right;">
+108.14
+</td>
+<td style="text-align:right;">
+112.77343
+</td>
+<td style="text-align:right;">
+125.7714
+</td>
+<td style="text-align:right;">
+134.8047
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:right;">
+89.62
+</td>
+<td style="text-align:right;">
+113.15795
+</td>
+<td style="text-align:right;">
+121.5465
+</td>
+<td style="text-align:right;">
+137.8895
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="players-points-vs-projection" class="section level2">
+<h2>Players Points vs Projection</h2>
+<p><img src="/post/week06_eval/index_files/figure-html/errorPlayers-1.png" width="672" /></p>
+</div>
+<div id="projection-error-distribution" class="section level2">
+<h2>Projection Error Distribution</h2>
+<p><img src="/post/week06_eval/index_files/figure-html/errorProjection-1.png" width="672" /></p>
+</div>
+
+      </article>
+      
+    </main>
+    <nav class="end-nav side-padding">
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/post/week06/" class="card blog-card" rel="bookmark" >
+  
+  <div class="card-img-container">
+    <p class="card-img-overlay">Next Article</p>
+    <picture>
+      
+      <source srcset="/post/week06/sptp_eagles_defense.jpg">
+      <img src="/post/week06/sptp_eagles_defense.jpg" class="card-img" alt="Eagles Defense">
+    </picture>
+  </div>
+  
+  <article class="card-body">
+    <h2 class="card-title">[Week 06] Players Projection and Matchups Simulation</h2>
+    <p class="card-text"><p><em>Last Update: Pos SNF</em></p></p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2019-10-10 1010:00">Oct 10, 2019</time></p>
+      <p>#projection #simulation </p>
+    </div>
+  </article>
+</a>
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/" class="card home-card" style="background-image: url( /img/grey-cloud.jpg )" rel="bookmark" >
+  Home
+</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+  
+  <script src="/js/core.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,168 @@
+---
+title: '[Week 06] Simulation Evaluation'
+author: Giuliano Sposito
+date: '2019-10-14'
+categories:
+  - evaluation
+  - simulation
+tags:
+  - evaluation
+  - simulation
+slug: week-6-simulation-evaluation
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "WarGames-1983-Movie-Poster-720x340.jpg"
+  params:
+    description: War Games Movie Poster
+params:
+  week: 6
+---
+
+**Matchup Winner Accuracy: 100%**
+
+<!--more-->
+
+### Historic
+
+| week | Winner Accuracy |
+|:----:|:---------------:|
+| 6    |      100%       |
+| 5    |       80%       |
+| 4    |       60%       |
+| 3    |       80%       |
+| 2    |       60%       |
+| 1    |       80%       |
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r loadAndDataHandling}
+# libs
+library(tidyverse)
+library(glue)
+library(ggimage)
+library(knitr)
+library(kableExtra)
+
+# PARAMETERS
+.week <- params$week
+
+# SIMULATION
+
+sim <- readRDS(glue("./data/week{.week}_simulation_v3.rds"))
+
+sim.eval <- sim %>% 
+  select ( home.name, home.pts, home.sim.org, away.name, away.pts, away.sim.org) %>% 
+  mutate( home.win.org = map2(home.sim.org, away.sim.org, function(.h, .a){
+      return(.h>.a)
+  })) %>% 
+  mutate( away.win.org = map(home.win.org, ~!.x)) %>% 
+  mutate( home.win = home.pts>away.pts,
+          away.win = !home.win,
+          home.win.org.prob = map_dbl(home.win.org, mean),
+          away.win.org.prob = map_dbl(away.win.org, mean),
+          home.win.pred = home.win.org.prob>.5, 
+          away.win.pred = away.win.org.prob>.5)
+
+sim.points <- sim.eval %>%
+  select(home.name, home.pts, away.name, away.pts, home.sim.org, away.sim.org) %>% 
+  mutate(home.pts.prd = map_dbl(home.sim.org, median),
+         away.pts.prd = map_dbl(away.sim.org, median),
+         home.pts.prd.min = map_dbl(home.sim.org, quantile, .05),
+         away.pts.prd.min = map_dbl(away.sim.org, quantile, .05),
+         home.pts.prd.max = map_dbl(home.sim.org, quantile, .95),
+         away.pts.prd.max = map_dbl(away.sim.org, quantile, .95)) %>% 
+  select(-home.sim.org, -away.sim.org)
+
+sim.pts.eval <- bind_rows(
+  sim.points %>% select(starts_with("home")) %>% set_names(gsub("home.", "", names(.))),
+  sim.points %>% select(starts_with("away")) %>% set_names(gsub("away.", "", names(.)))
+  ) %>% 
+  set_names(c("team","real.points", "pred.points", "pred.min", "pred.max"))
+
+```
+
+## Matchups Winner Predictions
+
+```{r matchupWinnerPrediction}
+sim.eval %>% 
+  mutate( game = paste0(away.name," @ ",home.name) ) %>% 
+  mutate( prediction = case_when(home.win.pred==T ~ home.name,
+                                 away.win.pred==T ~ away.name) ) %>% 
+  mutate( who.won = case_when(home.win==T ~ home.name,
+                              away.win==T ~ away.name) ) %>% 
+  select(game, prediction, who.won) %>% 
+  kable()
+```
+
+## Score Prediction Chart
+
+```{r scorePredChart}
+sim.pts.eval %>% 
+  ggplot(aes(x=real.points, y=pred.points, color=team)) +
+  geom_point(size=2) +
+  geom_errorbar(aes(ymin=pred.min, ymax=pred.max), size=1) +
+  geom_abline(intercept=c(0,0), slope=1, color="darkgrey", size=1, linetype="dotted") +
+  ylim(80,200) +
+  xlim(80,200) +
+  ggtitle("Pontuação Real x Pontuacao Previsa", subtitle = "90% CI") +
+  theme_minimal()
+```
+
+
+## Score Prediction Table
+
+```{r scorePredTable}
+
+sim.pts.eval %>% 
+  select(team, real.points, pred.min, pred.points, pred.max) %>% 
+  arrange(desc(real.points)) %>% 
+  kable()
+
+```
+
+## Players Points vs Projection
+
+```{r errorPlayers}
+
+proj <- readRDS("./data/points_projection.rds")
+pts  <- readRDS("./data/players_points.rds")
+
+dtf <- pts %>% 
+  inner_join(proj, by=c("id"="id", "week", "season"))  %>% 
+  select(id, nfl_id, season, week, pos, data_src, pts.proj, points )  %>% 
+  mutate(error=points-pts.proj)
+
+
+dtf %>% 
+  ggplot() +
+  geom_point(aes(x=pts.proj, y=points, color=pos)) +
+  facet_grid(pos~data_src, scales = "free") +
+  geom_abline(intercept=0, slope=1, linetype="dashed") + 
+  ggtitle(glue("Projection"), subtitle = "By Position and Source Site") +
+  xlim(0,30) + ylim(0,30)
+
+```
+
+## Projection Error Distribution
+
+```{r errorProjection}
+
+dtf %>% 
+  ggplot() +
+  geom_density(aes(x=error, fill=pos)) +
+  facet_grid(pos~data_src, scales = "free") +
+  geom_vline(xintercept = 0, color="black", linetype="dashed") +
+  ggtitle("Error Distribution", subtitle = "By Position and Source Site") +
+  theme_minimal()
+
+```
+
+
+

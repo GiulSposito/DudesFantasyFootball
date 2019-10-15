@@ -1,0 +1,347 @@
+---
+title: '[Week 06] Simulation Evaluation'
+author: Giuliano Sposito
+date: '2019-10-14'
+categories:
+  - evaluation
+  - simulation
+tags:
+  - evaluation
+  - simulation
+slug: week-6-simulation-evaluation
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "WarGames-1983-Movie-Poster-720x340.jpg"
+  params:
+    description: War Games Movie Poster
+params:
+  week: 6
+---
+
+
+
+<p><strong>Matchup Winner Accuracy: 100%</strong></p>
+<!--more-->
+<div id="historic" class="section level3">
+<h3>Historic</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="center">week</th>
+<th align="center">Winner Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">6</td>
+<td align="center">100%</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">80%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="matchups-winner-predictions" class="section level2">
+<h2>Matchups Winner Predictions</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+game
+</th>
+<th style="text-align:left;">
+prediction
+</th>
+<th style="text-align:left;">
+who.won
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+London Knights @ Paulinia Robots
+</td>
+<td style="text-align:left;">
+London Knights
+</td>
+<td style="text-align:left;">
+London Knights
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Pfeiferians @ Jersey Boys
+</td>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers @ Indaiatuba Blues
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers @ Campinas Giants
+</td>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders @ Sorocaba Wild Mules
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="score-prediction-chart" class="section level2">
+<h2>Score Prediction Chart</h2>
+<p><img src="/post/week06_eval/index_files/figure-html/scorePredChart-1.png" width="672" /></p>
+</div>
+<div id="score-prediction-table" class="section level2">
+<h2>Score Prediction Table</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+real.points
+</th>
+<th style="text-align:right;">
+pred.min
+</th>
+<th style="text-align:right;">
+pred.points
+</th>
+<th style="text-align:right;">
+pred.max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:right;">
+147.70
+</td>
+<td style="text-align:right;">
+131.67969
+</td>
+<td style="text-align:right;">
+141.2330
+</td>
+<td style="text-align:right;">
+150.3814
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+<td style="text-align:right;">
+141.44
+</td>
+<td style="text-align:right;">
+116.73637
+</td>
+<td style="text-align:right;">
+125.1486
+</td>
+<td style="text-align:right;">
+140.8043
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:right;">
+136.10
+</td>
+<td style="text-align:right;">
+122.43907
+</td>
+<td style="text-align:right;">
+132.4245
+</td>
+<td style="text-align:right;">
+141.7531
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London Knights
+</td>
+<td style="text-align:right;">
+131.20
+</td>
+<td style="text-align:right;">
+118.79403
+</td>
+<td style="text-align:right;">
+129.6250
+</td>
+<td style="text-align:right;">
+141.0767
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+<td style="text-align:right;">
+125.92
+</td>
+<td style="text-align:right;">
+129.40261
+</td>
+<td style="text-align:right;">
+135.3842
+</td>
+<td style="text-align:right;">
+141.9795
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:right;">
+115.72
+</td>
+<td style="text-align:right;">
+110.71455
+</td>
+<td style="text-align:right;">
+119.8525
+</td>
+<td style="text-align:right;">
+128.5329
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues
+</td>
+<td style="text-align:right;">
+115.20
+</td>
+<td style="text-align:right;">
+96.82512
+</td>
+<td style="text-align:right;">
+112.0775
+</td>
+<td style="text-align:right;">
+123.5257
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+<td style="text-align:right;">
+108.44
+</td>
+<td style="text-align:right;">
+115.09967
+</td>
+<td style="text-align:right;">
+121.3737
+</td>
+<td style="text-align:right;">
+128.4403
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+<td style="text-align:right;">
+108.14
+</td>
+<td style="text-align:right;">
+112.77343
+</td>
+<td style="text-align:right;">
+125.7714
+</td>
+<td style="text-align:right;">
+134.8047
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:right;">
+89.62
+</td>
+<td style="text-align:right;">
+113.15795
+</td>
+<td style="text-align:right;">
+121.5465
+</td>
+<td style="text-align:right;">
+137.8895
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="players-points-vs-projection" class="section level2">
+<h2>Players Points vs Projection</h2>
+<p><img src="/post/week06_eval/index_files/figure-html/errorPlayers-1.png" width="672" /></p>
+</div>
+<div id="projection-error-distribution" class="section level2">
+<h2>Projection Error Distribution</h2>
+<p><img src="/post/week06_eval/index_files/figure-html/errorProjection-1.png" width="672" /></p>
+</div>
