@@ -5,7 +5,7 @@ library(ffanalytics)
 library(ggimage)
 
 # parametros de execucao
-weeks <- 1:5
+weeks <- 1:6
 
 # check Fantasy API
 source("./R/import/checkFantasyAPI.R")

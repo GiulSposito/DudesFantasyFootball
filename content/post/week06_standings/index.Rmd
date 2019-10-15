@@ -46,7 +46,8 @@ library(tidyverse)
 library(ggimage)
 library(knitr)
 library(glue)
-
+library(kableExtra)
+  
 # parameter
 curr.week <- params$week
 
@@ -139,7 +140,8 @@ wrank <- wrank %>%
     pts.pro = cumsum(pts),
     pts.ag  = cumsum(pts.ctr)
   ) %>% 
-  ungroup()
+  ungroup() %>% 
+  filter(week <= curr.week)
 
 # agrupa, semana a semana os grupos de time com mesmo
 # numero de vitorias e derrotas
@@ -275,7 +277,7 @@ buildTeam <- function(.players){
   # starters - slot versatil
   starters <- .players %>% 
     filter(position %in% c("WR","RB")) %>% 
-    anti_join(st01) %>% 
+    anti_join(st01, by = c("id", "nfl_id")) %>% 
     top_n(1, points) %>% 
     bind_rows(st01,.)
   

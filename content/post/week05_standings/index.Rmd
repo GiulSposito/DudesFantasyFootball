@@ -8,9 +8,9 @@ displayInMenu: no
 dropCap: yes
 resources:
 - name: featuredImage
+  src: "mahomes_on_ground.jpg"
   params:
-    description: Mahomes bad times!
-  src: mahomes_on_ground.jpg
+    description: "Mahomes bad times!"
 slug: rank-week-5
 tags:
 - playoffs
@@ -45,6 +45,7 @@ library(tidyverse)
 library(ggimage)
 library(knitr)
 library(glue)
+library(kableExtra)
 
 # parameter
 curr.week <- 5
@@ -138,7 +139,8 @@ wrank <- wrank %>%
     pts.pro = cumsum(pts),
     pts.ag  = cumsum(pts.ctr)
   ) %>% 
-  ungroup()
+  ungroup() %>% 
+  filter(week <= curr.week)
 
 # agrupa, semana a semana os grupos de time com mesmo
 # numero de vitorias e derrotas
