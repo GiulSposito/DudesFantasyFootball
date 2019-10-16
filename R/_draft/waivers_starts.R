@@ -41,7 +41,7 @@ bench <- tibble(
   map_df(function(.x, .players){
     .players %>% 
       filter(position==.x$pos) %>% 
-      top_n(.x$qtd, ceiling)
+      top_n(.x$qtd, floor)
   }, .players = anti_join(players, starters) )
 
 # releases
