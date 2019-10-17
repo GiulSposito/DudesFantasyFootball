@@ -7,14 +7,27 @@ players.points <- readRDS("./data/players_points.rds")
 
 error.dist <- players.points %>% 
   select(week, id, points) %>% 
-  inner_join(points.projection) %>% 
+  inner_join(points.projection, by = c("week", "id")) %>% 
   mutate( error = points - pts.proj ) %>% 
-  filter( week < curr.week )
+  filter( week < curr.week ) %>% 
+  select( id, data_src, error )
+  
 
 unique(error.dist$week)
 unique(.pts.proj$week)
 
-.pts.proj %>% 
-  unnest(projection) %>% 
-  inner_join(error.dist, by = c("id", "pos", "data_src", "pts.proj")) %>% 
-  arrange(week.x, desc(id), data_src)
+bind_rows(
+points.projection %>% 
+  filter(week==curr.week) %>% 
+  inner_join(error.dist, by = c("data_src", "id")) %>% 
+  mutate( error.proj = error + pts.proj ) %>% 
+  select(week, pos, data_src, id, pts.proj=error.proj, season) %>% 
+  mutate( type = "error.dist")
+,
+points.projection %>% 
+  filter(week==curr.week) %>% 
+  mutate( type = "site.proj" )
+) %>% 
+  arrange(id, data_src, type) %>% 
+  head(100) %>% 
+  View()
