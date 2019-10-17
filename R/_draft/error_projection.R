@@ -16,7 +16,7 @@ error.dist <- players.points %>%
 unique(error.dist$week)
 unique(.pts.proj$week)
 
-bind_rows(
+new.projs <- bind_rows(
 points.projection %>% 
   filter(week==curr.week) %>% 
   inner_join(error.dist, by = c("data_src", "id")) %>% 
@@ -28,6 +28,17 @@ points.projection %>%
   filter(week==curr.week) %>% 
   mutate( type = "site.proj" )
 ) %>% 
-  arrange(id, data_src, type) %>% 
-  head(100) %>% 
-  View()
+  arrange(id, data_src, type)
+
+
+new.projs %>% 
+  mutate(type="new.proj") %>% 
+  bind_rows(new.projs) %>% 
+  mutate(type=factor(type)) %>% 
+  ggplot(aes(x=pts.proj, color=type, fill=type)) +
+  geom_density(alpha=.5) +
+  facet_grid(pos~data_src, scales = "free") +
+  theme_minimal()
+
+
+
