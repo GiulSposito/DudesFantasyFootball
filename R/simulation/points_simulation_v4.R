@@ -1,6 +1,7 @@
 library(tidyverse)
 library(glue)
 source("./R/tidy/matchups.R")
+source("./R/simulation/error_projection.R")
 
 simulateGames <- function(.week, .playerGameStatus=NULL){
   # retorna um summary como um data.frame
@@ -26,39 +27,13 @@ simulateGames <- function(.week, .playerGameStatus=NULL){
   points <- readRDS("./data/players_points.rds")
   
   # players projections (ffa)
-  pts.proj <- readRDS("./data/points_projection.rds") %>%
+  pts.proj <- readRDS("./data/points_projection.rds")
+  
+  # aplica o historico de projecao de erros
+  # na projecao atual
+  pts.proj <- applyProjectionErrors(.week, pts.proj, points) %>%
     group_by(season, season, week, id, pos) %>%
     nest(.key = projection)
-  
-  # calcula distribuição do erro
-  # errors <- readRDS("./data/2018/players_points.rds") %>%
-  #   mutate( id = as.integer(id) ) %>%
-  #   #filter(week!=.week) %>%
-  #   inner_join(pts.proj, by = c("id","week")) %>%
-  #   select( id, position, week, season=season.x, data_src, points, pts.proj ) %>%
-  #   mutate( error=0, season=2019 ) 
-  
-  # errors <- points %>%
-  #   mutate( id = as.integer(id) ) %>% 
-  #   filter(week!=.week) %>% 
-  #   inner_join(pts.proj, by = c("id", "season", "week")) %>% 
-  #   select( id, position, week, season, data_src, points, pts.proj ) %>% 
-  #   mutate( error=points-pts.proj )
-  
-  # visualiza os numeros
-  # errors %>%
-  #   ggplot() +
-  #   geom_density(aes(error, fill=position)) +
-  #   facet_grid(position~data_src) +
-  #   theme_minimal()
-  
-  # calcula distribuição de erros por posicao e source
-  # error.dist <- errors %>% 
-  #   select(data_src, id, error) %>% 
-  #   group_by(data_src, id) %>% 
-  #   nest(error) %>% 
-  #   mutate( error = map(data, function(.data) pull(.data,error)) ) %>% 
-  #   select(-data)
   
   # adicionar projeção e curva de probabilidade
   addPlayerSimulation <- function(.team, .pts.proj, .error.dist){
@@ -158,7 +133,7 @@ simulateGames <- function(.week, .playerGameStatus=NULL){
       away.points = map(away.sim, summaryAsTibble)
     ) -> matchup.simulation
   
-  saveRDS(matchup.simulation, glue("./data/week{.week}_simulation_v3.rds"))
+  saveRDS(matchup.simulation, glue("./data/week{.week}_simulation_v4.rds"))
   
   return(matchup.simulation)
 }

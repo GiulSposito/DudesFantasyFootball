@@ -5,6 +5,7 @@ library(glue)
 
 # parametros de execucao
 week <- 7
+sim.version <- 3
 prefix <- "preTNF"
 destPath <- "static"
 
@@ -27,7 +28,7 @@ player_ids <- player_ids %>%
 
 
 source("./R/import/import_matchups.R")
-source("./R/simulation/points_simulation_v3.R")
+source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
 
 matchups <- importMatchups(week)
 playerGameStatus <- importPlayerGameStatus(week, player_ids)
@@ -36,8 +37,8 @@ saveRDS(playerGameStatus, glue("./data/week{week}_player_game_status.rds"))
 sim <- simulateGames(week, playerGameStatus)
 
 rmarkdown::render(
-    input = "./R/reports/dudes_simulation_v2.Rmd",
-    output_file = glue("../../{destPath}/reports/dudes_simulation_week{week}_{prefix}.html"),
+    input = glue("./R/reports/dudes_simulation_v{sim.version}.Rmd"),
+    output_file = glue("../../{destPath}/reports/dudes_simulation_week{week}_{prefix}_v{sim.version}.html"),
     output_format = "flex_dashboard",
     params = list(week=week)
   )
