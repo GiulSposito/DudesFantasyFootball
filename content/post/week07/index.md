@@ -19,7 +19,7 @@ resources:
     description: "Baker on the ground!"
 ---
 
-*Last Update: Pre Waivers*
+*Last Update: Pre TNF*
 
 <!--more-->
 
@@ -29,7 +29,7 @@ resources:
 
 ## Simulations
 
-- [Pre Waivers](/reports/dudes_simulation_week7_preWaivers.html)
+- [Pre TNF](/reports/dudes_simulation_week7_preTNF.html)
 
 
 
