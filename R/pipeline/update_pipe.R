@@ -6,7 +6,7 @@ library(glue)
 # parametros de execucao
 week <- 7
 sim.version <- 3
-prefix <- "posTNF"
+prefix <- "preSundayRounds"
 destPath <- "static"
 
 source("./R/import/checkFantasyAPI.R")
