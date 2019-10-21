@@ -19,7 +19,7 @@ resources:
     description: "Baker on the ground!"
 ---
 
-*Last Update: Pre SNF*
+*Last Update: Pos SNF*
 
 <!--more-->
 
@@ -29,6 +29,7 @@ resources:
 
 ## Simulations
 
+- [Pos SNF](/reports/dudes_simulation_week7_posSNF_v3.html)
 - [Pre SNF](/reports/dudes_simulation_week7_preSNF_v3.html)
 - [Pre Sunday Rounds](/reports/dudes_simulation_week7_preSundayRounds_v3.html)
 - [Pos TNF](/reports/dudes_simulation_week7_posTNF_v3.html)
