@@ -306,8 +306,3 @@ players %>%
   kable()
 
 ```
-
-
-## Twittersphere
-
-{{< tweet 1186025478794039296 >}}

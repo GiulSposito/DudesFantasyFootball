@@ -2,12 +2,12 @@ library(tidyverse)
 library(glue)
 
 .team <- "Bikers"
-.week <- 7
+.week <- 8
 
 players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
   filter(
     fantasy.team %in% c("*FreeAgent",.team),
-    !(team %in% c("FA", "FA*","PIT"))
+    !(team %in% c("FA", "FA*","BAL"))
   ) 
 
 # starts
