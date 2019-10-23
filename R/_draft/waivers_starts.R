@@ -7,7 +7,7 @@ library(glue)
 players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
   filter(
     fantasy.team %in% c("*FreeAgent",.team),
-    !(team %in% c("FA", "FA*","BAL"))
+    !(team %in% c("FA", "FA*"))
   ) 
 
 # starts
