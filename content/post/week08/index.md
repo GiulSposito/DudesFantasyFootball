@@ -19,7 +19,7 @@ resources:
     description: "Saints sacks Trubisky"
 ---
 
-*Last Update: Pos Waivers*
+*Last Update: Pre TNF*
 
 <!--more-->
 
