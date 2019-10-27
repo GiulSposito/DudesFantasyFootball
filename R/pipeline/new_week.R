@@ -6,7 +6,7 @@ library(flexdashboard)
 
 # parametros de execucao
 week <- 8
-prefix <- "preTNF"
+prefix <- "preSundayGames"
 destPath <- "static"
 
 # check Fantasy API
@@ -78,8 +78,8 @@ sim <- simulateGames(week)
 
 # constroi o relatório
 rmarkdown::render(
-    input = "./R/reports/dudes_simulation_v2.Rmd",
-    output_file = glue("../../{destPath}/reports/dudes_simulation_week{week}_{prefix}.html"),
+    input = "./R/reports/dudes_simulation_v3.Rmd",
+    output_file = glue("../../{destPath}/reports/dudes_simulation_week{week}_{prefix}_v3.html"),
     output_format = "flex_dashboard",
     params = list(week=week)
   )

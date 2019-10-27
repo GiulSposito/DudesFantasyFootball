@@ -19,7 +19,7 @@ resources:
     description: "Saints sacks Trubisky"
 ---
 
-*Last Update: Pos TNF*
+*Last Update: Pre Sunday Games*
 
 <!--more-->
 
@@ -29,6 +29,7 @@ resources:
 
 ## Simulations
 
+- [Pre Sunday Games](/reports/dudes_simulation_week8_preSundayGames_v3.html)
 - [Pos TNF](/reports/dudes_simulation_week8_posTNF_v3.html)
 - [Pre TNF](/reports/dudes_simulation_week8_preTNF.html)
 - [Pre Waivers](/reports/dudes_simulation_week8_preWaivers.html)
