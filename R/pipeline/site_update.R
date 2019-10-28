@@ -1,9 +1,7 @@
 # on a r session
 
 setwd("C:\\Projects\\DudesFantasyFootball")
-start <- Sys.time()
 blogdown::serve_site()
-print(Sys.time()-start)
 
 # git bash terminal
 

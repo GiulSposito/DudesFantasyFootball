@@ -1,0 +1,356 @@
+---
+title: '[Week 08] Simulation Evaluation'
+author: Giuliano Sposito
+date: '2019-10-29'
+categories:
+  - evaluation
+  - simulation
+tags:
+  - evaluation
+  - simulation
+slug: week-8-simulation-evaluation
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "wargames-still-03_758_427_81_s.jpg"
+  params:
+    description: War Games Movie Scene
+params:
+  week: 8
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p><strong>Matchup Winner Accuracy: 60%</strong></p>
+<!--more-->
+<div id="historic" class="section level3">
+<h3>Historic</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="center">week</th>
+<th align="center">Winner Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">8</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">7</td>
+<td align="center">20%</td>
+</tr>
+<tr class="odd">
+<td align="center">6</td>
+<td align="center">100%</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">80%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="matchups-winner-predictions" class="section level2">
+<h2>Matchups Winner Predictions</h2>
+<table class="table" style="font-size: 5px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+game
+</th>
+<th style="text-align:left;">
+prediction
+</th>
+<th style="text-align:left;">
+who.won
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues @ Paulinia Robots
+</td>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jersey Boys @ Campinas Giants
+</td>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London Knights @ Sorocaba Wild Mules
+</td>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Pfeiferians @ Indaiatuba Riders
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers @ Amparo Bikers
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="score-prediction-chart" class="section level2">
+<h2>Score Prediction Chart</h2>
+<p><img src="/post/week08_eval/index_files/figure-html/scorePredChart-1.png" width="672" /></p>
+</div>
+<div id="score-prediction-table" class="section level2">
+<h2>Score Prediction Table</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+real.points
+</th>
+<th style="text-align:right;">
+pred.min
+</th>
+<th style="text-align:right;">
+pred.points
+</th>
+<th style="text-align:right;">
+pred.max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+<td style="text-align:right;">
+172.98
+</td>
+<td style="text-align:right;">
+124.09
+</td>
+<td style="text-align:right;">
+131.59
+</td>
+<td style="text-align:right;">
+140.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:right;">
+164.06
+</td>
+<td style="text-align:right;">
+135.12
+</td>
+<td style="text-align:right;">
+141.62
+</td>
+<td style="text-align:right;">
+151.07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+<td style="text-align:right;">
+153.30
+</td>
+<td style="text-align:right;">
+126.14
+</td>
+<td style="text-align:right;">
+134.94
+</td>
+<td style="text-align:right;">
+143.85
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:right;">
+142.02
+</td>
+<td style="text-align:right;">
+113.33
+</td>
+<td style="text-align:right;">
+123.40
+</td>
+<td style="text-align:right;">
+133.19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+<td style="text-align:right;">
+106.90
+</td>
+<td style="text-align:right;">
+114.68
+</td>
+<td style="text-align:right;">
+122.87
+</td>
+<td style="text-align:right;">
+132.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+<td style="text-align:right;">
+99.78
+</td>
+<td style="text-align:right;">
+116.78
+</td>
+<td style="text-align:right;">
+125.50
+</td>
+<td style="text-align:right;">
+134.23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues
+</td>
+<td style="text-align:right;">
+96.78
+</td>
+<td style="text-align:right;">
+92.57
+</td>
+<td style="text-align:right;">
+101.71
+</td>
+<td style="text-align:right;">
+112.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:right;">
+92.88
+</td>
+<td style="text-align:right;">
+98.76
+</td>
+<td style="text-align:right;">
+107.81
+</td>
+<td style="text-align:right;">
+120.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:right;">
+90.74
+</td>
+<td style="text-align:right;">
+126.97
+</td>
+<td style="text-align:right;">
+135.30
+</td>
+<td style="text-align:right;">
+143.72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London Knights
+</td>
+<td style="text-align:right;">
+55.26
+</td>
+<td style="text-align:right;">
+97.89
+</td>
+<td style="text-align:right;">
+105.22
+</td>
+<td style="text-align:right;">
+116.15
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="players-points-vs-projection" class="section level2">
+<h2>Players Points vs Projection</h2>
+<p><img src="/post/week08_eval/index_files/figure-html/errorPlayers-1.png" width="672" /></p>
+</div>
+<div id="projection-error-distribution" class="section level2">
+<h2>Projection Error Distribution</h2>
+<p><img src="/post/week08_eval/index_files/figure-html/errorProjection-1.png" width="672" /></p>
+</div>

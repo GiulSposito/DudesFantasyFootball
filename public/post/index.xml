@@ -4,34 +4,35 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 08] Players Projection and Matchups Simulation</title>
-      <link>/post/week08/</link>
-      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      <title>[Week 09] Players Projection and Matchups Simulation</title>
+      <link>/post/week09/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week08/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
+      <guid>/post/week09/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Last Update: Pre Waivers&lt;/em&gt;&lt;/p&gt;</description>
     </item><item>
-      <title>[Week 07] League Standings</title>
-      <link>/post/rank-week-7/</link>
-      <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
+      <title>[Week 08] League Standings</title>
+      <link>/post/rank-week-8/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/rank-week-7/</guid>
+      <guid>/post/rank-week-8/</guid>
       <description></description>
     </item><item>
-      <title>[Week 07] Simulation Evaluation</title>
-      <link>/post/week-7-simulation-evaluation/</link>
-      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      <title>[Week 08] Simulation Evaluation</title>
+      <link>/post/week-8-simulation-evaluation/</link>
+      <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-7-simulation-evaluation/</guid>
+      <guid>/post/week-8-simulation-evaluation/</guid>
       <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 20%&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>
