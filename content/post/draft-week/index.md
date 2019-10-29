@@ -7,6 +7,7 @@ draft: false
 dropCap: false
 categories:
  - projection
+ - draft
 tags:
  - projection
 resources:

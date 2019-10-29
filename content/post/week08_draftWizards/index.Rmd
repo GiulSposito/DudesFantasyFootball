@@ -1,13 +1,14 @@
 ---
-title: 'The Draft Wizards'
+title: '[Week 8] The Draft Wizards'
 author: Giuliano Sposito
-date: '2019-10-29'
+date: '2019-10-30'
 categories:
-  - evaluation
-  - simulation
+  - ranking
+  - draft
 tags:
-  - evaluation
-  - simulation
+  - rank
+  - points
+  - draft
 slug: week-8-draft-wizards
 dropCap: no
 displayInMenu: no
@@ -33,7 +34,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 ```{r libraryAndData}
 library(tidyverse)
-library(glue)
+library(knitr)
 
 # le informacao sobre os jogadores das semanas 1 e "week"
 matchups <- c(1,params$week) %>% 
@@ -107,14 +108,15 @@ players.report <- players %>%
 
 ## Escolhas mantidas
 
-Escolhas da semana 1 que ainda permanecem no Roster (as 15 posições, incluindo linha e banco) e suas pontuações até agora.
+Escolhas da semana 1 que ainda permanecem no Roster (considerando as 15 posições, incluindo linha e banco) e suas pontuações até agora.
 
 ```{r mantidos}
 players.report %>% 
   select(-team.id, -contains("players"), -contains("released")) %>% 
   set_names(c("team", "mantidos", "pontos")) %>% 
   mutate( pts.por.player = round(pontos/mantidos,2) ) %>% 
-  arrange(desc(pontos))
+  arrange(desc(pontos)) %>% 
+  kable()
 ```
 
 ## Escolhas liberadas
@@ -127,7 +129,8 @@ players.report %>%
   select(team.name, contains("released")) %>% 
   set_names(c("team","liberados","pontos")) %>% 
   mutate( pts.por.player = round(pontos/liberados,2) ) %>% 
-  arrange(pontos)
+  arrange(pontos) %>% 
+  kable()
 
 ```
 
@@ -141,7 +144,8 @@ players.report %>%
   unnest( top.original.player ) %>% 
   select(team.name, name, position, points) %>% 
   set_names(c("team","player","position","points")) %>% 
-  arrange(desc(points))
+  arrange(desc(points)) %>% 
+  kable()
   
 ```
 
@@ -155,6 +159,7 @@ players.report %>%
   unnest( top.released.player ) %>% 
   select(team.name, name, position, points) %>% 
   set_names(c("team","player","position","points")) %>% 
-  arrange(points)
+  arrange(points) %>% 
+  kable() 
 ```
 

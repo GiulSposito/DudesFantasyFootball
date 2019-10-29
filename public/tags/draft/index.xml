@@ -1,0 +1,24 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>draft - It&#39;s Football, Dudes!</title>
+    <link>/tags/draft/</link>
+    <description>Recent content in draft on It&#39;s Football, Dudes!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/tags/draft/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>[Week 8] The Draft Wizards</title>
+      <link>/post/week-8-draft-wizards/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week-8-draft-wizards/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;strong&gt;The winners and the losers in draft picks until week 8.&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
+  </channel>
+</rss>
