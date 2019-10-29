@@ -73,7 +73,7 @@ common.rosters <- team.players[[1]] %>%
   )
 
 # recupera os pontos ate agora
-player.points <- readRDS("./data/2018/players_points.rds") %>%
+player.points <- readRDS("./data/players_points.rds") %>%
   filter(week <= params$week) %>% 
   group_by(src_id) %>% 
   summarise(points=sum(points, na.rm=T)) %>% 
