@@ -21,7 +21,7 @@ tags:
 categories:
 - ranking
 params:
-  week: 7
+  week: 8
 ---
 
 <!--more-->

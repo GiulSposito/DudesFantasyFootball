@@ -98,11 +98,14 @@ sim.eval %>%
   mutate( game = paste0(away.name," @ ",home.name) ) %>% 
   mutate( prediction = case_when(home.win.pred==T ~ home.name,
                                  away.win.pred==T ~ away.name) ) %>% 
+  mutate( win.prob = case_when(home.win.pred==T ~ home.win.org.prob,
+                               away.win.pred==T ~ away.win.org.prob) ) %>%
+  mutate( win.prob = paste0(round(100*win.prob,1),"%") ) %>% 
   mutate( who.won = case_when(home.win==T ~ home.name,
                               away.win==T ~ away.name) ) %>% 
-  select(game, prediction, who.won) %>% 
+  select(game, prediction, win.prob, who.won) %>% 
   kable() %>% 
-  kable_styling(font_size = 5)
+  kable_styling(font_size = 15)
 ```
 
 ## Score Prediction Chart
