@@ -1,0 +1,160 @@
+---
+title: 'The Draft Wizards'
+author: Giuliano Sposito
+date: '2019-10-29'
+categories:
+  - evaluation
+  - simulation
+tags:
+  - evaluation
+  - simulation
+slug: week-8-draft-wizards
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "gandalf.jpg"
+  params:
+    description: Gandalf
+params:
+  week: 8
+---
+
+**The winners and the losers in draft picks until week 8.**
+
+<!--more-->
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r libraryAndData}
+library(tidyverse)
+library(glue)
+
+# le informacao sobre os jogadores das semanas 1 e "week"
+matchups <- c(1,params$week) %>% 
+  paste0("./data/week",.,"_matchups_json.rds") %>% 
+  map(readRDS)
+
+# extrai as informacoes dos rosters
+team.players <- matchups %>% 
+  map(function(matchup){
+    matchup %>% 
+      map_df(function(mtch){
+        cleanTeam <- . %>%
+          select(team.id=id, team.name=name, players) %>% 
+          mutate(players = map(players, ~select(.x, id, name, position, rosterSlot)))
+        
+        resp <- bind_rows(
+          cleanTeam(mtch$leagues$matchup$awayTeam),
+          cleanTeam(mtch$leagues$matchup$homeTeam)
+        ) %>% 
+          as_tibble() %>% 
+          set_names(c("team.id","team.name", paste0("week",mtch$leagues$matchup$week,".players")))
+      })
+  })
+
+# comprar os rosters da semana 1 e "week"
+common.rosters <- team.players[[1]] %>% 
+  inner_join(team.players[[2]], by = c("team.id", "team.name")) %>% 
+  mutate( 
+    # jogadores comuns entre as semanas
+    common.players = map2(week1.players, week8.players, function(w1,w2){
+      w1 %>% inner_join(select(w2,id), by="id")}),
+    
+    # jogadores da primeira semana que nao estao na ultima
+    released.players = map2(week1.players, common.players, function(w1,wc){
+      w1 %>% anti_join(select(wc,id), by="id")}),
+  )
+
+# recupera os pontos ate agora
+player.points <- readRDS("./data/2018/players_points.rds") %>%
+  filter(week <= params$week) %>% 
+  group_by(src_id) %>% 
+  summarise(points=sum(points, na.rm=T)) %>% 
+  ungroup() %>% 
+  mutate(id=as.character(src_id))
+
+# adiciona aos rosters
+players <- common.rosters %>% 
+  mutate( 
+    common.players = map(
+      common.players,
+      function(.rst,.pts) {inner_join(.rst, .pts, by="id")},
+      .pts = player.points
+    ),
+    released.players = map(
+      released.players,
+      function(.rst,.pts) {inner_join(.rst, .pts, by="id")},
+      .pts = player.points
+    ))
+
+# computa valores
+players.report <- players %>% 
+  mutate(
+    original.number = map_int(common.players, nrow),
+    released.number = map_int(released.players, nrow)
+  ) %>% 
+  mutate(
+    original.points = map_dbl(common.players, ~sum(.x$points)),
+    released.points = map_dbl(released.players, ~sum(.x$points))
+  )
+```
+
+## Escolhas mantidas
+
+Escolhas da semana 1 que ainda permanecem no Roster (as 15 posições, incluindo linha e banco) e suas pontuações até agora.
+
+```{r mantidos}
+players.report %>% 
+  select(-team.id, -contains("players"), -contains("released")) %>% 
+  set_names(c("team", "mantidos", "pontos")) %>% 
+  mutate( pts.por.player = round(pontos/mantidos,2) ) %>% 
+  arrange(desc(pontos))
+```
+
+## Escolhas liberadas
+
+Jogadores presentes da semana 1 que não estão na semana atual e seus pontos até agora.
+
+```{r liberados}
+players.report %>% 
+  select(-contains("players")) %>% 
+  select(team.name, contains("released")) %>% 
+  set_names(c("team","liberados","pontos")) %>% 
+  mutate( pts.por.player = round(pontos/liberados,2) ) %>% 
+  arrange(pontos)
+
+```
+
+## Melhor escolha mantida
+
+Jogadores da semana 1, ainda presentes que mais pontuaram até agora
+
+```{r topKeepers}
+players.report %>% 
+  mutate( top.original.player = map(common.players, filter, points==max(points))) %>% 
+  unnest( top.original.player ) %>% 
+  select(team.name, name, position, points) %>% 
+  set_names(c("team","player","position","points")) %>% 
+  arrange(desc(points))
+  
+```
+
+## Melhor escolha liberada
+
+Jodadores da semana 1 que não estão mais presentes.
+
+```{r topReleases}
+players.report %>% 
+  mutate( top.released.player = map(released.players, filter, points==max(points))) %>% 
+  unnest( top.released.player ) %>% 
+  select(team.name, name, position, points) %>% 
+  set_names(c("team","player","position","points")) %>% 
+  arrange(points)
+```
+
