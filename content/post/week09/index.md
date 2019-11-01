@@ -19,7 +19,7 @@ resources:
     description: "Mike Evans"
 ---
 
-*Last Update: Pos Waivers*
+*Last Update: Pre TNF*
 
 <!--more-->
 
@@ -29,6 +29,7 @@ resources:
 
 ## Simulations
 
+- [Pre TNF](/reports/dudes_simulation_week9_preTNF_v3.html)
 - [Pos Waivers](/reports/dudes_simulation_week9_posWaivers_v3.html)
 
 ## Twittersphere
