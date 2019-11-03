@@ -19,7 +19,7 @@ resources:
     description: "Mike Evans"
 ---
 
-*Last Update: Pre Sunday Games*
+*Last Update: Sunday 18h*
 
 <!--more-->
 
@@ -29,6 +29,7 @@ resources:
 
 ## Simulations
 
+- [Sunday 18h](/reports/dudes_simulation_week9_Sunday18h_v3.html)
 - [Pre Sunday Games](/reports/dudes_simulation_week9_preSundayGames_v3.html)
 - [Pos TNF](/reports/dudes_simulation_week9_posTNF_v3.html)
 - [Pre TNF](/reports/dudes_simulation_week9_preTNF_v3.html)
