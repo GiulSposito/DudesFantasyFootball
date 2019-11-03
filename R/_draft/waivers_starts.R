@@ -10,6 +10,10 @@ players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>%
     !(team %in% c("FA", "FA*"))
   ) 
 
+9:12 %>% 
+  paste0("./data/week",.,"_players_projections.rds") %>% 
+  map_df(readRDS)
+
 # starts
 starters <- tibble(
   pos=c("QB","RB","WR","TE","K","DST"),
