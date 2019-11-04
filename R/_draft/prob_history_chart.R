@@ -5,7 +5,7 @@ sims <- readRDS("./data/simulations_history.rds")
 
 
 sims %>% 
-  filter(week==8) %>% 
+  filter(week==9) %>% 
   arrange(timestamp) %>%
   select(timestamp, away.name, home.name, away.win.prob, home.win.prob, away.logoUrl, home.logoUrl) %>% 
   mutate(
@@ -21,7 +21,7 @@ sims %>%
 
 
 sims %>% 
-  filter(week==8) %>% 
+  filter(week==9) %>% 
   arrange(timestamp) %>%
   select(timestamp, away.name, home.name, away.win.prob, home.win.prob, away.logoUrl, home.logoUrl) %>% 
   mutate(
