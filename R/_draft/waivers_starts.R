@@ -2,7 +2,7 @@ library(tidyverse)
 library(glue)
 
 .team <- "Bikers"
-.week <- 9
+.week <- 10
 
 players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
   filter(
@@ -25,7 +25,7 @@ starters <- tibble(
       # filter(!id %in% c(13604,8153, 530) ) %>%  # barkley 13604
       filter(position==.x$pos) %>%
       #filter(is.na(injuryStatus)) %>% 
-      top_n(.x$qtd, floor)
+      top_n(.x$qtd, points)
   }, .players=players)
 
 starters <- players %>% 
@@ -33,7 +33,7 @@ starters <- players %>%
   filter(pos %in% c("WR","RB")) %>% 
   filter(is.na(injuryGameStatus)) %>% 
   anti_join(starters) %>% 
-  top_n(1, floor) %>% 
+  top_n(1, points) %>% 
   bind_rows(starters,.)
 
 ## bench
@@ -45,7 +45,7 @@ bench <- tibble(
   map_df(function(.x, .players){
     .players %>% 
       filter(position==.x$pos) %>% 
-      top_n(.x$qtd, floor)
+      top_n(.x$qtd, points)
   }, .players = anti_join(players, starters) )
 
 # releases

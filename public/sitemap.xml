@@ -103,12 +103,12 @@
   </url>
   
   <url>
-    <loc>/tags/draft/</loc>
+    <loc>/categories/draft/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/draft/</loc>
+    <loc>/tags/draft/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -228,12 +228,12 @@
   </url>
   
   <url>
-    <loc>/tags/about/</loc>
+    <loc>/categories/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/about/</loc>
+    <loc>/tags/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
