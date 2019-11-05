@@ -87,7 +87,7 @@ sim %>%
 
 ## Projections
 
-- [Individual Players Projections](/reports/ffa_players_projection_week9.html)
+- [Individual Players Projections](/reports/ffa_players_projection_week10.html)
 
 ## Simulations
 
