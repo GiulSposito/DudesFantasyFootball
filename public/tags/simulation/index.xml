@@ -4,35 +4,39 @@
     <link>/tags/simulation/</link>
     <description>Recent content in simulation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 31 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Nov 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 10] Players Projection and Matchups Simulation</title>
+      <link>/post/week10/</link>
+      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week10/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;em&gt;Last Update: Pre Waivers&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 09] Simulation Evaluation</title>
+      <link>/post/week-9-simulation-evaluation/</link>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week-9-simulation-evaluation/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 20%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 09] Players Projection and Matchups Simulation</title>
       <link>/post/week09/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/week09/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
-    </item><item>
-      <title>[Week 08] Simulation Evaluation</title>
-      <link>/post/week-8-simulation-evaluation/</link>
-      <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-8-simulation-evaluation/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 08] Players Projection and Matchups Simulation</title>
-      <link>/post/week08/</link>
-      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week08/</guid>
       <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>

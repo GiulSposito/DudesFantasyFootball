@@ -6,7 +6,6 @@ sim <- readRDS("./data/simulations_history.rds") %>%
   filter(week==.week) %>%
   filter(timestamp==max(timestamp, na.rm=T))
 
-
 lastUpdate <- unique(sim$timestamp) 
 lastPrefix <- unique(sim$prefix)
 

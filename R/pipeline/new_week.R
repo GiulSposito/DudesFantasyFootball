@@ -5,8 +5,8 @@ library(ffanalytics)
 library(flexdashboard)
 
 # parametros de execucao
-week <- 9
-prefix <- "preSundayGames"
+week <- 10
+prefix <- "preWaivers"
 destPath <- "static"
 
 # check Fantasy API
