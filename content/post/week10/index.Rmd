@@ -21,7 +21,7 @@ params:
   week: 10
 ---
 
-*Last Update: Pre Waivers*
+*Last Update: Pos Waivers*
 
 <!--more-->
 
@@ -90,6 +90,7 @@ sim %>%
 
 ## Simulations
 
+- [Pos Waivers](/reports/dudes_simulation_week10_posWaivers_v3.html)
 - [Pre Waivers](/reports/dudes_simulation_week10_preWaivers_v3.html)
 
 ## Twittersphere
