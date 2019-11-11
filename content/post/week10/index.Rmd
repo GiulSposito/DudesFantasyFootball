@@ -21,7 +21,7 @@ params:
   week: 10
 ---
 
-*Last Update: Pre SNF*
+*Last Update: Pos SNF*
 
 <!--more-->
 
@@ -90,12 +90,14 @@ sim %>%
 
 ## Simulations
 
+- [Pos SNF](/reports/dudes_simulation_week10_posSNF_v3.html)
 - [Pre SNF](/reports/dudes_simulation_week10_preSNF_v3.html)
 - [Pre Sunday Games](/reports/dudes_simulation_week10_preSundayGames_v3.html)
 - [Pos TNF](/reports/dudes_simulation_week10_posTNF_v3.html)
 - [Pre TNF](/reports/dudes_simulation_week10_preTNF_v3.html)
 - [Pos Waivers](/reports/dudes_simulation_week10_posWaivers_v3.html)
 - [Pre Waivers](/reports/dudes_simulation_week10_preWaivers_v3.html)
+
 
 ## Twittersphere
 
