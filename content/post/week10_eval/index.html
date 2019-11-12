@@ -1,0 +1,392 @@
+---
+title: '[Week 10] Simulation Evaluation'
+author: Giuliano Sposito
+date: '2019-11-12'
+categories:
+  - evaluation
+  - simulation
+tags:
+  - evaluation
+  - simulation
+slug: week-10-simulation-evaluation
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "wargames_norad.jpg"
+  params:
+    description: War Games Movie Norad
+params:
+  week: 10
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p><strong>Matchup Winner Accuracy: 40%</strong></p>
+<!--more-->
+<div id="historic" class="section level2">
+<h2>Historic</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="center">week</th>
+<th align="center">Winner Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">10</td>
+<td align="center">40%</td>
+</tr>
+<tr class="even">
+<td align="center">9</td>
+<td align="center">20%</td>
+</tr>
+<tr class="odd">
+<td align="center">8</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">7</td>
+<td align="center">20%</td>
+</tr>
+<tr class="odd">
+<td align="center">6</td>
+<td align="center">100%</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">80%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="matchups-winner-predictions" class="section level2">
+<h2>Matchups Winner Predictions</h2>
+<table class="table" style="font-size: 15px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+game
+</th>
+<th style="text-align:left;">
+prediction
+</th>
+<th style="text-align:left;">
+win.prob
+</th>
+<th style="text-align:left;">
+who.won
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules @ Paulinia Robots
+</td>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:left;">
+55.4%
+</td>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Campinas Giants @ Indaiatuba Riders
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:left;">
+67.1%
+</td>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues @ Amparo Bikers
+</td>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+<td style="text-align:left;">
+88.4%
+</td>
+<td style="text-align:left;">
+Indaiatuba Blues
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jersey Boys @ Sorocaba Steelers
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:left;">
+66.1%
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London Knights @ Rio Claro Pfeiferians
+</td>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+<td style="text-align:left;">
+84%
+</td>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="score-prediction-chart" class="section level2">
+<h2>Score Prediction Chart</h2>
+<p><img src="/post/week10_eval/index_files/figure-html/scorePredChart-1.png" width="672" /></p>
+</div>
+<div id="score-prediction-table" class="section level2">
+<h2>Score Prediction Table</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+real.points
+</th>
+<th style="text-align:right;">
+pred.min
+</th>
+<th style="text-align:right;">
+pred.points
+</th>
+<th style="text-align:right;">
+pred.max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues
+</td>
+<td style="text-align:right;">
+152.78
+</td>
+<td style="text-align:right;">
+107.04
+</td>
+<td style="text-align:right;">
+119.34
+</td>
+<td style="text-align:right;">
+128.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+<td style="text-align:right;">
+149.02
+</td>
+<td style="text-align:right;">
+113.16
+</td>
+<td style="text-align:right;">
+120.09
+</td>
+<td style="text-align:right;">
+128.99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+<td style="text-align:right;">
+139.42
+</td>
+<td style="text-align:right;">
+117.45
+</td>
+<td style="text-align:right;">
+125.85
+</td>
+<td style="text-align:right;">
+135.84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+<td style="text-align:right;">
+134.10
+</td>
+<td style="text-align:right;">
+120.41
+</td>
+<td style="text-align:right;">
+127.87
+</td>
+<td style="text-align:right;">
+139.73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:right;">
+121.24
+</td>
+<td style="text-align:right;">
+112.89
+</td>
+<td style="text-align:right;">
+121.10
+</td>
+<td style="text-align:right;">
+131.54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London Knights
+</td>
+<td style="text-align:right;">
+119.38
+</td>
+<td style="text-align:right;">
+110.68
+</td>
+<td style="text-align:right;">
+118.59
+</td>
+<td style="text-align:right;">
+127.48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:right;">
+117.22
+</td>
+<td style="text-align:right;">
+125.45
+</td>
+<td style="text-align:right;">
+133.05
+</td>
+<td style="text-align:right;">
+142.11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+<td style="text-align:right;">
+114.52
+</td>
+<td style="text-align:right;">
+124.89
+</td>
+<td style="text-align:right;">
+130.59
+</td>
+<td style="text-align:right;">
+136.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:right;">
+95.36
+</td>
+<td style="text-align:right;">
+114.99
+</td>
+<td style="text-align:right;">
+122.83
+</td>
+<td style="text-align:right;">
+130.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:right;">
+75.48
+</td>
+<td style="text-align:right;">
+118.02
+</td>
+<td style="text-align:right;">
+125.75
+</td>
+<td style="text-align:right;">
+134.38
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="players-points-vs-projection" class="section level2">
+<h2>Players Points vs Projection</h2>
+<p><img src="/post/week10_eval/index_files/figure-html/errorPlayers-1.png" width="672" /></p>
+</div>
+<div id="projection-error-distribution" class="section level2">
+<h2>Projection Error Distribution</h2>
+<p><img src="/post/week10_eval/index_files/figure-html/errorProjection-1.png" width="672" /></p>
+</div>
+<div id="twittersphere" class="section level2">
+<h2>Twittersphere</h2>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+Footage of officials literally giving Aaron Rodgers a flag. <a href="https://t.co/XNumzMkPaA">pic.twitter.com/XNumzMkPaA</a>
+</p>
+— Stadium (<span class="citation">@Stadium</span>) <a href="https://twitter.com/Stadium/status/1193660716944891905?ref_src=twsrc%5Etfw">November 10, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>

@@ -4,11 +4,22 @@
     <link>/tags/evaluation/</link>
     <description>Recent content in evaluation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 06 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 Nov 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/evaluation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 07] Simulation Evaluation</title>
+      <link>/post/week-7-simulation-evaluation/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week-7-simulation-evaluation/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 20%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 06] Simulation Evaluation</title>
       <link>/post/week-6-simulation-evaluation/</link>
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
@@ -30,13 +41,6 @@
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 80%&lt;/strong&gt;&lt;/p&gt;
 </description>
-    </item><item>
-      <title>[Week 04] Simulation Evaluation</title>
-      <link>/post/week-4-simulation-evaluation/</link>
-      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-4-simulation-evaluation/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
