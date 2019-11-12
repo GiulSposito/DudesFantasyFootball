@@ -5,8 +5,9 @@ library(ffanalytics)
 library(flexdashboard)
 
 # parametros de execucao
-week <- 10
-prefix <- "preSundayGames"
+week <- 11
+sim.version <- 4
+prefix <- "preWaivers"
 destPath <- "static"
 
 # check Fantasy API
@@ -73,14 +74,14 @@ rmarkdown::render(
 source("./R/simulation/players_projections.R")
 
 # simula as partidas
-source("./R/simulation/points_simulation_v3.R")
+source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
 sim <- simulateGames(week)
 
 # constroi o relatório
 rmarkdown::render(
-    input = "./R/reports/dudes_simulation_v3.Rmd",
-    output_file = glue("../../{destPath}/reports/dudes_simulation_week{week}_{prefix}_v3.html"),
-    output_format = "flex_dashboard",
+  input = glue("./R/reports/dudes_simulation_v{sim.version}.Rmd"),
+  output_file = glue("../../{destPath}/reports/dudes_simulation_week{week}_{prefix}_v{sim.version}.html"),
+  output_format = "flex_dashboard",
     params = list(week=week)
   )
 
