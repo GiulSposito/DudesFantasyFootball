@@ -25,6 +25,7 @@ applyProjectionErrors <- function(.curr.week, .points.projection, .players.point
   pts.proj.errors <-  .points.projection %>% 
     filter(week==.curr.week) %>% 
     inner_join( error.dist, by = c("data_src", "id")) %>% 
+    filter( pts.proj != 0 ) %>%  # não projeta desvio se a projecao for zero
     mutate( error.proj = error + pts.proj ) %>% 
     select(week, pos, data_src, id, pts.proj=error.proj, season) %>% 
     mutate( type = "error.dist")
