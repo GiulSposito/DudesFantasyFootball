@@ -21,7 +21,7 @@ params:
   week: 11
 ---
 
-*Last Update: Sunday 18h*
+*Last Update: Pre SNF*
 
 <!--more-->
 
@@ -90,6 +90,7 @@ sim %>%
 
 ## Simulations
 
+- [Pre SNF](/reports/dudes_simulation_week11_preSNF_v4.html)
 - [Sunday 18h](/reports/dudes_simulation_week11_sunday18h_v4.html)
 - [Pre Sunday Games](/reports/dudes_simulation_week11_preSundayGames_v4.html)
 - [Pos TNF](/reports/dudes_simulation_week11_posTNF_v4.html)
