@@ -4,7 +4,7 @@ library(glue)
 library(ffanalytics)
 
 # parametros de execucao
-weeks <- 1:10
+weeks <- 1:11
 
 # check Fantasy API
 source("./R/import/checkFantasyAPI.R")
