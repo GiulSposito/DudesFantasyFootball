@@ -1,0 +1,107 @@
+---
+title: '[Week 12] Players Projection and Matchups Simulation'
+author: 'Giuliano Sposito'
+date: '2019-11-21'
+categories:
+  - projection
+  - simulation
+tags:
+  - projection
+  - simulation
+slug: week12
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "wilson_vs_49ers.jpg"
+  params:
+    description: "Wilson against 29ers"
+params:
+  week: 12
+---
+
+*Last Update: Pre Waivers*
+
+<!--more-->
+
+## Game Center
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r gameCenterChart, fig.height=4, fig.width=8}
+library(tidyverse)
+library(glue)
+
+sim <- readRDS("./data/simulations_history.rds") %>% 
+  filter(week==params$week) %>%
+  filter(timestamp==max(timestamp, na.rm=T)) %>%
+  unnest(home.points, away.points, .sep = ".")
+  
+
+lastUpdate <- unique(sim$timestamp) 
+lastPrefix <- unique(sim$prefix)
+
+sim %>% 
+  select(week, timestamp, prefix, 
+         contains("logoUrl"),
+         contains("name"),
+         contains("record"),
+         contains("win.prob"),
+         contains("pts"),
+         contains("Median"),
+         contains("minutesRemaining")) %>% 
+  mutate( game.id = glue("({away.minutesRemaining} min) {away.name} @ {home.name} ({home.minutesRemaining} min)") ) %>%
+  ggplot(aes(x=0)) +
+  geom_col(aes(y=home.points.Median), fill="lightgray", width = .7) +
+  geom_col(aes(y=home.pts), fill="darkred", width = .5) +
+  geom_col(aes(y=-away.points.Median), fill="lightgray", width = .7) +
+  geom_col(aes(y=-away.pts), fill="darkblue", width = .5) +
+  geom_text(aes(y=home.points.Median, label=round(home.points.Median,2)), size=4,
+            hjust = "left", vjust="middle", color="black", nudge_y = 2, nudge_x = .05) +
+  geom_text(aes(y=home.pts, label=round(home.pts,2)), size=4,
+            hjust = "right", vjust="middle", color="white", nudge_y = -2, nudge_x = .05) +
+  geom_text(aes(y=-away.points.Median, label=round(away.points.Median,2)), size=4,
+            hjust = "right", vjust="middle", color="black", nudge_y = -2, nudge_x = .05) +
+  geom_text(aes(y=-away.pts, label=round(away.pts,2)), size=4,
+            hjust = "left", vjust="middle", color="white", nudge_y = 2, nudge_x = .05) +
+  coord_flip() +
+  facet_wrap(~game.id, ncol = 1) +
+  labs(x="", title=glue("Last Update: {lastUpdate} - {lastPrefix}"),
+       subtitle = "") +
+  xlim(-.5,.5) +
+  ylim(-1.1*max(sim$away.points.Median), 1.1*max(sim$home.points.Median)) +
+  theme_void() +
+  theme( strip.text = element_text(size=12, face = "bold"), 
+         plot.margin = unit(c(15,15,15,15),"pt"),
+         plot.title = element_text(hjust = .5, size=10),
+         plot.subtitle = element_text(hjust = .5))
+
+```
+
+
+## Projections
+
+* [Individual Players Projections](/reports/ffa_players_projection_week12.html)
+
+## Simulations
+
+* [Pre Waivers](/reports/dudes_simulation_week12_preWaivers_v4.html)
+
+
+## Twittersphere
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Look at this amazing <a href="https://twitter.com/hashtag/NFL?src=hash&amp;ref_src=twsrc%5Etfw">#NFL</a> <a href="https://twitter.com/hashtag/NFL100?src=hash&amp;ref_src=twsrc%5Etfw">#NFL100</a> highlight: INTERCEPTION nubmer 4 seals win for Chiefs <a href="https://twitter.com/hashtag/KCvsLAC?src=hash&amp;ref_src=twsrc%5Etfw">#KCvsLAC</a><br><br>Find out more at <a href="https://t.co/ansiKbxdlh">https://t.co/ansiKbxdlh</a> <a href="https://twitter.com/hashtag/NFL?src=hash&amp;ref_src=twsrc%5Etfw">#NFL</a> <a href="https://twitter.com/hashtag/NFL100?src=hash&amp;ref_src=twsrc%5Etfw">#NFL100</a> <a href="https://twitter.com/hashtag/NFLHighlights?src=hash&amp;ref_src=twsrc%5Etfw">#NFLHighlights</a> <a href="https://twitter.com/hashtag/SportsTalkLine?src=hash&amp;ref_src=twsrc%5Etfw">#SportsTalkLine</a> <a href="https://t.co/qET0E9BmAK">pic.twitter.com/qET0E9BmAK</a></p>&mdash; Pro Football Talk Line (@ProFootballTL) <a href="https://twitter.com/ProFootballTL/status/1196834484534042625?ref_src=twsrc%5Etfw">November 19, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+## New Age Analytics
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">ESPN&#39;s QBR through week 11 <a href="https://t.co/AsjYCD7gDa">https://t.co/AsjYCD7gDa</a> <a href="https://t.co/rQyfFVonGs">pic.twitter.com/rQyfFVonGs</a></p>&mdash; new-age analytical (@benbbaldwin) <a href="https://twitter.com/benbbaldwin/status/1196804955153346567?ref_src=twsrc%5Etfw">November 19, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Quarterback predictive composite DAKOTA index ratings through week 11 <a href="https://t.co/pxkq6kx0Aq">pic.twitter.com/pxkq6kx0Aq</a></p>&mdash; new-age analytical (@benbbaldwin) <a href="https://twitter.com/benbbaldwin/status/1196804261025333248?ref_src=twsrc%5Etfw">November 19, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Week 11 NFL Tiers.<br><br>--The Ravens are very, very good<br>--The Cowboys and Vikings are underrated but probably not going to get a playoff bye so likely doomed in the playoffs <a href="https://t.co/U8qq7rHjOc">pic.twitter.com/U8qq7rHjOc</a></p>&mdash; new-age analytical (@benbbaldwin) <a href="https://twitter.com/benbbaldwin/status/1196800790670782464?ref_src=twsrc%5Etfw">November 19, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
