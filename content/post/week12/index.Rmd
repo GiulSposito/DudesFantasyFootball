@@ -14,9 +14,9 @@ displayInMenu: no
 displayInList: yes
 resources:
 - name: featuredImage
-  src: "wilson_vs_49ers.jpg"
+  src: "vikings_at_broncos.jpg"
   params:
-    description: "Wilson against 29ers"
+    description: "Vikings at Broncos!"
 params:
   week: 12
 ---
@@ -90,7 +90,7 @@ sim %>%
 
 ## Simulations
 
-* [Pre Waivers](/reports/dudes_simulation_week12_preWaivers_v4.html)
+* [Pre Waivers](/reports/dudes_simulation_week12_preWaiver_v4.html)
 
 
 ## Twittersphere
