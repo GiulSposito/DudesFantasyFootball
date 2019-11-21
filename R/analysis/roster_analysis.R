@@ -1,10 +1,14 @@
 library(tidyverse)
 library(glue)
 
-idealRoster <- function(.teamName, .week, .useFA=T){
+idealRoster <- function(.week, .teamName, .useFA=T){
   
   # seleciona se vai otimizar TIME+FA ou sO TIME
-  selTeams <- ifelse(.useFA, c("*FreeAgent",.teamName), .teamName)
+  if(.useFA){
+    selTeams <- c(.teamName,"*FreeAgent")
+  } else {
+    selTeams <- teamName
+  }
   
   # jogadores disponiveis para otimizacao
   players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
@@ -52,17 +56,30 @@ idealRoster <- function(.teamName, .week, .useFA=T){
     anti_join(bench)
   
   # new contracts
-  starters %>% 
-    bind_
-
-  list(
-    starters=starters,
-    bench=bench,
-    releases=releases
-  )        
+  waivers <- bind_rows(starters, bench) %>% 
+    filter(fantasy.team=="*FreeAgent")
+  
+  tibble(
+    starters = list(starters),
+    bench    = list(bench),
+    releases = list(releases),
+    waivers  = list(waivers)
+  ) %>% 
+    return()
 }
 
-starters
-bench 
-releases
+points <- readRDS("././data/players_points.rds") %>% 
+  select(week, nfl_id, points)
+
+best_rosters <- 1:11 %>% 
+  map_df( idealRoster, .teamName="Bikers", .useFA=T, .id="week" ) %>% 
+  mutate(week=as.integer(week))
+
+best_rosters %>% 
+  unnest(starters) %>%
+  select (week, nfl_id, pos ) %>% 
+  inner_join(points, by = c("week", "nfl_id")) %>% 
+  # group_by(week) %>% 
+  summarise(points=sum(points))
+
 

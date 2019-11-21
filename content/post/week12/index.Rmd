@@ -21,7 +21,7 @@ params:
   week: 12
 ---
 
-*Last Update: Pre Waivers*
+*Last Update: Pos Waiver*
 
 <!--more-->
 
@@ -90,6 +90,7 @@ sim %>%
 
 ## Simulations
 
+* [Pos Waivers](/reports/dudes_simulation_week12_posWaiver_v4.html)
 * [Pre Waivers](/reports/dudes_simulation_week12_preWaiver_v4.html)
 
 
