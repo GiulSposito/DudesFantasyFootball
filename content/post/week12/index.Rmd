@@ -21,7 +21,7 @@ params:
   week: 12
 ---
 
-*Last Update: Pre SNF*
+*Last Update: Pos SNF*
 
 <!--more-->
 
@@ -90,6 +90,7 @@ sim %>%
 
 ## Simulations
 
+* [Pos SNF](/reports/dudes_simulation_week12_posSNF_v4.html)
 * [Pre SNF](/reports/dudes_simulation_week12_preSNF_v4.html)
 * [Pos TNF](/reports/dudes_simulation_week12_posTNF_v4.html)
 * [Pos Waivers](/reports/dudes_simulation_week12_posWaiver_v4.html)
