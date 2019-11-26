@@ -5,7 +5,7 @@ library(ffanalytics)
 library(flexdashboard)
 
 # parametros de execucao
-week <- 12
+week <- 13
 sim.version <- 4
 prefix <- "preTNF"
 destPath <- "static"
