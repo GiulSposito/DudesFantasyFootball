@@ -10,8 +10,8 @@ resources:
 - name: featuredImage
   params:
     description: Michael Thomas WR Warmup
-  src: michael_thomas_warmup.jpgg
-slug: rank-week-11
+  src: michael_thomas_warmup.jpg
+slug: rank-week-12
 tags:
 - playoffs
 - rank
@@ -25,7 +25,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-Leader: *Campinas Giants* - Playoffs contenders: *Indaiatuba Riders*, *Sorocaba Steelers* and *Paulinia Robots*.
+Leader: *Campinas Giants* <br>
+Playoffs contenders: *Indaiatuba Riders, Sorocaba Steelers and Paulinia Robots.*
 
 <!--more-->
 
