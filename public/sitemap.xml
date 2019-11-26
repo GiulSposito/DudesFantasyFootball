@@ -48,12 +48,32 @@
   </url>
   
   <url>
-    <loc>/post/week12/</loc>
-    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
+    <loc>/post/week-12-simulation-evaluation/</loc>
+    <lastmod>2019-11-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/projection/</loc>
+    <loc>/categories/evaluation/</loc>
+    <lastmod>2019-11-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/evaluation/</loc>
+    <lastmod>2019-11-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/simulation/</loc>
+    <lastmod>2019-11-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/simulation/</loc>
+    <lastmod>2019-11-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/week12/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -63,12 +83,7 @@
   </url>
   
   <url>
-    <loc>/categories/simulation/</loc>
-    <lastmod>2019-11-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/simulation/</loc>
+    <loc>/tags/projection/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -79,16 +94,6 @@
   
   <url>
     <loc>/post/week-11-simulation-evaluation/</loc>
-    <lastmod>2019-11-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/evaluation/</loc>
-    <lastmod>2019-11-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/evaluation/</loc>
     <lastmod>2019-11-19T00:00:00+00:00</lastmod>
   </url>
   

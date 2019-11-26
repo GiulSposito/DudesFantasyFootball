@@ -1,0 +1,408 @@
+---
+title: '[Week 12] Simulation Evaluation'
+author: Giuliano Sposito
+date: '2019-11-26'
+categories:
+  - evaluation
+  - simulation
+tags:
+  - evaluation
+  - simulation
+slug: week-12-simulation-evaluation
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "wargames_norad.jpg"
+  params:
+    description: War Games Norad
+params:
+  week: 12
+  version: 4
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p><strong>Matchup Winner Accuracy: 40%</strong></p>
+<!--more-->
+<div id="historic" class="section level2">
+<h2>Historic</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="center">week</th>
+<th align="center">Winner Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">12</td>
+<td align="center">40%</td>
+</tr>
+<tr class="even">
+<td align="center">11</td>
+<td align="center">60%</td>
+</tr>
+<tr class="odd">
+<td align="center">10</td>
+<td align="center">40%</td>
+</tr>
+<tr class="even">
+<td align="center">9</td>
+<td align="center">20%</td>
+</tr>
+<tr class="odd">
+<td align="center">8</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">7</td>
+<td align="center">20%</td>
+</tr>
+<tr class="odd">
+<td align="center">6</td>
+<td align="center">100%</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">80%</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">60%</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">80%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="matchups-winner-predictions" class="section level2">
+<h2>Matchups Winner Predictions</h2>
+<table class="table" style="font-size: 15px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+game
+</th>
+<th style="text-align:left;">
+prediction
+</th>
+<th style="text-align:left;">
+win.prob
+</th>
+<th style="text-align:left;">
+who.won
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers @ Paulinia Robots
+</td>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+<td style="text-align:left;">
+61.4%
+</td>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders @ Sorocaba Steelers
+</td>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:left;">
+50.8%
+</td>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules @ Rio Claro Pfeiferians
+</td>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+<td style="text-align:left;">
+53.6%
+</td>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Campinas Giants @ London Knights
+</td>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:left;">
+80.4%
+</td>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues @ Jersey Boys
+</td>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+<td style="text-align:left;">
+78.8%
+</td>
+<td style="text-align:left;">
+Indaiatuba Blues
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="score-prediction-chart" class="section level2">
+<h2>Score Prediction Chart</h2>
+<p><img src="/post/week12_eval/index_files/figure-html/scorePredChart-1.png" width="672" /></p>
+</div>
+<div id="score-prediction-table" class="section level2">
+<h2>Score Prediction Table</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+real.points
+</th>
+<th style="text-align:right;">
+pred.min
+</th>
+<th style="text-align:right;">
+pred.points
+</th>
+<th style="text-align:right;">
+pred.max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:right;">
+152.82
+</td>
+<td style="text-align:right;">
+86.79
+</td>
+<td style="text-align:right;">
+115.28
+</td>
+<td style="text-align:right;">
+146.71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+<td style="text-align:right;">
+146.08
+</td>
+<td style="text-align:right;">
+101.01
+</td>
+<td style="text-align:right;">
+128.18
+</td>
+<td style="text-align:right;">
+157.58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:right;">
+143.82
+</td>
+<td style="text-align:right;">
+105.11
+</td>
+<td style="text-align:right;">
+149.06
+</td>
+<td style="text-align:right;">
+194.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London Knights
+</td>
+<td style="text-align:right;">
+123.18
+</td>
+<td style="text-align:right;">
+79.83
+</td>
+<td style="text-align:right;">
+118.05
+</td>
+<td style="text-align:right;">
+158.29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+<td style="text-align:right;">
+120.14
+</td>
+<td style="text-align:right;">
+84.43
+</td>
+<td style="text-align:right;">
+119.58
+</td>
+<td style="text-align:right;">
+157.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:right;">
+119.26
+</td>
+<td style="text-align:right;">
+91.55
+</td>
+<td style="text-align:right;">
+127.37
+</td>
+<td style="text-align:right;">
+170.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:right;">
+108.34
+</td>
+<td style="text-align:right;">
+78.66
+</td>
+<td style="text-align:right;">
+115.30
+</td>
+<td style="text-align:right;">
+151.49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Pfeiferians
+</td>
+<td style="text-align:right;">
+90.66
+</td>
+<td style="text-align:right;">
+95.84
+</td>
+<td style="text-align:right;">
+129.63
+</td>
+<td style="text-align:right;">
+170.23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues
+</td>
+<td style="text-align:right;">
+88.20
+</td>
+<td style="text-align:right;">
+71.90
+</td>
+<td style="text-align:right;">
+104.76
+</td>
+<td style="text-align:right;">
+143.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Jersey Boys
+</td>
+<td style="text-align:right;">
+78.42
+</td>
+<td style="text-align:right;">
+89.13
+</td>
+<td style="text-align:right;">
+134.14
+</td>
+<td style="text-align:right;">
+183.35
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="players-points-vs-projection" class="section level2">
+<h2>Players Points vs Projection</h2>
+<p><img src="/post/week12_eval/index_files/figure-html/errorPlayers-1.png" width="672" /></p>
+</div>
+<div id="projection-error-distribution" class="section level2">
+<h2>Projection Error Distribution</h2>
+<p><img src="/post/week12_eval/index_files/figure-html/errorProjection-1.png" width="672" /></p>
+</div>
+<div id="twittersphere" class="section level2">
+<h2>Twittersphere</h2>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+My favourite time of the week. The Aaron Rodgers Sack/Fumble. 👌🏻<a href="https://twitter.com/hashtag/GBvsSF?src=hash&amp;ref_src=twsrc%5Etfw">#GBvsSF</a> <a href="https://t.co/iY30cZwubC">pic.twitter.com/iY30cZwubC</a>
+</p>
+— Craig Sutherland (<span class="citation">@Craigisonfire</span>) <a href="https://twitter.com/Craigisonfire/status/1198776271918026753?ref_src=twsrc%5Etfw">November 25, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+Bill Burr break's down Mason Rudolph's role in the <a href="https://twitter.com/hashtag/Browns?src=hash&amp;ref_src=twsrc%5Etfw">#Browns</a> vs Steelers fight from last Thursday (wait for it…).<br><br>Audio curtesy of <a href="https://twitter.com/billburr?ref_src=twsrc%5Etfw"><span class="citation">@billburr</span></a>'s podcast: <a href="https://twitter.com/theMMPodcast?ref_src=twsrc%5Etfw"><span class="citation">@theMMPodcast</span></a>. <a href="https://t.co/2giiRSjxZZ">pic.twitter.com/2giiRSjxZZ</a>
+</p>
+— Roberto Shenanigans (<span class="citation">@Rob_Shenanigans</span>) <a href="https://twitter.com/Rob_Shenanigans/status/1197246262619377670?ref_src=twsrc%5Etfw">November 20, 2019</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
