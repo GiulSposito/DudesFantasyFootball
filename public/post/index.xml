@@ -4,11 +4,22 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 27 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Nov 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 13] Players Projection and Matchups Simulation</title>
+      <link>/post/week13/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week13/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;em&gt;Last Update: Pre Waivers&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 12] League Standings</title>
       <link>/post/rank-week-12/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
@@ -31,17 +42,6 @@ Playoffs contenders: &lt;em&gt;Indaiatuba Riders, Sorocaba Steelers and Paulinia
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 40%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 12] Players Projection and Matchups Simulation</title>
-      <link>/post/week12/</link>
-      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week12/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>

@@ -1,0 +1,104 @@
+---
+title: '[Week 13] Players Projection and Matchups Simulation'
+author: 'Giuliano Sposito'
+date: '2019-11-28'
+categories:
+  - projection
+  - simulation
+tags:
+  - projection
+  - simulation
+slug: week13
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "seahawks_and_vikings.jpg"
+  params:
+    description: "MNF Week 12 - Vikings @ Seahawks"
+params:
+  week: 13
+---
+
+*Last Update: Pre Waivers*
+
+<!--more-->
+
+## Game Center
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r gameCenterChart, fig.height=4, fig.width=8}
+library(tidyverse)
+library(glue)
+
+sim <- readRDS("./data/simulations_history.rds") %>% 
+  filter(week==params$week) %>%
+  filter(timestamp==max(timestamp, na.rm=T)) %>%
+  unnest(home.points, away.points, .sep = ".")
+  
+
+lastUpdate <- unique(sim$timestamp) 
+lastPrefix <- unique(sim$prefix)
+
+sim %>% 
+  select(week, timestamp, prefix, 
+         contains("logoUrl"),
+         contains("name"),
+         contains("record"),
+         contains("win.prob"),
+         contains("pts"),
+         contains("Median"),
+         contains("minutesRemaining")) %>% 
+  mutate( game.id = glue("({away.minutesRemaining} min) {away.name} @ {home.name} ({home.minutesRemaining} min)") ) %>%
+  ggplot(aes(x=0)) +
+  geom_col(aes(y=home.points.Median), fill="lightgray", width = .7) +
+  geom_col(aes(y=home.pts), fill="darkred", width = .5) +
+  geom_col(aes(y=-away.points.Median), fill="lightgray", width = .7) +
+  geom_col(aes(y=-away.pts), fill="darkblue", width = .5) +
+  geom_text(aes(y=home.points.Median, label=round(home.points.Median,2)), size=4,
+            hjust = "left", vjust="middle", color="black", nudge_y = 2, nudge_x = .05) +
+  geom_text(aes(y=home.pts, label=round(home.pts,2)), size=4,
+            hjust = "right", vjust="middle", color="white", nudge_y = -2, nudge_x = .05) +
+  geom_text(aes(y=-away.points.Median, label=round(away.points.Median,2)), size=4,
+            hjust = "right", vjust="middle", color="black", nudge_y = -2, nudge_x = .05) +
+  geom_text(aes(y=-away.pts, label=round(away.pts,2)), size=4,
+            hjust = "left", vjust="middle", color="white", nudge_y = 2, nudge_x = .05) +
+  coord_flip() +
+  facet_wrap(~game.id, ncol = 1) +
+  labs(x="", title=glue("Last Update: {lastUpdate} - {lastPrefix}"),
+       subtitle = "") +
+  xlim(-.5,.5) +
+  ylim(-1.1*max(sim$away.points.Median), 1.1*max(sim$home.points.Median)) +
+  theme_void() +
+  theme( strip.text = element_text(size=12, face = "bold"), 
+         plot.margin = unit(c(15,15,15,15),"pt"),
+         plot.title = element_text(hjust = .5, size=10),
+         plot.subtitle = element_text(hjust = .5))
+
+```
+
+
+## Projections
+
+* [Individual Players Projections](/reports/ffa_players_projection_week13.html)
+
+## Simulations
+
+* [Pre Waivers](/reports/dudes_simulation_week13_preWaivers_v4.html)
+
+
+## New Age Analytics
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Liiiiiiiiiive from Plymouth Rock<br><br>It is the week 12 NFL EPA graph created by <a href="https://twitter.com/benbbaldwin?ref_src=twsrc%5Etfw">@benbbaldwin</a> <br><br>Don&#39;t be a turkey and miss out on it, it is better than the crispy skin.<br><br>I&#39;ve stuffed it full of appetizing comments<br><br>Happy Thanksgiving!<br><br>🦃🦃🦃🦃 <a href="https://t.co/zUF5cRsO7q">pic.twitter.com/zUF5cRsO7q</a></p>&mdash; YardsPerPass (@YardsPerPass) <a href="https://twitter.com/YardsPerPass/status/1199330986498101248?ref_src=twsrc%5Etfw">November 26, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">EPA + CPOE composite ratings through Week 12.<br><br>Monday&#39;s Seahawks-Vikings game will feature a top-2 quarterback facing off against Russell Wilson <a href="https://t.co/qQLf8kwLAR">pic.twitter.com/qQLf8kwLAR</a></p>&mdash; new-age analytical (@benbbaldwin) <a href="https://twitter.com/benbbaldwin/status/1199323626484445185?ref_src=twsrc%5Etfw">November 26, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Week 12 NFL Tiers: here&#39;s how each team arrived at their current location through recent performance <a href="https://t.co/yTiMRBr3GH">pic.twitter.com/yTiMRBr3GH</a></p>&mdash; new-age analytical (@benbbaldwin) <a href="https://twitter.com/benbbaldwin/status/1199320287935913986?ref_src=twsrc%5Etfw">November 26, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">NFL passing and rushing offenses:<br><br>--The Ravens&#39; offense is an unstoppable death machine<br>--The Redskins &amp; Dolphins are overlapping even though only 1 of them was bad on purpose <a href="https://t.co/QmfQMh68RI">pic.twitter.com/QmfQMh68RI</a></p>&mdash; new-age analytical (@benbbaldwin) <a href="https://twitter.com/benbbaldwin/status/1199321029753135107?ref_src=twsrc%5Etfw">November 26, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
