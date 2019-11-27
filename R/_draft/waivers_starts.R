@@ -2,7 +2,7 @@ library(tidyverse)
 library(glue)
 
 .team <- "Bikers"
-.week <- 12
+.week <- 13
 
 players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
   filter(
