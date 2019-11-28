@@ -206,8 +206,6 @@ finalrank %>%
 
 ```
 
-
-
 ## League Standings Evolution
 
 ```{r leagueStanding}
@@ -222,6 +220,32 @@ finalrank %>%
   ylab("rank") +
   theme_void()
 ```
+
+## Head-to-Head
+
+```{r h2htable}
+
+h2h.table %>% 
+  filter(week==curr.week) %>% 
+  select(team, op.team, balance) %>%
+  mutate( team    = str_extract(team,    "\\b(\\w+)$"),
+          op.team = str_extract(op.team, "\\b(\\w+)$") ) %>% 
+  mutate( team = fct_reorder(team, balance, mean)) %>% 
+  ggplot(aes(x=op.team, y=team)) +
+  geom_tile(aes(fill=balance)) +
+  geom_text(aes(label=balance)) +
+  scale_fill_gradient2(low = "pink", mid="white", high="lightgreen") +
+  scale_x_discrete(position = "top") +
+  theme_minimal() +
+  theme( axis.text.x = element_text(angle=45), 
+         legend.position = "none") +
+  labs(title="Head to Head Table",
+       subtitle=glue("# of 'team' victores over 'opponent' - Week {curr.week}"),
+       y="team", x="opponent")
+
+```
+
+
 
 ## Weekly Points
 
