@@ -21,7 +21,7 @@ params:
   week: 13
 ---
 
-*Last Update: Pos TNF*
+*Last Update: Pre Sunday Games*
 
 <!--more-->
 
@@ -90,6 +90,7 @@ sim %>%
 
 ## Simulations
 
+* [Pre Sunday Games](/reports/dudes_simulation_week13_preSundayGames_v4.html)
 * [Pos TNF](/reports/dudes_simulation_week13_posTNF_v4.html)
 * [Pre TNF](/reports/dudes_simulation_week13_preTNF_v4.html)
 * [Pre Holiday Games](/reports/dudes_simulation_week13_preHoliday_v4.html)
