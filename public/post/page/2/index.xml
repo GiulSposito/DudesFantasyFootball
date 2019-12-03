@@ -4,11 +4,23 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Dec 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 13] Simulation Evaluation</title>
+      <link>/post/week-13-simulation-evaluation/</link>
+      <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week-13-simulation-evaluation/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 80%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 13] Players Projection and Matchups Simulation</title>
       <link>/post/week13/</link>
       <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
@@ -29,18 +41,6 @@
 
 
 &lt;p&gt;Top Players: CMC, Lamar, Thomas, Cook and Wilson&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 12] League Standings</title>
-      <link>/post/rank-week-12/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-12/</guid>
-      <description>
-
-
-&lt;p&gt;Leader: &lt;em&gt;Campinas Giants&lt;/em&gt; &lt;br&gt;
-Playoffs contenders: &lt;em&gt;Indaiatuba Riders, Sorocaba Steelers and Paulinia Robots.&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>

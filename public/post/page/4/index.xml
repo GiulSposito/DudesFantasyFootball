@@ -4,11 +4,18 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Dec 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 11] League Standings</title>
+      <link>/post/rank-week-11/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-11/</guid>
+      <description></description>
+    </item><item>
       <title>[Week 11] Simulation Evaluation</title>
       <link>/post/week-11-simulation-evaluation/</link>
       <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
@@ -31,13 +38,6 @@
 
 &lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
 </description>
-    </item><item>
-      <title>[Week 10] League Standings</title>
-      <link>/post/rank-week-10/</link>
-      <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-10/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
