@@ -1,0 +1,20 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ranking - It&#39;s Football, Dudes!</title>
+    <link>/categories/ranking/</link>
+    <description>Recent content in ranking on It&#39;s Football, Dudes!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/categories/ranking/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Trophy Room</title>
+      <link>/post/it-s-football-dudes-trophy-room/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/it-s-football-dudes-trophy-room/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
