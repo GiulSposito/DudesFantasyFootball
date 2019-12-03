@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/mvp-week-13/</loc>
+    <lastmod>2019-12-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/rank-week-13/</loc>
     <lastmod>2019-12-04T00:00:00+00:00</lastmod>
   </url>
@@ -53,12 +58,12 @@
   </url>
   
   <url>
-    <loc>/categories/evaluation/</loc>
+    <loc>/tags/evaluation/</loc>
     <lastmod>2019-12-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/evaluation/</loc>
+    <loc>/categories/evaluation/</loc>
     <lastmod>2019-12-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -78,12 +83,12 @@
   </url>
   
   <url>
-    <loc>/tags/projection/</loc>
+    <loc>/categories/projection/</loc>
     <lastmod>2019-11-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/projection/</loc>
+    <loc>/tags/projection/</loc>
     <lastmod>2019-11-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -163,12 +168,12 @@
   </url>
   
   <url>
-    <loc>/tags/draft/</loc>
+    <loc>/categories/draft/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/draft/</loc>
+    <loc>/tags/draft/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -288,12 +293,12 @@
   </url>
   
   <url>
-    <loc>/tags/about/</loc>
+    <loc>/categories/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/about/</loc>
+    <loc>/tags/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
