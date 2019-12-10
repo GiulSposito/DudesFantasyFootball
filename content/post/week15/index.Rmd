@@ -1,0 +1,103 @@
+---
+title: '[Week 15] Players Projection and Matchups Simulation'
+author: 'Giuliano Sposito'
+date: '2019-12-13'
+categories:
+  - projection
+  - simulation
+tags:
+  - projection
+  - simulation
+slug: week15
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "donald_vs_wilson.jpg"
+  params:
+    description: "Saints @ Rams"
+params:
+  week: 15
+---
+
+*Last Update: Pre Waivers*
+
+<!--more-->
+
+## Game Center
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r gameCenterChart, fig.height=4, fig.width=8}
+library(tidyverse)
+library(glue)
+
+sim <- readRDS("./data/simulations_history.rds") %>% 
+  filter(week==params$week) %>%
+  filter(timestamp==max(timestamp, na.rm=T)) %>%
+  unnest(home.points, away.points, .sep = ".")
+  
+
+lastUpdate <- unique(sim$timestamp) 
+lastPrefix <- unique(sim$prefix)
+
+sim %>% 
+  select(week, timestamp, prefix, 
+         contains("logoUrl"),
+         contains("name"),
+         contains("record"),
+         contains("win.prob"),
+         contains("pts"),
+         contains("Median"),
+         contains("minutesRemaining")) %>% 
+  mutate( game.id = glue("({away.minutesRemaining} min) {away.name} @ {home.name} ({home.minutesRemaining} min)") ) %>%
+  ggplot(aes(x=0)) +
+  geom_col(aes(y=home.points.Median), fill="lightgray", width = .7) +
+  geom_col(aes(y=home.pts), fill="darkred", width = .5) +
+  geom_col(aes(y=-away.points.Median), fill="lightgray", width = .7) +
+  geom_col(aes(y=-away.pts), fill="darkblue", width = .5) +
+  geom_text(aes(y=home.points.Median, label=round(home.points.Median,2)), size=4,
+            hjust = "left", vjust="middle", color="black", nudge_y = 2, nudge_x = .05) +
+  geom_text(aes(y=home.pts, label=round(home.pts,2)), size=4,
+            hjust = "right", vjust="middle", color="white", nudge_y = -2, nudge_x = .05) +
+  geom_text(aes(y=-away.points.Median, label=round(away.points.Median,2)), size=4,
+            hjust = "right", vjust="middle", color="black", nudge_y = -2, nudge_x = .05) +
+  geom_text(aes(y=-away.pts, label=round(away.pts,2)), size=4,
+            hjust = "left", vjust="middle", color="white", nudge_y = 2, nudge_x = .05) +
+  coord_flip() +
+  facet_wrap(~game.id, ncol = 1) +
+  labs(x="", title=glue("Last Update: {lastUpdate} - {lastPrefix}"),
+       subtitle = "") +
+  xlim(-.5,.5) +
+  ylim(-1.1*max(sim$away.points.Median), 1.1*max(sim$home.points.Median)) +
+  theme_void() +
+  theme( strip.text = element_text(size=12, face = "bold"), 
+         plot.margin = unit(c(15,15,15,15),"pt"),
+         plot.title = element_text(hjust = .5, size=10),
+         plot.subtitle = element_text(hjust = .5))
+
+```
+
+
+## Projections
+
+* [Individual Players Projections](/reports/ffa_players_projection_week15.html)
+
+## Simulations
+
+* [Pre Waivers](/reports/dudes_simulation_week15_preWaivers_v4.html)
+
+## Twittersphere
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Week 14 NFL Tiers. Hard to believe there&#39;s only 3 weeks left.<br><br>At this point in the season there&#39;s not a ton of movement since each new game is added to an average of 12 other games.<br><br>The &quot;4 teams that matter&quot; (have bye) once playoffs start probably BAL, SF, NE, and (GB or NO) <a href="https://t.co/mlq6s1pijo">pic.twitter.com/mlq6s1pijo</a></p>&mdash; new-age analytical (@benbbaldwin) <a href="https://twitter.com/benbbaldwin/status/1204394260021334016?ref_src=twsrc%5Etfw">December 10, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Quarterback Completion Percentage Over Expectation (CPOE) and EPA/play through Week 14.<br><br>Welcome to the Lamar Jackson + Ryan Tannehill era <a href="https://t.co/0ZVeMMnjD8">pic.twitter.com/0ZVeMMnjD8</a></p>&mdash; new-age analytical (@benbbaldwin) <a href="https://twitter.com/benbbaldwin/status/1204400928780115974?ref_src=twsrc%5Etfw">December 10, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">61 YARDS‼️<br><br>TOUCHDOWN <a href="https://twitter.com/Lj_era8?ref_src=twsrc%5Etfw">@Lj_Era8</a> ➡️ <a href="https://twitter.com/haydenrhurst?ref_src=twsrc%5Etfw">@haydenrhurst</a>‼️ <a href="https://t.co/k00q7uBDHM">pic.twitter.com/k00q7uBDHM</a></p>&mdash; Baltimore Ravens (@Ravens) <a href="https://twitter.com/Ravens/status/1203763503242330114?ref_src=twsrc%5Etfw">December 8, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Back and forth scoring in the Superdome: Emmanuel Sanders hauls in a 75-yard TD from Himmy Garoppolo. <br><br>(via <a href="https://twitter.com/49ers?ref_src=twsrc%5Etfw">@49ers</a>)<a href="https://t.co/gsvchaT7oC">pic.twitter.com/gsvchaT7oC</a></p>&mdash; NFL Update (@MySportsUpdate) <a href="https://twitter.com/MySportsUpdate/status/1203747793875193856?ref_src=twsrc%5Etfw">December 8, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
