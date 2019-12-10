@@ -22,7 +22,7 @@ params:
   version: 4
 ---
 
-**Matchup Winner Accuracy: ??%**
+**Matchup Winner Accuracy: 60%**
 
 <!--more-->
 
@@ -30,7 +30,7 @@ params:
 
 | week | Winner Accuracy |
 |:----:|:---------------:|
-| 14   |       ??%       |
+| 14   |       60%       |
 | 13   |       80%       |
 | 12   |       40%       |
 | 11   |       60%       |
