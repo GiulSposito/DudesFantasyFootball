@@ -4,11 +4,18 @@
     <link>/tags/rank/</link>
     <description>Recent content in rank on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Dec 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/rank/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 09] League Standings</title>
+      <link>/post/rank-week-9/</link>
+      <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-9/</guid>
+      <description></description>
+    </item><item>
       <title>[Week 08] League Standings</title>
       <link>/post/rank-week-8/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
@@ -26,13 +33,6 @@
 
 &lt;p&gt;&lt;strong&gt;The winners and the losers in draft picks until week 8.&lt;/strong&gt;&lt;/p&gt;
 </description>
-    </item><item>
-      <title>[Week 07] League Standings</title>
-      <link>/post/rank-week-7/</link>
-      <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-7/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
