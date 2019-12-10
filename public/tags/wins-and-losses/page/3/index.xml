@@ -4,11 +4,18 @@
     <link>/tags/wins-and-losses/</link>
     <description>Recent content in wins and losses on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 04 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/wins-and-losses/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 08] League Standings</title>
+      <link>/post/rank-week-8/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-8/</guid>
+      <description></description>
+    </item><item>
       <title>[Week 07] League Standings</title>
       <link>/post/rank-week-7/</link>
       <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
@@ -21,13 +28,6 @@
       <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/rank-week-6/</guid>
-      <description></description>
-    </item><item>
-      <title>[Week 05] League Standings</title>
-      <link>/post/rank-week-5/</link>
-      <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-5/</guid>
       <description></description>
     </item>
   </channel>
