@@ -1,0 +1,149 @@
+---
+title: '[Week 14] Regular Season MVPs'
+author: "Giuliano Sposito"
+date: '2019-12-11'
+displayInList: yes
+displayInMenu: no
+dropCap: yes
+draft: no
+resources:
+- name: featuredImage
+  params:
+    description: Kittle TD against Saints
+  src: kittle_td.jpg
+slug: mvp-week-14
+tags:
+- rank
+- points
+categories:
+- ranking
+params:
+  week: 14
+editor_options: 
+  chunk_output_type: console
+---
+
+Top Players: CMC, Lamar Jackson, Michael Thomas, Deshaun Watson and Dalvin Cook.
+
+<!--more-->
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r load}
+# libs
+library(tidyverse)
+library(glue)
+library(knitr)
+
+# player points and players (has the urls)
+pp <- readRDS("./data/players_points.rds")
+players <- readRDS("./data/players.rds")
+
+# parameter
+.week <- params$week
+.n <- 5
+
+# summarise player points
+players.points <- pp %>% 
+  filter(week <= .week) %>% 
+  select(id, nfl_id, name, position, week, points) %>% 
+  group_by(id, nfl_id, name, position) %>% 
+  summarise(points=sum(points, na.rm = T)) %>% 
+  ungroup() %>% 
+  # rejoin with the team of last available week (current team)
+  inner_join(
+    select(filter(pp, week==max(week)), id, nfl_id, team),
+    by = c("id", "nfl_id")
+  ) %>% 
+  # join with players to get image URLs
+  inner_join(
+    select(players, playerId, imageUrl, smallImageUrl, largeImageUrl),
+    by=c("nfl_id"="playerId")
+  )
+
+```
+
+## Top Players
+
+```{r topPlayers}
+
+# retorna a tabela dos melhores jogadores
+topPlayersTable <- function(.players, .position="", .size){
+  
+  # filtra por posicao 
+  if(.position==""){
+    selplayers <- .players
+  } else {
+    selplayers <- filter(.players, position==.position)  
+  }
+  
+  # rankeia
+  selplayers %>% 
+    top_n(.size, points) %>% 
+    arrange(desc(points)) %>% 
+    mutate( rank = 1:nrow(.),
+            image = glue("<img src='{imageUrl}' style='width: 50px; height: 50px'/>")) %>% 
+    select(rank, image, name, position, team, points ) %>% 
+    kable()
+}
+
+topPlayersTable(players.points, "", 5)
+
+```
+
+
+## Quaterbacks
+
+```{r topQBs}
+
+topPlayersTable(players.points, "QB", 5)
+
+```
+
+## Wide Receivers
+
+```{r topWRs}
+
+topPlayersTable(players.points, "WR", 5)
+
+```
+
+## Running Backs
+
+```{r topRBs}
+
+topPlayersTable(players.points, "RB", 5)
+
+```
+
+## Tight Ends
+
+```{r topTEs}
+
+topPlayersTable(players.points, "TE", 5)
+
+```
+
+## Kickers
+
+```{r topKs}
+
+topPlayersTable(players.points, "K", 5)
+
+```
+
+## Defenses
+
+```{r topDEFs}
+
+topPlayersTable(players.points, "DEF", 5)
+
+```
+
+Twittersphere
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">.<a href="https://twitter.com/gkittle46?ref_src=twsrc%5Etfw">@gkittle46</a> goes BEAST MODE! <a href="https://twitter.com/hashtag/GoNiners?src=hash&amp;ref_src=twsrc%5Etfw">#GoNiners</a> <a href="https://twitter.com/hashtag/SFvsNO?src=hash&amp;ref_src=twsrc%5Etfw">#SFvsNO</a><br><br>📺: FOX<br>📱: NFL app // Yahoo Sports app<br>Watch free on mobile: <a href="https://t.co/D5AfU98qAh">https://t.co/D5AfU98qAh</a> <a href="https://t.co/owUIgEY0A1">pic.twitter.com/owUIgEY0A1</a></p>&mdash; NFL (@NFL) <a href="https://twitter.com/NFL/status/1203787269414350848?ref_src=twsrc%5Etfw">December 8, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
