@@ -50,8 +50,16 @@ results <- list(1:length(rounds.results[[1]])) %>% # numero de combinacoes por s
   }, .t=rounds.results)
 
 
-res <- results[[15]]
+case <- results[[15]] %>% 
+  set_names(1:length(.)) %>% 
+  bind_rows(.id="week") %>% 
+  mutate( balance = team.win - opp.win )
 
-res %>% 
-
+vic.table <- bind_rows(
+  select(case, team,          win=team.win, loss=opp.win),
+  select(case, team=opp.team, win=opp.win,  loss=team.win)
+) %>% 
+  group_by(team) %>% 
+  summarise(wins=sum(win), losses=sum(loss)) %>% 
+  mutate(win.pct = wins/(wins+losses))
 
