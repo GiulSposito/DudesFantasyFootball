@@ -3,17 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/week-15-simulation-evaluation/</loc>
-    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+    <loc>/post/rank-week-15/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/evaluation/</loc>
+    <loc>/tags/playoffs/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/points/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/rank/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/ranking/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/wins-and-losses/</loc>
+    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/week-15-simulation-evaluation/</loc>
     <lastmod>2019-12-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -23,12 +58,7 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/simulation/</loc>
+    <loc>/categories/evaluation/</loc>
     <lastmod>2019-12-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -38,7 +68,7 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>/categories/simulation/</loc>
     <lastmod>2019-12-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -63,27 +93,12 @@
   </url>
   
   <url>
-    <loc>/tags/draft/</loc>
-    <lastmod>2019-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/categories/draft/</loc>
     <lastmod>2019-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/points/</loc>
-    <lastmod>2019-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/rank/</loc>
-    <lastmod>2019-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/ranking/</loc>
+    <loc>/tags/draft/</loc>
     <lastmod>2019-12-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -94,16 +109,6 @@
   
   <url>
     <loc>/post/mvp-week-14/</loc>
-    <lastmod>2019-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/playoffs/</loc>
-    <lastmod>2019-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/wins-and-losses/</loc>
     <lastmod>2019-12-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -328,12 +333,12 @@
   </url>
   
   <url>
-    <loc>/categories/about/</loc>
+    <loc>/tags/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/about/</loc>
+    <loc>/categories/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
