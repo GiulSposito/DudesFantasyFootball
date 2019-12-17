@@ -1,5 +1,5 @@
 ---
-title: '[Week 14] Simulation Evaluation'
+title: '[Week 15] Simulation Evaluation'
 author: Giuliano Sposito
 date: '2019-12-17'
 categories:
@@ -22,7 +22,7 @@ params:
   version: 4
 ---
 
-**Matchup Winner Accuracy: ??%**
+**Matchup Winner Accuracy: 25%**
 
 <!--more-->
 
@@ -30,7 +30,7 @@ params:
 
 | week | Winner Accuracy |
 |:----:|:---------------:|
-| 15   |       ??%       |
+| 15   |       25%       |
 | 14   |       60%       |
 | 13   |       80%       |
 | 12   |       40%       |

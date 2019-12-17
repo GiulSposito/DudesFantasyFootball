@@ -3,22 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/week15/</loc>
-    <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+    <loc>/post/week-15-simulation-evaluation/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/evaluation/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/evaluation/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/projection/</loc>
+    <loc>/categories/simulation/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/simulation/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-12-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/week15/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -28,17 +53,7 @@
   </url>
   
   <url>
-    <loc>/categories/simulation/</loc>
-    <lastmod>2019-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/simulation/</loc>
-    <lastmod>2019-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
+    <loc>/categories/projection/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -94,16 +109,6 @@
   
   <url>
     <loc>/post/week-14-simulation-evaluation/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/evaluation/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/evaluation/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -323,12 +328,12 @@
   </url>
   
   <url>
-    <loc>/tags/about/</loc>
+    <loc>/categories/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/about/</loc>
+    <loc>/tags/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
