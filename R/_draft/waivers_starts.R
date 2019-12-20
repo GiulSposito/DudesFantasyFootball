@@ -2,22 +2,20 @@ library(tidyverse)
 library(glue)
 
 .team <- "Bikers"
-.week <- 15
+.week <- 16
 
 players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
   filter(
-    fantasy.team %in% c("*FreeAgent",.team),
+    fantasy.team %in% c(.team), #"*FreeAgent",
     !(team %in% c("FA", "FA*"))
-  ) %>% 
-  filter(! id %in% c(10273, 7401,12186, 13593,12175,13163,12676,12186,12437,13354,12150,13404))
-
+  )
 # 9:12 %>% 
 #   paste0("./data/week",.,"_players_projections.rds") %>% 
 #   map_df(readRDS)
 
 # starts
 starters <- tibble(
-  pos=c("QB","RB","WR","TE","K","DST",),
+  pos=c("QB","RB","WR","TE","K","DST"),
   qtd=c(1,2,2,1,1,1)
 ) %>% 
   split(1:nrow(.)) %>% 

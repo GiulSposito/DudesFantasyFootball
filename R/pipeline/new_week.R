@@ -7,7 +7,7 @@ library(flexdashboard)
 # parametros de execucao
 week <- 16
 sim.version <- 4
-prefix <- "preWaivers"
+prefix <- "posWaiversAndTrades"
 destPath <- "static"
 
 # check Fantasy API
