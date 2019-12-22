@@ -4,9 +4,9 @@ library(flexdashboard)
 library(glue)
 
 # parametros de execucao
-week <- 15
+week <- 16
 sim.version <- 4
-prefix <- "posMNF"
+prefix <- "Saturday22h"
 destPath <- "static"
 
 source("./R/import/checkFantasyAPI.R")
