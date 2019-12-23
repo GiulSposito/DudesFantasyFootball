@@ -21,7 +21,7 @@ params:
   week: 16
 ---
 
-*Last Update: Pre Sunday Games*
+*Last Update: Pre MNF*
 
 <!--more-->
 
@@ -90,6 +90,7 @@ sim %>%
 
 ## Simulations
 
+* [Pre MNF](/reports/dudes_simulation_week16_preMNF_v4.html)
 * [Pre Sunday Games](/reports/dudes_simulation_week16_preSundayGames_v3.html)
 * [Saturday 22h](/reports/dudes_simulation_week16_Saturday22h_v4.html)
 * [Pos Waivers and Trades](/reports/dudes_simulation_week16_posWaiversAndTrades_v4.html)
