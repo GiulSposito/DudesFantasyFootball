@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>/tags/playoffs/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/points/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
   </url>
@@ -28,12 +33,22 @@
   </url>
   
   <url>
+    <loc>/post/rank-week-16/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/mvp-week-16/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/wins-and-losses/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -53,12 +68,12 @@
   </url>
   
   <url>
-    <loc>/tags/simulation/</loc>
+    <loc>/categories/simulation/</loc>
     <lastmod>2019-12-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/simulation/</loc>
+    <loc>/tags/simulation/</loc>
     <lastmod>2019-12-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -83,16 +98,6 @@
   </url>
   
   <url>
-    <loc>/tags/playoffs/</loc>
-    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/wins-and-losses/</loc>
-    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/week-15-simulation-evaluation/</loc>
     <lastmod>2019-12-17T00:00:00+00:00</lastmod>
   </url>
@@ -108,12 +113,12 @@
   </url>
   
   <url>
-    <loc>/tags/draft/</loc>
+    <loc>/categories/draft/</loc>
     <lastmod>2019-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/draft/</loc>
+    <loc>/tags/draft/</loc>
     <lastmod>2019-12-12T00:00:00+00:00</lastmod>
   </url>
   
