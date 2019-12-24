@@ -3,12 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/week-16-simulation-evaluation/</loc>
-    <lastmod>2019-12-24T00:00:00+00:00</lastmod>
+    <loc>/categories/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>/tags/points/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/rank/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/ranking/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/mvp-week-16/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/week-16-simulation-evaluation/</loc>
     <lastmod>2019-12-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -23,22 +53,12 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2019-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/simulation/</loc>
-    <lastmod>2019-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/simulation/</loc>
     <lastmod>2019-12-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>/categories/simulation/</loc>
     <lastmod>2019-12-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -64,21 +84,6 @@
   
   <url>
     <loc>/tags/playoffs/</loc>
-    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/points/</loc>
-    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/rank/</loc>
-    <lastmod>2019-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/ranking/</loc>
     <lastmod>2019-12-18T00:00:00+00:00</lastmod>
   </url>
   
