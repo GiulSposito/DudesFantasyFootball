@@ -4,7 +4,32 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/championship/</loc>
+    <lastmod>2019-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/ranking/</loc>
+    <lastmod>2019-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/it-s-football-dudes-trophy-room-2019/</loc>
+    <lastmod>2019-12-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -18,17 +43,7 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/rank/</loc>
-    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/ranking/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -43,11 +58,6 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/wins-and-losses/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
   </url>
@@ -58,12 +68,12 @@
   </url>
   
   <url>
-    <loc>/categories/evaluation/</loc>
+    <loc>/tags/evaluation/</loc>
     <lastmod>2019-12-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/evaluation/</loc>
+    <loc>/categories/evaluation/</loc>
     <lastmod>2019-12-24T00:00:00+00:00</lastmod>
   </url>
   
@@ -343,22 +353,17 @@
   </url>
   
   <url>
-    <loc>/tags/championship/</loc>
-    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/it-s-football-dudes-trophy-room/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/about/</loc>
+    <loc>/tags/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/about/</loc>
+    <loc>/categories/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   
