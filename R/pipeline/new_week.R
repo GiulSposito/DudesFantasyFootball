@@ -5,9 +5,9 @@ library(ffanalytics)
 library(flexdashboard)
 
 # parametros de execucao
-week <- 16
-sim.version <- 4
-prefix <- "posWaiversAndTrades"
+week <- 1
+sim.version <- 3
+prefix <- "preDraft"
 destPath <- "static"
 
 # check Fantasy API
@@ -20,12 +20,12 @@ player_ids <- player_ids %>%
   mutate( 
     id     = as.integer(id), 
     nfl_id = as.integer(nfl_id)) %>%
-  # joey slye fixies
-  mutate(
-    nfl_id        = ifelse(id==14600, 2563132,     nfl_id),
-    fantasypro_id = ifelse(id==14600, "joey-slye", fantasypro_id),
-    fftoday_id    = ifelse(id==14600, "16763",     fftoday_id),
-  ) %>%  
+  # 2019 fix missing players
+  # mutate(
+  #   nfl_id        = ifelse(id==14600, 2563132,     nfl_id),
+  #   fantasypro_id = ifelse(id==14600, "joey-slye", fantasypro_id),
+  #   fftoday_id    = ifelse(id==14600, "16763",     fftoday_id),
+  # ) %>%  
   as_tibble()
 
 

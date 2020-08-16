@@ -1,4 +1,4 @@
-	dudes.score.settings <- list(
+dudes.score.settings <- list(
   pass = list(
     pass_att = 0, 
     pass_comp = 0, 

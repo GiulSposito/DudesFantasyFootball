@@ -12,7 +12,7 @@ checkFantasyAPI <- function(.week){
   authToken <- config$authToken
   
   # obtem os matchups
-  url.matchups <- "http://api.fantasy.nfl.com/v1/league/matchups?leagueId={leagueId}&week={week}&format=json&authToken={authToken}"
+  url.matchups <- "http://api.fantasy.nfl.com/v2/league/matchups?appKey=internalemailuse&leagueId={leagueId}&week={week}&format=json&authToken={authToken}"
   
   # faz a chamada na api
   resp <- httr::GET(glue(url.matchups, week=.week))

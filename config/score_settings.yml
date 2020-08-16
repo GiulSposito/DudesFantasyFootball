@@ -1,0 +1,82 @@
+pass:
+  pass_att: 0.0
+  pass_comp: 0.0
+  pass_inc: 0.0
+  pass_yds: 0.04
+  pass_tds: 4.0
+  pass_int: -2.0
+  pass_40_yds: 0.0
+  pass_300_yds: 0.0
+  pass_350_yds: 0.0
+  pass_400_yds: 0.0
+rush:
+  all_pos: yes
+  rush_yds: 0.1
+  rush_att: 0.0
+  rush_tds: 6.0
+  rush_40_yds: 0.0
+  rush_100_yds: 0.0
+  rush_150_yds: 0.0
+  rush_200_yds: 0.0
+rec:
+  all_pos: yes
+  rec: 1.0
+  rec_yds: 0.1
+  rec_tds: 6.0
+  rec_40_yds: 0.0
+  rec_100_yds: 0.0
+  rec_150_yds: 0.0
+  rec_200_yds: 0.0
+misc:
+  all_pos: yes
+  fumbles_lost: -2.0
+  fumbles_total: 0.0
+  sacks: 0.0
+  two_pts: 2.0
+kick:
+  xp: 1.0
+  fg_0019: 3.0
+  fg_2029: 3.0
+  fg_3039: 3.0
+  fg_4049: 3.0
+  fg_50: 5.0
+  fg_miss: 0.0
+ret:
+  all_pos: yes
+  return_tds: 0.0
+  return_yds: 0.0
+idp:
+  all_pos: yes
+  idp_solo: 1.0
+  idp_asst: 0.5
+  idp_sack: 2.0
+  idp_int: 3.0
+  idp_fum_force: 3.0
+  idp_fum_rec: 2.0
+  idp_pd: 1.0
+  idp_td: 6.0
+  idp_safety: 2.0
+dst:
+  dst_fum_rec: 2.0
+  dst_int: 2.0
+  dst_safety: 2.0
+  dst_sacks: 1.0
+  dst_td: 6.0
+  dst_blk: 1.5
+  dst_ret_yds: 0.0
+  dst_pts_allowed: 0.0
+pts_bracket:
+- threshold: 0.0
+  points: 10.0
+- threshold: 6.0
+  points: 7.0
+- threshold: 13.0
+  points: 4.0
+- threshold: 20.0
+  points: 1.0
+- threshold: 27.0
+  points: 0.0
+- threshold: 34.0
+  points: -1.0
+- threshold: 99.0
+  points: -4.0
