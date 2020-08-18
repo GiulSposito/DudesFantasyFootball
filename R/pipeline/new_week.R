@@ -20,12 +20,6 @@ player_ids <- player_ids %>%
   mutate( 
     id     = as.integer(id), 
     nfl_id = as.integer(nfl_id)) %>%
-  # 2019 fix missing players
-  # mutate(
-  #   nfl_id        = ifelse(id==14600, 2563132,     nfl_id),
-  #   fantasypro_id = ifelse(id==14600, "joey-slye", fantasypro_id),
-  #   fftoday_id    = ifelse(id==14600, "16763",     fftoday_id),
-  # ) %>%  
   as_tibble()
 
 
