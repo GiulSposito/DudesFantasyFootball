@@ -15,6 +15,7 @@ ffa_api_endpoint <- function(.url, .path, .query){
   ua <- user_agent("dudes ffa")
   
   cat(url)
+  cat("\n")
   cat(str(.query))
   
   # invoke
@@ -59,8 +60,6 @@ ffa_api_endpoint <- function(.url, .path, .query){
 
 
 ffa_api <- function(.path, .query) ffa_api_endpoint("https://api.fantasy.nfl.com/", .path, .query)
-
-ffa_api2 <- function(.path, .query) ffa_api_endpoint("https://api2.fantasy.nfl.com/", .path, .query)
 
 # S3 class = "ffa_api" print
 print.ffa_api <- function(x, ...) {
