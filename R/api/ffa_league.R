@@ -54,6 +54,20 @@ ffa_league_standings <- function(.authToken, .leagueId, .week){
   
 }
 
+# return the user id, leagues and teams of a 'authToken'
+ffa_league_team_roster <- function(.authToken, .leagueId, .teamId, .week){
+  
+  players <- ffa_api(
+    .path = "/v2/league/teams",
+    .query = list(
+      "appKey"    = "internalemailuse",
+      "authToken" = .authToken,
+      "leagueId"  = .leagueId,
+      "teamId"    = .teamId,
+      "week"      = .week
+    ))
+  
+}
 
 
 
