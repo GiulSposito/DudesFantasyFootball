@@ -69,6 +69,39 @@ ffa_league_team_roster <- function(.authToken, .leagueId, .teamId, .week){
   
 }
 
+# extrai o time e o roster
+ffa_extractTeams <- function(leagueMatchupsResp){
+  
+  # extract teams and rosters
+  leagueMatchupsResp$content$games[[1]]$leagues[[1]]$teams %>% 
+    tibble(team=.) %>% 
+    unnest_wider(team) %>% 
+    mutate(across(c(teamId, ownerUserId), as.integer)) %>% 
+    select(-matchups, -stats) %>% 
+    mutate( rosters = map(rosters, function(r){
+      r[[1]] %>% 
+        bind_rows(.id="position") %>% 
+        as_tibble() %>% 
+        mutate(across(rosterSlotId:playerId,as.integer)) %>% 
+        return()
+    })) %>% 
+    return()
+  
+}
+
+# extrai os jogos
+ffa_extractMatchus <- function(leagueMatchupsResp){
+  
+  # extract matchups
+  leagueMatchupsResp$content$games[[1]]$leagues[[1]]$matchups %>% 
+    tibble(matchups=.) %>% 
+    unnest_wider(matchups) %>% 
+    unnest_wider(awayTeam, names_sep=".") %>% 
+    unnest_wider(homeTeam, names_sep=".") %>% 
+    mutate(across(c(week, ends_with("teamId")), as.integer)) %>% 
+    return()
+  
+}
 
 
 
