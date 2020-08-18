@@ -48,24 +48,28 @@ ffa_extractMatchus(leagueMatchups)
 ffa_extractTeams(leagueMatchups)
 
 ##### PLAYERS STATS
-players <- ffa_players_stats(config$authToken, config$leagueId, 2019, 1:5)
+playersStats <- ffa_players_stats(config$authToken, config$leagueId, 2019, 1:5)
 
-.season <- 2019
+ffa_extractPlayersStats <- function(playersStatsResp){
+  
+  playersStatsResp$content$games[[1]]$players %>% 
+    tibble(players=.) %>% 
+    unnest_wider(players) %>% 
+    hoist(stats, seasonPts = c(1, 1, "pts")) %>% 
+    hoist(stats, weekPts = c(1, 1)) %>% 
+    mutate( weekPts = map(weekPts, function(wp){
+      wp %>% 
+        map(~pluck(.x, "pts", .default = NA)) %>% 
+        unlist(.) %>% 
+        tibble(
+          week = names(.),
+          pts  = as.numeric(.)
+        )
+    })) %>% 
+    mutate(across(c(playerId, nflTeamId, byeWeek), as.integer)) %>% 
+    mutate(across(seasonPts,as.numeric)) %>% 
+    return()
 
-players$content$games[[1]]$players %>% 
-  tibble(players=.) %>% 
-  unnest_wider(players) %>% 
-  hoist(stats, seasonPts = c("season", .season, "pts")) %>% 
-  hoist(stats, weekPts = c("week", .season)) %>% 
-  mutate( weekPts = map(weekPts, function(wp){
-    wp %>% 
-      map(~pluck(.x, "pts", .default = NA)) %>% 
-      unlist(.) %>% 
-      tibble(
-        week = names(.),
-        pts  = .
-      )
-  }))
+}
 
-
-
+ffa_extractPlayersStats(playersStats)
