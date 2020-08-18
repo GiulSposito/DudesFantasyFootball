@@ -7,20 +7,45 @@ config <- yaml.load_file("./config/config.yml")
 
 
 ##### MATCHUPS, TEAMS AND ROSTERS
-matchups <-ffa_league_matchups(.authToken = config$authToken, .leagueId = config$leagueId, .week=1)
+leagueMatchups <- ffa_league_matchups(.authToken = config$authToken, .leagueId = config$leagueId, .week=1)
 
-# extract teams and rosters
-matchups$content$games[[1]]$leagues[[1]]$teams %>% 
-  tibble(team=.) %>% 
-  unnest_wider(team)
 
-# extract matchups
-matchups$content$games[[1]]$leagues[[1]]$matchups %>% 
-  tibble(matchups=.) %>% 
-  unnest_wider(matchups) %>% 
-  unnest_wider(awayTeam, names_sep=".") %>% 
-  unnest_wider(homeTeam, names_sep=".")
+ffa_extractTeams <- function(ffaLeagueMatchups){
+  
+  # extract teams and rosters
+  ffaLeagueMatchups$content$games[[1]]$leagues[[1]]$teams %>% 
+    tibble(team=.) %>% 
+    unnest_wider(team) %>% 
+    mutate(across(c(teamId, ownerUserId), as.integer)) %>% 
+    select(-matchups, -stats) %>% 
+    mutate( rosters = map(rosters, function(r){
+      r[[1]] %>% 
+        bind_rows(.id="position") %>% 
+        as_tibble() %>% 
+        mutate(across(rosterSlotId:playerId,as.integer)) %>% 
+        return()
+    })) %>% 
+    return()
+  
+}
 
+
+ffa_extractMatchus <- function(ffaLeagueMatchups){
+  
+  # extract matchups
+  ffaLeagueMatchups$content$games[[1]]$leagues[[1]]$matchups %>% 
+    tibble(matchups=.) %>% 
+    unnest_wider(matchups) %>% 
+    unnest_wider(awayTeam, names_sep=".") %>% 
+    unnest_wider(homeTeam, names_sep=".") %>% 
+    mutate(across(c(week, ends_with("teamId")), as.integer)) %>% 
+    return()
+  
+}
+
+
+ffa_extractMatchus(leagueMatchups)
+ffa_extractTeams(leagueMatchups)
 
 ##### PLAYERS STATS
 players <- ffa_players_stats(config$authToken, config$leagueId, 2019, 1:5)
