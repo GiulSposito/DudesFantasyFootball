@@ -1,18 +1,10 @@
-library(tidyverse)
-library(yaml)
 library(httr)
-library(jsonlite)
 library(glue)
 
-checkFantasyAPI <- function(.week){
-  
-  # lendo liga e token do yaml (para n?o versionar o access token)
-  config <- yaml.load_file("./config/config.yml")
-  leagueId <- config$leagueId
-  authToken <- config$authToken
-  
+checkFantasyAPI <- function(.authToken, .leagueId,.week){
+
   # obtem os matchups
-  url.matchups <- "http://api.fantasy.nfl.com/v2/league/matchups?appKey=internalemailuse&leagueId={leagueId}&week={week}&format=json&authToken={authToken}"
+  url.matchups <- "http://api.fantasy.nfl.com/v2/league/matchups?appKey=internalemailuse&leagueId={.leagueId}&week={.week}&format=json&authToken={.authToken}"
   
   # faz a chamada na api
   resp <- httr::GET(glue(url.matchups, week=.week))
