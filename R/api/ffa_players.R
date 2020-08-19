@@ -1,4 +1,5 @@
 library(glue)
+library(tidyverse)
 source("./R/api/ffa_api.R")
 
 
@@ -59,18 +60,22 @@ ffa_extractPlayersStats <- function(playersStatsResp){
     tibble(players=.) %>% 
     unnest_wider(players) %>% 
     hoist(stats, seasonPts = c(1, 1, "pts")) %>% 
-    hoist(stats, weekPts = c(1, 1)) %>% 
-    mutate( weekPts = map(weekPts, function(wp){
+    hoist(stats, weekStats = c(1, 1)) %>% 
+    mutate( weekPts = map(weekStats, function(wp){
       wp %>% 
         map(~pluck(.x, "pts", .default = NA)) %>% 
         unlist(.) %>% 
         tibble(
-          week = names(.),
-          pts  = as.numeric(.)
-        )
+          week = as.integer(names(.)),
+          weekPts  = as.numeric(.),
+        ) %>% 
+        arrange(week) %>% 
+        mutate(
+          weekSeasonPts = if_else(is.na(weekPts), 0, weekPts),
+          weekSeasonPts = cumsum(weekSeasonPts)) %>% 
+        select(week, weekPts, weekSeasonPts)
     })) %>% 
     mutate(across(c(playerId, nflTeamId, byeWeek), as.integer)) %>% 
-    mutate(across(seasonPts,as.numeric)) %>% 
     return()
   
 }
