@@ -1,15 +1,14 @@
 library(ffanalytics)
 library(glue)
-source("./R/_draft/score_settings.R")
 
-scrapPlayersPredictions <- function(.week, .saveToFile=T) {
+scrapPlayersPredictions <- function(.week, .season, .saveToFile=T) {
   # # faz o scraping de projeção dos sites
   scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
-                          src= c("ESPN", "FantasyData", "FantasyPros", "CBS", "FFToday",
-                                 "FantasySharks", "FleaFlicker", "NumberFire", "Yahoo",
-                                 "FantasyFootballNerd", "NFL", "RTSports", "Walterfootball"), 
-                          season = 2019,
-                          week = .week)
+                       # src= c("ESPN", "FantasyData", "FantasyPros", "CBS", "FFToday",
+                       #        "FantasySharks", "FleaFlicker", "NumberFire", "Yahoo",
+                       #        "FantasyFootballNerd", "NFL", "RTSports", "Walterfootball"), 
+                       src = c("CBS", "FantasyPros", "FFToday", "FantasySharks"),
+                       season = .season, week = .week)
   
   # salva arquivos temporariamente
   if(.saveToFile){
@@ -26,8 +25,8 @@ scrapPlayersPredictions <- function(.week, .saveToFile=T) {
 }
 
 # faz a tabela de projeção de resultados
-calcPlayersProjections <- function(.week_scrap, .scoring_rules = dudes.score.settings) {
-  players.proj <- projections_table(.week_scrap, scoring_rules = .scoring_rules) 
+calcPlayersProjections <- function(.week_scrap, .scoring_rules) {
+  players.proj <- projections_table(.week_scrap, .scoring_rules) 
   
   players.proj %>% 
     filter(avg_type=="weighted") %>%
