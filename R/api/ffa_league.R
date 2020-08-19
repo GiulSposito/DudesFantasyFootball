@@ -80,7 +80,7 @@ ffa_extractTeams <- function(leagueMatchupsResp){
     select(-matchups, -stats) %>% 
     mutate( rosters = map(rosters, function(r){
       r[[1]] %>% 
-        bind_rows(.id="position") %>% 
+        bind_rows(.id="slotPosition") %>% 
         as_tibble() %>% 
         mutate(across(rosterSlotId:playerId,as.integer)) %>% 
         return()
@@ -90,7 +90,7 @@ ffa_extractTeams <- function(leagueMatchupsResp){
 }
 
 # extrai os jogos
-ffa_extractMatchus <- function(leagueMatchupsResp){
+ffa_extractMatchups <- function(leagueMatchupsResp){
   
   # extract matchups
   leagueMatchupsResp$content$games[[1]]$leagues[[1]]$matchups %>% 
