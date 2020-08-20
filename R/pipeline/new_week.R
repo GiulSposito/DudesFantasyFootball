@@ -9,9 +9,9 @@ library(yaml)
 week <- 1
 season <- 2019
 config <- yaml::read_yaml("./config/config.yml")
+prefix <- "preDraft"
+destPath <- "static"
 # sim.version <- 3
-# prefix <- "preDraft"
-# destPath <- "static"
 
 # API ACCESS CHECK ####
 source("./R/import/checkFantasyAPI.R")
@@ -34,7 +34,39 @@ leagueMatchups <- ffa_league_matchups(config$authToken, config$leagueId, week)
 matchups_games <- ffa_extractMatchups(leagueMatchups)
 teams_rosters  <- ffa_extractTeams(leagueMatchups)   
 
-# REMAINING WORKFLOW ####
+# TEST BRANCH: TEAM ROSTERS ####
+# enquanto não vem a informação do roster, simula a alocação baseada
+# numa alocação de jogador x time da temporada passada
+
+old_teams <- readRDS(glue("./data/2019/week{week}_players_projections.rds")) %>% 
+  select(id, fantasy.team, playerId=nfl_id) %>% 
+  filter(fantasy.team!="*FreeAgent") %>% 
+  mutate(
+    teamId = case_when(
+      fantasy.team=="Boys" ~ 8,
+      fantasy.team=="Steelers" ~ 5,
+      fantasy.team=="Pfeiferians" ~ 6,
+      fantasy.team=="Robots" ~ 1,
+      fantasy.team=="Knights" ~ 7,
+      fantasy.team=="Mules" ~ 2,
+      fantasy.team=="Giants" ~ 11,
+      fantasy.team=="Blues" ~ 9,
+      fantasy.team=="Bikers" ~ 4,
+      fantasy.team=="Riders" ~ 3,
+    )
+  ) %>% 
+  arrange(teamId)
+
+# precisa adicioanr a informação de time
+# team_allocation <- teams_rosters %>% 
+#   select(teamId, name, rosters) %>% 
+#   unnest(rosters) %>% 
+#   mutate(fantasy.team = str_remove(name, "(.+ )?")) %>% 
+#   select(teamId, fantasy.team)
+
+team_allocation <- old_teams
+
+# TABELA DE PROJECAO ####
 
 # carregando tabelas de "de para" de IDs de Jogadores
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
@@ -48,49 +80,36 @@ player_ids <- player_ids %>%
 injuryStatus <- c("Suspended","Injured Reserve","Not With Team")
 
 # pega as projecoes e cruza com player stats para ver status de injury
-projs %>% 
+players_projs <- projs %>% 
   inner_join(player_ids, by="id") %>% # unifica os ids
   inner_join(players_stats, by=c("nfl_id"="playerId")) %>% # adiciona info de status
   # colina duplicada vinda do Join
   select(-position.y) %>% 
   rename(position=position.x) %>% 
+  # pega somente a semana de interesse
+  unnest(weekPts) %>% 
+  filter(week==week) %>% 
   ## Zera Estatisticas de quem estah machucado
   mutate(
     points  = ifelse(injuryGameStatus %in% injuryStatus, 0, points),
     floor   = ifelse(injuryGameStatus %in% injuryStatus, 0, floor),
     ceiling = ifelse(injuryGameStatus %in% injuryStatus, 0, ceiling),
     sd_pts  = ifelse(injuryGameStatus %in% injuryStatus, 0, sd_pts),
-  )
-
-# precisa adicioanr a informação de time
-teams_rosters %>% 
-  select(teamId, name, rosters, imageUrl) %>% 
-  unnest(rosters)
+  ) %>% 
+  # adiciona a informacao do time "owner"
+  left_join(team_allocation, by=c("nfl_id"="playerId")) %>% 
+  # quem nao tem time vira "Free Agent"
+  mutate(fantasy.team=if_else(is.na(fantasy.team),"*FA", fantasy.team))
   
-  
-
-
-
-
-# tipos de status que zera a pontuacao
-injuryStatus <- c("Suspended","Injured Reserve","Not With Team")
-# cola informacao de times as projecoes de pontos dos jogadores
-projs.team <- projs %>% 
-  inner_join(mutate(player_ids, id=as.integer(id)), by="id") %>% 
-  addTeams(matchups, week, F) %>% 
-  ## Zera Estatisticas de quem estah machucado
-  mutate(
-    points  = ifelse(injuryGameStatus %in% injuryStatus, 0, points),
-    floor   = ifelse(injuryGameStatus %in% injuryStatus, 0, floor),
-    ceiling = ifelse(injuryGameStatus %in% injuryStatus, 0, ceiling),
-    sd_pts  = ifelse(injuryGameStatus %in% injuryStatus, 0, sd_pts),
-  )
-
-
-
-
 saveRDS(projs.team, glue("./data/week{week}_players_projections.rds"))
-projs.team <- readRDS("./data/2019/week1_players_projections.rds")
+
+## projection report
+rmarkdown::render(
+  input = "./R/reports/ffa_players_projection.Rmd",
+  output_file = glue("../../{destPath}/reports/ffa_players_projection_week{week}.html"),
+  output_format = "flex_dashboard",
+  params = list(week=week)
+)
 
 
 ##### import matchups
@@ -119,16 +138,16 @@ projs.team <- readRDS("./data/2019/week1_players_projections.rds")
 # injuryStatus <- c("Suspended","Injured Reserve","Not With Team")
 
 # cola informacao de times as projecoes de pontos dos jogadores
-projs.team <- projs %>% 
-  inner_join(mutate(player_ids, id=as.integer(id)), by="id") %>% 
-  addTeams(matchups, week, F) %>% 
-  ## Zera Estatisticas de quem estah machucado
-  mutate(
-    points  = ifelse(injuryGameStatus %in% injuryStatus, 0, points),
-    floor   = ifelse(injuryGameStatus %in% injuryStatus, 0, floor),
-    ceiling = ifelse(injuryGameStatus %in% injuryStatus, 0, ceiling),
-    sd_pts  = ifelse(injuryGameStatus %in% injuryStatus, 0, sd_pts),
-  )
+# projs.team <- projs %>% 
+#   inner_join(mutate(player_ids, id=as.integer(id)), by="id") %>% 
+#   addTeams(matchups, week, F) %>% 
+#   ## Zera Estatisticas de quem estah machucado
+#   mutate(
+#     points  = ifelse(injuryGameStatus %in% injuryStatus, 0, points),
+#     floor   = ifelse(injuryGameStatus %in% injuryStatus, 0, floor),
+#     ceiling = ifelse(injuryGameStatus %in% injuryStatus, 0, ceiling),
+#     sd_pts  = ifelse(injuryGameStatus %in% injuryStatus, 0, sd_pts),
+#   )
 
 ## projection report
 rmarkdown::render(
