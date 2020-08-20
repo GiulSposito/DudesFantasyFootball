@@ -2,15 +2,15 @@
 # library(lubridate)
 # library(glue)
 # library(ffanalytics)
-# library(flexdashboard)
+library(flexdashboard)
 library(yaml)
 
 # EXECUTION PARAMETERS ####
-week <- 1
+week <- 5
 season <- 2019
 config <- yaml::read_yaml("./config/config.yml")
 prefix <- "preDraft"
-destPath <- "static"
+destPath <- "../../static/reports/2020"
 # sim.version <- 3
 
 # API ACCESS CHECK ####
@@ -25,8 +25,15 @@ projs  <- calcPlayersProjections(scraps, yaml::read_yaml("./config/score_setting
 # PLAYERS AND MATCHUPS ####
 # PLAYERS
 source("./R/api/ffa_players.R")
-players_stats <- ffa_players_stats(config$authToken, config$leagueId, season, 1) %>% 
+players_stats <- ffa_players_stats(config$authToken, config$leagueId, season, 1:week) %>% 
   ffa_extractPlayersStats()
+
+# salva estatisticas dos jogadores
+players_stats %>% 
+  unnest(weekPts) %>% 
+  inner_join(player_ids, by=c("playerId"="nfl_id")) %>% 
+  mutate(nfl_id=playerId) %>%
+  saveRDS("./data/players_points.rds")
 
 # MATCHUPS
 source("./R/api/ffa_league.R")
@@ -99,7 +106,7 @@ players_projs <- projs %>%
   # adiciona a informacao do time "owner"
   left_join(team_allocation, by=c("nfl_id"="playerId")) %>% 
   # quem nao tem time vira "Free Agent"
-  mutate(fantasy.team=if_else(is.na(fantasy.team),"*FA", fantasy.team))
+  mutate(fantasy.team=if_else(is.na(fantasy.team),"*FreeAgent", fantasy.team))
   
 saveRDS(projs.team, glue("./data/week{week}_players_projections.rds"))
 

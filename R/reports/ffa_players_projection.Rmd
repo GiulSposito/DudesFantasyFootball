@@ -48,8 +48,8 @@ pprojs <- readRDS(glue("./data/week{week}_players_projections.rds")) %>%
 
 ppoints <- readRDS("./data/players_points.rds") %>%
   mutate(id = as.integer(id)) %>% 
-  filter( points!=0 ) %>% 
-  rename( pts = points ) %>% 
+  #filter( points !=0 ) %>% 
+  rename( pts = weekPts ) %>% 
   select( id, week, pts) %>% 
   group_by( id ) %>% 
   mutate( pts.mean = median(pts, na.rm = T),
@@ -161,6 +161,7 @@ plotProjections(projections, "DST", "Defenses", "week 9",32)
 ```{r historicSharpe}
 
 p.stats <- readRDS("./data/players_points.rds") %>% 
+  rename( points = weekPts ) %>% 
   mutate(
     id = as.integer(id),
     points = case_when(
@@ -253,7 +254,7 @@ pprojs  <- readRDS(glue("./data/week{week}_players_projections.rds")) %>%
 
 # calc historic data, and calculates 90% CI
 points_stats <- readRDS("./data/players_points.rds") %>% 
-  select( id, nfl_id, fweek = fantasyPts.week.week, points = fantasyPts.week.pts ) %>% 
+  select( id, nfl_id, fweek = week, points = weekPts ) %>% 
   mutate( 
     fweek = as.integer(fweek), 
     points = as.numeric(points)    
@@ -261,32 +262,31 @@ points_stats <- readRDS("./data/players_points.rds") %>%
   filter( fweek < week ) %>% 
   group_by(id, nfl_id) %>% 
   summarise(
-    pts.floor   = quantile(points, .05), 
-    pts.median  = quantile(points, .5),
-    pts.ceiling = quantile(points, .95)
+    pts.floor   = quantile(points, .05, na.rm = T), 
+    pts.median  = quantile(points, .5, na.rm = T),
+    pts.ceiling = quantile(points, .95, na.rm = T)
   ) %>% 
   ungroup()
 
 # get current players attributes
 pattrib <- readRDS("./data/players_points.rds") %>% 
-  rename( fweek = week ) %>% 
-  filter (fweek == week ) %>% 
+  filter (week == week ) %>% 
   # seleciona o que interessa
   select(
-    id, nfl_id, name, position, team, op.team = opponentTeamAbbr, injuryStatus,
-    total.points = fantasyPts.season.pts 
+    id, nfl_id, name, position, team=nflTeamAbbr, injuryGameStatus, #op.team = opponentTeamAbbr,
+    total.points = weekSeasonPts, week, byeWeek
   ) %>% 
   # converte tipo e trata "BYE"
   mutate( 
     total.points = as.numeric(total.points),
-    op.team = ifelse(op.team=="FALSE", "BYE", op.team)
+    op.team = ifelse(week==byeWeek, "BYE", "")
   ) %>% 
   # adiciona sigla de Injury ou "BYE" no fim
-  mutate( injuryCod = str_extract_all(injuryStatus, "[A-Z]")) %>% 
+  mutate( injuryCod = str_extract_all(injuryGameStatus, "[A-Z]")) %>% 
   mutate( injuryCod = map_chr(injuryCod, paste, sep="", collapse="")) %>%
   mutate( 
     name = case_when(
-      !is.na(injuryStatus) ~ paste0(name, " (", injuryCod, ")"),
+      !is.na(injuryGameStatus) ~ paste0(name, " (", injuryCod, ")"),
       op.team == "BYE" ~ paste0(name, " (bye)"),
       T ~ name
     )
