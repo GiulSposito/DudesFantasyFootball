@@ -63,7 +63,7 @@ ffa_extractPlayersStats <- function(playersStatsResp){
     hoist(stats, weekStats = c(1, 1)) %>% 
     mutate( weekPts = map(weekStats, function(wp){
       wp %>% 
-        map(~pluck(.x, "pts", .default = NA)) %>% 
+        map(~ purrr::pluck(.x, "pts", .default = NA)) %>% 
         unlist(.) %>% 
         tibble(
           week = as.integer(names(.)),
