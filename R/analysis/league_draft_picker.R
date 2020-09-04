@@ -1,6 +1,8 @@
 library(ffanalytics)
 library(yaml)
 
+# devtools::install_github("FantasyFootballAnalytics/ffanalytics")
+
 # How to win a snake draft
 
 # references
@@ -12,11 +14,13 @@ library(yaml)
 # First, we use a script to scrape player’s projected points from numerous
 # sources using R. 
 scrp_df <- scrape_data(
-  src = c("CBS", "FantasyPros", "FFToday", "FantasySharks"),
+  #src = c("CBS", "FantasyPros", "FFToday", "FantasySharks"),
   pos = c("QB", "RB", "WR", "TE", "K", "DST"),
   season = 2020,
   week = 0
 )
+
+saveRDS(scrp_df, "./data/scrap_season.rds")
 
 # Second, based on the user’s league scoring settings, we calculate players’
 # projections using an average of the analysts’ projections (by default, the
@@ -34,9 +38,8 @@ proj_df <- projections_table(scrp_df, scoring_rules = read_yaml("./config/score_
 pts_df <- proj_df %>% 
   add_ecr() %>% 
   add_risk() %>% 
-  # fix risk calculations
-  # because as a matrix note a column
-  mutate( risk = .$risk[,1])  
+  add_adp() %>% 
+  add_aav()
 
 # add players info
 players_projection <- pts_df %>% 
@@ -70,7 +73,7 @@ players_projection <- pts_df %>%
 #    if a starter gets injured or they outperform a starter.  
 
 # statistics type
-teams_n <- 10
+teams_n <- 14
 choosed_avg_type <- "weighted"
 
 # start players numbers (1 QB, 2 WR, 2 RB + 1 TE + 1 W/R) * team number
