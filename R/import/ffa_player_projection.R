@@ -7,16 +7,19 @@ scrapPlayersPredictions <- function(.week, .season, .saveToFile=T) {
                        # src= c("ESPN", "FantasyData", "FantasyPros", "CBS", "FFToday",
                        #        "FantasySharks", "FleaFlicker", "NumberFire", "Yahoo",
                        #        "FantasyFootballNerd", "NFL", "RTSports", "Walterfootball"), 
-                       src = c("CBS", "FantasyPros", "FFToday", "FantasySharks"),
+                       src = c("CBS", "FantasyData", "FantasyPros"),
                        season = .season, week = .week)
   
   # salva arquivos temporariamente
   if(.saveToFile){
-    # salva scrap da semana
     scrap %>% saveRDS(glue("./data/week{.week}_scrap.rds"))
     
     # adiciona scrap da semana no banco de projecoes
-    wscraps <- readRDS("./data/weeklies_scraps.rds")
+    if(file.exists("./data/weeklies_scraps.rds")) {
+      wscraps <- readRDS("./data/weeklies_scraps.rds")
+    } else {
+      wscraps <- list()
+    }
     wscraps[[.week]] <- scrap
     saveRDS(wscraps,"./data/weeklies_scraps.rds")
   }
