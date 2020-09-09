@@ -97,7 +97,7 @@ benchs_n <- 4 * teams_n
 
 benchers <- players_projection %>% 
   filter( position %in% c("QB","WR","RB","TE"), avg_type==choosed_avg_type) %>% 
-  anti_join(startersby = c("id")) %>% 
+  anti_join(starters,by = c("id")) %>% 
   arrange(desc(points_vor), desc(ceiling)) %>% 
   slice(1:benchs_n)
 
