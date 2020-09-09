@@ -2,16 +2,16 @@
 # library(lubridate)
 # library(glue)
 # library(ffanalytics)
-library(flexdashboard)
+# library(flexdashboard)
 library(yaml)
 
 # EXECUTION PARAMETERS ####
-week <- 5
-season <- 2019
-config <- yaml::read_yaml("./config/config.yml")
-prefix <- "preDraft"
+week <- 1
+season <- 2020
+config <- read_yaml("./config/config.yml")
+prefix <- "preTNF"
 destPath <- "../../static/reports/2020"
-# sim.version <- 3
+sim.version <- 3
 
 # API ACCESS CHECK ####
 source("./R/import/checkFantasyAPI.R")
@@ -19,21 +19,14 @@ if(!checkFantasyAPI(config$authToken, config$leagueId, week)) stop("Unable to ac
 
 # SCRAPPING AND PROJECTION ####
 source("./R/import/ffa_player_projection.R")
-scraps <- scrapPlayersPredictions(week, season, F)
-projs  <- calcPlayersProjections(scraps, yaml::read_yaml("./config/score_settings.yml"))
+scraps <- scrapPlayersPredictions(week, season, T)
+projs  <- calcPlayersProjections(scraps, read_yaml("./config/score_settings.yml"))
 
 # PLAYERS AND MATCHUPS ####
 # PLAYERS
 source("./R/api/ffa_players.R")
 players_stats <- ffa_players_stats(config$authToken, config$leagueId, season, 1:week) %>% 
   ffa_extractPlayersStats()
-
-# salva estatisticas dos jogadores
-players_stats %>% 
-  unnest(weekPts) %>% 
-  inner_join(player_ids, by=c("playerId"="nfl_id")) %>% 
-  mutate(nfl_id=playerId) %>%
-  saveRDS("./data/players_points.rds")
 
 # MATCHUPS
 source("./R/api/ffa_league.R")
@@ -107,16 +100,40 @@ players_projs <- projs %>%
   left_join(team_allocation, by=c("nfl_id"="playerId")) %>% 
   # quem nao tem time vira "Free Agent"
   mutate(fantasy.team=if_else(is.na(fantasy.team),"*FreeAgent", fantasy.team))
-  
-saveRDS(projs.team, glue("./data/week{week}_players_projections.rds"))
 
-## projection report
+
+# salva estatisticas dos jogadores
+players_stats %>% 
+  unnest(weekPts) %>% 
+  inner_join(player_ids, by=c("playerId"="nfl_id")) %>% 
+  mutate(nfl_id=playerId) %>%
+  saveRDS("./data/players_points.rds")
+
+# salva projecoes  
+saveRDS(players_projs, glue("./data/week{week}_players_projections.rds"))
+
+# deveria salvar?
+# matchups_games
+# teams_rosters
+
+
+# PROJECTION REPORT ####
 rmarkdown::render(
   input = "./R/reports/ffa_players_projection.Rmd",
   output_file = glue("../../{destPath}/reports/ffa_players_projection_week{week}.html"),
   output_format = "flex_dashboard",
   params = list(week=week)
 )
+
+# SIMULACAO ####
+
+# calcula tabela de pontuacao para todos os jogadores usa na simulacao
+source("./R/simulation/players_projections.R")
+ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml"))
+
+# simula as partidas
+source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
+sim <- simulateGames(week)
 
 
 ##### import matchups
@@ -157,12 +174,12 @@ rmarkdown::render(
 #   )
 
 ## projection report
-rmarkdown::render(
-  input = "./R/reports/ffa_players_projection.Rmd",
-  output_file = glue("../../{destPath}/reports/ffa_players_projection_week{week}.html"),
-  output_format = "flex_dashboard",
-  params = list(week=week)
-)
+# rmarkdown::render(
+#   input = "./R/reports/ffa_players_projection.Rmd",
+#   output_file = glue("../../{destPath}/reports/ffa_players_projection_week{week}.html"),
+#   output_format = "flex_dashboard",
+#   params = list(week=week)
+# )
 
 
 # calcula tabela de pontuacao para todos os jogadores usa na simulacao
