@@ -3,11 +3,10 @@ library(glue)
 
 scrapPlayersPredictions <- function(.week, .season, .saveToFile=T) {
   # # faz o scraping de projeção dos sites
-  scrap <- scrape_data(pos = c("QB", "RB", "WR", "TE", "K", "DST"),
-                       # src= c("ESPN", "FantasyData", "FantasyPros", "CBS", "FFToday",
-                       #        "FantasySharks", "FleaFlicker", "NumberFire", "Yahoo",
-                       #        "FantasyFootballNerd", "NFL", "RTSports", "Walterfootball"), 
-                       src = c("CBS", "FantasyData", "FantasyPros"),
+  scrap <- scrape_data(src = c("CBS", "ESPN", "FantasyData", "FantasyPros", 
+                               "FantasySharks", "FFToday", "FleaFlicker", "NumberFire", 
+                               "Yahoo", "FantasyFootballNerd", "NFL", "RTSports", "Walterfootball"),
+                       pos = c("QB", "RB", "WR", "TE", "K", "DST"),
                        season = .season, week = .week)
   
   # salva arquivos temporariamente
@@ -32,7 +31,7 @@ calcPlayersProjections <- function(.week_scrap, .scoring_rules) {
   players.proj <- projections_table(.week_scrap, .scoring_rules) 
   
   players.proj %>% 
-    filter(avg_type=="weighted") %>%
+    #filter(avg_type=="weighted") %>%
     add_player_info() %>% 
     mutate(id=as.integer(id)) %>% 
     arrange(id) %>%
