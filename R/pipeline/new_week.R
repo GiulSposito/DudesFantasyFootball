@@ -1,8 +1,8 @@
-# library(tidyverse)
-# library(lubridate)
-# library(glue)
-# library(ffanalytics)
-# library(flexdashboard)
+library(tidyverse)
+library(lubridate)
+library(glue)
+library(ffanalytics)
+library(flexdashboard)
 library(yaml)
 
 # EXECUTION PARAMETERS ####
@@ -10,7 +10,7 @@ week <- 1
 season <- 2020
 config <- read_yaml("./config/config.yml")
 prefix <- "preTNF"
-destPath <- "../../static/reports/2020"
+destPath <- "static/reports/2020"
 sim.version <- 3
 
 # API ACCESS CHECK ####
@@ -38,24 +38,31 @@ teams_rosters  <- ffa_extractTeams(leagueMatchups)
 # enquanto não vem a informação do roster, simula a alocação baseada
 # numa alocação de jogador x time da temporada passada
 
-old_teams <- readRDS(glue("./data/2019/week{week}_players_projections.rds")) %>% 
-  select(id, fantasy.team, playerId=nfl_id) %>% 
-  filter(fantasy.team!="*FreeAgent") %>% 
-  mutate(
-    teamId = case_when(
-      fantasy.team=="Boys" ~ 8,
-      fantasy.team=="Steelers" ~ 5,
-      fantasy.team=="Pfeiferians" ~ 6,
-      fantasy.team=="Robots" ~ 1,
-      fantasy.team=="Knights" ~ 7,
-      fantasy.team=="Mules" ~ 2,
-      fantasy.team=="Giants" ~ 11,
-      fantasy.team=="Blues" ~ 9,
-      fantasy.team=="Bikers" ~ 4,
-      fantasy.team=="Riders" ~ 3,
-    )
-  ) %>% 
-  arrange(teamId)
+# old_teams <- readRDS(glue("./data/2019/week{week}_players_projections.rds")) %>% 
+#   select(id, fantasy.team, playerId=nfl_id) %>% 
+#   filter(fantasy.team!="*FreeAgent") %>% 
+#   mutate(
+#     teamId = case_when(
+#       fantasy.team=="Boys" ~ 8,
+#       fantasy.team=="Steelers" ~ 5,
+#       fantasy.team=="Pfeiferians" ~ 6,
+#       fantasy.team=="Robots" ~ 1,
+#       fantasy.team=="Knights" ~ 7,
+#       fantasy.team=="Mules" ~ 2,
+#       fantasy.team=="Giants" ~ 11,
+#       fantasy.team=="Blues" ~ 9,
+#       fantasy.team=="Bikers" ~ 4,
+#       fantasy.team=="Riders" ~ 3,
+#     )
+#   ) %>% 
+#   arrange(teamId)
+# 
+# team_allocation <- old_teams
+
+team_allocation <- teams_rosters %>% 
+  select(teamId, fantasy.team=name, rosters) %>% 
+  unnest(rosters) %>% 
+  select(teamId, fantasy.team, playerId)
 
 # precisa adicioanr a informação de time
 # team_allocation <- teams_rosters %>% 
@@ -64,7 +71,6 @@ old_teams <- readRDS(glue("./data/2019/week{week}_players_projections.rds")) %>%
 #   mutate(fantasy.team = str_remove(name, "(.+ )?")) %>% 
 #   select(teamId, fantasy.team)
 
-team_allocation <- old_teams
 
 # TABELA DE PROJECAO ####
 
@@ -120,7 +126,7 @@ saveRDS(players_projs, glue("./data/week{week}_players_projections.rds"))
 # PROJECTION REPORT ####
 rmarkdown::render(
   input = "./R/reports/ffa_players_projection.Rmd",
-  output_file = glue("../../{destPath}/reports/ffa_players_projection_week{week}.html"),
+  output_file = glue("../../{destPath}/ffa_players_projection_week{week}.html"),
   output_format = "flex_dashboard",
   params = list(week=week)
 )
