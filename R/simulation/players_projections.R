@@ -1,5 +1,3 @@
-source("./R/_draft/score_settings.R")
-
 # funcao que aproveita o pacote ffanalytics para fazer a projecao de pontos por jogador
 playerPointsProjections <- function(.scrap, .score.settings){
   
@@ -18,14 +16,18 @@ playerPointsProjections <- function(.scrap, .score.settings){
   
 }
 
-readRDS("./data/weeklies_scraps.rds") %>% 
-  map(playerPointsProjections,
-      .score.settings = dudes.score.settings) %>% 
-  bind_rows(.id="week") %>% 
-  mutate( season=2019,
-          week = as.integer(week),
-          id = as.integer(id) ) %>% 
-  rename(pts.proj = points) -> points.projection
-
-# salva pontuacao projetada
-saveRDS(points.projection, "./data/points_projection.rds")
+calcPointsProjection <- function(.season, .score.settings, saveToFile=T){
+  
+  points.projection <- readRDS("./data/weeklies_scraps.rds") %>% 
+    map(playerPointsProjections,
+        .score.settings = .score.settings) %>% 
+    bind_rows(.id="week") %>% 
+    mutate( season=.season,
+            week = as.integer(week),
+            id = as.integer(id) ) %>% 
+    rename(pts.proj = points) %T>% 
+    # salva pontuacao projetada
+    saveRDS("./data/points_projection.rds") %>% 
+    return()
+  
+}
