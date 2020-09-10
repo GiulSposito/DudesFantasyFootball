@@ -11,25 +11,25 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
   # .plids    <- player_ids
   
   # so colunas de ids dos jogos
-  mtch <- .matchups %>% 
+  mtch <- .matchup_games %>% 
     select(matchupId, week, awayTeam.teamId, homeTeam.teamId) %>% 
     filter(week==.week)
   
   # unest o team roster
-  tms <- .teams %>% 
+  tms <- .teams_rosters %>% 
     select(teamId, teamName=name, rosters) %>% 
     unnest(rosters) %>% 
     filter(week==.week)
   
   # filtra estatisticas dos  jogadores
-  stats <- .plstats %>% 
-    select(playerId, name, position, byeWeek, injuryGameStatus, weekPts) %>% 
-    unnest(weekPts) %>% 
-    filter(week==.week) 
+  # stats <- .players_stats %>% 
+  #   select(playerId, name, position, byeWeek, injuryGameStatus, weekPts) %>% 
+  #   unnest(weekPts) %>% 
+  #   filter(week==.week) 
   
   # estrutura de projecao dos jogadores
   projs <- .ptsproj %>% 
-    inner_join(select(.plids, id, playerId=nfl_id), by="id") %>% 
+    inner_join(select(.players_id, id, playerId=nfl_id), by="id") %>% 
     filter(week==.week, season==.season) %>% 
     select(id, playerId, pts.proj) %>% 
     group_by(id, playerId) %>% 
@@ -94,19 +94,18 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
   
   # retorna a estrutura de calculo toda, mais facil para montar o report
   list(
-    week     = week,
-    season   = season,
-    ptsproj  = ptsproj,
-    matchups = matchups_games,
-    teams    = teams_rosters,
-    plstats  = players_stats,
-    plids    = player_ids,
-    players_sim = players_sim,
-    teams_sim   = teams_sim,
-    matchup_sim = matchup_sim
-  )
-
-  
+    week     = .week,
+    season   = .season,
+    ptsproj  = .ptsproj,
+    matchups = .matchup_games,
+    teams    = .teams_rosters,
+    players_stats  = .players_stats,
+    players_id     = .players_id,
+    players_sim    = players_sim,
+    teams_sim      = teams_sim,
+    matchup_sim    = matchup_sim
+  ) %>% 
+    return()
 }
 
 
