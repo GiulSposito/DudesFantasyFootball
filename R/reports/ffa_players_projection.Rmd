@@ -24,6 +24,8 @@ library(glue)
 library(ggrepel)
 
 week <- params$week
+TEAMS_COLOR_SCALE <- c("grey", "#B3995D","black","#03202F","#0B2265","#fb9a99","#A5ACAF","#0085CA",
+  "#ff7f00","#203731","#6a3d9a","#A71930","#A71930","#FFB612","#004953")
 
 ```
 
@@ -93,7 +95,7 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
               y=r_pos, 
               color=fantasy.team, 
               label=full_name), nudge_y = nu_y, nudge_x = 0.0, size=3) +
-    scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00", "purple", "pink","gold","cyan")) +
+    scale_colour_manual(values = TEAMS_COLOR_SCALE) +
     theme_classic() + xlab("Rank") + ylab("Points") +
     theme( panel.grid.major.x=element_line(colour="#EEEEEE") ) +
     scale_x_discrete(breaks = seq(1,32,4) ) +
@@ -106,7 +108,7 @@ plotProjections <- function(.proj, .pos, .title, .subtitle, .slice=32) {
   
 }
 
-plotProjections(projections, "QB", "Quaterbacks", "week 9", 30)
+plotProjections(projections, "QB", "Quaterbacks", "week 9", 14+14+5)
 
 ```
 
@@ -115,7 +117,7 @@ WR {data-navmenu="ffanalytics"}
 
 ```{r wr, fig.width=10}
 
-plotProjections(projections, "WR", "Wide Receivers", "week 9",60)
+plotProjections(projections, "WR", "Wide Receivers", "week 9",(5*16))
 
 ```
 
@@ -124,7 +126,7 @@ RB {data-navmenu="ffanalytics"}
 
 ```{r rb, fig.width=10}
 
-plotProjections(projections, "RB", "Running Backs", "week 9",60)
+plotProjections(projections, "RB", "Running Backs", "week 9", (5*16))
 
 ```
 
@@ -133,7 +135,7 @@ TE {data-navmenu="ffanalytics"}
 
 ```{r te, fig.width=10}
 
-plotProjections(projections, "TE", "Tight Ends", "week 9",25)
+plotProjections(projections, "TE", "Tight Ends", "week 9",(3*14))
 
 ```
 
@@ -143,7 +145,7 @@ K {data-navmenu="ffanalytics"}
 
 ```{r k, fig.width=10}
 
-plotProjections(projections, "K", "Kickers", "week 9",25)
+plotProjections(projections, "K", "Kickers", "week 9",(2*14))
 
 ```
 
@@ -156,9 +158,9 @@ DEF {data-navmenu="ffanalytics"}
 plotProjections(projections, "DST", "Defenses", "week 9",32)
 
 ```
+<!--
 
-
-```{r historicSharpe}
+```{r historicSharpe, eval=FALSE}
 
 p.stats <- readRDS("./data/players_points.rds") %>% 
   rename( points = weekPts ) %>% 
@@ -195,7 +197,7 @@ plotSharpe <- function(.dtfm, .pos, .n) {
     geom_point() +
     geom_text_repel(aes(label=full_name), show.legend = F, size=2.2, point.padding = .5) +
     geom_label( aes(label=mean), size = 1.8, label.padding = unit(0.10, "lines"), show.legend = F) +
-    scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00", "purple", "pink","gold","cyan")) +
+    scale_colour_manual(values = TEAMS_COLOR_SCALE) +
     theme_minimal() +
     ggtitle(.pos) + xlab("variance") + ylab("mean points")  
   
@@ -206,45 +208,45 @@ plotSharpe <- function(.dtfm, .pos, .n) {
 
 QB {data-navmenu="sharpe"}
 ========================
-```{r sharpeQB, fig.width=10}
+```{r sharpeQB, fig.width=10, eval=FALSE}
 plotSharpe(sharpe.data, "QB",3*10)
 ```
 
 
 WR {data-navmenu="sharpe"}
 ========================
-```{r sharpeWR, fig.width=10}
+```{r sharpeWR, fig.width=10, eval=FALSE}
 plotSharpe(sharpe.data, "WR", 5*10)
 ```
 
 
 RB {data-navmenu="sharpe"}
 ========================
-```{r sharpeRB, fig.width=10}
+```{r sharpeRB, fig.width=10, eval=FALSE}
 plotSharpe(sharpe.data, "RB", 5*10)
 ```
 
 
 TE {data-navmenu="sharpe"}
 ========================
-```{r sharpeTE, fig.width=10}
+```{r sharpeTE, fig.width=10, eval=FALSE}
 plotSharpe(sharpe.data, "TE", 3*10)
 ```
 
 
 K {data-navmenu="sharpe"}
 ========================
-```{r sharpeK, fig.width=10}
+```{r sharpeK, fig.width=10, eval=FALSE}
 plotSharpe(sharpe.data, "K", 3*10)
 ```
 
 DEF {data-navmenu="sharpe"}
 ========================
-```{r sharpeDEF, fig.width=10}
+```{r sharpeDEF, fig.width=10, eval=FALSE}
 plotSharpe(sharpe.data, "DST", 3*10)
 ```
 
-```{r historicRank}
+```{r historicRank, eval=FALSE}
 # get fantasy team and week projection
 pprojs  <- readRDS(glue("./data/week{week}_players_projections.rds")) %>% 
   filter(avg_type=="weighted") %>% 
@@ -321,7 +323,7 @@ plotHistoricRank <- function(.data, .pos, .n, .title){
       geom_text(aes(label=paste0("[", team, "] ", name), 
                     y=pts.ceiling+nu_y), hjust="left", vjust="middle", 
                 nudge_y = 0.1, nudge_x = 0.1, size=3) +
-      scale_colour_manual(values = c("grey",  "#e31a1c", "#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#fdbf6f", "#ff7f00", "purple", "pink","gold","cyan")) +
+      scale_colour_manual(values = TEAMS_COLOR_SCALE) +
       ylab("historic peformance") + xlab("rank (total points)") +
       ggtitle(.title, glue("Top {.n} {.pos}s by Total Points - Historic Peformance (90% CI)")) +
       coord_flip() +
@@ -336,40 +338,42 @@ plotHistoricRank <- function(.data, .pos, .n, .title){
 
 QB {data-navmenu="historic"}
 ========================
-```{r histQB, fig.width=10}
+```{r histQB, fig.width=10, eval=FALSE}
 plotHistoricRank(players_history, "QB",3*10, "Quaterbacks")
 ```
 
 
 WR {data-navmenu="historic"}
 ========================
-```{r histWR, fig.width=10}
+```{r histWR, fig.width=10, eval=FALSE}
 plotHistoricRank(players_history, "WR", 4.5*10, "Wide Receivers")
 ```
 
 
 RB {data-navmenu="historic"}
 ========================
-```{r histRB, fig.width=10}
+```{r histRB, fig.width=10, eval=FALSE}
 plotHistoricRank(players_history, "RB", 5*10, "Running Backs")
 ```
 
 
 TE {data-navmenu="historic"}
 ========================
-```{r histTE, fig.width=10}
+```{r histTE, fig.width=10, eval=FALSE}
 plotHistoricRank(players_history, "TE", 3*10, "Tight Ends")
 ```
 
 
 K {data-navmenu="historic"}
 ========================
-```{r histK, fig.width=10}
+```{r histK, fig.width=10, eval=FALSE}
 plotHistoricRank(players_history, "K", 3*10, "Kickers")
 ```
 
 DEF {data-navmenu="historic"}
 ========================
-```{r histDEF, fig.width=10}
+```{r histDEF, fig.width=10, eval=FALSE}
 plotHistoricRank(players_history, "DEF", 30*10, "Defenses")
 ```
+
+-->
