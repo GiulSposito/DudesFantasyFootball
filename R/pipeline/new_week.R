@@ -143,6 +143,14 @@ sim <- simulateGames(week, season, ptsproj, matchups_games, teams_rosters, playe
 
 # salva resultado
 saveRDS(sim, glue("./data/simulation_v{sim.version}_week{week}_{prefix}.rds"))
+
+# # constroi o relatório
+rmarkdown::render(
+  input = glue("./R/reports/dudes_simulation_v{sim.version}.Rmd"),
+  output_file = glue("../../{destPath}/dudes_simulation_v{sim.version}_week{week}_{prefix}.html"),
+  output_format = "flex_dashboard",
+    params = list(week=week, prefix=prefix)
+  )
  
  
 # ##### import matchups
