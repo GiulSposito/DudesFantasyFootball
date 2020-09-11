@@ -74,10 +74,12 @@ ffa_extractTeams <- function(leagueMatchupsResp){
   
   # extract teams and rosters
   leagueMatchupsResp$content$games[[1]]$leagues[[1]]$teams %>% 
+    #transforma a lista de times em tibble
     tibble(team=.) %>% 
     unnest_wider(team) %>% 
+    # corrige tipos inteiros
     mutate(across(c(teamId, ownerUserId), as.integer)) %>% 
-    select(-matchups, -stats) %>% 
+    # transforma a lista de rosters (em cada time) em um tibble
     mutate( rosters = map(rosters, function(r){
       r[[1]] %>% 
         bind_rows(.id="slotPosition") %>% 
@@ -85,8 +87,20 @@ ffa_extractTeams <- function(leagueMatchupsResp){
         mutate(across(rosterSlotId:playerId,as.integer)) %>% 
         return()
     })) %>% 
-    return()
-  
+    # transform as estatisticas semanais em tibble
+    mutate( week.stats = map(stats, function(.stat){
+      .stat$week$`2020` %>%
+        tibble(week=names(.), week.stats=.) %>%
+        unnest_wider(week.stats) %>% 
+        mutate( week = as.integer(week), 
+                pts  = as.numeric(pts) )    
+    })) %>%
+    # transforma as estatisticas da temporada em tibble
+    mutate( season.stats = map(stats, function(.stat){
+      .stat$season %>% tibble(season.stats=.) %>% 
+        unnest_wider(season.stats)    
+    }))
+
 }
 
 # extrai os jogos
