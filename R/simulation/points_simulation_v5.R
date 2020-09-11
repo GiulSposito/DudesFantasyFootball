@@ -12,17 +12,20 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
   # .plstats  <- players_stats
   # .players_id    <- player_ids
 
-  # so colunas de ids dos jogos
+  # pega as entendidades, dá uma simplificada, faz unnest e filtra semana
+  
+  # JOGOS: so as colunas de ids dos jogos
   mtch <- .matchup_games %>% 
     select(matchupId, week, awayTeam.teamId, homeTeam.teamId) %>% 
     filter(week==.week)
   
-  # unest o team roster
+  # ROSTERS: unnest o team roster
   tms <- .teams_rosters %>% 
     select(teamId, teamName=name, rosters) %>% 
     unnest(rosters) %>% 
     filter(week==.week)
 
+  # ESTATISTICAS: pega a pontuacao realizada da semana
   stats <- .plstats %>% 
     unnest(weekPts) %>% 
     select(-isReserveStatus) %>% 
@@ -31,7 +34,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     filter(week==.week)
   
     
-  # estrutura de projecao dos jogadores
+  # PROJEÇÃO: estrutura de projecao dos jogadores para facilitar a simulacao
   projs <- .ptsproj %>% 
     inner_join(select(.players_id, id, playerId=nfl_id), by="id") %>% 
     filter(week==.week, season==.season) %>% 
@@ -111,6 +114,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
       awayTeam.win = map(homeTeam.win, function(.wht) !.wht ), 
       # diferenca entre pontos (na direcao do home)
       homeTeam.ptsdiff = map2(awayTeam.simulation, homeTeam.simulation, function(.sat, .sht) .sht-.sat),
+      homeTeam.ptsdiff.org = map2(awayTeam.simulation.org, homeTeam.simulation.org, function(.sat, .sht) .sht-.sat),
       # probabilidade de ganhar (media das vitorias)
       homeTeam.winProb = map_dbl(homeTeam.win, mean), 
       awayTeam.winProb = map_dbl(awayTeam.win, mean),
