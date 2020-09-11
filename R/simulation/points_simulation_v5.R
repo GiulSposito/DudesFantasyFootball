@@ -2,14 +2,16 @@ library(tidyverse)
 
 simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_rosters, .players_stats, .players_id) {
   
+  
+  # env reference for development and debugign
   # .week     <- week
   # .season   <- season
   # .ptsproj  <- ptsproj
-  # .matchups <- matchups_games
-  # .teams    <- teams_rosters
+  # .matchup_games <- matchups_games
+  # .teams_rosters    <- teams_rosters
   # .plstats  <- players_stats
-  # .plids    <- player_ids
-  
+  # .players_id    <- player_ids
+
   # so colunas de ids dos jogos
   mtch <- .matchup_games %>% 
     select(matchupId, week, awayTeam.teamId, homeTeam.teamId) %>% 
@@ -20,13 +22,15 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     select(teamId, teamName=name, rosters) %>% 
     unnest(rosters) %>% 
     filter(week==.week)
+
+  stats <- .plstats %>% 
+    unnest(weekPts) %>% 
+    select(-isReserveStatus) %>% 
+    #inner_join(tms, by="playerId") %>% 
+    select(playerId, byeWeek, isUndroppable, injuryGameStatus, week, weekPts, seasonPts) %>% 
+    filter(week==.week)
   
-  # filtra estatisticas dos  jogadores
-  # stats <- .players_stats %>% 
-  #   select(playerId, name, position, byeWeek, injuryGameStatus, weekPts) %>% 
-  #   unnest(weekPts) %>% 
-  #   filter(week==.week) 
-  
+    
   # estrutura de projecao dos jogadores
   projs <- .ptsproj %>% 
     inner_join(select(.players_id, id, playerId=nfl_id), by="id") %>% 
@@ -36,21 +40,32 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     nest() %>% 
     ungroup() %>% 
     mutate(pts.proj = map(data, ~.x$pts.proj )) %>% 
-    select(-data)
+    select(-data) %>% 
+    inner_join(stats, by = "playerId")
   
   # tamanho da simulacao
   SIMULATION_SIZE = 1000
   
   # simulação dos jogadores
   players_sim <- tms %>% 
-    inner_join(projs, by="playerId") %>% 
-    mutate( simulation = map(pts.proj, sample, size=SIMULATION_SIZE, replace=T))
+    inner_join(projs, by="playerId") %>%
+    mutate(
+      weekPts.sim    = map(weekPts, rep, time=SIMULATION_SIZE), 
+      simulation.org = map(pts.proj, sample, size=SIMULATION_SIZE, replace=T) 
+    ) %>% 
+    mutate(
+      simulation = case_when(
+        isEditable ~ simulation.org,
+        !isEditable ~ weekPts.sim
+      )
+    )
   
+
   # pega os titulares e soma para obter a pontuacao dos jogos
   teams_sim <- players_sim %>% 
     # inner_join(stats, by="playerId") %>% 
     filter( rosterSlotId != 20 ) %>%  # rosterId==20 indica banco
-    select(teamId, playerId, simulation) %>% 
+    select(teamId, playerId, simulation, simulation.org) %>% 
     group_by(teamId) %>% 
     nest() %>% 
     ungroup() %>% 
@@ -65,6 +80,17 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
         colSums() %>%
         return()    
     })) %>% 
+    mutate(simulation.org = map(data, function(.sim){
+      # cada jogador tem um array de pontos projetados 
+      # extrai como uma lista (cada jogador uma linha)
+      # junta como uma matriz
+      # soma as colunas (cada coluna é uma simulação)
+      .sim %>% 
+        pull(simulation.org) %>% 
+        do.call(rbind, .) %>% 
+        colSums() %>%
+        return()    
+    })) %>% 
     select(-data)
   
   # pivot para longo para fazer o bind da simulacao mais facil
@@ -73,9 +99,10 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     mutate(name=str_remove(name, "\\.teamId")) %>% 
     inner_join(teams_sim, by="teamId") %>% 
     # uma vez feito o join, pivot para wide de volta
-    pivot_wider(id_cols = c(matchupId, week), names_from="name", values_from=c(teamId, simulation), names_sep=".") %>% 
+    pivot_wider(id_cols = c(matchupId, week), names_from="name", values_from=c(teamId, simulation, simulation.org), names_sep=".") %>% 
     # prefico identificar a entidade
-    set_names(c("matchupId", "week", "awayTeam.teamId", "homeTeam.teamId", "awayTeam.simulation", "homeTeam.simulation")) %>% 
+    set_names(c("matchupId", "week", "awayTeam.teamId", "homeTeam.teamId", "awayTeam.simulation", "homeTeam.simulation",
+                "awayTeam.simulation.org", "homeTeam.simulation.org")) %>% 
     # cada time tem um array de pontos da simulacao dos titulares
     mutate( 
       # verifica pontuacao do home é maior que o visitante para saber se o home ganhou
