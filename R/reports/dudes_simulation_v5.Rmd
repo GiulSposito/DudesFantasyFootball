@@ -6,7 +6,7 @@ output:
     vertical_layout: fill
 params:
   week: 1
-  prefix: "preTNF"
+  prefix: "posTNF"
 ---
 
 ```{r setup, include=FALSE}
@@ -47,8 +47,8 @@ sim <- readRDS(glue("./data/simulation_v5_week{week}_{prefix}.rds"))
 # ) 
 
 sim_summary <- bind_rows(
-    select(sim$matchup_sim, teamId=awayTeam.teamId, winProb=awayTeam.winProb),
-    select(sim$matchup_sim, teamId=homeTeam.teamId, winProb=homeTeam.winProb)
+    select(sim$matchup_sim, teamId=awayTeam.teamId, winProb=awayTeam.winProb, sim.pts=awayTeam.simulation),
+    select(sim$matchup_sim, teamId=homeTeam.teamId, winProb=homeTeam.winProb, sim.pts=homeTeam.simulation)
   ) %>% inner_join(select(sim$teams, -rosters), by="teamId")
 
 
@@ -110,4 +110,59 @@ Row
 ```{r}
 winGauge(13,sim_summary)
 winGauge(14,sim_summary)
+```
+
+Points Distribution {data-navmenu="Overview"}
+=======================================
+
+```{r teamPtsDist, fig.width=9}
+
+sim_summary %>% 
+  select(name, sim.pts) %>% 
+  mutate(mean.pts = map_dbl(sim.pts, mean)) %>% 
+  unnest(sim.pts) %>% 
+  mutate(sim.pts = round(sim.pts,1)) %>%
+  ggplot(aes(x=reorder(name,mean.pts), y=sim.pts, color=name)) +
+  geom_boxplot() +
+  coord_flip() +
+  theme_minimal() +
+  ggtitle("Simulated Points Distribution") +
+  xlab( "fantasy team" ) +
+  ylab( "simulation points" ) +
+  theme( legend.position = "none" )
+
+```
+
+Score Difference {data-navmenu="Overview"}
+============================================
+
+```{r matchupScoreDiffDist, fig.width=9}
+
+# obtem nome e pontuacao dos times
+team_points <- sim$teams %>% 
+  unnest(week.stats) %>% 
+  filter(week==week) %>% 
+  select(teamId, name, pts)
+
+
+sim$matchup_sim %>% 
+  inner_join(set_names(team_points, paste0("away.",names(team_points))), by=c("awayTeam.teamId"="away.teamId")) %>% 
+  inner_join(set_names(team_points, paste0("home.",names(team_points))), by=c("homeTeam.teamId"="home.teamId")) %>% 
+  mutate(game=paste0(away.name, " @ ", home.name)) %>%
+  select(game, homeTeam.ptsdiff, homeTeam.ptsdiff.org, home.pts, away.pts) %>%
+  mutate(current.score.diff = home.pts-away.pts) %>% 
+  unnest(c(homeTeam.ptsdiff, homeTeam.ptsdiff.org)) %>% 
+  ggplot(aes(fill=game)) +
+  geom_density(aes(homeTeam.ptsdiff.org), fill="grey", color=NA, alpha=.4) +
+  geom_density(aes(homeTeam.ptsdiff), alpha=.6) +
+  geom_vline(aes(xintercept=0), linetype=1, color="black", alpha=.5) +
+  geom_vline(aes(xintercept=current.score.diff),
+             linetype=2, color="red") +
+  facet_grid(rows=vars(game), switch = "x", scales="free") +
+  theme_minimal() +
+  ggtitle("Matchups Score Difference") +
+  ylab("Probability Distribution") +
+  xlab("Score Difference") +
+  theme( legend.position = "none", strip.text.y = element_text(angle=0) )
+
 ```
