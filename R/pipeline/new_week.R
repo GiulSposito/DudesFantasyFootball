@@ -17,10 +17,12 @@ sim.version <- 5
 source("./R/import/checkFantasyAPI.R")
 if(!checkFantasyAPI(config$authToken, config$leagueId, week)) stop("Unable to access Fantasy API!")
 
+# TABELA DE PROJECAO ####
+
 # SCRAPPING AND PROJECTION ####
 source("./R/import/ffa_player_projection.R")
 scraps <- scrapPlayersPredictions(week, season, T)
-projs  <- calcPlayersProjections(scraps, read_yaml("./config/score_settings.yml"))
+proj_table  <- calcPlayersProjections(scraps, read_yaml("./config/score_settings.yml"))
 
 # PLAYERS AND MATCHUPS ####
 # PLAYERS
@@ -33,6 +35,16 @@ source("./R/api/ffa_league.R")
 leagueMatchups <- ffa_league_matchups(config$authToken, config$leagueId, week)
 matchups_games <- ffa_extractMatchups(leagueMatchups)
 teams_rosters  <- ffa_extractTeams(leagueMatchups)   
+
+# carregando tabelas de "de para" de IDs de Jogadores
+load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
+player_ids <- player_ids %>%
+  mutate(
+    id = as.integer(id), 
+    nfl_id = as.integer(nfl_id)) %>%
+  as_tibble() %>% 
+  # completa a tabela de mapeamento de projecoes do ffanalytics
+  bind_rows(readRDS("./data/playerIds_not_mapped.rds"))
 
 # TEST BRANCH: TEAM ROSTERS ####
 # enquanto não vem a informação do roster, simula a alocação baseada
@@ -72,21 +84,11 @@ team_allocation <- teams_rosters %>%
 #   select(teamId, fantasy.team)
 
 
-# TABELA DE PROJECAO ####
-
-# carregando tabelas de "de para" de IDs de Jogadores
-load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
-player_ids <- player_ids %>%
-  mutate(
-    id = as.integer(id), 
-    nfl_id = as.integer(nfl_id)) %>%
-  as_tibble()
-
 # tipos de status que zera a pontuacao
 injuryStatus <- c("Suspended","Injured Reserve","Not With Team")
 
 # pega as projecoes e cruza com player stats para ver status de injury
-players_projs <- projs %>% 
+players_projs <- proj_table %>% 
   inner_join(player_ids, by="id") %>% # unifica os ids
   inner_join(players_stats, by=c("nfl_id"="playerId")) %>% # adiciona info de status
   # colina duplicada vinda do Join
@@ -139,7 +141,7 @@ ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml")
 
 # simulação das partidas
 source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
-sim <- simulateGames(week, season, ptsproj, matchups_games, teams_rosters, players_stats, player_ids)
+sim <- simulateGames(week, season, ptsproj, matchups_games, teams_rosters, players_stats, player_ids, proj_table)
 
 # salva resultado
 saveRDS(sim, glue("./data/simulation_v{sim.version}_week{week}_{prefix}.rds"))
