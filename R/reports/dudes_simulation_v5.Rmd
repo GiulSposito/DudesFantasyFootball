@@ -31,13 +31,13 @@ library(broom)
 .prefix <- params$prefix
 
 # fixed positions for charts
-slotLevels <- gl(8,1,labels=c("QB","RB","WR","TE","W/R","K","DEF","BN"))
+slotLevels <- gl(8,1,labels=c("QB","RB","WR","TE","W/R","K","DEF","BN", "RES", "??"))
 posLevels <- gl(6,1,labels=c("QB","RB","WR","TE","K","DEF"))
 
 # map to roster position
 rosterSlots <- tibble(
-  rosterSlotId = c(1:5,7,8,20,21, NA),
-  rosterSlot   = c("QB","RB","WR","TE","W/R","K","DEF","BN","BN","BN")
+  rosterSlotId = c(1:5,7,8,20,21),
+  rosterSlot   = c("QB","RB","WR","TE","W/R","K","DEF","BN","RES")
 )
 
 # recover simulation data
@@ -203,7 +203,7 @@ rosters <- sim$teams %>%
   unnest(weekPts) %>% 
   filter(week == .week) %>% 
   # mapeamento da posicao do slot no roster
-  inner_join(rosterSlots, by="rosterSlotId") %>% 
+  left_join(rosterSlots, by="rosterSlotId") %>% 
   # campos de interesse
   select(id, playerId, teamId, teamName, name, position, nflTeamAbbr, rosterSlot, 
          injuryGameStatus, isEditable, isReserveStatus=isReserveStatus.x, isUndroppable, 

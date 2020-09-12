@@ -11,7 +11,7 @@ scrapPlayersPredictions <- function(.week, .season, .saveToFile=T) {
   
   scrap <- scrape_data(
     #src = setdiff(sources,c("FantasyFootballNerd","CBS")), # tira o FFNerd e CBS estão incorretos
-    #pos = c("QB", "RB", "WR", "TE", "K", "DST"),
+    pos = c("QB", "RB", "WR", "TE", "K", "DST"),
     season = .season,
     week = .week
   )
