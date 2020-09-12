@@ -2,29 +2,39 @@
 # fixed positions
 slotLevels <- gl(8,1,labels=c("QB","RB","WR","TE","W/R","K","DEF","BN"))
 posLevels <- gl(6,1,labels=c("QB","RB","WR","TE","K","DEF"))
-injStAbbr <- readRDS("./data/injuryGameStatusAbbr.rds")
 
 rosterSlots <- tibble(
-  rosterSlotId = c(1:5,7,8,20,21),
-  rosterSlot   = c("QB","RB","WR","TE","W/R","K","DEF","BN","BN")
+  rosterSlotId = c(1:5,7,8,20,21, NA),
+  rosterSlot   = c("QB","RB","WR","TE","W/R","K","DEF","BN","BN","BN")
 )
 
-projections <- proj_table %>% 
+# seleciona algumas colunas ta tabela de projecao
+projections <- sim$proj_table %>% 
   filter(position==pos) %>% 
   select(id, projPts = points, pos_rank, drop_off, sd_pts, floor, ceiling, tier) 
 
+# junta os rosters dos times, estatíticas dos jogadores, a tabela de projecao e
+# uma de-para de apreviacao do Injury Status
 rosters <- sim$teams %>% 
+  # unnest do roster por time
   select(teamId, teamName=name, rosters) %>% 
   unnest(rosters) %>%                                                         # 210 players
+  # mapeamento ffa<->nfl
   inner_join(select(sim$players_id, id, playerId=nfl_id), by="playerId") %>%  # 210 players
-  inner_join(sim$players_stats, by="playerId") %>%                            # 210 players
+  # statisticas dos jogadores
+  inner_join(sim$players_stats, by="playerId") %>%                            # 210 players]
+  # estatisticas podem ter mais de uma semana
   unnest(weekPts) %>% 
   filter(week == .week) %>% 
+  # mapeamento da posicao do slot no roster
   inner_join(rosterSlots, by="rosterSlotId") %>% 
+  # campos de interesse
   select(id, playerId, teamId, teamName, name, position, nflTeamAbbr, rosterSlot, 
          injuryGameStatus, isEditable, isReserveStatus=isReserveStatus.x, isUndroppable, 
          byeWeek, weekPts, seasonPts) %>% 
+  # adiciona as projecoes
   left_join(projections, by="id") %>% 
+  # adiciona abreviatura do injury game status
   left_join(readRDS("./data/injuryGameStatusAbbr.rds"), by = "injuryGameStatus")
   # %>% replace_na(list(points=0, floor=0, ceiling=0))
 
