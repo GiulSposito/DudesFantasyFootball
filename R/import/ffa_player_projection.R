@@ -10,8 +10,8 @@ scrapPlayersPredictions <- function(.week, .season, .saveToFile=T) {
                "RTSports","Walterfootball")
   
   scrap <- scrape_data(
-    src = setdiff(sources,c("FantasyFootballNerd","CBS")), # tira o FFNerd e CBS estão incorretos
-    pos = c("QB", "RB", "WR", "TE", "K", "DST"),
+    #src = setdiff(sources,c("FantasyFootballNerd","CBS")), # tira o FFNerd e CBS estão incorretos
+    #pos = c("QB", "RB", "WR", "TE", "K", "DST"),
     season = .season,
     week = .week
   )
@@ -42,6 +42,7 @@ calcPlayersProjections <- function(.week_scrap, .scoring_rules) {
     add_player_info() %>% 
     mutate(id=as.integer(id)) %>% 
     arrange(id) %>%
+    filter( position %in% c("QB", "RB", "WR", "TE", "K", "DST")) %>% 
     return()
 }
 
