@@ -1,0 +1,198 @@
+{
+  "type":"DraftRecap",
+  "written_at":"2020-09-08T17:17:11+00:00",
+  "league_id":3940933,
+  "team_id":1,
+  "season":2020,
+  "title":"With a League Title Projected, Paulinia Robots Bets on the Running Game",
+  "paragraphs":[
+    {
+      "key":"Draft_Summary",
+      "text":"Paulinia Robots should officially be on the Its Football Dudes radar after taking the fifth overall draft slot and delivering a team that may be playoff caliber. They grabbed running backs like they were going out of style, using their first three selections exclusively on ball-carriers. In conjunction with that drafting strategy, Paulinia Robots ended up with the highest-scoring foursome of running backs in the league."
+    }
+  ],
+  "notes":{
+    "lists":[
+      {
+        "name":"Default",
+        "items":[
+          {
+            "score":96,
+            "text":"Paulinia Robots might be interested in shopping a RB to upgrade in other areas. Their fourth-ranked RB, Antonio Gibson, is projected to be better than the league average at his position.",
+            "players":[
+              {
+                "id":2565276,
+                "name":"Antonio Gibson",
+                "position_abbv":"RB",
+                "team_abbv":"WAS",
+                "esbid":"32004749-4241-5285-a215-d633ff9a6f70"
+              }
+            ]
+          },
+          {
+            "score":95,
+            "text":"In the 6th round, caution was thrown to the wind, as Antonio Gibson was selected at pick number 80 versus an ADP of 142.6 across all NFL.com leagues.",
+            "player_id":2565276,
+            "players":[
+              {
+                "id":2565276,
+                "name":"Antonio Gibson",
+                "position_abbv":"RB",
+                "team_abbv":"WAS",
+                "esbid":"32004749-4241-5285-a215-d633ff9a6f70"
+              }
+            ]
+          },
+          {
+            "score":95,
+            "text":"If other NFL.com users are right, CeeDee Lamb was a steal in the 9th round (117th overall pick versus an ADP of 105.8).",
+            "player_id":2563848,
+            "players":[
+              {
+                "id":2563848,
+                "name":"CeeDee Lamb",
+                "position_abbv":"WR",
+                "team_abbv":"DAL",
+                "esbid":"32004c41-4d13-8457-fcbe-d37fdbd87233"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name":"Weekly Analysis",
+        "items":[
+          {
+            "score":100,
+            "text":"With a 46.7% probability of winning, the Week 8 matchup against Indaiatuba Blues (led by Matt Ryan and Miles Sanders) appears to be the toughest one for Paulinia Robots. Not coincidentally, that is the week when the most players and the most projected fantasy points are on bye for the team.",
+            "players":[
+              {
+                "id":2562722,
+                "name":"Miles Sanders",
+                "position_abbv":"RB",
+                "team_abbv":"PHI",
+                "esbid":"32005341-4e15-3567-869d-79c73965b54e"
+              },
+              {
+                "id":310,
+                "name":"Matt Ryan",
+                "position_abbv":"QB",
+                "team_abbv":"ATL",
+                "esbid":"32005259-4123-8179-1aae-5603693aba86"
+              }
+            ],
+            "week":8
+          },
+          {
+            "score":99,
+            "text":"Led by projected top scorers Dalvin Cook and Matthew Stafford, the easiest contest figures to be in Week 13 against Barao Butchers, as Paulinia Robots has a 60.9% chance of emerging victorious.",
+            "players":[
+              {
+                "id":2557991,
+                "name":"Dalvin Cook",
+                "position_abbv":"RB",
+                "team_abbv":"MIN",
+                "esbid":"3200434f-4f04-7079-ca3d-32c8b4ce8a9a"
+              },
+              {
+                "id":79860,
+                "name":"Matthew Stafford",
+                "position_abbv":"QB",
+                "team_abbv":"DET",
+                "esbid":"32005354-4113-4157-19b1-37e6835d09b9"
+              }
+            ],
+            "week":13
+          }
+        ]
+      },
+      {
+        "name":"Team Strengths",
+        "items":[
+          {
+            "score":0,
+            "text":"Zach Ertz is projected to be the third-best TE in the league.",
+            "players":[
+              {
+                "id":2540158,
+                "name":"Zach Ertz",
+                "position_abbv":"TE",
+                "team_abbv":"PHI",
+                "esbid":"32004552-5480-0920-32a6-165b5a77814e"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "draft_grade":"A",
+  "trade_targets":{
+    "description":"Consider trading for one or more of these players to improve your team's roster.",
+    "list":[
+      {
+        "id":2562796,
+        "name":"Gardner Minshew",
+        "position_abbv":"QB",
+        "team_abbv":"JAX",
+        "esbid":"32004d49-4e60-4610-dc98-dcddea9bb1f6"
+      },
+      {
+        "id":2562382,
+        "name":"Kyler Murray",
+        "position_abbv":"QB",
+        "team_abbv":"ARI",
+        "esbid":"32004d55-5267-0413-8d36-a5c3fd781aa0"
+      },
+      {
+        "id":2504775,
+        "name":"Drew Brees",
+        "position_abbv":"QB",
+        "team_abbv":"NO",
+        "esbid":"32004252-4522-9498-de45-55dc89e02748"
+      }
+    ]
+  },
+  "fa_targets":{
+    "description":"Consider adding these free agents to improve your roster or add depth at their position.",
+    "list":[
+      {
+        "id":2533444,
+        "name":"Randy Bullock",
+        "position_abbv":"K",
+        "team_abbv":"CIN",
+        "esbid":"32004255-4c52-1842-b35e-9d2f6350e85f"
+      },
+      {
+        "id":2543499,
+        "name":"Derek Carr",
+        "position_abbv":"QB",
+        "team_abbv":"LV",
+        "esbid":"32004341-5235-8797-3b9a-0d2711c0bc27"
+      },
+      {
+        "id":2552597,
+        "name":"Breshad Perriman",
+        "position_abbv":"WR",
+        "team_abbv":"NYJ",
+        "esbid":"32005045-5244-0170-6920-f60eb457c1fb"
+      }
+    ]
+  },
+  "probabilities":{
+    "first_place":0.103776596957605,
+    "last_place":0.0276335403426883,
+    "playoff":0.602498491555869,
+    "playoff_bye":0.207684847423253,
+    "title_game":0.302284738914878,
+    "champ":0.153628558660008
+  },
+  "projected_outcomes":{
+    "wins":11,
+    "losses":2,
+    "ties":0,
+    "rank_with_t":"T1",
+    "rank":1
+  }
+}
+

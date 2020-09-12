@@ -18,7 +18,6 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
 
 
-
 ```{r libs}
 library(flexdashboard)
 library(tidyverse)
@@ -58,6 +57,23 @@ sim_summary <- bind_rows(
     select(sim$matchup_sim, teamId=homeTeam.teamId, winProb=homeTeam.winProb, sim.pts=homeTeam.simulation)
   ) %>% inner_join(select(sim$teams, -rosters), by="teamId")
 
+# obtem nome e pontuacao dos times
+team_points <- sim$teams %>% 
+  unnest(week.stats) %>% 
+  filter(week==.week) %>% 
+  select(teamId, name, pts)
+
+games_summary <- sim$matchup_sim %>% 
+  inner_join(set_names(team_points, paste0("away.",names(team_points))), by=c("awayTeam.teamId"="away.teamId")) %>% 
+  inner_join(set_names(team_points, paste0("home.",names(team_points))), by=c("homeTeam.teamId"="home.teamId")) %>% 
+  mutate(game=paste0(away.name, " @ ", home.name)) %>%
+  select(game, homeTeam.ptsdiff, homeTeam.ptsdiff.org, home.pts, away.pts,
+         home.teamId=homeTeam.teamId, away.teamId=awayTeam.teamId,
+         home.name,away.name) %>% 
+  mutate( away.nickname = gsub("([a-zA-Z\']+ )?", "", away.name),
+          home.nickname = gsub("([a-zA-Z\']+ )?", "", home.name)) %>% 
+  mutate( game.nickname = paste0(away.nickname, " @ ", home.nickname))
+
 # code to plot a gauge
 winGauge <- function(.teamId, .teamSummary) {
   values <- .teamSummary %>%
@@ -75,49 +91,59 @@ Win Probability {data-navmenu="Overview"}
 =======================
 
 Row
-------------------
+-------------------------------------
 
-### 
+### `r games_summary[1,]$game.nickname`
 ```{r}
-winGauge(1,sim_summary)
-winGauge(2,sim_summary)
-winGauge(3,sim_summary)
-winGauge(4,sim_summary)
+winGauge(games_summary[1,]$away.teamId,sim_summary)
+winGauge(games_summary[1,]$home.teamId,sim_summary)
 ```
 
+### `r games_summary[2,]$game.nickname`
+```{r}
+winGauge(games_summary[2,]$away.teamId,sim_summary)
+winGauge(games_summary[2,]$home.teamId,sim_summary)
+```
 
 Row
-------------------
+-------------------------------------
 
-### 
+### `r games_summary[3,]$game.nickname`
 ```{r}
-winGauge(5,sim_summary)
-winGauge(6,sim_summary)
-winGauge(7,sim_summary)
-winGauge(8,sim_summary)
+winGauge(games_summary[3,]$away.teamId,sim_summary)
+winGauge(games_summary[3,]$home.teamId,sim_summary)
 ```
 
+### `r games_summary[4,]$game.nickname`
+```{r}
+winGauge(games_summary[4,]$away.teamId,sim_summary)
+winGauge(games_summary[4,]$home.teamId,sim_summary)
+```
 
 Row
-------------------
+-------------------------------------
 
-### 
+### `r games_summary[5,]$game.nickname`
 ```{r}
-winGauge(9,sim_summary)
-winGauge(10,sim_summary)
-winGauge(11,sim_summary)
-winGauge(12,sim_summary)
+winGauge(games_summary[5,]$away.teamId,sim_summary)
+winGauge(games_summary[5,]$home.teamId,sim_summary)
 ```
 
+### `r games_summary[6,]$game.nickname`
+```{r}
+winGauge(games_summary[6,]$away.teamId,sim_summary)
+winGauge(games_summary[6,]$home.teamId,sim_summary)
+```
 
 Row
-------------------
+-------------------------------------
 
-### 
+### `r games_summary[7,]$game.nickname`
 ```{r}
-winGauge(13,sim_summary)
-winGauge(14,sim_summary)
+winGauge(games_summary[7,]$away.teamId,sim_summary)
+winGauge(games_summary[7,]$home.teamId,sim_summary)
 ```
+
 
 Points Distribution {data-navmenu="Overview"}
 =======================================
@@ -144,24 +170,6 @@ Score Difference {data-navmenu="Overview"}
 ============================================
 
 ```{r matchupScoreDiffDist, fig.width=9}
-
-# obtem nome e pontuacao dos times
-team_points <- sim$teams %>% 
-  unnest(week.stats) %>% 
-  filter(week==.week) %>% 
-  select(teamId, name, pts)
-
-games_summary <- sim$matchup_sim %>% 
-  inner_join(set_names(team_points, paste0("away.",names(team_points))), by=c("awayTeam.teamId"="away.teamId")) %>% 
-  inner_join(set_names(team_points, paste0("home.",names(team_points))), by=c("homeTeam.teamId"="home.teamId")) %>% 
-  mutate(game=paste0(away.name, " @ ", home.name)) %>%
-  select(game, homeTeam.ptsdiff, homeTeam.ptsdiff.org, home.pts, away.pts,
-         home.teamId=homeTeam.teamId, away.teamId=awayTeam.teamId,
-         home.name,away.name) %>% 
-  mutate( away.nickname = gsub("([a-zA-Z\']+ )?", "", away.name),
-          home.nickname = gsub("([a-zA-Z\']+ )?", "", home.name)) %>% 
-  mutate( game.nickname = paste0(away.nickname, " @ ", home.nickname))
-
 games_summary %>%
   mutate(current.score.diff = home.pts-away.pts) %>% 
   unnest(c(homeTeam.ptsdiff, homeTeam.ptsdiff.org)) %>% 
