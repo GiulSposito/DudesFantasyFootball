@@ -1,6 +1,6 @@
 library(tidyverse)
 
-simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_rosters, .players_stats, .players_id) {
+simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_rosters, .players_stats, .players_id, .proj_table) {
   
   
   # env reference for development and debugign
@@ -26,7 +26,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     filter(week==.week)
 
   # ESTATISTICAS: pega a pontuacao realizada da semana
-  stats <- .plstats %>% 
+  stats <- .players_stats %>% 
     unnest(weekPts) %>% 
     select(-isReserveStatus) %>% 
     #inner_join(tms, by="playerId") %>% 
@@ -35,7 +35,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
   
     
   # PROJEÇÃO: estrutura de projecao dos jogadores para facilitar a simulacao
-  projs <- .ptsproj %>% 
+  player_proj_points <- .ptsproj %>% 
     inner_join(select(.players_id, id, playerId=nfl_id), by="id") %>% 
     filter(week==.week, season==.season) %>% 
     select(id, playerId, pts.proj) %>% 
@@ -51,7 +51,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
   
   # simulação dos jogadores
   players_sim <- tms %>% 
-    inner_join(projs, by="playerId") %>%
+    inner_join(player_proj_points, by="playerId") %>%
     mutate(
       weekPts.sim    = map(weekPts, rep, time=SIMULATION_SIZE), 
       simulation.org = map(pts.proj, sample, size=SIMULATION_SIZE, replace=T) 
@@ -67,7 +67,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
   # pega os titulares e soma para obter a pontuacao dos jogos
   teams_sim <- players_sim %>% 
     # inner_join(stats, by="playerId") %>% 
-    filter( rosterSlotId != 20 ) %>%  # rosterId==20 indica banco
+    filter( rosterSlotId <= 20 ) %>%  # rosterId==20 indica banco
     select(teamId, playerId, simulation, simulation.org) %>% 
     group_by(teamId) %>% 
     nest() %>% 
@@ -130,6 +130,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     ptsproj  = .ptsproj,
     matchups = .matchup_games,
     teams    = .teams_rosters,
+    proj_table = .proj_table,
     players_stats  = .players_stats,
     players_id     = .players_id,
     players_sim    = players_sim,
