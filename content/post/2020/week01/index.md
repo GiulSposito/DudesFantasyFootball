@@ -28,6 +28,7 @@ resources:
 
 ## Simulation
 
+- [Matchups Simulations (pre SNF)](/reports/2020/dudes_simulation_v5_week1_preSNF.html)
 - [Matchups Simulations (pos-Sunday1stRound-TNF)](/reports/2020/dudes_simulation_v5_week1_posSunday1stRound.html)
 - [Matchups Simulations (pos-TNF)](/reports/2020/dudes_simulation_v5_week1_posTNF.html)
 - [Matchups Simulations (pre-TNF)](/reports/2020/dudes_simulation_v5_week1_preTNF.html)
