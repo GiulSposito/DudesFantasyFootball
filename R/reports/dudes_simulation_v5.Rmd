@@ -6,7 +6,7 @@ output:
     vertical_layout: fill
 params:
   week: 1
-  prefix: "posTNF"
+  prefix: "posSunday1stRound"
 ---
 
 ```{r setup, include=FALSE}
@@ -61,7 +61,7 @@ sim_summary <- bind_rows(
 team_points <- sim$teams %>% 
   unnest(week.stats) %>% 
   filter(week==.week) %>% 
-  select(teamId, name, pts)
+  select(teamId, name, pts, imageUrl)
 
 games_summary <- sim$matchup_sim %>% 
   inner_join(set_names(team_points, paste0("away.",names(team_points))), by=c("awayTeam.teamId"="away.teamId")) %>% 
@@ -97,12 +97,23 @@ Row
 ```{r}
 winGauge(games_summary[1,]$away.teamId,sim_summary)
 winGauge(games_summary[1,]$home.teamId,sim_summary)
+
+# games_summary[1,] %>% 
+#   select(away.team=away.nickname, away.projPts, away.pts, home.pts, home.projPts, home.team=home.nickname) %>% 
+#   knitr::kable()
+
 ```
+
+
 
 ### `r games_summary[2,]$game.nickname`
 ```{r}
 winGauge(games_summary[2,]$away.teamId,sim_summary)
 winGauge(games_summary[2,]$home.teamId,sim_summary)
+
+# games_summary[2,] %>% 
+#   select(away.team=away.nickname, away.projPts, away.pts, home.pts, home.projPts, home.team=home.nickname) %>% 
+#   knitr::kable()
 ```
 
 Row
@@ -112,12 +123,20 @@ Row
 ```{r}
 winGauge(games_summary[3,]$away.teamId,sim_summary)
 winGauge(games_summary[3,]$home.teamId,sim_summary)
+
+# games_summary[3,] %>% 
+#   select(away.team=away.nickname, away.projPts, away.pts, home.pts, home.projPts, home.team=home.nickname) %>% 
+#   knitr::kable()
 ```
 
 ### `r games_summary[4,]$game.nickname`
 ```{r}
 winGauge(games_summary[4,]$away.teamId,sim_summary)
 winGauge(games_summary[4,]$home.teamId,sim_summary)
+
+# games_summary[4,] %>% 
+#   select(away.team=away.nickname, away.projPts, away.pts, home.pts, home.projPts, home.team=home.nickname) %>% 
+#   knitr::kable()
 ```
 
 Row

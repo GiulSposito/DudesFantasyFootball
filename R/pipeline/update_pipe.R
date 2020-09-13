@@ -10,7 +10,7 @@ week <- 1
 season <- 2020
 config <- read_yaml("./config/config.yml")
 fromPrefix <- "posTNF"
-prefix <- "sunday1stRound"
+prefix <- "posSunday1stRound"
 destPath <- "static/reports/2020"
 sim.version <- 5
 

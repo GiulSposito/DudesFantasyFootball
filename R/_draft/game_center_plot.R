@@ -8,4 +8,4 @@ sim_summary %>% names()
   select(teamId, teamName=name, winProb, imageUrl, )
   
 games_summary %>% 
-  select(game.nickname, home.nickname, home.projPts, home.pts, away.pts, away.projPts, away.nickname)
+  select(game.nickname, away.nickname, away.projPts, away.pts, home.pts, home.projPts, home.nickname)
