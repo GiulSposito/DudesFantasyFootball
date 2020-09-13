@@ -67,7 +67,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
   # pega os titulares e soma para obter a pontuacao dos jogos
   teams_sim <- players_sim %>% 
     # inner_join(stats, by="playerId") %>% 
-    filter( rosterSlotId <= 20 ) %>%  # rosterId==20 indica banco
+    filter( rosterSlotId < 20 ) %>%  # rosterId==20 indica banco
     select(teamId, playerId, simulation, simulation.org) %>% 
     group_by(teamId) %>% 
     nest() %>% 

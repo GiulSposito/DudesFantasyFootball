@@ -69,7 +69,7 @@ games_summary <- sim$matchup_sim %>%
   mutate(game=paste0(away.name, " @ ", home.name)) %>%
   select(game, homeTeam.ptsdiff, homeTeam.ptsdiff.org, home.pts, away.pts,
          home.teamId=homeTeam.teamId, away.teamId=awayTeam.teamId,
-         home.name,away.name) %>% 
+         home.name,away.name, home.projPts=homeTeam.totalPts, away.projPts = awayTeam.totalPts) %>% 
   mutate( away.nickname = gsub("([a-zA-Z\']+ )?", "", away.name),
           home.nickname = gsub("([a-zA-Z\']+ )?", "", home.name)) %>% 
   mutate( game.nickname = paste0(away.nickname, " @ ", home.nickname))

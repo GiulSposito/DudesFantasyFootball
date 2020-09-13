@@ -1,57 +1,68 @@
 library(tidyverse)
 library(lubridate)
-library(flexdashboard)
 library(glue)
+library(ffanalytics)
+library(flexdashboard)
+library(yaml)
 
-# parametros de execucao
-week <- 16
-sim.version <- 3
-prefix <- "posMNF"
-destPath <- "static"
+# EXECUTION PARAMETERS ####
+week <- 1
+season <- 2020
+config <- read_yaml("./config/config.yml")
+fromPrefix <- "posTNF"
+prefix <- "sunday1stRound"
+destPath <- "static/reports/2020"
+sim.version <- 5
 
+# API ACCESS CHECK ####
 source("./R/import/checkFantasyAPI.R")
-checkFantasyAPI(week)
+if(!checkFantasyAPI(config$authToken, config$leagueId, week)) stop("Unable to access Fantasy API!")
 
-# carregando tabelas de "de para" correcao do ID de jogadores
+# TABELA DE PROJECAO ####
+
+# SCRAPPING AND PROJECTION ####
+proj_table  <- readRDS(glue("./data/simulation_v5_week{week}_{fromPrefix}.rds"))$proj_table
+
+# PLAYERS AND MATCHUPS ####
+# PLAYERS
+source("./R/api/ffa_players.R")
+players_stats <- ffa_players_stats(config$authToken, config$leagueId, season, 1:week) %>% 
+  ffa_extractPlayersStats()
+
+# MATCHUPS
+source("./R/api/ffa_league.R")
+leagueMatchups <- ffa_league_matchups(config$authToken, config$leagueId, week)
+matchups_games <- ffa_extractMatchups(leagueMatchups)
+teams_rosters  <- ffa_extractTeams(leagueMatchups)   
+
+# carregando tabelas de "de para" de IDs de Jogadores
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
-player_ids <- player_ids %>% 
-  mutate( 
-    id     = as.integer(id), 
+player_ids <- player_ids %>%
+  mutate(
+    id = as.integer(id), 
     nfl_id = as.integer(nfl_id)) %>%
-  # joey slye fixies
-  mutate(
-    nfl_id        = ifelse(id==14600, 2563132,     nfl_id),
-    fantasypro_id = ifelse(id==14600, "joey-slye", fantasypro_id),
-    fftoday_id    = ifelse(id==14600, "16763",     fftoday_id),
-  ) %>%  
-  as_tibble()
+  as_tibble() %>% 
+  # completa a tabela de mapeamento de projecoes do ffanalytics
+  bind_rows(readRDS("./data/playerIds_not_mapped.rds"))
 
 
-source("./R/import/import_matchups.R")
+# SIMULACAO ####
+
+# calcula tabela de pontuacao para todos os jogadores usa na simulacao
+source("./R/simulation/players_projections.R")
+ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml"))
+
+# simulação das partidas
 source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
+sim <- simulateGames(week, season, ptsproj, matchups_games, teams_rosters, players_stats, player_ids, proj_table)
 
-matchups <- importMatchups(week)
-playerGameStatus <- importPlayerGameStatus(week, player_ids)
-saveRDS(playerGameStatus, glue("./data/week{week}_player_game_status.rds"))
+# salva resultado
+saveRDS(sim, glue("./data/simulation_v{sim.version}_week{week}_{prefix}.rds"))
 
-sim <- simulateGames(week, playerGameStatus)
-
+# # constroi o relatório
 rmarkdown::render(
-    input = glue("./R/reports/dudes_simulation_v{sim.version}.Rmd"),
-    output_file = glue("../../{destPath}/reports/dudes_simulation_week{week}_{prefix}_v{sim.version}.html"),
-    output_format = "flex_dashboard",
-    params = list(week=week)
+  input = glue("./R/reports/dudes_simulation_v{sim.version}.Rmd"),
+  output_file = glue("../../{destPath}/dudes_simulation_v{sim.version}_week{week}_{prefix}.html"),
+  output_format = "flex_dashboard",
+    params = list(week=week, prefix=prefix)
   )
-
-hist <- readRDS("./data/simulations_history.rds")
-
-sim %>% 
-  mutate(
-    week = week,
-    timestamp = now(),
-    prefix = prefix
-  ) %>% 
-  bind_rows(hist) %>%
-  saveRDS("./data/simulations_history.rds")
-
-
