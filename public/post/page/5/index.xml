@@ -4,11 +4,22 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 08 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 14] Regular Season MVPs</title>
+      <link>/post/mvp-week-14/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mvp-week-14/</guid>
+      <description>
+
+
+&lt;p&gt;Top Players: CMC, Lamar Jackson, Michael Thomas, Deshaun Watson and Dalvin Cook.&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 14] Simulation Evaluation</title>
       <link>/post/week-14-simulation-evaluation/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
@@ -30,17 +41,6 @@
 
 
 &lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 13] League MVPs</title>
-      <link>/post/mvp-week-13/</link>
-      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/mvp-week-13/</guid>
-      <description>
-
-
-&lt;p&gt;Top Players: CMC, Lamar Jackson, Michael Thomas, Dalvin Cook and Russel Wilson.&lt;/p&gt;
 </description>
     </item>
   </channel>

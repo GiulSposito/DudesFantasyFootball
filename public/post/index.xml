@@ -4,11 +4,18 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 08 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 01] Players Projection and Matchups Simulation</title>
+      <link>/post/2020/week01/</link>
+      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week01/</guid>
+      <description></description>
+    </item><item>
       <title>Draft Day | Season 2020 is Here</title>
       <link>/post/2020/draft-day-season-2020-is-here/</link>
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
@@ -29,17 +36,6 @@
       
       <guid>/post/it-s-football-dudes-trophy-room-2019/</guid>
       <description></description>
-    </item><item>
-      <title>Season 2019 Championship</title>
-      <link>/post/rank-week-16/</link>
-      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-16/</guid>
-      <description>
-
-
-&lt;p&gt;League Champion: &lt;em&gt;Indaiatuba Riders&lt;/em&gt;&lt;/p&gt;
-</description>
     </item>
   </channel>
 </rss>

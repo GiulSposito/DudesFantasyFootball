@@ -38,7 +38,7 @@ calcPlayersProjections <- function(.week_scrap, .scoring_rules) {
   players.proj <- projections_table(.week_scrap, .scoring_rules) 
   
   players.proj %>% 
-    filter(avg_type=="weighted") %>%
+    filter(avg_type=="average") %>%
     add_player_info() %>% 
     mutate(id=as.integer(id)) %>% 
     arrange(id) %>%
