@@ -12,7 +12,7 @@ ffa_players <- function(.authToken, .leagueId){
       "appKey"    = "internalemailuse",
       "authToken" = .authToken,
       "leagueId"  = .leagueId,
-      "count"     = 2000
+      "count"     = 3000
     ))
   
 }
@@ -47,7 +47,7 @@ ffa_players_stats <- function(.authToken, .leagueId, .season, .weeks){
       "authToken" = .authToken,
       "leagueId"  = .leagueId,
       "stats"     = stats_str,
-      "count"     = 2000
+      "count"     = 3000
     ))
   
 }
@@ -75,6 +75,17 @@ ffa_extractPlayersStats <- function(playersStatsResp){
           weekSeasonPts = cumsum(weekSeasonPts)) %>% 
         select(week, weekPts, weekSeasonPts)
     })) %>% 
+    mutate(across(c(playerId, nflTeamId, byeWeek), as.integer)) %>% 
+    return()
+  
+}
+
+# convert uma resposta em um dataframe
+ffa_extractPlayers <- function(playersResp){
+  
+  playersResp$content$games[[1]]$players %>% 
+    tibble(players=.) %>% 
+    unnest_wider(players) %>% 
     mutate(across(c(playerId, nflTeamId, byeWeek), as.integer)) %>% 
     return()
   
