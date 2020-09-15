@@ -9,7 +9,7 @@ library(yaml)
 week <- 1
 season <- 2020
 config <- read_yaml("./config/config.yml")
-prefix <- "posSNF"
+prefix <- "posMNF"
 destPath <- "static/reports/2020"
 sim.version <- 5
 
@@ -19,9 +19,16 @@ if(!checkFantasyAPI(config$authToken, config$leagueId, week)) stop("Unable to ac
 
 # TABELA DE PROJECAO ####
 
-# SCRAPPING AND PROJECTION ####
+# SCRAPPING FFA SITES ####
 source("./R/import/ffa_player_projection.R")
 scraps <- scrapPlayersPredictions(week, season, T)
+
+# SCRAPPING NFL FANTASY ###
+source("./R/import/scrap_nfl_fantasy_projections.R")
+nflScrap <- scrapNflFantasyProjection(config$authToken, config$leagueId, 2020, week)
+scraps <- addScrapTable(scraps, nflScrap)
+
+# PROJECT FANTASY POINTS
 proj_table  <- calcPlayersProjections(scraps, read_yaml("./config/score_settings.yml"))
 
 # PLAYERS AND MATCHUPS ####
