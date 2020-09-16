@@ -6,10 +6,10 @@ library(flexdashboard)
 library(yaml)
 
 # EXECUTION PARAMETERS ####
-week <- 1
+week <- 2
 season <- 2020
 config <- read_yaml("./config/config.yml")
-prefix <- "posMNF"
+prefix <- "preTNF"
 destPath <- "static/reports/2020"
 sim.version <- 5
 
@@ -45,7 +45,7 @@ teams_rosters  <- ffa_extractTeams(leagueMatchups)
 
 # carregando tabelas de "de para" de IDs de Jogadores
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
-player_ids <- player_ids %>%
+my_player_ids <- player_ids %>%
   mutate(
     id = as.integer(id), 
     nfl_id = as.integer(nfl_id)) %>%
@@ -96,7 +96,7 @@ injuryStatus <- c("Suspended","Injured Reserve","Not With Team")
 
 # pega as projecoes e cruza com player stats para ver status de injury
 players_projs <- proj_table %>% 
-  inner_join(player_ids, by="id") %>% # unifica os ids
+  inner_join(my_player_ids, by="id") %>% # unifica os ids
   inner_join(players_stats, by=c("nfl_id"="playerId")) %>% # adiciona info de status
   # colina duplicada vinda do Join
   select(-position.y) %>% 
@@ -120,7 +120,7 @@ players_projs <- proj_table %>%
 # salva estatisticas dos jogadores
 players_stats %>% 
   unnest(weekPts) %>% 
-  inner_join(player_ids, by=c("playerId"="nfl_id")) %>% 
+  inner_join(my_player_ids, by=c("playerId"="nfl_id")) %>% 
   mutate(nfl_id=playerId) %>%
   saveRDS("./data/players_points.rds")
 
@@ -148,7 +148,7 @@ ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml")
 
 # simulação das partidas
 source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
-sim <- simulateGames(week, season, ptsproj, matchups_games, teams_rosters, players_stats, player_ids, proj_table)
+sim <- simulateGames(week, season, ptsproj, matchups_games, teams_rosters, players_stats, my_player_ids, proj_table)
 
 # salva resultado
 saveRDS(sim, glue("./data/simulation_v{sim.version}_week{week}_{prefix}.rds"))
