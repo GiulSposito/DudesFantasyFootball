@@ -26,3 +26,6 @@ resources:
 
 - [Individual Players Projections](/reports/2020/ffa_players_projection_week2.html)
 
+## Simulation
+
+- [Matchups Simulations (pre-TNF)](/reports/2020/dudes_simulation_v5_week2_posWaivers.html)
