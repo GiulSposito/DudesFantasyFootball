@@ -92,9 +92,10 @@ ffa_extractTeams <- function(leagueMatchupsResp){
       .stat$week$`2020` %>%
         tibble(week=names(.), week.stats=.) %>%
         unnest_wider(week.stats) %>% 
-        mutate( week = as.integer(week), 
-                pts  = as.numeric(pts) )    
-    })) %>%
+        mutate( week = as.integer(week) ) %>% 
+        mutate( pts  = ifelse("pts" %in% names(.), as.numeric(pts), as.numeric(0)) ) %>% 
+        return()
+    })) %>% 
     # transforma as estatisticas da temporada em tibble
     mutate( season.stats = map(stats, function(.stat){
       .stat$season %>% tibble(season.stats=.) %>% 
