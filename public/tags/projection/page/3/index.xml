@@ -4,11 +4,22 @@
     <link>/tags/projection/</link>
     <description>Recent content in projection on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 13 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/projection/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 12] Players Projection and Matchups Simulation</title>
+      <link>/post/week12/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week12/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 11] Players Projection and Matchups Simulation</title>
       <link>/post/week11/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
@@ -30,13 +41,6 @@
 
 &lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
 </description>
-    </item><item>
-      <title>[Week 09] Players Projection and Matchups Simulation</title>
-      <link>/post/week09/</link>
-      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week09/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
