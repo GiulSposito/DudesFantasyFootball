@@ -28,4 +28,5 @@ resources:
 
 ## Simulation
 
+- [Matchups Simulations (pre-TNF)](/reports/2020/dudes_simulation_v5_week2_preTNF.html)
 - [Matchups Simulations (pos-Waivers)](/reports/2020/dudes_simulation_v5_week2_posWaivers.html)
