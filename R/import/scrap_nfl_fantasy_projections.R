@@ -128,7 +128,8 @@ addScrapTable <- function(.scrp_data, .scrp_table){
       .scrp_tb %>% 
         filter(position==pos) %>% 
         select(all_of(pos_col)) %>% 
-        bind_rows(.scrp_dt[[pos]])
+        bind_rows(.scrp_dt[[pos]]) %>% 
+        distinct()
     },
     .scrp_dt = .scrp_data, 
     .scrp_tb = .scrp_table) %>% 
