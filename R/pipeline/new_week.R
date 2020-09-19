@@ -9,7 +9,7 @@ library(yaml)
 week <- 2
 season <- 2020
 config <- read_yaml("./config/config.yml")
-prefix <- "preTNF"
+prefix <- "posTNF"
 destPath <- "static/reports/2020"
 sim.version <- 5
 
@@ -21,12 +21,13 @@ if(!checkFantasyAPI(config$authToken, config$leagueId, week)) stop("Unable to ac
 
 # SCRAPPING FFA SITES ####
 source("./R/import/ffa_player_projection.R")
-scraps <- scrapPlayersPredictions(week, season, T)
+webScraps <- scrapPlayersPredictions(week, season)
 
 # SCRAPPING NFL FANTASY ###
 source("./R/import/scrap_nfl_fantasy_projections.R")
 nflScrap <- scrapNflFantasyProjection(config$authToken, config$leagueId, 2020, week)
-scraps <- addScrapTable(scraps, nflScrap)
+scraps <- addScrapTable(webScraps, nflScrap)
+saveScraps(week, scraps)
 
 # PROJECT FANTASY POINTS
 proj_table  <- calcPlayersProjections(scraps, read_yaml("./config/score_settings.yml"))
@@ -144,7 +145,12 @@ rmarkdown::render(
 
 # calcula tabela de pontuacao para todos os jogadores usa na simulacao
 source("./R/simulation/players_projections.R")
-ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml"))
+site_ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml"))
+pts_errors <- projectErrorPoints(players_stats, site_ptsproj, my_player_ids, week)
+
+# adiciona os erros de projeções passadas
+ptsproj <- site_ptsproj %>% 
+  bind_rows(pts_errors)
 
 # simulação das partidas
 source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
