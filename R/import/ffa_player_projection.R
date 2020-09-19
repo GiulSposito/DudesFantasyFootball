@@ -1,7 +1,7 @@
 library(ffanalytics)
 library(glue)
 
-scrapPlayersPredictions <- function(.week, .season, .saveToFile=T) {
+scrapPlayersPredictions <- function(.week, .season) {
   # # faz o scraping de projeção dos sites
   
   # quais sites (default)
@@ -16,21 +16,21 @@ scrapPlayersPredictions <- function(.week, .season, .saveToFile=T) {
     week = .week
   )
   
-  # salva arquivos temporariamente
-  if(.saveToFile){
-    scrap %>% saveRDS(glue("./data/week{.week}_scrap.rds"))
-    
-    # adiciona scrap da semana no banco de projecoes
-    if(file.exists("./data/weeklies_scraps.rds")) {
-      wscraps <- readRDS("./data/weeklies_scraps.rds")
-    } else {
-      wscraps <- list()
-    }
-    wscraps[[.week]] <- scrap
-    saveRDS(wscraps,"./data/weeklies_scraps.rds")
-  }
-  
   return(scrap)
+}
+
+saveScraps <- function(.week, .scrps){
+# salva arquivos temporariamente
+  .scrps %>% saveRDS(glue("./data/week{.week}_scrap.rds"))
+  
+  # adiciona scrap da semana no banco de projecoes
+  if(file.exists("./data/weeklies_scraps.rds")) {
+    wscraps <- readRDS("./data/weeklies_scraps.rds")
+  } else {
+    wscraps <- list()
+  }
+  wscraps[[.week]] <- .scrps
+  saveRDS(wscraps,"./data/weeklies_scraps.rds")
 }
 
 # faz a tabela de projeção de resultados
