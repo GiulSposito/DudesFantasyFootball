@@ -1,6 +1,6 @@
 library(tidyverse)
 
-simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_rosters, .players_stats, .players_id, .proj_table) {
+simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_rosters, .players_stats, .my_players_id, .proj_table) {
   
   
   # env reference for development and debugign
@@ -9,8 +9,9 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
   # .ptsproj  <- ptsproj
   # .matchup_games <- matchups_games
   # .teams_rosters    <- teams_rosters
-  # .plstats  <- players_stats
-  # .players_id    <- player_ids
+  # .players_stats  <- players_stats
+  # .my_players_id    <- my_player_ids
+  # .proj_table <- proj_table
 
   # pega as entendidades, dá uma simplificada, faz unnest e filtra semana
   
@@ -33,18 +34,26 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     select(playerId, byeWeek, isUndroppable, injuryGameStatus, week, weekPts, seasonPts) %>% 
     filter(week==.week)
   
+  # incorporando pontos projetados como pontos possíveis na simulacao
+  proj_points <- .proj_table %>% 
+    select(id, floor, ceiling) %>% 
+    pivot_longer(cols = c(-id),values_to = "pts.proj", names_to="data_src") %>% 
+    mutate(week=.week, season=.season, pos=NA) %>% 
+    select(week, pos, data_src, id, pts.proj, season)
     
   # PROJEÇÃO: estrutura de projecao dos jogadores para facilitar a simulacao
-  player_proj_points <- .ptsproj %>% 
-    inner_join(select(.players_id, id, playerId=nfl_id), by="id") %>% 
+  player_proj_points <- .ptsproj %>%
+    bind_rows(proj_points) %>% 
+    inner_join(select(.my_players_id, id, playerId=nfl_id), by="id") %>%
     filter(week==.week, season==.season) %>% 
     select(id, playerId, pts.proj) %>% 
-    group_by(id, playerId) %>% 
-    nest() %>% 
-    ungroup() %>% 
-    mutate(pts.proj = map(data, ~.x$pts.proj )) %>% 
-    select(-data) %>% 
+    group_by(id, playerId) %>%
+    nest() %>%
+    ungroup() %>%
+    mutate(pts.proj = map(data, ~.x$pts.proj )) %>%
+    select(-data) %>%
     inner_join(stats, by = "playerId")
+
   
   # tamanho da simulacao
   SIMULATION_SIZE = 1000
@@ -132,7 +141,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     teams    = .teams_rosters,
     proj_table = .proj_table,
     players_stats  = .players_stats,
-    players_id     = .players_id,
+    players_id     = .my_players_id,
     players_sim    = players_sim,
     teams_sim      = teams_sim,
     matchup_sim    = matchup_sim
