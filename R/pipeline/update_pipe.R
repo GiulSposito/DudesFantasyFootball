@@ -4,13 +4,18 @@ library(glue)
 library(ffanalytics)
 library(flexdashboard)
 library(yaml)
+library(tidyverse)
+library(lubridate)
+library(glue)
+library(ffanalytics)
+library(flexdashboard)
+library(yaml)
 
 # EXECUTION PARAMETERS ####
-week <- 1
+week <- 2
 season <- 2020
 config <- read_yaml("./config/config.yml")
-fromPrefix <- "posSNF"
-prefix <- "preSNF"
+prefix <- "posSNF"
 destPath <- "static/reports/2020"
 sim.version <- 5
 
@@ -19,9 +24,9 @@ source("./R/import/checkFantasyAPI.R")
 if(!checkFantasyAPI(config$authToken, config$leagueId, week)) stop("Unable to access Fantasy API!")
 
 # TABELA DE PROJECAO ####
-
-# SCRAPPING AND PROJECTION ####
-proj_table  <- readRDS(glue("./data/simulation_v5_week{week}_{fromPrefix}.rds"))$proj_table
+source("./R/import/ffa_player_projection.R")
+scraps <- readRDS(glue("./data/week{week}_scrap.rds"))
+proj_table  <- calcPlayersProjections(scraps, read_yaml("./config/score_settings.yml"))
 
 # PLAYERS AND MATCHUPS ####
 # PLAYERS
@@ -37,7 +42,7 @@ teams_rosters  <- ffa_extractTeams(leagueMatchups)
 
 # carregando tabelas de "de para" de IDs de Jogadores
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
-player_ids <- player_ids %>%
+my_player_ids <- player_ids %>%
   mutate(
     id = as.integer(id), 
     nfl_id = as.integer(nfl_id)) %>%
@@ -50,11 +55,16 @@ player_ids <- player_ids %>%
 
 # calcula tabela de pontuacao para todos os jogadores usa na simulacao
 source("./R/simulation/players_projections.R")
-ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml"))
+site_ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml"))
+pts_errors <- projectErrorPoints(players_stats, site_ptsproj, my_player_ids, week)
+
+# adiciona os erros de projeções passadas
+ptsproj <- site_ptsproj %>% 
+  bind_rows(pts_errors)
 
 # simulação das partidas
 source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
-sim <- simulateGames(week, season, ptsproj, matchups_games, teams_rosters, players_stats, player_ids, proj_table)
+sim <- simulateGames(week, season, ptsproj, matchups_games, teams_rosters, players_stats, my_player_ids, proj_table)
 
 # salva resultado
 saveRDS(sim, glue("./data/simulation_v{sim.version}_week{week}_{prefix}.rds"))
@@ -64,5 +74,7 @@ rmarkdown::render(
   input = glue("./R/reports/dudes_simulation_v{sim.version}.Rmd"),
   output_file = glue("../../{destPath}/dudes_simulation_v{sim.version}_week{week}_{prefix}.html"),
   output_format = "flex_dashboard",
-    params = list(week=week, prefix=prefix)
-  )
+  params = list(week=week, prefix=prefix)
+)
+
+
