@@ -6,7 +6,7 @@ output:
     vertical_layout: fill
 params:
   week: 2
-  prefix: "posTNF"
+  prefix: "preSNF"
 ---
 
 ```{r setup, include=FALSE}
@@ -196,8 +196,8 @@ games_summary %>%
   geom_density(aes(homeTeam.ptsdiff.org), fill="grey", color=NA, alpha=.4) +
   geom_density(aes(homeTeam.ptsdiff), alpha=.6) +
   geom_vline(aes(xintercept=0), linetype=1, color="black", alpha=.5) +
-  geom_vline(aes(xintercept=current.score.diff),
-             linetype=2, color="red") +
+  # geom_vline(aes(xintercept=current.score.diff),
+  #            linetype=2, color="red") +
   facet_grid(rows=vars(game), switch = "x", scales="free") +
   theme_minimal() +
   ggtitle("Matchups Score Difference") +
@@ -281,7 +281,7 @@ plotRoster <- function(.teamId, .rosterData) {
 
 ```
 
-```{r rosterComparationMenu}
+```{r rosterComparationMenu, results="asis"}
 
 for(i in 1:nrow(games_summary)){
   matchup <- games_summary[i,]
@@ -301,71 +301,3 @@ for(i in 1:nrow(games_summary)){
 }
 
 ```
-
-
-Game Center {data-navmenu="Overview"}
-=======================
-
-
-```{r gamecenter}
-team_prob <- sim_summary %>%
-  select(teamId, teamName=name, winProb, imageUrl)
-
-team_rem <- sim$teams %>% 
-  select(teamId, rosters, season.stats) %>% 
-  unnest(c(rosters, season.stats)) %>% 
-  filter(rosterSlotId < 20) %>% 
-  group_by(teamId, record) %>% 
-  summarise(teamRemaining=sum(isEditable), .groups="keep") %>% 
-  ungroup() %>% 
-  mutate(record = str_remove(record, "-0")) %>% 
-  select(teamId, record, teamRemaining) %>% 
-  inner_join(team_prob, by="teamId")
-
-game_center <- games_summary %>% 
-  select(game.nickname, away.nickname, away.projPts, away.pts, away.teamId, away.name,
-         home.pts, home.projPts, home.nickname, home.teamId, home.name) %>% 
-  left_join(set_names(team_rem, paste0("home.",names(team_rem))), by = "home.teamId") %>% 
-  left_join(set_names(team_rem, paste0("away.",names(team_rem))), by = "away.teamId")
-
-plotGameScore <- function(i, .game_center){
-  .game_center[i,] %>% 
-    mutate(game.title=paste0("[", away.record,"] ", away.name, " @ ", home.name, " [", home.record, "]")) %>% 
-    ggplot(aes(x=0)) +
-    # projecao
-    geom_col(aes(y=home.projPts), fill="grey", width=0.07) +
-    geom_point(aes(y=home.projPts), color="grey", size=5) +
-    geom_text(aes(y=home.projPts, label=round(home.projPts, 1)), color="black", vjust=.3, nudge_y = 16, fontface="bold") +
-    geom_col(aes(y=-away.projPts), fill="grey", width=0.07) +
-    geom_point(aes(y=-away.projPts), color="grey", size=5) +
-    geom_text(aes(y=-away.projPts, label=round(away.projPts, 1)), color="black", vjust=.3, nudge_y = -16, fontface="bold") +
-    # pontuacao
-    geom_col(aes(y=home.pts), fill="red", width=0.07) +
-    geom_point(aes(y=home.pts), color="red", size=5) +
-    geom_text(aes(y=home.pts, label=round(home.pts, 1)), color="red", vjust=-1, nudge_y = 14, fontface="bold") +
-    geom_text(aes(y=home.pts, label=paste0("(",9-home.teamRemaining,"/9)")), color="red", vjust=2, nudge_y = 8, size=3 ) +
-    geom_col(aes(y=-away.pts), fill="blue", width=0.07) +
-    geom_point(aes(y=-away.pts), color="blue", size=5) +
-    geom_text(aes(y=-away.pts, label=round(away.pts, 1)), color="blue", vjust=-1, nudge_y = -14, fontface="bold") +
-    geom_text(aes(y=-away.pts, label=paste0("(",9-away.teamRemaining,"/9)")), color="blue", vjust=2, nudge_y = -8, size=3 ) +
-    # decorators
-    geom_text(aes(y=0, label=game.title), vjust=-3, fontface="bold") +
-    xlim(-1,1) +
-    # facet
-    coord_flip() +
-    theme_void()
-
-}
-```
-
-
-```{r plotGameCenters, results='asis'}
-
-for (i in 1:nrow(game_center)){
-  print(plotGameScore(i, game_center))
-  cat("\n")
-}
-
-```
-
-

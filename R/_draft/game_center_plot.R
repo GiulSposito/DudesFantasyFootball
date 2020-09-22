@@ -18,10 +18,9 @@ game_center <- games_summary %>%
   left_join(set_names(team_rem, paste0("home.",names(team_rem))), by = "home.teamId") %>% 
   left_join(set_names(team_rem, paste0("away.",names(team_rem))), by = "away.teamId")
 
-plotGameScore <- function(i, .game_center){
-  .game_center[i,] %>% 
+game_center %>% 
     mutate(game.title=paste0("[", away.record,"] ", away.name, " @ ", home.name, " [", home.record, "]")) %>% 
-    ggplot(aes(x=0)) +
+    ggplot(aes(x=game.nickname)) +
     # projecao
     geom_col(aes(y=home.projPts), fill="grey", width=0.07) +
     geom_point(aes(y=home.projPts), color="grey", size=5) +
@@ -40,9 +39,6 @@ plotGameScore <- function(i, .game_center){
     geom_text(aes(y=-away.pts, label=paste0("(",9-away.teamRemaining,"/9)")), color="blue", vjust=2, nudge_y = -8, size=3 ) +
     # decorators
     geom_text(aes(y=0, label=game.title), vjust=-3, fontface="bold") +
-    xlim(-1,1) +
     # facet
     coord_flip() +
     theme_void()
-
-}
