@@ -9,6 +9,17 @@
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 15] Semifinals</title>
+      <link>/post/rank-week-15/</link>
+      <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-15/</guid>
+      <description>
+
+
+&lt;p&gt;Fantasy Super Bowl: &lt;em&gt;Sorocaba Steelers vs Indaiatuba Riders&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 15] Simulation Evaluation</title>
       <link>/post/week-15-simulation-evaluation/</link>
       <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
@@ -30,17 +41,6 @@
 
 
 &lt;p&gt;&lt;em&gt;Last Update: Pre MNF&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 14] The Draft Wizards</title>
-      <link>/post/week-14-draft-wizards/</link>
-      <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-14-draft-wizards/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;strong&gt;The winners and the losers in draft.&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>

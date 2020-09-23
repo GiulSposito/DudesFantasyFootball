@@ -48,6 +48,21 @@
   </url>
   
   <url>
+    <loc>/post/2020/week02_eval/</loc>
+    <lastmod>2020-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/evaluation/</loc>
+    <lastmod>2020-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/evaluation/</loc>
+    <lastmod>2020-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020/week02/</loc>
     <lastmod>2020-09-16T00:00:00+00:00</lastmod>
   </url>
@@ -119,16 +134,6 @@
   
   <url>
     <loc>/post/week-16-simulation-evaluation/</loc>
-    <lastmod>2019-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/evaluation/</loc>
-    <lastmod>2019-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/evaluation/</loc>
     <lastmod>2019-12-24T00:00:00+00:00</lastmod>
   </url>
   

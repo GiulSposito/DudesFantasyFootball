@@ -9,6 +9,13 @@
         <atom:link href="/categories/projection/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 04] Players Projection and Matchups Simulation</title>
+      <link>/post/week04/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week04/</guid>
+      <description></description>
+    </item><item>
       <title>[Week 03] Players Projection and Matchups Simulation</title>
       <link>/post/week03/</link>
       <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
@@ -21,13 +28,6 @@
       <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/week02/</guid>
-      <description></description>
-    </item><item>
-      <title>[Week 01] Players Projection and Matchups Simulation</title>
-      <link>/post/week1-players-projection-and-matchups-simulation/</link>
-      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week1-players-projection-and-matchups-simulation/</guid>
       <description></description>
     </item>
   </channel>

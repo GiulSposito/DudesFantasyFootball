@@ -9,6 +9,13 @@
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>championship</title>
+      <link>/tags/championship/</link>
+      <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/championship/</guid>
+      <description></description>
+    </item><item>
       <title>playoffs</title>
       <link>/tags/playoffs/</link>
       <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
@@ -21,13 +28,6 @@
       <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/points/</guid>
-      <description></description>
-    </item><item>
-      <title>wins and losses</title>
-      <link>/tags/wins-and-losses/</link>
-      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/wins-and-losses/</guid>
       <description></description>
     </item>
   </channel>
