@@ -21,7 +21,7 @@ resources:
   src: zuerlein_atl_at_dal.jpg
 params:
   week: 3
-  prefix: "preWaiver"
+  prefix: "posWaiver"
 ---
 
 <!--more-->
@@ -130,4 +130,5 @@ game_center %>%
 
 ## Simulation
 
+- [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week3_posWaiver.html)
 - [Matchup Simulations Pre-Waiver](/reports/2020/dudes_simulation_v5_week3_preWaiver.html)
