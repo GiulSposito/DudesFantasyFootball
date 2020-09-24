@@ -9,18 +9,6 @@
         <atom:link href="/tags/playoffs/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 13] League Standings</title>
-      <link>/post/rank-week-13/</link>
-      <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-13/</guid>
-      <description>
-
-
-&lt;p&gt;Leader: &lt;em&gt;Campinas Giants&lt;/em&gt; &lt;br&gt;
-Playoffs contenders: &lt;em&gt;Paulinia Robots, Indaiatuba Riders and Amparo Bikers.&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
       <title>[Week 12] League Standings</title>
       <link>/post/rank-week-12/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
@@ -38,6 +26,20 @@ Playoffs contenders: &lt;em&gt;Indaiatuba Riders, Sorocaba Steelers and Paulinia
       <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/rank-week-11/</guid>
+      <description></description>
+    </item><item>
+      <title>[Week 10] League Standings</title>
+      <link>/post/rank-week-10/</link>
+      <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-10/</guid>
+      <description></description>
+    </item><item>
+      <title>[Week 09] League Standings</title>
+      <link>/post/rank-week-9/</link>
+      <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-9/</guid>
       <description></description>
     </item>
   </channel>

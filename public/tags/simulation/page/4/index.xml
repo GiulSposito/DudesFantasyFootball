@@ -9,39 +9,50 @@
         <atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 14] Simulation Evaluation</title>
-      <link>/post/week-14-simulation-evaluation/</link>
-      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      <title>[Week 13] Players Projection and Matchups Simulation</title>
+      <link>/post/week13/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-14-simulation-evaluation/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 14] Players Projection and Matchups Simulation</title>
-      <link>/post/week14/</link>
-      <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week14/</guid>
+      <guid>/post/week13/</guid>
       <description>
 
 
 &lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
 </description>
     </item><item>
-      <title>[Week 13] Simulation Evaluation</title>
-      <link>/post/week-13-simulation-evaluation/</link>
-      <pubDate>Tue, 03 Dec 2019 00:00:00 +0000</pubDate>
+      <title>[Week 12] Simulation Evaluation</title>
+      <link>/post/week-12-simulation-evaluation/</link>
+      <pubDate>Tue, 26 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-13-simulation-evaluation/</guid>
+      <guid>/post/week-12-simulation-evaluation/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 80%&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 40%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 12] Players Projection and Matchups Simulation</title>
+      <link>/post/week12/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week12/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 11] Simulation Evaluation</title>
+      <link>/post/week-11-simulation-evaluation/</link>
+      <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week-11-simulation-evaluation/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>

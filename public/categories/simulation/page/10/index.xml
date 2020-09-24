@@ -9,30 +9,12 @@
         <atom:link href="/categories/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 05] Simulation Evaluation</title>
-      <link>/post/week-5-simulation-evaluation/</link>
-      <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
+      <title>[Week 01] Players Projection and Matchups Simulation</title>
+      <link>/post/week1-players-projection-and-matchups-simulation/</link>
+      <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-5-simulation-evaluation/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 80%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 05] Players Projection and Matchups Simulation</title>
-      <link>/post/week05/</link>
-      <pubDate>Thu, 03 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week05/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
-    </item><item>
-      <title>[Week 04] Simulation Evaluation</title>
-      <link>/post/week-4-simulation-evaluation/</link>
-      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-4-simulation-evaluation/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;</description>
+      <guid>/post/week1-players-projection-and-matchups-simulation/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>

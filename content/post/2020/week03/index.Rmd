@@ -10,7 +10,6 @@ tags:
   - montecarlo
   - projection
   - simulation
-description: ''
 dropCap: no
 displayInMenu: no
 displayInList: yes
@@ -21,8 +20,10 @@ resources:
   src: zuerlein_atl_at_dal.jpg
 params:
   week: 3
-  prefix: "posWaiver"
+  prefix: "preTNF"
 ---
+
+Last Update: `r lubridate::now()`
 
 <!--more-->
 
@@ -130,5 +131,6 @@ game_center %>%
 
 ## Simulation
 
+- [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week3_preTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week3_posWaiver.html)
 - [Matchup Simulations Pre-Waiver](/reports/2020/dudes_simulation_v5_week3_preWaiver.html)
