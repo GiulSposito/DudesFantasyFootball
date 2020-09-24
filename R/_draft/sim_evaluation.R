@@ -2,7 +2,7 @@ library(tidyverse)
 library(glue)
 
 # PARAMETERS
-.week <- 1
+.week <- 2
 .version <- 5
 .prefix <- "posMNF"
 
@@ -39,7 +39,7 @@ sim$matchups %>%
   mutate(game.nickname=glue("{away.nickname} @ {home.nickname}")) %>%
   mutate( predicion = if_else(away.pred.pts>home.pred.pts, away.nickname, home.nickname),
           outcome   = if_else(away.win=="win", away.nickname, home.nickname),
-          win.prob  = if_else(away.win=="win", paste0(100*round(away.winProb.org,1), "%"), paste0(100*round(home.winProb.org,1),"%"))) %>% 
+          win.prob  = if_else(away.pred.pts>home.pred.pts, paste0(round(100*away.winProb.org,1), "%"), paste0(round(100*home.winProb.org,1),"%"))) %>% 
   select( game.nickname, predicion, win.prob, outcome )
   
 playerProjs <- sim$players_id %>% 
