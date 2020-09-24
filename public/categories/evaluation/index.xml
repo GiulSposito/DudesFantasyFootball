@@ -9,6 +9,13 @@
         <atom:link href="/categories/evaluation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 02] Simulation Evaluation</title>
+      <link>/post/2020/week02_eval/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week02_eval/</guid>
+      <description></description>
+    </item><item>
       <title>[Week 16] Simulation Evaluation</title>
       <link>/post/week-16-simulation-evaluation/</link>
       <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
@@ -31,18 +38,6 @@
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 25%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 14] Simulation Evaluation</title>
-      <link>/post/week-14-simulation-evaluation/</link>
-      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-14-simulation-evaluation/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>
