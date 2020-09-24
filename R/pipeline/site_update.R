@@ -8,6 +8,7 @@ blogdown::serve_site()
 cd /c/Projects/DudesFantasyFootball/
 git add ./content/*
 git add ./static/*
+git add ./resources/*
 git add ./public/*
 git commit -m "site update & publishing"
 git push
