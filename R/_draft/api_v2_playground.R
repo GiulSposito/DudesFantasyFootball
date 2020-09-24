@@ -1,12 +1,26 @@
 library(yaml)
 library(tidyverse)
 source("./R/api/ffa_league.R")
-source("./R/api/ffa_players.R")
 
+.week  <- 2
 config <- yaml.load_file("./config/config.yml")
 
+teams <- ffa_league_teams(config$authToken, config$leagueId) %>% 
+  ffa_extractTeams()
 
-##### MATCHUPS, TEAMS AND ROSTERS
-leagueMatchups <- ffa_league_matchups(.authToken = config$authToken, .leagueId = config$leagueId, .week=1)
+recapResps <- teams$teamId %>% 
+  map(~ffa_league_matchups_recap(config$authToken, config$leagueId, .week=.week, .teamId = .x))
 
-leagueMatchups$content$games[[1]]$leagues[[1]]$teams[[1]]
+recaps <- recapResps %>% 
+  map_df(ffa_extractRecap) %>% 
+  distinct()
+
+recaps %>% 
+  split(1:nrow(.)) %>% 
+  map(function(.recap){
+    cat(paste0("### ", .recap$title), "\n\n")
+    .recap$paragraphs %>% map(function(.par){
+      .par$text %>% paste0("\n\n") %>% cat()
+    })
+  })
+
