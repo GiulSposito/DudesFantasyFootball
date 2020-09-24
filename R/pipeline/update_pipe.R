@@ -12,7 +12,7 @@ library(flexdashboard)
 library(yaml)
 
 # EXECUTION PARAMETERS ####
-week <- 2
+week <- 1
 season <- 2020
 config <- read_yaml("./config/config.yml")
 prefix <- "posMNF"
