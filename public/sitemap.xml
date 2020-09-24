@@ -53,6 +53,11 @@
   </url>
   
   <url>
+    <loc>/post/2020/week02_recap/</loc>
+    <lastmod>2020-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/evaluation/</loc>
     <lastmod>2020-09-22T00:00:00+00:00</lastmod>
   </url>
@@ -63,8 +68,33 @@
   </url>
   
   <url>
+    <loc>/tags/rank/</loc>
+    <lastmod>2020-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/ranking/</loc>
+    <lastmod>2020-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/recap/</loc>
+    <lastmod>2020-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/recap/</loc>
+    <lastmod>2020-09-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020/week02/</loc>
     <lastmod>2020-09-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020/week01_eval/</loc>
+    <lastmod>2020-09-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -88,17 +118,7 @@
   </url>
   
   <url>
-    <loc>/tags/rank/</loc>
-    <lastmod>2020-09-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/championship/</loc>
-    <lastmod>2019-12-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/ranking/</loc>
     <lastmod>2019-12-31T00:00:00+00:00</lastmod>
   </url>
   

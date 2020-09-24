@@ -9,6 +9,13 @@
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>points</title>
+      <link>/tags/points/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/points/</guid>
+      <description></description>
+    </item><item>
       <title>wins and losses</title>
       <link>/tags/wins-and-losses/</link>
       <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
@@ -21,13 +28,6 @@
       <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/about/</guid>
-      <description></description>
-    </item><item>
-      <title>datascience</title>
-      <link>/tags/datascience/</link>
-      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/datascience/</guid>
       <description></description>
     </item>
   </channel>

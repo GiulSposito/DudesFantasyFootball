@@ -9,6 +9,24 @@
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 12] Players Projection and Matchups Simulation</title>
+      <link>/post/week12/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week12/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 11] League Standings</title>
+      <link>/post/rank-week-11/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-11/</guid>
+      <description></description>
+    </item><item>
       <title>[Week 11] Simulation Evaluation</title>
       <link>/post/week-11-simulation-evaluation/</link>
       <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
@@ -20,24 +38,6 @@
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
 </description>
-    </item><item>
-      <title>[Week 11] Players Projection and Matchups Simulation</title>
-      <link>/post/week11/</link>
-      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week11/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 10] League Standings</title>
-      <link>/post/rank-week-10/</link>
-      <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-10/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
