@@ -1,3 +1,31 @@
+library(tidyverse)
+library(glue)
+
+sim <- readRDS("./data/simulation_v5_week2_posTNF.rds")
+
+# game summary in long form
+sim_summary <- bind_rows(
+  select(sim$matchup_sim, teamId=awayTeam.teamId, winProb=awayTeam.winProb, sim.pts=awayTeam.simulation),
+  select(sim$matchup_sim, teamId=homeTeam.teamId, winProb=homeTeam.winProb, sim.pts=homeTeam.simulation)
+) %>% inner_join(select(sim$teams, -rosters), by="teamId")
+
+# obtem nome e pontuacao dos times
+team_points <- sim$teams %>% 
+  unnest(week.stats) %>% 
+  filter(week==.week) %>% 
+  select(teamId, name, pts, imageUrl)
+
+games_summary <- sim$matchup_sim %>% 
+  inner_join(set_names(team_points, paste0("away.",names(team_points))), by=c("awayTeam.teamId"="away.teamId")) %>% 
+  inner_join(set_names(team_points, paste0("home.",names(team_points))), by=c("homeTeam.teamId"="home.teamId")) %>% 
+  mutate(game=paste0(away.name, " @ ", home.name)) %>%
+  select(game, homeTeam.ptsdiff, homeTeam.ptsdiff.org, home.pts, away.pts,
+         home.teamId=homeTeam.teamId, away.teamId=awayTeam.teamId,
+         home.name,away.name, home.projPts=homeTeam.totalPts, away.projPts = awayTeam.totalPts) %>% 
+  mutate( away.nickname = gsub("([a-zA-Z\']+ )?", "", away.name),
+          home.nickname = gsub("([a-zA-Z\']+ )?", "", home.name)) %>% 
+  mutate( game.nickname = paste0(away.nickname, " @ ", home.nickname))
+
 team_prob <- sim_summary %>%
   select(teamId, teamName=name, winProb, imageUrl)
 
@@ -20,25 +48,34 @@ game_center <- games_summary %>%
 
 game_center %>% 
     mutate(game.title=paste0("[", away.record,"] ", away.name, " @ ", home.name, " [", home.record, "]")) %>% 
-    ggplot(aes(x=game.nickname)) +
+    ggplot(aes(x=0)) +
     # projecao
     geom_col(aes(y=home.projPts), fill="grey", width=0.07) +
     geom_point(aes(y=home.projPts), color="grey", size=5) +
-    geom_text(aes(y=home.projPts, label=round(home.projPts, 1)), color="black", vjust=.3, nudge_y = 16, fontface="bold") +
+    geom_text(aes(y=home.projPts, label=round(home.projPts, 1)), color="black", vjust=.4, nudge_y = 25, fontface="bold") +
     geom_col(aes(y=-away.projPts), fill="grey", width=0.07) +
     geom_point(aes(y=-away.projPts), color="grey", size=5) +
-    geom_text(aes(y=-away.projPts, label=round(away.projPts, 1)), color="black", vjust=.3, nudge_y = -16, fontface="bold") +
+    geom_text(aes(y=-away.projPts, label=round(away.projPts, 1)), color="black", vjust=.4, nudge_y = -25, fontface="bold") +
     # pontuacao
     geom_col(aes(y=home.pts), fill="red", width=0.07) +
     geom_point(aes(y=home.pts), color="red", size=5) +
-    geom_text(aes(y=home.pts, label=round(home.pts, 1)), color="red", vjust=-1, nudge_y = 14, fontface="bold") +
-    geom_text(aes(y=home.pts, label=paste0("(",9-home.teamRemaining,"/9)")), color="red", vjust=2, nudge_y = 8, size=3 ) +
+    geom_text(aes(y=home.pts, label=round(home.pts, 1)), color="red", vjust=-.6, nudge_y = 14, fontface="bold") +
+    geom_text(aes(y=home.pts, label=paste0("(",9-home.teamRemaining,"/9)")), color="red", vjust=2, nudge_y = 10, size=3 ) +
     geom_col(aes(y=-away.pts), fill="blue", width=0.07) +
     geom_point(aes(y=-away.pts), color="blue", size=5) +
-    geom_text(aes(y=-away.pts, label=round(away.pts, 1)), color="blue", vjust=-1, nudge_y = -14, fontface="bold") +
-    geom_text(aes(y=-away.pts, label=paste0("(",9-away.teamRemaining,"/9)")), color="blue", vjust=2, nudge_y = -8, size=3 ) +
+    geom_text(aes(y=-away.pts, label=round(away.pts, 1)), color="blue", vjust=-.6, nudge_y = -14, fontface="bold") +
+    geom_text(aes(y=-away.pts, label=paste0("(",9-away.teamRemaining,"/9)")), color="blue", vjust=2, nudge_y = -10, size=3 ) +
     # decorators
     geom_text(aes(y=0, label=game.title), vjust=-3, fontface="bold") +
     # facet
     coord_flip() +
-    theme_void()
+    facet_wrap(~game.nickname, ncol = 1) +
+    labs(x="", title=glue("Last Update: XXX - XXXX"),
+         subtitle = "") +
+    xlim(-.5,.5) +
+    ylim(-1.5*max(game_center$away.projPts), 1.5*max(game_center$home.projPts)) +
+    theme_void() +
+    theme( strip.text = element_blank(), 
+           plot.margin = unit(c(5,5,5,5),"pt"),
+           plot.title = element_text(hjust = .5, size=10),
+           plot.subtitle = element_text(hjust = .5))
