@@ -42,7 +42,7 @@ players_stats <- ffa_players_stats(config$authToken, config$leagueId, season, 1:
 source("./R/api/ffa_league.R")
 leagueMatchups <- ffa_league_matchups(config$authToken, config$leagueId, week)
 matchups_games <- ffa_extractMatchups(leagueMatchups)
-teams_rosters  <- ffa_extractTeams(leagueMatchups)   
+teams_rosters  <- ffa_extractTeamsFromMatchups(leagueMatchups)   
 
 # carregando tabelas de "de para" de IDs de Jogadores
 load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!

@@ -27,7 +27,7 @@ projs <- proj_df %>%
 source("./R/api/ffa_league.R")
 leagueMatchups <- ffa_league_matchups(config$authToken, config$leagueId, 1)
 matchups_games <- ffa_extractMatchups(leagueMatchups)
-teams_rosters  <- ffa_extractTeams(leagueMatchups)   
+teams_rosters  <- ffa_extractTeamsFromMatchups(leagueMatchups)   
 
 drafted_season_proj <- teams_rosters %>% 
   select(teamId, name, rosters) %>% 
