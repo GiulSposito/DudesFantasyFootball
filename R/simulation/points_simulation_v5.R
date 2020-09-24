@@ -119,14 +119,18 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     mutate( 
       # verifica pontuacao do home é maior que o visitante para saber se o home ganhou
       homeTeam.win = map2(awayTeam.simulation, homeTeam.simulation, function(.sat, .sht) .sht>.sat), 
+      homeTeam.win.org = map2(awayTeam.simulation.org, homeTeam.simulation.org, function(.sat, .sht) .sht>.sat), 
       # se home ganhou visitante perdeu
       awayTeam.win = map(homeTeam.win, function(.wht) !.wht ), 
+      awayTeam.win.org = map(homeTeam.win.org, function(.wht) !.wht ), 
       # diferenca entre pontos (na direcao do home)
       homeTeam.ptsdiff = map2(awayTeam.simulation, homeTeam.simulation, function(.sat, .sht) .sht-.sat),
       homeTeam.ptsdiff.org = map2(awayTeam.simulation.org, homeTeam.simulation.org, function(.sat, .sht) .sht-.sat),
       # probabilidade de ganhar (media das vitorias)
       homeTeam.winProb = map_dbl(homeTeam.win, mean), 
       awayTeam.winProb = map_dbl(awayTeam.win, mean),
+      homeTeam.winProb.org = map_dbl(homeTeam.win.org, mean), 
+      awayTeam.winProb.org = map_dbl(awayTeam.win.org, mean),
       # pontos projetado (mediana da simulacao)
       homeTeam.totalPts = map_dbl(homeTeam.simulation, median),
       awayTeam.totalPts = map_dbl(awayTeam.simulation, median)
