@@ -69,8 +69,55 @@ ffa_league_team_roster <- function(.authToken, .leagueId, .teamId, .week){
   
 }
 
+# return the user id, leagues and teams of a 'authToken'
+ffa_league_matchups_recap <- function(.authToken, .leagueId, .week,.teamId){
+  
+  players <- ffa_api(
+    .path = "/v2/league/team/matchuprecap",
+    .query = list(
+      "appKey"    = "internalemailuse",
+      "authToken" = .authToken,
+      "leagueId"  = .leagueId,
+      "week"      = .week,
+      "teamId"    = .teamId
+    ))
+  
+}
+
+ffa_extractRecap <- function(recapResp){
+  tibble(
+    team   = c("away","home"),
+    teamId = recapResp$content$teams$id,
+    name   = recapResp$content$teams$name,
+    coachPoints = recapResp$content$teams$coach_points
+  ) %>% 
+    pivot_wider(names_from="team", values_from=c(teamId, name, coachPoints), names_sep=".") %>% 
+    mutate(
+      title = recapResp$content$title,
+      week  = recapResp$content$week_num,
+      paragraphs  = list(tibble(recapResp$content$paragraphs)), 
+      leagueHighligths = list(tibble(recapResp$content$league_notes))
+    ) %>% 
+    return()
+}
+
 # extrai o time e o roster
-ffa_extractTeams <- function(leagueMatchupsResp){
+ffa_extractTeams <- function(teamsResp){
+  
+  # extract teams
+  teamsResp$content$games[[1]]$leagues[[1]]$teams %>% 
+    #transforma a lista de times em tibble
+    tibble(team=.) %>% 
+    unnest_wider(team) %>% 
+    # corrige tipos inteiros
+    mutate(across(c(teamId, ownerUserId), as.integer)) %>% 
+    return()
+}
+
+
+
+# extrai o time e o roster
+ffa_extractTeamsFromMatchups <- function(leagueMatchupsResp){
   
   # extract teams and rosters
   leagueMatchupsResp$content$games[[1]]$leagues[[1]]$teams %>% 
