@@ -131,6 +131,7 @@ game_center %>%
 
 ## Simulation
 
+- [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week3_posTNF.html)
 - [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week3_preTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week3_posWaiver.html)
 - [Matchup Simulations Pre-Waiver](/reports/2020/dudes_simulation_v5_week3_preWaiver.html)
