@@ -20,7 +20,7 @@ resources:
   src: zuerlein_atl_at_dal.jpg
 params:
   week: 3
-  prefix: "preSundayGames"
+  prefix: "posSunday1stGames"
 ---
 
 Last Update: `r lubridate::now()`
@@ -131,6 +131,7 @@ game_center %>%
 
 ## Simulation
 
+- [Matchup Simulations Pos 1st Sunday Games](/reports/2020/dudes_simulation_v5_week3_posSunday1stGames.html)
 - [Matchup Simulations Pre Sunday Games](/reports/2020/dudes_simulation_v5_week3_preSundayGames.html)
 - [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week3_posTNF.html)
 - [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week3_preTNF.html)
