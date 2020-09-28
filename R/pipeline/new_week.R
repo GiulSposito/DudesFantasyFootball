@@ -9,7 +9,7 @@ library(yaml)
 week <- 3
 season <- 2020
 config <- read_yaml("./config/config.yml")
-prefix <- "posWaiver"
+prefix <- "posSNF"
 destPath <- "static/reports/2020"
 sim.version <- 5
 
@@ -110,10 +110,12 @@ rmarkdown::render(
 source("./R/simulation/players_projections.R")
 site_ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml"))
 pts_errors <- projectErrorPoints(players_stats, site_ptsproj, my_player_ids, week)
+pts_flcl <- projectFloorCeiling(proj_table, week, season)
 
 # adiciona os erros de projeções passadas
-ptsproj <- site_ptsproj %>% 
-  bind_rows(pts_errors)
+ptsproj <- site_ptsproj %>% # projecao dos sites
+  bind_rows(pts_errors) %>% # erros das projecoes nas semanas passadas
+  bind_rows(pts_flcl)       # floor e ceiling da projecao dos sites
 
 # simulação das partidas
 source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
