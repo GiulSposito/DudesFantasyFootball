@@ -60,3 +60,14 @@ projectErrorPoints <- function(.players_stats, .ptsproj, .my_player_ids, .week){
     mutate( data_src = paste0(data_src,"_ERROR") ) %>% 
     return()
 }
+
+projectFloorCeiling <- function(.proj_table, .week, .season){
+  .proj_table %>% 
+    select(id, floor, ceiling) %>% 
+    pivot_longer(cols = c(-id), values_to = "pts.proj", names_to="data_src") %>% 
+    mutate(week=.week, season=.season) %>% 
+    inner_join(select(.proj_table, id, pos), by="id") %>% 
+    select(week, pos, data_src, id, pts.proj, season) %>% 
+    return()
+}
+
