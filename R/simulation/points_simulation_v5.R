@@ -35,15 +35,15 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     filter(week==.week)
   
   # incorporando pontos projetados como pontos possíveis na simulacao
-  proj_points <- .proj_table %>% 
-    select(id, floor, ceiling) %>% 
-    pivot_longer(cols = c(-id),values_to = "pts.proj", names_to="data_src") %>% 
-    mutate(week=.week, season=.season, pos=NA) %>% 
-    select(week, pos, data_src, id, pts.proj, season)
+  # proj_points <- .proj_table %>% 
+  #   select(id, floor, ceiling) %>% 
+  #   pivot_longer(cols = c(-id),values_to = "pts.proj", names_to="data_src") %>% 
+  #   mutate(week=.week, season=.season, pos=NA) %>% 
+  #   select(week, pos, data_src, id, pts.proj, season)
     
   # PROJEÇÃO: estrutura de projecao dos jogadores para facilitar a simulacao
   player_proj_points <- .ptsproj %>%
-    bind_rows(proj_points) %>% 
+    # bind_rows(proj_points) %>% 
     inner_join(select(.my_players_id, id, playerId=nfl_id), by="id") %>%
     filter(week==.week, season==.season) %>% 
     select(id, playerId, pts.proj) %>% 
@@ -89,7 +89,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
       .sim %>% 
         pull(simulation) %>% 
         do.call(rbind, .) %>% 
-        colSums() %>%
+        colSums(na.rm = T) %>%
         return()    
     })) %>% 
     mutate(simulation.org = map(data, function(.sim){
@@ -100,7 +100,7 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
       .sim %>% 
         pull(simulation.org) %>% 
         do.call(rbind, .) %>% 
-        colSums() %>%
+        colSums(na.rm = T) %>%
         return()    
     })) %>% 
     select(-data)
@@ -127,13 +127,13 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
       homeTeam.ptsdiff = map2(awayTeam.simulation, homeTeam.simulation, function(.sat, .sht) .sht-.sat),
       homeTeam.ptsdiff.org = map2(awayTeam.simulation.org, homeTeam.simulation.org, function(.sat, .sht) .sht-.sat),
       # probabilidade de ganhar (media das vitorias)
-      homeTeam.winProb = map_dbl(homeTeam.win, mean), 
-      awayTeam.winProb = map_dbl(awayTeam.win, mean),
-      homeTeam.winProb.org = map_dbl(homeTeam.win.org, mean), 
-      awayTeam.winProb.org = map_dbl(awayTeam.win.org, mean),
+      homeTeam.winProb = map_dbl(homeTeam.win, mean, na.rm=T), 
+      awayTeam.winProb = map_dbl(awayTeam.win, mean, na.rm=T),
+      homeTeam.winProb.org = map_dbl(homeTeam.win.org, mean, na.rm=T), 
+      awayTeam.winProb.org = map_dbl(awayTeam.win.org, mean, na.rm=T),
       # pontos projetado (mediana da simulacao)
-      homeTeam.totalPts = map_dbl(homeTeam.simulation, median),
-      awayTeam.totalPts = map_dbl(awayTeam.simulation, median)
+      homeTeam.totalPts = map_dbl(homeTeam.simulation, median, na.rm=T),
+      awayTeam.totalPts = map_dbl(awayTeam.simulation, median, na.rm=T)
     )
   
   # retorna a estrutura de calculo toda, mais facil para montar o report
