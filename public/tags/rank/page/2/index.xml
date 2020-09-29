@@ -9,6 +9,17 @@
         <atom:link href="/tags/rank/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Season 2019 MVPs</title>
+      <link>/post/mvp-week-16/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mvp-week-16/</guid>
+      <description>
+
+
+&lt;p&gt;Top Players: CMC, Lamar Jackson, Michael Thomas, Deshaun Watson and Russell Wilson.&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 15] Semifinals</title>
       <link>/post/rank-week-15/</link>
       <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
@@ -40,17 +51,6 @@
 
 
 &lt;p&gt;Playoffs: &lt;em&gt;Campinas Giants, Paulinia Robots, Indaiatuba Riders and Sorocaba Steelers.&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 14] Regular Season MVPs</title>
-      <link>/post/mvp-week-14/</link>
-      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/mvp-week-14/</guid>
-      <description>
-
-
-&lt;p&gt;Top Players: CMC, Lamar Jackson, Michael Thomas, Deshaun Watson and Dalvin Cook.&lt;/p&gt;
 </description>
     </item>
   </channel>
