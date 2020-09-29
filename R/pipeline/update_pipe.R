@@ -15,7 +15,7 @@ library(yaml)
 week <- 3
 season <- 2020
 config <- read_yaml("./config/config.yml")
-prefix <- "posSNF"
+prefix <- "posMNF"
 destPath <- "static/reports/2020"
 sim.version <- 5
 
