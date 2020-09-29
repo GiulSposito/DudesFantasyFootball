@@ -27,13 +27,6 @@ League Leaders: London Knights, Wild Mules, Barão Butchers e Campinas Giants
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">DK Metcalf seems to have forgotten defenses exist <a href="https://t.co/7b9KTH3dsq">pic.twitter.com/7b9KTH3dsq</a></p>&mdash; Barstool Sports (@barstoolsports) <a href="https://twitter.com/barstoolsports/status/1310327497830039552?ref_src=twsrc%5Etfw">September 27, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-## League Ranking
-
-![Rank](/img/2020/ranking_week03.jpg)
-
-## Week Trophies
-
-![Trophies](/img/2020/trophies_week03.jpg)
 
 ```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
 # put rnotbook in the same workdir
@@ -76,6 +69,14 @@ resp <- recaps[1,]$leagueHighligths[[1]]$text %>%
 
 ```
 
+## Week Trophies
+
+![Trophies](/img/2020/trophies_week03.jpg)
+
+
+## League Ranking
+
+![Rank](/img/2020/ranking_week03.jpg)
 
 ## Matchups Recap
 
