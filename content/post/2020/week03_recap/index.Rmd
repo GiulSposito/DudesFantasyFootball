@@ -38,10 +38,16 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 # libs
 library(yaml)
 library(tidyverse)
+library(glue)
 
 # parameters
 .week  <- params$week
 config <- yaml.load_file("./config/config.yml")
+
+
+# pega o resultado pos semana
+sim <- readRDS(glue("./data/simulation_v5_week{.week}_posMNF.rds"))
+
 ```
 
 
@@ -69,10 +75,87 @@ resp <- recaps[1,]$leagueHighligths[[1]]$text %>%
 
 ```
 
-## Week Trophies
+## Weekly Trophies
 
 ![Trophies](/img/2020/trophies_week03.jpg)
 
+## Best Players of the Week
+
+### Team Players
+
+```{r bestTeamPlayers}
+
+# que jogador pertence a qual time
+rosters <- sim$teams %>% 
+  select(teamId, teamName=name, teamImg=imageUrl, rosters) %>% 
+  unnest(rosters) %>%
+  mutate(playedStatus=rosterSlotId<20)
+  
+# pontuacao dos jogadores na semana
+players <- sim$players_stats %>% 
+  select(playerId, playerName=name, nflTeam=nflTeamAbbr, playerImg=smallImageUrl, position, weekPts) %>% 
+  unnest(weekPts) %>% 
+  filter(week==.week) %>% 
+  # atribui time (se houver)
+  left_join(rosters, by="playerId") %>% 
+  select(playerId, position, playerName, nflTeam, points=weekPts, fantasyTeam=teamName, playerImg, teamImg, playedStatus) %>%
+  # apelida time e converte imagem
+  mutate(team=str_remove(fantasyTeam, "[a-zA-Z]+ ?")) %>%
+  mutate(img = glue("<img src='{playerImg}' style='width:36px;height:50px'>")) %>%
+  mutate(teamLogo = glue("<img src='{teamImg}' style='width:40px;height:40px' alt='{team}'>")) %>%
+  mutate(played = if_else(playedStatus, "S", "N"))
+
+# dado um conjunto de jogadores, acha o time de melhor pontuacao
+findBestTeam <- function(.players){
+
+  # posicoes definidas
+  best_teamPlayers <- tibble(
+    pos=c("QB","RB","WR","TE","K","DEF"),
+    qtd=c(1,2,2,1,1,1)
+  ) %>% 
+    # para cada uma dela, seleciona os top N
+    split(1:nrow(.)) %>% 
+    map_df(function(.x, .plrs){
+      .plrs %>%
+        filter(position==.x$pos) %>%
+        top_n(.x$qtd, points) %>%
+        return()
+    }, .plrs=.players)
+  
+  # tem que escolher a posicao coringa
+  best_teamPlayerWR <- .players %>% 
+    filter(position %in% c("RB","WR")) %>% 
+    # exclui os já escolhido no passo acima
+    anti_join(best_teamPlayers, by="playerId") %>% 
+    top_n(1, points) %>% 
+    mutate( position = paste0("W/R (",position,")"))
+  
+  # melhor time
+  best_teamPlayers %>% 
+    bind_rows(best_teamPlayerWR) %>% 
+    return()
+}
+
+# melhores jogadores
+  players %>% 
+  filter(!is.na(fantasyTeam)) %>% 
+  findBestTeam() %>%
+  select(player=img, position, playerName, nflTeam, points, team=teamLogo) %>%
+  knitr::kable()
+```
+
+### Free Agents
+
+```{r bestFA}
+
+# melhores jogadores FA
+  players %>% 
+  filter(is.na(fantasyTeam)) %>% 
+  findBestTeam() %>%
+  select(player=img, position, playerName, nflTeam, points) %>%
+  knitr::kable()
+
+```
 
 ## League Ranking
 
