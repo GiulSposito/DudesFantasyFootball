@@ -1,15 +1,37 @@
 library(tidyverse)
 library(glue)
 
-sim <- readRDS("./data/simulation_v5_week2_posTNF.rds")
+sim <- readRDS("./data/simulation_v5_week3_preSNF.rds")
+.week <- 2
 
 # game summary in long form
-sim_summary <- bind_rows(
-  select(sim$matchup_sim, teamId=awayTeam.teamId, winProb=awayTeam.winProb, sim.pts=awayTeam.simulation),
-  select(sim$matchup_sim, teamId=homeTeam.teamId, winProb=homeTeam.winProb, sim.pts=homeTeam.simulation)
-) %>% inner_join(select(sim$teams, -rosters), by="teamId")
+teams_sims <- bind_rows(
+  select(sim$matchup_sim, teamId=awayTeam.teamId, winProb=awayTeam.winProb, winProb.org=awayTeam.winProb.org, pred.Pts=awayTeam.totalPts, sim.pts=awayTeam.simulation, sim.pts.org=awayTeam.simulation.org),
+  select(sim$matchup_sim, teamId=homeTeam.teamId, winProb=homeTeam.winProb, winProb.org=homeTeam.winProb.org, pred.Pts=homeTeam.totalPts, sim.pts=awayTeam.simulation, sim.pts.org=homeTeam.simulation.org)
+) %>% mutate(
+  pred.Pts.org = map_dbl(sim.pts.org, median, na.rm=T)
+)
 
 # obtem nome e pontuacao dos times
+teams_stats <- sim$teams %>% 
+  unnest( rosters ) %>% 
+  filter( rosterSlotId < 20 ) %>%
+  select( teamId, playerId, isEditable ) %>% 
+  inner_join( sim$players_stats, by = "playerId" ) %>% 
+  unnest( weekPts ) %>% 
+  filter( week==.week ) %>% 
+  select( teamId, playerId, isEditable, weekPts ) %>% 
+  group_by( teamId ) %>% 
+  summarise(
+    players = n(),
+    played  = sum(!isEditable),
+    points = sum(weekPts, na.rm = T)
+  )
+
+teams_sims %>% 
+  inner_join(teams_stats, by = "teamId")
+
+
 team_points <- sim$teams %>% 
   unnest(week.stats) %>% 
   filter(week==.week) %>% 
