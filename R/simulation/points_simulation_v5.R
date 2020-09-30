@@ -133,7 +133,9 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
       awayTeam.winProb.org = map_dbl(awayTeam.win.org, mean, na.rm=T),
       # pontos projetado (mediana da simulacao)
       homeTeam.totalPts = map_dbl(homeTeam.simulation, median, na.rm=T),
-      awayTeam.totalPts = map_dbl(awayTeam.simulation, median, na.rm=T)
+      awayTeam.totalPts = map_dbl(awayTeam.simulation, median, na.rm=T),
+      homeTeam.totalPts.org = map_dbl(homeTeam.simulation.org, median, na.rm=T),
+      awayTeam.totalPts.org = map_dbl(awayTeam.simulation.org, median, na.rm=T)
     )
   
   # retorna a estrutura de calculo toda, mais facil para montar o report
