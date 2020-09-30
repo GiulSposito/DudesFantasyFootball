@@ -9,7 +9,7 @@ library(yaml)
 week <- 4
 season <- 2020
 config <- read_yaml("./config/config.yml")
-prefix <- "preWaiver"
+prefix <- "posWaiver"
 destPath <- "static/reports/2020"
 sim.version <- 5
 
