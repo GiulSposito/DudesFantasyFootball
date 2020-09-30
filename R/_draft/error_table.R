@@ -15,15 +15,16 @@ projectErrorPoints <- function(.players_stats, .ptsproj, .my_player_ids, .week){
     inner_join(.ptsproj, by = c("week", "id")) %>% 
     filter(week<.week) %>% 
     select(playerId, id, data_src, name, pos, week, weekPts, pts.proj) %>% 
-    mutate(proj.error = weekPts-pts.proj) %>% 
-    select(playerId, id, data_src, proj.error)
+    mutate(proj.error = weekPts-pts.proj,
+           lag = .week-week) %>% 
+    select(playerId, id, data_src, proj.error, lag)
   
   .ptsproj %>% 
     filter(week==.week) %>% 
     inner_join(error_table, by = c("data_src", "id")) %>% 
     mutate( new.pts.projs = pts.proj + proj.error) %>% 
+    mutate( data_src = paste0(data_src,"_ERROR_LAG_", lag) ) %>% 
     select(week, pos, data_src, id, pts.proj=new.pts.projs, season) %>% 
-    mutate( data_src = paste0(data_src,"_ERROR") ) %>% 
     return()
 }
 
