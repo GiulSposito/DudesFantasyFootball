@@ -20,7 +20,7 @@ resources:
   src: Ravens_vs_Chiefs_2019_chiefs_1.jpg
 params:
   week: 4
-  prefix: "posWaiver"
+  prefix: "preTNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -116,5 +116,6 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week4_preTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week4_posWaiver.html)
 - [Matchup Simulations Pre-Waiver](/reports/2020/dudes_simulation_v5_week4_preWaiver.html)
