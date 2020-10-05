@@ -20,7 +20,7 @@ resources:
   src: Ravens_vs_Chiefs_2019_chiefs_1.jpg
 params:
   week: 4
-  prefix: "posTNF"
+  prefix: "posSNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -109,13 +109,14 @@ resp <- game_center$htmlTable %>% map(cat)
 cat("</tbody></table>")
 ```
 _Last Update: `r lubridate::now()`_
-
+ 
 ## Projections
 
 - [Individual Players Projections](/reports/2020/ffa_players_projection_week4.html)
 
 ## Simulation
 
+- [Matchup Simulations Pos-SNF](/reports/2020/dudes_simulation_v5_week4_posSNF.html)
 - [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week4_posTNF.html)
 - [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week4_preTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week4_posWaiver.html)
