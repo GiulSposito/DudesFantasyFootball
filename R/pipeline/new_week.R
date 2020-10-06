@@ -6,10 +6,10 @@ library(flexdashboard)
 library(yaml)
 
 # EXECUTION PARAMETERS ####
-week <- 4
+week <- 5
 season <- 2020
 config <- read_yaml("./config/config.yml")
-prefix <- "preTNF"
+prefix <- "preWaiver"
 destPath <- "static/reports/2020"
 sim.version <- 5
 
