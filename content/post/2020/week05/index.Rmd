@@ -20,7 +20,7 @@ resources:
   src: josh-allen-vs-raiders.jpg
 params:
   week: 5
-  prefix: "posWaivers"
+  prefix: "preTNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -116,5 +116,6 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week5_preTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week5_posWaivers.html)
 - [Matchup Simulations Pre-Waiver](/reports/2020/dudes_simulation_v5_week5_preWaiver.html)
