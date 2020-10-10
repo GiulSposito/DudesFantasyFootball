@@ -26,7 +26,14 @@ webScraps <- scrapPlayersPredictions(week, season)
 # SCRAPPING NFL FANTASY ###
 source("./R/import/scrap_nfl_fantasy_projections.R")
 nflScrap <- scrapNflFantasyProjection(config$authToken, config$leagueId, 2020, week)
-scraps <- addScrapTable(webScraps, nflScrap)
+
+source("./R/import/scrap_yahoo_fantasy_projection.R")
+yahooScrap <- scrapYahooProjection(week, config$yahooCokies)
+
+scraps <- webScraps %>% 
+  addScrapTable(nflScrap) %>% 
+  addScrapTable(yahooScrap) 
+
 saveScraps(week, scraps)
 
 # PROJECT FANTASY POINTS
