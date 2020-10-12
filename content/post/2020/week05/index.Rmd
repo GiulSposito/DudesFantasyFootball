@@ -20,7 +20,7 @@ resources:
   src: josh-allen-vs-raiders.jpg
 params:
   week: 5
-  prefix: "preSNF"
+  prefix: "posSNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -116,6 +116,7 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations pos-SNF](/reports/2020/dudes_simulation_v5_week5_posSNF.html)
 - [Matchup Simulations pre-SNF](/reports/2020/dudes_simulation_v5_week5_preSNF.html)
 - [Matchup Simulations pos-1stRoundSunday](/reports/2020/dudes_simulation_v5_week5_pos1stRoundSunday.html)
 - [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week5_posTNF.html)
