@@ -20,7 +20,7 @@ resources:
   src: josh-allen-vs-raiders.jpg
 params:
   week: 5
-  prefix: "posSNF"
+  prefix: "posMNF"
 ---
 
 _Last Update: `r lubridate::now()`_
