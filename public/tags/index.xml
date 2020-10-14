@@ -4,37 +4,37 @@
     <link>/tags/</link>
     <description>Recent content in Tags on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 08 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>montecarlo</title>
-      <link>/tags/montecarlo/</link>
-      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
+      <title>rank</title>
+      <link>/tags/rank/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/montecarlo/</guid>
+      <guid>/tags/rank/</guid>
       <description></description>
     </item><item>
-      <title>projection</title>
-      <link>/tags/projection/</link>
-      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
+      <title>recap</title>
+      <link>/tags/recap/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/projection/</guid>
+      <guid>/tags/recap/</guid>
+      <description></description>
+    </item><item>
+      <title>evaluation</title>
+      <link>/tags/evaluation/</link>
+      <pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/evaluation/</guid>
       <description></description>
     </item><item>
       <title>simulation</title>
       <link>/tags/simulation/</link>
-      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/simulation/</guid>
-      <description></description>
-    </item><item>
-      <title>rank</title>
-      <link>/tags/rank/</link>
-      <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/rank/</guid>
       <description></description>
     </item>
   </channel>
