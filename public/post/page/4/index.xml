@@ -4,11 +4,23 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 02] Standings and Matchups Recap</title>
+      <link>/post/2020/week02_recap/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week02_recap/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;League Leaders: Butchers, Blues, Miners and Guara Wolfs&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 02] Players Projection and Matchups Simulation</title>
       <link>/post/2020/week02/</link>
       <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
@@ -34,20 +46,6 @@
       
       <guid>/post/2020/week01/</guid>
       <description></description>
-    </item><item>
-      <title>Draft Day | Season 2020 is Here</title>
-      <link>/post/2020/draft-day-season-2020-is-here/</link>
-      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/draft-day-season-2020-is-here/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
-
-
-&lt;p&gt;Season 2020 is here! See the league draft winners and losers according NFL Fantasy.&lt;/p&gt;
-</description>
     </item>
   </channel>
 </rss>
