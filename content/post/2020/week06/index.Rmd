@@ -20,7 +20,7 @@ resources:
   src: mia_at_sf.jpg
 params:
   week: 6
-  prefix: "posWaivers"
+  prefix: "preSundayGames"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -116,4 +116,5 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre Sunday Games](/reports/2020/dudes_simulation_v5_week6_preSundayGames.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week6_posWaivers.html)
