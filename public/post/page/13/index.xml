@@ -4,11 +4,18 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 16 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 09] Players Projection and Matchups Simulation</title>
+      <link>/post/week09/</link>
+      <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week09/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
+    </item><item>
       <title>[Week 08] League Standings</title>
       <link>/post/rank-week-8/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
@@ -38,13 +45,6 @@
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
 </description>
-    </item><item>
-      <title>[Week 08] Players Projection and Matchups Simulation</title>
-      <link>/post/week08/</link>
-      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week08/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
