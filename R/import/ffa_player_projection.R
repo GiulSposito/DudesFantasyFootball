@@ -5,12 +5,14 @@ scrapPlayersPredictions <- function(.week, .season) {
   # # faz o scraping de projeção dos sites
   
   # quais sites (default)
+  #  
+  # 
   sources <- c("CBS", "ESPN", "FantasyData", "FantasyPros", "FantasySharks", "FFToday",
                "FleaFlicker", "NumberFire", "Yahoo", "FantasyFootballNerd", "NFL",
                "RTSports","Walterfootball")
   
   scrap <- scrape_data(
-    #src = setdiff(sources,c("FantasyFootballNerd","CBS")), # tira o FFNerd e CBS estão incorretos
+    src = sources,
     pos = c("QB", "RB", "WR", "TE", "K", "DST"),
     season = .season,
     week = .week
