@@ -20,12 +20,13 @@ resources:
   src: "ari_at_dal.jpg"
 params:
   week: 7
-  prefix: "posWaivers"
+  prefix: "preTNF"
 ---
 
 _Last Update: `r lubridate::now()`_
 
 <!--more-->
+
 
 ## Games
 
@@ -116,4 +117,5 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week7_preTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week7_posWaivers.html)
