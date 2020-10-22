@@ -57,7 +57,30 @@ player_performances <- inner_join(
 
 ```
 
-## Player Peformances
+## Teams Performances
+
+```{r teamPerf}
+sim$teams %>% 
+  select(teamId, name, imageUrl, week.stats) %>% 
+  unnest(week.stats) %>% 
+  filter(week==6) %>% 
+  inner_join(sim$teams_sim, by="teamId") %>% 
+  select(-simulation) %>% 
+  rename(sim=simulation.org) %>%
+  unnest(sim) %>% 
+  mutate(name=fct_reorder(name, pts)) %>% 
+  ggplot(aes(x=sim, y=name, fill=name)) +
+  stat_density_ridges(quantile_lines = TRUE, quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+  geom_point(aes(x=pts, y=name), color="black", fill="red", shape=24) +
+  theme_ridges() +
+  theme( legend.position = "none" ) +
+  scale_y_discrete(expand=c(0.,0)) +
+  scale_x_continuous(expand = c(0.01,0)) +
+  labs(x="points",y="")
+```
+
+
+## Players Peformances
 
 ```{r printCharts, results="asis"}
 
