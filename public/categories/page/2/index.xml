@@ -9,11 +9,11 @@
         <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>evaluation</title>
-      <link>/categories/evaluation/</link>
-      <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
+      <title>recap</title>
+      <link>/categories/recap/</link>
+      <pubDate>Wed, 21 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/evaluation/</guid>
+      <guid>/categories/recap/</guid>
       <description></description>
     </item><item>
       <title>draft</title>

@@ -53,6 +53,31 @@
   </url>
   
   <url>
+    <loc>/post/2020/week06_performances/</loc>
+    <lastmod>2020-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/datascience/</loc>
+    <lastmod>2020-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/evaluation/</loc>
+    <lastmod>2020-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/evaluation/</loc>
+    <lastmod>2020-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/points/</loc>
+    <lastmod>2020-10-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/rank/</loc>
     <lastmod>2020-10-21T00:00:00+00:00</lastmod>
   </url>
@@ -79,16 +104,6 @@
   
   <url>
     <loc>/post/2020/week6_eval/</loc>
-    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/evaluation/</loc>
-    <lastmod>2020-10-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/evaluation/</loc>
     <lastmod>2020-10-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -204,11 +219,6 @@
   
   <url>
     <loc>/tags/playoffs/</loc>
-    <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/points/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -494,11 +504,6 @@
   
   <url>
     <loc>/post/about-this-site/</loc>
-    <lastmod>2018-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/datascience/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
   </url>
   

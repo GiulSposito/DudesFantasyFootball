@@ -4,11 +4,23 @@
     <link>/categories/evaluation/</link>
     <description>Recent content in evaluation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 20 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/evaluation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 11] Simulation Evaluation</title>
+      <link>/post/week-11-simulation-evaluation/</link>
+      <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week-11-simulation-evaluation/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 10] Simulation Evaluation</title>
       <link>/post/week-10-simulation-evaluation/</link>
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
@@ -43,17 +55,6 @@
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 07] Simulation Evaluation</title>
-      <link>/post/week-7-simulation-evaluation/</link>
-      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-7-simulation-evaluation/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 20%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>

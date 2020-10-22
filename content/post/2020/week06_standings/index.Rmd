@@ -97,6 +97,47 @@ ranking %>%
 
 ```
 
+## Points
+
+### Score Ranking
+
+```{r points Ranking, fig.height=9, fig.height=6}
+
+# load final results
+week_points <- 1:.week %>% 
+  map_df(function(.w){
+    readRDS(glue("./data/simulation_v5_week{.w}_final.rds")) %>% 
+      pluck("teams") %>% 
+      # extract week score
+      select(teamId, name, imageUrl, week.stats) %>% 
+      unnest(week.stats) %>% 
+      return()
+  })
+
+# build  accumulated points a weekly points ranking
+rank_pts <- week_points %>% 
+  group_by(teamId) %>% 
+  arrange(teamId, week) %>% 
+  mutate(cumpts = cumsum(pts)) %>% 
+  ungroup() %>% 
+  arrange(week, desc(cumpts)) %>% 
+  mutate(rank=rep(1:14,6)) %>% 
+  rename(team=name)
+
+# plot ranking
+rank_pts %>% 
+  ggplot(aes(x=week, y=reorder(rank,-rank), group=team)) +
+  geom_line(aes(color=team), size=2) +
+  geom_image(aes(image=imageUrl), size=.04) +
+  geom_text(aes(label=cumpts), size=2.5, color="black", nudge_y = -.40) +
+  scale_colour_manual(values = TEAMS_COLOR_SCALE) +
+  ylab("rank") +
+  theme_void() +
+  theme(legend.position = "bottom")
+
+```
+
+
 ## Best Players of the Week
 
 ### Team Players
