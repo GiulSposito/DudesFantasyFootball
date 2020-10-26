@@ -20,7 +20,7 @@ resources:
   src: "ari_at_dal.jpg"
 params:
   week: 7
-  prefix: "posSunday1stRound"
+  prefix: "preSNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -117,6 +117,7 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-SNF](/reports/2020/dudes_simulation_v5_week7_preSNF.html)
 - [Matchup Simulations Pos Sunday 1st Round](/reports/2020/dudes_simulation_v5_week7_posSunday1stRound.html)
 - [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week7_posTNF.html)
 - [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week7_preTNF.html)
