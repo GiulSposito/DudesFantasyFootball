@@ -9,6 +9,20 @@
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>simulation</title>
+      <link>/tags/simulation/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/simulation/</guid>
+      <description></description>
+    </item><item>
+      <title>montecarlo</title>
+      <link>/tags/montecarlo/</link>
+      <pubDate>Thu, 22 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/montecarlo/</guid>
+      <description></description>
+    </item><item>
       <title>draft</title>
       <link>/tags/draft/</link>
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
@@ -21,20 +35,6 @@
       <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/championship/</guid>
-      <description></description>
-    </item><item>
-      <title>playoffs</title>
-      <link>/tags/playoffs/</link>
-      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/playoffs/</guid>
-      <description></description>
-    </item><item>
-      <title>wins and losses</title>
-      <link>/tags/wins-and-losses/</link>
-      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/wins-and-losses/</guid>
       <description></description>
     </item>
   </channel>
