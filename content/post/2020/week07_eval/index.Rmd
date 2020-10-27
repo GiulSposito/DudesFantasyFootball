@@ -2,7 +2,7 @@
 title: '[Week 07] Simulation Evaluation'
 author: "Giuliano Sposito"
 date: '2020-10-27'
-slug: week6_eval
+slug: week7_eval
 categories:
   - evaluation
   - simulation

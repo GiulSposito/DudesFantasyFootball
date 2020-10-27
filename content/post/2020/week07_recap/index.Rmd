@@ -1,0 +1,92 @@
+---
+title: '[Week 07] Matchups Recap'
+author: Giuliano Sposito
+date: '2020-10-27'
+slug: week07_recap
+categories:
+  - recap
+  - ranking
+tags:
+  - rank
+  - recap
+dropCap: yes
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "ap-cam-newton-vs-49ers-1603667084.jpg"
+  params:
+    description: 49ers at Patriots
+params:
+  week: 7
+---
+
+<!--more-->
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hands down the play of the game.<a href="https://twitter.com/dkm14?ref_src=twsrc%5Etfw">@dkm14</a>&#39;s speed is absolutely incredible! <a href="https://twitter.com/hashtag/NextGenStats?src=hash&amp;ref_src=twsrc%5Etfw">#NextGenStats</a> powered by <a href="https://twitter.com/awscloud?ref_src=twsrc%5Etfw">@awscloud</a> <a href="https://t.co/aZHcJEJQgY">pic.twitter.com/aZHcJEJQgY</a></p>&mdash; Sunday Night Football (@SNFonNBC) <a href="https://twitter.com/SNFonNBC/status/1320569811378839552?ref_src=twsrc%5Etfw">October 26, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r ranking}
+
+library(yaml)
+library(tidyverse)
+library(glue)
+library(ggimage)
+
+# parameters
+.week  <- params$week
+config <- yaml.load_file("./config/config.yml")
+
+```
+
+
+```{r getRecap, results='hide'}
+source("./R/api/ffa_league.R")
+
+teams <- ffa_league_teams(config$authToken, config$leagueId) %>% 
+  ffa_extractTeams()
+
+recapResps <- teams$teamId %>% 
+  map(~ffa_league_matchups_recap(config$authToken, config$leagueId, .week=.week, .teamId = .x))
+
+recaps <- recapResps %>% 
+  map_df(ffa_extractRecap) %>% 
+  distinct()
+```
+
+## League Highlights
+
+```{r highligths, results='asis'}
+resp <- recaps[1,]$leagueHighligths[[1]]$text %>%
+  map(function(.txt){
+      .txt %>% paste0("\n\n") %>% cat()
+  })
+
+```
+
+## Weekly Trophies
+
+![Trophies](/img/2020/trophies_week07.jpg)
+
+
+## Matchups Recap
+
+```{r listRecap, results='asis'}
+resps <- recaps %>% 
+  split(1:nrow(.)) %>% 
+  map(function(.recap){
+    cat(paste0("### ", .recap$title), "\n\n")
+    .recap$paragraphs %>% map(function(.par){
+      .par$text %>% paste0("\n\n") %>% cat()
+    })
+  })
+```
+
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Todd Gurley tried to stop from scoring to run the clock out, but couldn&#39;t hold up.<br><br>The Lions scored the game-winning TD with 0 seconds on the clock.<br><br>(via <a href="https://twitter.com/NFL?ref_src=twsrc%5Etfw">@NFL</a>)<a href="https://t.co/fHzvijXR4m">pic.twitter.com/fHzvijXR4m</a></p>&mdash; ESPN (@espn) <a href="https://twitter.com/espn/status/1320460707096309764?ref_src=twsrc%5Etfw">October 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

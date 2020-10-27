@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>[Week 07] Simulation Evaluation &middot; It&#39;s Football, Dudes!</title>
+  <meta name="description" content="" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  
+  
+  <link href="/css/concated.min.css" rel="stylesheet">
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-148711241-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  <style>
+    body {
+      background: #ecedef url("/img/wilson_background_w.jpg") repeat;
+    }
+  </style>
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <h1 class="nav-header"><a href="/" class="nav-text">It&#39;s Football, Dudes! Fantasy League</a></h1>
+  <div class="hamburger-menu">
+    <button onclick="hamburgerMenuPressed.call(this)" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
+    <ul id="menu" class="hamburger-menu-overlay">
+      <li><a href="/" class="hamburger-menu-overlay-link">Home</a></li>
+      <li><a href="/post/it-s-football-dudes-trophy-room-2019/" class="hamburger-menu-overlay-link">Trophy Room</a></li>
+      <li><a href="/post/it-s-football-dudes-trophy-room/" class="hamburger-menu-overlay-link">Trophy Room</a></li>
+      <li><a href="/categories/about" class="hamburger-menu-overlay-link">About</a></li><li><a href="/categories/draft" class="hamburger-menu-overlay-link">Draft</a></li><li><a href="/categories/evaluation" class="hamburger-menu-overlay-link">Evaluation</a></li><li><a href="/categories/projection" class="hamburger-menu-overlay-link">Projection</a></li><li><a href="/categories/ranking" class="hamburger-menu-overlay-link">Ranking</a></li><li><a href="/categories/recap" class="hamburger-menu-overlay-link">Recap</a></li><li><a href="/categories/simulation" class="hamburger-menu-overlay-link">Simulation</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post dropcase">
+        <header class="post-header">
+        	<h1 class="post-title">[Week 07] Simulation Evaluation</h1>
+          <p class="post-date">Posted <time datetime="2020-10-27">Oct 27, 2020</time></p>
+        </header>
+        
+        <picture class="post-figure">
+          
+          
+          <source srcset="/post/2020/week7_eval/war_games_hu7aa2c48e3e9966fafafab1f42086a094_57563_800x0_resize_q75_lanczos.jpg">
+          <img src="/post/2020/week7_eval/war_games_hu7aa2c48e3e9966fafafab1f42086a094_57563_800x0_resize_q75_lanczos.jpg" alt="War Games Tag Line">
+        </picture>
+        
+        <blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+Daniel Jones run set to Chariots of Fire <a href="https://t.co/SoYMscujTM">pic.twitter.com/SoYMscujTM</a>
+</p>
+— Trevor Bond (<span class="citation">@bondtrevorbond</span>) <a href="https://twitter.com/bondtrevorbond/status/1319473665071673346?ref_src=twsrc%5Etfw">October 23, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div id="historic" class="section level2">
+<h2>Historic</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="center">week</th>
+<th align="center">Winner Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">7</td>
+<td align="center">28%</td>
+</tr>
+<tr class="even">
+<td align="center">6</td>
+<td align="center">43%</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">43%</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">14%</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">57%</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">43%</td>
+</tr>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">14%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="game-prediction" class="section level2">
+<h2>Game Prediction</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+game.nickname
+</th>
+<th style="text-align:left;">
+predicion
+</th>
+<th style="text-align:left;">
+win.prob
+</th>
+<th style="text-align:left;">
+outcome
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Robots @ Guara Wolf
+</td>
+<td style="text-align:left;">
+Robots
+</td>
+<td style="text-align:left;">
+51.1%
+</td>
+<td style="text-align:left;">
+Guara Wolf
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blues @ Knights
+</td>
+<td style="text-align:left;">
+Knights
+</td>
+<td style="text-align:left;">
+75.4%
+</td>
+<td style="text-align:left;">
+Knights
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Miners @ Claro Farmers
+</td>
+<td style="text-align:left;">
+Miners
+</td>
+<td style="text-align:left;">
+77.7%
+</td>
+<td style="text-align:left;">
+Claro Farmers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Giants @ Steelers
+</td>
+<td style="text-align:left;">
+Steelers
+</td>
+<td style="text-align:left;">
+53%
+</td>
+<td style="text-align:left;">
+Giants
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alligators @ Bikers
+</td>
+<td style="text-align:left;">
+Bikers
+</td>
+<td style="text-align:left;">
+81.1%
+</td>
+<td style="text-align:left;">
+Alligators
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dead Rabbits @ Riders
+</td>
+<td style="text-align:left;">
+Riders
+</td>
+<td style="text-align:left;">
+66.1%
+</td>
+<td style="text-align:left;">
+Riders
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Butchers @ Wild Mules
+</td>
+<td style="text-align:left;">
+Butchers
+</td>
+<td style="text-align:left;">
+69.5%
+</td>
+<td style="text-align:left;">
+Wild Mules
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="score-prediction" class="section level2">
+<h2>Score Prediction</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+real.pts
+</th>
+<th style="text-align:right;">
+pred.min
+</th>
+<th style="text-align:right;">
+pred.pts
+</th>
+<th style="text-align:right;">
+pred.max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Limeira Guara Wolf
+</td>
+<td style="text-align:right;">
+148.5
+</td>
+<td style="text-align:right;">
+100.9
+</td>
+<td style="text-align:right;">
+124.1
+</td>
+<td style="text-align:right;">
+151.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brotas Alligators
+</td>
+<td style="text-align:right;">
+147.7
+</td>
+<td style="text-align:right;">
+96.0
+</td>
+<td style="text-align:right;">
+115.6
+</td>
+<td style="text-align:right;">
+137.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London Knights
+</td>
+<td style="text-align:right;">
+138.1
+</td>
+<td style="text-align:right;">
+89.8
+</td>
+<td style="text-align:right;">
+115.1
+</td>
+<td style="text-align:right;">
+140.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:right;">
+116.7
+</td>
+<td style="text-align:right;">
+113.9
+</td>
+<td style="text-align:right;">
+134.7
+</td>
+<td style="text-align:right;">
+159.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Farmers
+</td>
+<td style="text-align:right;">
+112.9
+</td>
+<td style="text-align:right;">
+90.8
+</td>
+<td style="text-align:right;">
+114.8
+</td>
+<td style="text-align:right;">
+137.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:right;">
+112.1
+</td>
+<td style="text-align:right;">
+94.8
+</td>
+<td style="text-align:right;">
+112.9
+</td>
+<td style="text-align:right;">
+131.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:right;">
+110.4
+</td>
+<td style="text-align:right;">
+105.8
+</td>
+<td style="text-align:right;">
+129.9
+</td>
+<td style="text-align:right;">
+156.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+<td style="text-align:right;">
+109.4
+</td>
+<td style="text-align:right;">
+106.4
+</td>
+<td style="text-align:right;">
+124.9
+</td>
+<td style="text-align:right;">
+147.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goncalves Miners
+</td>
+<td style="text-align:right;">
+105.0
+</td>
+<td style="text-align:right;">
+112.8
+</td>
+<td style="text-align:right;">
+134.5
+</td>
+<td style="text-align:right;">
+159.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Limeira Dead Rabbits
+</td>
+<td style="text-align:right;">
+104.6
+</td>
+<td style="text-align:right;">
+91.0
+</td>
+<td style="text-align:right;">
+116.7
+</td>
+<td style="text-align:right;">
+148.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barao Butchers
+</td>
+<td style="text-align:right;">
+104.0
+</td>
+<td style="text-align:right;">
+103.6
+</td>
+<td style="text-align:right;">
+125.8
+</td>
+<td style="text-align:right;">
+149.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:right;">
+97.2
+</td>
+<td style="text-align:right;">
+110.0
+</td>
+<td style="text-align:right;">
+136.6
+</td>
+<td style="text-align:right;">
+164.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+<td style="text-align:right;">
+87.8
+</td>
+<td style="text-align:right;">
+115.4
+</td>
+<td style="text-align:right;">
+138.0
+</td>
+<td style="text-align:right;">
+170.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues
+</td>
+<td style="text-align:right;">
+87.2
+</td>
+<td style="text-align:right;">
+73.1
+</td>
+<td style="text-align:right;">
+95.1
+</td>
+<td style="text-align:right;">
+120.1
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/post/2020/week07_eval/index_files/figure-html/scoreChart-1.png" width="672" /></p>
+</div>
+<div id="player-projections" class="section level2">
+<h2>Player Projections</h2>
+<p><img src="/post/2020/week07_eval/index_files/figure-html/pointsProj-1.png" width="672" /></p>
+<p><img src="/post/2020/week07_eval/index_files/figure-html/projErrors-1.png" width="672" /></p>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+Daniel Jones' teammates enjoyed his run <a href="https://t.co/L1FEb4Mgna">pic.twitter.com/L1FEb4Mgna</a>
+</p>
+— CJ Fogler (<span class="citation">@cjzer0</span>) <a href="https://twitter.com/cjzer0/status/1319468765646589958?ref_src=twsrc%5Etfw">October 23, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+      </article>
+      
+    </main>
+    <nav class="end-nav side-padding">
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/post/2020/week-07-projections-and-simulation/" class="card blog-card" rel="bookmark" >
+  
+  <div class="card-img-container">
+    <p class="card-img-overlay">Next Article</p>
+    <picture>
+      
+      <source srcset="/post/2020/week-07-projections-and-simulation/ari_at_dal.jpg">
+      <img src="/post/2020/week-07-projections-and-simulation/ari_at_dal.jpg" class="card-img" alt="ARI at DAL">
+    </picture>
+  </div>
+  
+  <article class="card-body">
+    <h2 class="card-title">[Week 07] Projections and Simulation</h2>
+    <p class="card-text">
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p><em>Last Update: 2020-10-26 08:07:10</em></p>
+</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2020-10-22 1022:00">Oct 22, 2020</time></p>
+      <p>#projection #simulation </p>
+    </div>
+  </article>
+</a>
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/" class="card home-card" style="background-image: url( /img/grey-cloud.jpg )" rel="bookmark" >
+  Home
+</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+  
+  <script src="/js/core.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+  </body>
+</html>
