@@ -9,6 +9,13 @@
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>datascience</title>
+      <link>/tags/datascience/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/datascience/</guid>
+      <description></description>
+    </item><item>
       <title>evaluation</title>
       <link>/tags/evaluation/</link>
       <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
@@ -16,25 +23,18 @@
       <guid>/tags/evaluation/</guid>
       <description></description>
     </item><item>
-      <title>rank</title>
-      <link>/tags/rank/</link>
+      <title>points</title>
+      <link>/tags/points/</link>
       <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rank/</guid>
+      <guid>/tags/points/</guid>
       <description></description>
     </item><item>
-      <title>recap</title>
-      <link>/tags/recap/</link>
+      <title>projection</title>
+      <link>/tags/projection/</link>
       <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/recap/</guid>
-      <description></description>
-    </item><item>
-      <title>simulation</title>
-      <link>/tags/simulation/</link>
-      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/simulation/</guid>
+      <guid>/tags/projection/</guid>
       <description></description>
     </item>
   </channel>

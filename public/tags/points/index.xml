@@ -4,11 +4,22 @@
     <link>/tags/points/</link>
     <description>Recent content in points on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 21 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/points/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 07] Players and Teams Peformances</title>
+      <link>/post/2020/week07_performances/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week07_performances/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item><item>
       <title>[Week 06] Players and Teams Peformances</title>
       <link>/post/2020/week06_performances/</link>
       <pubDate>Wed, 21 Oct 2020 00:00:00 +0000</pubDate>
@@ -40,17 +51,6 @@
 
 
 &lt;p&gt;Top Players: CMC, Lamar Jackson, Michael Thomas, Deshaun Watson and Russell Wilson.&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 15] Semifinals</title>
-      <link>/post/rank-week-15/</link>
-      <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-15/</guid>
-      <description>
-
-
-&lt;p&gt;Fantasy Super Bowl: &lt;em&gt;Sorocaba Steelers vs Indaiatuba Riders&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>
