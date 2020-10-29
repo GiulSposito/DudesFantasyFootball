@@ -20,7 +20,7 @@ resources:
   src: "gost_miss_fg.jpg"
 params:
   week: 8
-  prefix: "posWaivers"
+  prefix: "preTNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -118,5 +118,6 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week8_preTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week8_posWaivers.html)
 - [Matchup Simulations Pre-Waiver](/reports/2020/dudes_simulation_v5_week8_preWaivers.html)
