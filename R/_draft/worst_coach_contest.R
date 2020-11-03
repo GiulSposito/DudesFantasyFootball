@@ -1,13 +1,13 @@
 library(tidyverse)
 library(glue)
 
-resp <- 1:4 %>% 
+resp <- 1:7 %>% 
   map_df(function(.week){
-    sim <- readRDS(glue("./data/simulation_v5_week{.week}_posMNF.rds"))
+    sim <- readRDS(glue("./data/simulation_v5_week{.week}_final.rds"))
     
     roster <- sim$teams %>% 
       unnest(rosters) %>% 
-      select(teamId, teamName=name, rosterSlotId, playerId) %>% 
+      select(teamId, teamName=name, imageUrl, rosterSlotId, playerId) %>% 
       mutate(week=.week)
     
     players <- sim$players_stats %>% 
@@ -19,7 +19,7 @@ resp <- 1:4 %>%
     
     teamPoints <- teamRoster %>% 
       filter(rosterSlotId<20) %>% 
-      group_by(teamId, teamName) %>% 
+      group_by(teamId, teamName, imageUrl) %>% 
       summarise( pointsMade = sum(weekPts, na.rm = T))
     
     
@@ -70,3 +70,32 @@ resp %>%
 
 resp %>% 
   pivot_wider(id_cols = c(teamId, teamName), names_from=week, values_from=gain)
+
+
+TEAMS_COLOR_SCALE <- c("#B3995D","black","#03202F","#0B2265","#fb9a99","#A5ACAF","#0085CA",
+                       "#ff7f00","#203731","#6a3d9a","#A71930","#A71930","#FFB612","#004953")
+
+
+resp %>%
+  group_by(week) %>% 
+  arrange(week, gain, pointsMade) %>% 
+  mutate(wrank=1:14) %>% 
+  ungroup() %>%
+  group_by(teamId) %>% 
+  arrange(week) %>% 
+  mutate(
+    cum_gain=round(cumsum(gain),1),
+    cum_pointsMade=cumsum(pointsMade)
+  ) %>% 
+  ungroup() %>% 
+  group_by(week) %>% 
+  arrange(week, cum_gain, cum_pointsMade) %>% 
+  mutate(rank=1:14) %>% 
+  ungroup() %>% 
+  ggplot(aes(x=week, y=reorder(rank,-rank), group=teamName)) +
+  geom_line(aes(color=teamName), size=2) +
+  geom_image(aes(image=imageUrl), size=.04) +
+  geom_text(aes(label=cum_gain), size=2.5, color="black", nudge_y = -.33) +
+  scale_colour_manual(values = TEAMS_COLOR_SCALE) +
+  ylab("rank") +
+  theme_void()
