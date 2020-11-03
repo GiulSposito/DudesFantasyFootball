@@ -4,11 +4,23 @@
     <link>/tags/points/</link>
     <description>Recent content in points on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/points/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 12] League Standings</title>
+      <link>/post/rank-week-12/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-12/</guid>
+      <description>
+
+
+&lt;p&gt;Leader: &lt;em&gt;Campinas Giants&lt;/em&gt; &lt;br&gt;
+Playoffs contenders: &lt;em&gt;Indaiatuba Riders, Sorocaba Steelers and Paulinia Robots.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 11] League Standings</title>
       <link>/post/rank-week-11/</link>
       <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
@@ -28,13 +40,6 @@
       <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/rank-week-9/</guid>
-      <description></description>
-    </item><item>
-      <title>[Week 08] League Standings</title>
-      <link>/post/rank-week-8/</link>
-      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-8/</guid>
       <description></description>
     </item>
   </channel>

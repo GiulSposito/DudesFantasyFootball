@@ -1,0 +1,126 @@
+---
+title: '[Week 08] Players and Teams Peformances'
+author: Giuliano Sposito
+date: '2020-11-03'
+slug: week08_performances
+categories:
+  - evaluation
+tags:
+  - datascience
+  - evaluation
+  - points
+  - projection
+dropCap: yes
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: jamycal_hasty.jpg
+  params:
+    description: jamycal_hasty TD
+params:
+  week: 8
+  version: 5
+---
+
+<!--more-->
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">DK Metcalf found room and turned on the jets for this TD. 🔥<br><br>(via <a href="https://twitter.com/NFL?ref_src=twsrc%5Etfw">@NFL</a>)<a href="https://t.co/lpOP1xoDhV">pic.twitter.com/lpOP1xoDhV</a></p>&mdash; Rotoworld Football (@Rotoworld_FB) <a href="https://twitter.com/Rotoworld_FB/status/1323022569205891072?ref_src=twsrc%5Etfw">November 1, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r loadData}
+library(tidyverse)
+library(ggridges)
+library(glue)
+library(ggimage)
+
+.week <- params$week
+sim <- readRDS(glue("./data/simulation_v5_week{.week}_final.rds"))
+
+player_performances <- inner_join(
+  select(sim$players_sim, teamId, teamName, playerId, rosterSlotId, simulation.org),
+  select(sim$players_stats, playerId, name, position, weekPts),
+  by="playerId"
+) %>% 
+  unnest(weekPts) %>% 
+  filter(week==.week, rosterSlotId < 20) %>% 
+  unnest(simulation.org) %>% 
+  #filter(teamId==10) %>% 
+  mutate(name=glue("{name} ({position})")) %>% 
+  mutate(position2=factor(position, levels = c("QB","WR","RB", "TE", "K", "DEF"),ordered = T)) %>% 
+  # mutate(name=fct_reorder(name, -as.integer(position2))) %>% 
+  mutate(name=fct_reorder(name, simulation.org))
+
+```
+
+## Teams Performances
+
+```{r teamPerf}
+sim$teams %>% 
+  select(teamId, name, imageUrl, week.stats) %>% 
+  unnest(week.stats) %>% 
+  filter(week==.week) %>% 
+  inner_join(sim$teams_sim, by="teamId") %>% 
+  select(-simulation) %>% 
+  rename(sim=simulation.org) %>%
+  unnest(sim) %>% 
+  mutate(name=fct_reorder(name, pts)) %>% 
+  ggplot(aes(x=sim, y=name, fill=name)) +
+  stat_density_ridges(quantile_lines = TRUE, quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+  geom_point(aes(x=pts, y=name), color="black", fill="red", shape=24) +
+  theme_ridges() +
+  theme( legend.position = "none" ) +
+  scale_y_discrete(expand=c(0.,0)) +
+  scale_x_continuous(expand = c(0.01,0)) +
+  labs(x="points",y="")
+```
+
+
+## Players Peformances
+
+```{r printCharts, results="asis"}
+
+chart <- player_performances %>% 
+  ggplot(aes(x=simulation.org, y=name, fill=position)) +
+  #geom_density_ridges() +
+  stat_density_ridges(quantile_lines = TRUE, quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+  geom_point(aes(x=weekPts, y=name), color="black", fill="red", shape=24) +
+  theme_ridges() +
+  theme( legend.position = "none" ) +
+  scale_y_discrete(expand=c(0.1,0)) +
+  scale_x_continuous(expand = c(0.01,0)) +
+  labs(x="points",y="") +
+  facet_wrap(teamName~., scales = "free")
+
+remp <- sim$teams %>% 
+  select(teamId, name) %>% 
+  arrange(name) %>% 
+  split(1:nrow(.)) %>% 
+  map(function(.team, .pperf){
+    cat(glue("### {team}\n\n", team=.team$name))
+    
+    g <- .pperf %>% 
+      filter(teamId==.team$teamId) %>%
+      mutate(name=fct_reorder(name, weekPts)) %>%
+      ggplot(aes(x=simulation.org, y=name, fill=position)) +
+        stat_density_ridges(quantile_lines = TRUE, quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+        geom_point(aes(x=weekPts, y=name), color="black", fill="red", shape=24) +
+        theme_ridges() +
+        theme( legend.position = "none" ) +
+        scale_y_discrete(expand=c(0.1,0)) +
+        scale_x_continuous(expand = c(0.01,0)) +
+        labs(x="points",y="")
+    
+    print(g)
+    cat("\n\n")
+    
+  }, .pperf = player_performances)
+
+```
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Nick Mullens is all <a href="https://twitter.com/hashtag/49ers?src=hash&amp;ref_src=twsrc%5Etfw">#49ers</a> fans right now. <a href="https://t.co/KbBaWOs4r2">pic.twitter.com/KbBaWOs4r2</a></p>&mdash; Jennifer Lee Chan (@jenniferleechan) <a href="https://twitter.com/jenniferleechan/status/1323372038149427200?ref_src=twsrc%5Etfw">November 2, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

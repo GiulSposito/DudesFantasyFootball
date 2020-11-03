@@ -4,37 +4,37 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 29 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 03] Players Projection and Matchups Simulation</title>
-      <link>/post/week03/</link>
-      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
+      <title>[Week 04] League Standings</title>
+      <link>/post/rank-week-4/</link>
+      <pubDate>Wed, 02 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week03/</guid>
+      <guid>/post/rank-week-4/</guid>
       <description></description>
     </item><item>
-      <title>[Week 02] Simulation Evaluation</title>
-      <link>/post/week-2-simulation-evaluation/</link>
-      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      <title>[Week 04] Simulation Evaluation</title>
+      <link>/post/week-4-simulation-evaluation/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-2-simulation-evaluation/</guid>
+      <guid>/post/week-4-simulation-evaluation/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;</description>
     </item><item>
-      <title>[Week 02] Players Projection and Matchups Simulation</title>
-      <link>/post/week02/</link>
-      <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
+      <title>[Week 04] Players Projection and Matchups Simulation</title>
+      <link>/post/week04/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week02/</guid>
+      <guid>/post/week04/</guid>
       <description></description>
     </item><item>
-      <title>[Week 01] Simulation Evaluation</title>
-      <link>/post/week01_eval/</link>
-      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
+      <title>[Week 03] Simulation Evaluation</title>
+      <link>/post/week-3-simulation-evaluation/</link>
+      <pubDate>Tue, 24 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week01_eval/</guid>
+      <guid>/post/week-3-simulation-evaluation/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 80%&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>
