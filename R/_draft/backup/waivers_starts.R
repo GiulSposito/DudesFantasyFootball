@@ -1,14 +1,17 @@
 library(tidyverse)
 library(glue)
 
-.team <- "Bikers"
-.week <- 16
+.team <- "Limeira Dead Rabbits"
+.team <- "Amparo Bikers"
+.team <- "Indaiatuba Riders"
+.week <- 8
 
 players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
   filter(
-    fantasy.team %in% c(.team), #"*FreeAgent",
-    !(team %in% c("FA", "FA*"))
+    fantasy.team %in% c(.team, "*FreeAgent"),
+    week==.week
   )
+  
 # 9:12 %>% 
 #   paste0("./data/week",.,"_players_projections.rds") %>% 
 #   map_df(readRDS)
@@ -24,7 +27,7 @@ starters <- tibble(
       # filter(!id %in% c(13604,8153, 530) ) %>%  # barkley 13604
       filter(position==.x$pos) %>%
       #filter(is.na(injuryStatus)) %>% 
-      top_n(.x$qtd, floor)
+      top_n(.x$qtd, points)
   }, .players=players)
 
 starters <- players %>% 
@@ -44,7 +47,7 @@ bench <- tibble(
   map_df(function(.x, .players){
     .players %>% 
       filter(position==.x$pos) %>% 
-      top_n(.x$qtd, floor)
+      top_n(.x$qtd, ceiling)
   }, .players = anti_join(players, starters) )
 
 # releases
@@ -57,3 +60,11 @@ starters
 bench 
 releases
 
+starters %>% 
+  select(id, first_name, last_name, position, floor, points, ceiling, fantasy.team) %>% 
+  inner_join(select(my_player_ids, id, playerId=nfl_id)) %>% 
+  inner_join(players_stats, by="playerId") %>% 
+  unnest(weekPts) %>% 
+  filter(week==7) %>% 
+  select(id, first_name, last_name, position.x, floor, points, ceiling, weekPts, fantasy.team)
+  
