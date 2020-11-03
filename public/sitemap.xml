@@ -3,17 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/2020/week08_standings/</loc>
-    <lastmod>2020-11-04T00:00:00+00:00</lastmod>
+    <loc>/post/2020/week-09-projections-and-simulation/</loc>
+    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-11-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/montecarlo/</loc>
+    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
+    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/projection/</loc>
+    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/projection/</loc>
+    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/simulation/</loc>
+    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/simulation/</loc>
+    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/2020/week08_standings/</loc>
     <lastmod>2020-11-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -34,11 +69,6 @@
   
   <url>
     <loc>/categories/recap/</loc>
-    <lastmod>2020-11-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-11-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -93,32 +123,7 @@
   </url>
   
   <url>
-    <loc>/tags/projection/</loc>
-    <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/simulation/</loc>
-    <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/simulation/</loc>
-    <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/2020/week-08-projections-and-simulation/</loc>
-    <lastmod>2020-10-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/montecarlo/</loc>
-    <lastmod>2020-10-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/projection/</loc>
     <lastmod>2020-10-29T00:00:00+00:00</lastmod>
   </url>
   
