@@ -5,11 +5,14 @@ library(ffanalytics)
 library(flexdashboard)
 library(yaml)
 
+# Suppress summarise info
+options(dplyr.summarise.inform = FALSE)
+
 # EXECUTION PARAMETERS ####
-week <- 7
+week <- 8
 season <- 2020
 config <- read_yaml("./config/config.yml")
-prefix <- "posWaivers"
+prefix <- "preTNF"
 destPath <- "static/reports/2020"
 sim.version <- 5
 

@@ -11,8 +11,11 @@ library(ffanalytics)
 library(flexdashboard)
 library(yaml)
 
+# Suppress summarise info
+options(dplyr.summarise.inform = FALSE)
+
 # EXECUTION PARAMETERS ####
-week <- 6
+week <- 8
 season <- 2020
 config <- read_yaml("./config/config.yml")
 prefix <- "final"
