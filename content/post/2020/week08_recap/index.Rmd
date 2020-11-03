@@ -11,14 +11,14 @@ tags:
   - recap
 dropCap: yes
 displayInMenu: no
-displayInList: no
+displayInList: yes
 resources:
 - name: featuredImage
   src: "ravens_at_steelers.jpg"
   params:
     description: Ravens at Steelers
 params:
-  week: 7
+  week: 8
 ---
 
 <!--more-->
