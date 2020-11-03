@@ -67,3 +67,61 @@ rank_pts %>%
   ylab("rank") +
   theme_void() +
   theme(legend.position = "bottom")
+
+
+
+sim$teams %>% 
+  select(teamId, name, imageUrl, week.stats) %>% 
+  unnest(week.stats) %>% 
+  filter(week==6) %>% 
+  inner_join(sim$teams_sim, by="teamId") %>% 
+  select(-simulation) %>% 
+  rename(sim=simulation.org) %>%
+  unnest(sim) %>% 
+  #mutate(name=fct_reorder(name, pts)) %>% 
+  ggplot(aes(x=sim, y=name, fill=name)) +
+  stat_density_ridges(quantile_lines = TRUE, quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+  geom_point(aes(x=pts, y=name), color="black", fill="red", shape=24) +
+  theme_ridges() +
+  theme( legend.position = "none" ) +
+  scale_y_discrete(expand=c(0.,0)) +
+  scale_x_continuous(expand = c(0.01,0)) +
+  scale_fill_manual(values = TEAMS_COLOR_SCALE) +
+  labs(x="points",y="")
+
+
+
+week_points <- 1:6 %>% 
+  map_df(function(.w){
+    readRDS(glue("./data/simulation_v5_week{.w}_final.rds")) %>% 
+      pluck("teams") %>% 
+      select(teamId, name, imageUrl, week.stats) %>% 
+      unnest(week.stats) %>% 
+      return()
+  })
+
+rank_pts <- week_points %>% 
+  group_by(teamId) %>% 
+  arrange(teamId, week) %>% 
+  mutate(cumpts = cumsum(pts)) %>% 
+  ungroup() %>% 
+  arrange(week, desc(pts)) %>% 
+  mutate(rank=rep(1:14,6)) %>% 
+  rename(team=name)
+
+rank_pts %>% 
+  # mutate(record = paste0(wins, "-", losses)) %>% 
+  # select(week, teamId, team=name, rank, record, imageUrl) %>% 
+  # # inner_join(select(sim$teams, teamId, imageUrl), by="teamId") %>% 
+  ggplot(aes(x=week, y=reorder(rank,-rank), group=team)) +
+  geom_line(aes(color=team), size=2) +
+  geom_image(aes(image=imageUrl), size=.04) +
+  geom_text(aes(label=pts), size=2.5, color="black", nudge_y = -.40) +
+  # geom_hline(yintercept = 8.5, linetype="dashed", size=1, color="darkgrey") +
+  # geom_text(x=1.4, y=8.65, label="playoff clinch", size=3, color="darkgrey") +
+  # geom_hline(yintercept = 12.5, linetype="dashed", size=1, color="darkgrey") +
+  # geom_text(x=1.4, y=12.65, label="bye", size=3, color="darkgrey") +
+  scale_colour_manual(values = TEAMS_COLOR_SCALE) +
+  ylab("rank") +
+  theme_void() +
+  theme(legend.position = "bottom")
