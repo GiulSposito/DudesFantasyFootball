@@ -20,7 +20,7 @@ resources:
   src: "gost_miss_fg.jpg"
 params:
   week: 8
-  prefix: "preSNF"
+  prefix: "preMNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -118,6 +118,7 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-MNF](/reports/2020/dudes_simulation_v5_week8_preMNF.html)
 - [Matchup Simulations Pre-SNF](/reports/2020/dudes_simulation_v5_week8_preSNF.html)
 - [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week8_posTNF.html)
 - [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week8_preTNF.html)
