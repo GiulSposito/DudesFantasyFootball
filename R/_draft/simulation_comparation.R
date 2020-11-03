@@ -1,3 +1,5 @@
+library(tidyverse)
+
 sim <- readRDS("./data/simulation_v5_week4_posMNF.rds")
 
 
@@ -26,18 +28,22 @@ sim$players_sim %>%
 
 sim$players_stats %>% 
   inner_join(select(sim$players_sim, playerId, simulation.org)) %>% 
-  filter(position=="RB") %>% 
+  filter(position=="WR") %>% 
   unnest(weekPts) %>% 
   filter(week==4) %>% 
+  top_n(20, weekPts) %>% 
   unnest(simulation.org) %>% 
   group_by(playerId) %>% 
   mutate( predPts = median(simulation.org, na.rm=T) ) %>% 
   ungroup() %>% 
-  mutate(weekPts==if_else(is.na(weekPts), 0, weekPts)) %>% 
+  mutate(weekPts==if_else(is.na(weekPts), 0, weekPts)) %>%
   ggplot() +
   geom_density(aes(simulation.org), fill="red", alpha=.3) +
-  geom_vline(aes(xintercept=weekPts), linetype="dashed") +
+  geom_vline(aes(xintercept=weekPts), linetype="solid", color="red") +
   geom_vline(aes(xintercept=predPts), linetype="dotted") +
   facet_wrap(name~., scales = "free")+
   lims(x=c(0,50)) +
+  labs(title="Wide Receivers | top 20",
+       subtitle = "Week 4 - Points Probability Distribution vs Actual Points (red solid line)",
+       x="points",y="") +
   theme_minimal()
