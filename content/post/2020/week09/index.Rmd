@@ -20,7 +20,7 @@ resources:
   src: "tua_fumble.jpg"
 params:
   week: 9
-  prefix: "preWaiver"
+  prefix: "posWaiver"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -118,4 +118,5 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week9_posWaiver.html)
 - [Matchup Simulations Pre-Waiver](/reports/2020/dudes_simulation_v5_week9_preWaiver.html)
