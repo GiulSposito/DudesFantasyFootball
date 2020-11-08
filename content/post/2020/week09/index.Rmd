@@ -20,7 +20,7 @@ resources:
   src: "tua_fumble.jpg"
 params:
   week: 9
-  prefix: "posTNF"
+  prefix: "posSunday1stGames"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -118,6 +118,7 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations posSunday1stGames](/reports/2020/dudes_simulation_v5_week9_posSunday1stGames.html)
 - [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week9_posTNF.html)
 - [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week9_preTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week9_posWaiver.html)
