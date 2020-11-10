@@ -2,7 +2,7 @@
 title: '[Week 09] Matchups Recap'
 author: Giuliano Sposito
 date: '2020-11-11'
-slug: week08_recap
+slug: week09_recap
 categories:
   - recap
   - ranking
