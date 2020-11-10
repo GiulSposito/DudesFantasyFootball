@@ -1,0 +1,480 @@
+---
+title: '[Week 09] Simulation Evaluation'
+author: "Giuliano Sposito"
+date: '2020-11-10'
+slug: week9_eval
+categories:
+  - evaluation
+  - simulation
+tags:
+  - evaluation
+  - simulation
+dropCap: yes
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: war_games.jpg
+  params:
+    description: War Games Tag Line
+params:
+  week: 9
+  version: 5
+  prefix: final
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p><strong>Matchup Winner Accuracy: 86%</strong></p>
+<!--more-->
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+LET DALVIN COOK <a href="https://t.co/HHUNudHcpH">pic.twitter.com/HHUNudHcpH</a>
+</p>
+— PFF Fantasy Football (<span class="citation">@PFF_Fantasy</span>) <a href="https://twitter.com/PFF_Fantasy/status/1325537233550630918?ref_src=twsrc%5Etfw">November 8, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div id="historic" class="section level2">
+<h2>Historic</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="center">week</th>
+<th align="center">Winner Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">8</td>
+<td align="center">86%</td>
+</tr>
+<tr class="even">
+<td align="center">7</td>
+<td align="center">28%</td>
+</tr>
+<tr class="odd">
+<td align="center">6</td>
+<td align="center">43%</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">43%</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">14%</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">57%</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">43%</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">14%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="game-prediction" class="section level2">
+<h2>Game Prediction</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+game.nickname
+</th>
+<th style="text-align:left;">
+predicion
+</th>
+<th style="text-align:left;">
+win.prob
+</th>
+<th style="text-align:left;">
+outcome
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Robots @ Miners
+</td>
+<td style="text-align:left;">
+Robots
+</td>
+<td style="text-align:left;">
+65.8%
+</td>
+<td style="text-align:left;">
+Robots
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Giants @ Blues
+</td>
+<td style="text-align:left;">
+Giants
+</td>
+<td style="text-align:left;">
+80.7%
+</td>
+<td style="text-align:left;">
+Blues
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Alligators @ Guara Wolf
+</td>
+<td style="text-align:left;">
+Guara Wolf
+</td>
+<td style="text-align:left;">
+50.8%
+</td>
+<td style="text-align:left;">
+Guara Wolf
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dead Rabbits @ Knights
+</td>
+<td style="text-align:left;">
+Dead Rabbits
+</td>
+<td style="text-align:left;">
+87.6%
+</td>
+<td style="text-align:left;">
+Dead Rabbits
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Butchers @ Claro Farmers
+</td>
+<td style="text-align:left;">
+Claro Farmers
+</td>
+<td style="text-align:left;">
+64.1%
+</td>
+<td style="text-align:left;">
+Claro Farmers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Wild Mules @ Steelers
+</td>
+<td style="text-align:left;">
+Wild Mules
+</td>
+<td style="text-align:left;">
+72.5%
+</td>
+<td style="text-align:left;">
+Steelers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Riders @ Bikers
+</td>
+<td style="text-align:left;">
+Riders
+</td>
+<td style="text-align:left;">
+72.9%
+</td>
+<td style="text-align:left;">
+Bikers
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="score-prediction" class="section level2">
+<h2>Score Prediction</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+team
+</th>
+<th style="text-align:right;">
+real.pts
+</th>
+<th style="text-align:right;">
+pred.min
+</th>
+<th style="text-align:right;">
+pred.pts
+</th>
+<th style="text-align:right;">
+pred.max
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Paulinia Robots
+</td>
+<td style="text-align:right;">
+144.5
+</td>
+<td style="text-align:right;">
+115.5
+</td>
+<td style="text-align:right;">
+137.6
+</td>
+<td style="text-align:right;">
+165.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Limeira Guara Wolf
+</td>
+<td style="text-align:right;">
+136.6
+</td>
+<td style="text-align:right;">
+91.5
+</td>
+<td style="text-align:right;">
+119.3
+</td>
+<td style="text-align:right;">
+152.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Steelers
+</td>
+<td style="text-align:right;">
+123.1
+</td>
+<td style="text-align:right;">
+94.4
+</td>
+<td style="text-align:right;">
+113.6
+</td>
+<td style="text-align:right;">
+134.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Goncalves Miners
+</td>
+<td style="text-align:right;">
+117.6
+</td>
+<td style="text-align:right;">
+105.0
+</td>
+<td style="text-align:right;">
+127.2
+</td>
+<td style="text-align:right;">
+152.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Limeira Dead Rabbits
+</td>
+<td style="text-align:right;">
+117.5
+</td>
+<td style="text-align:right;">
+91.5
+</td>
+<td style="text-align:right;">
+123.8
+</td>
+<td style="text-align:right;">
+154.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sorocaba Wild Mules
+</td>
+<td style="text-align:right;">
+107.5
+</td>
+<td style="text-align:right;">
+103.5
+</td>
+<td style="text-align:right;">
+128.5
+</td>
+<td style="text-align:right;">
+157.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Amparo Bikers
+</td>
+<td style="text-align:right;">
+106.5
+</td>
+<td style="text-align:right;">
+84.9
+</td>
+<td style="text-align:right;">
+107.5
+</td>
+<td style="text-align:right;">
+135.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Brotas Alligators
+</td>
+<td style="text-align:right;">
+105.4
+</td>
+<td style="text-align:right;">
+98.1
+</td>
+<td style="text-align:right;">
+119.1
+</td>
+<td style="text-align:right;">
+142.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Blues
+</td>
+<td style="text-align:right;">
+102.5
+</td>
+<td style="text-align:right;">
+82.5
+</td>
+<td style="text-align:right;">
+105.8
+</td>
+<td style="text-align:right;">
+131.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rio Claro Farmers
+</td>
+<td style="text-align:right;">
+101.2
+</td>
+<td style="text-align:right;">
+98.9
+</td>
+<td style="text-align:right;">
+127.6
+</td>
+<td style="text-align:right;">
+157.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barao Butchers
+</td>
+<td style="text-align:right;">
+99.3
+</td>
+<td style="text-align:right;">
+94.7
+</td>
+<td style="text-align:right;">
+117.9
+</td>
+<td style="text-align:right;">
+140.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Campinas Giants
+</td>
+<td style="text-align:right;">
+87.2
+</td>
+<td style="text-align:right;">
+106.5
+</td>
+<td style="text-align:right;">
+129.8
+</td>
+<td style="text-align:right;">
+158.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+London Knights
+</td>
+<td style="text-align:right;">
+85.6
+</td>
+<td style="text-align:right;">
+67.1
+</td>
+<td style="text-align:right;">
+86.3
+</td>
+<td style="text-align:right;">
+108.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Indaiatuba Riders
+</td>
+<td style="text-align:right;">
+70.8
+</td>
+<td style="text-align:right;">
+101.7
+</td>
+<td style="text-align:right;">
+123.0
+</td>
+<td style="text-align:right;">
+146.3
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/post/2020/week09_eval/index_files/figure-html/scoreChart-1.png" width="672" /></p>
+</div>
+<div id="player-projections" class="section level2">
+<h2>Player Projections</h2>
+<p><img src="/post/2020/week09_eval/index_files/figure-html/pointsProj-1.png" width="672" /></p>
+<p><img src="/post/2020/week09_eval/index_files/figure-html/projErrors-1.png" width="672" /></p>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+The Carr can FLY <a href="https://t.co/cOBd5dufcT">pic.twitter.com/cOBd5dufcT</a>
+</p>
+— PFF Fantasy Football (<span class="citation">@PFF_Fantasy</span>) <a href="https://twitter.com/PFF_Fantasy/status/1325573999552843783?ref_src=twsrc%5Etfw">November 8, 2020</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>

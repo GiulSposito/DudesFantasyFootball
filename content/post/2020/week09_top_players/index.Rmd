@@ -1,7 +1,7 @@
 ---
-title: '[Season 2020] Fantasy Top Players'
+title: '[Week 09] Fantasy Top Players'
 author: "Giuliano Sposito"
-date: '2020-11-10'
+date: '2020-11-11'
 slug: '2020_w9_top_players'
 categories:
   - ranking
@@ -17,7 +17,7 @@ resources:
   params:
     description: MVP Candidates
 params:
-  week: 8
+  week: 9
   ranksize: 5
 ---
 
@@ -71,6 +71,8 @@ top_players %>%
   knitr::kable() 
 ```
 
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">COWBOYS WILD PUNT RETURN 😳<br><br>(via <a href="https://twitter.com/thecheckdown?ref_src=twsrc%5Etfw">@thecheckdown</a>)<a href="https://t.co/EXwzx6Yd93">pic.twitter.com/EXwzx6Yd93</a></p>&mdash; Bleacher Report (@BleacherReport) <a href="https://twitter.com/BleacherReport/status/1325565389959438337?ref_src=twsrc%5Etfw">November 8, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## By Position
 
