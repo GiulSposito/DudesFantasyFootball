@@ -23,7 +23,7 @@ params:
   prefix: final
 ---
 
-**Matchup Winner Accuracy: 86%**
+**Matchup Winner Accuracy: 57%**
 
 <!--more-->
 
@@ -34,6 +34,7 @@ params:
 
 | week | Winner Accuracy |
 |:----:|:---------------:|
+| 9    |       57%       |
 | 8    |       86%       |
 | 7    |       28%       |
 | 6    |       43%       |
@@ -134,7 +135,7 @@ scoreTable %>%
 
 ## Player Projections
 
-```{r pointsProj, fig.height=12}
+```{r pointsProj, fig.height=10}
 playerProjs <- sim$players_id %>% 
   select(id, playerId=nfl_id) %>% 
   inner_join(sim$ptsproj, by = "id") %>% 
@@ -152,6 +153,7 @@ projErrors <- playerPoints %>%
 
   
 projErrors %>% 
+  filter(!str_detect(data_src,"LAG")) %>% 
   ggplot() +
   geom_point(aes(x=proj, y=pts, color=position)) +
   facet_grid(data_src~position, scales = "free") +
@@ -164,8 +166,9 @@ projErrors %>%
         legend.position = "none")
 ```
 
-```{r projErrors, fig.height=12}
+```{r projErrors, fig.height=10}
 projErrors %>% 
+  filter(!str_detect(data_src,"LAG")) %>%  
   ggplot() +
   geom_density(aes(x=error, fill=position)) +
   facet_grid(data_src~position, scales = "free") +
