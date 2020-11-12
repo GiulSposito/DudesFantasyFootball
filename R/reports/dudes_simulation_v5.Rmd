@@ -5,8 +5,8 @@ output:
     orientation: rows
     vertical_layout: fill
 params:
-  week: 2
-  prefix: "preSNF"
+  week: 10
+  prefix: "preTNF"
 ---
 
 ```{r setup, include=FALSE}
@@ -22,9 +22,10 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(flexdashboard)
 library(tidyverse)
 #library(formattable)
-library(ggrepel)
+#library(ggrepel)
 library(glue)
 library(broom)
+library(ggridges)
 
 .week <- params$week
 .prefix <- params$prefix
@@ -169,19 +170,49 @@ Points Distribution {data-navmenu="Overview"}
 
 ```{r teamPtsDist, fig.width=9}
 
+# sim_summary %>% 
+#   select(name, sim.pts) %>% 
+#   mutate(mean.pts = map_dbl(sim.pts, mean)) %>% 
+#   unnest(sim.pts) %>% 
+#   mutate(sim.pts = round(sim.pts,1)) %>%
+#   ggplot(aes(x=reorder(name,mean.pts), y=sim.pts, color=name)) +
+#   geom_boxplot() +
+#   coord_flip() +
+#   theme_minimal() +
+#   ggtitle("Simulated Points Distribution") +
+#   xlab( "fantasy team" ) +
+#   ylab( "simulation points" ) +
+#   theme( legend.position = "none" )
+
+
 sim_summary %>% 
   select(name, sim.pts) %>% 
   mutate(mean.pts = map_dbl(sim.pts, mean)) %>% 
   unnest(sim.pts) %>% 
   mutate(sim.pts = round(sim.pts,1)) %>%
-  ggplot(aes(x=reorder(name,mean.pts), y=sim.pts, color=name)) +
-  geom_boxplot() +
-  coord_flip() +
-  theme_minimal() +
-  ggtitle("Simulated Points Distribution") +
-  xlab( "fantasy team" ) +
-  ylab( "simulation points" ) +
-  theme( legend.position = "none" )
+  ggplot(aes(y=reorder(name,mean.pts), x=sim.pts, fill=name)) +
+  stat_density_ridges(quantile_lines = TRUE, quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+  theme_ridges() +
+  theme( legend.position = "none" ) +
+  labs(x="points",y="")
+
+  # coord_flip() +
+  # theme_minimal() +
+  # ggtitle("Simulated Points Distribution") +
+  # xlab( "fantasy team" ) +
+  # ylab( "simulation points" ) +
+  # theme( legend.position = "none" )
+  # 
+  # 
+  # ggplot(aes(x=sim, y=name, fill=name)) +
+  # stat_density_ridges(quantile_lines = TRUE, quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+  # geom_point(aes(x=pts, y=name), color="black", fill="red", shape=24) +
+  # theme_ridges() +
+  # theme( legend.position = "none" ) +
+  # scale_y_discrete(expand=c(0.,0)) +
+  # scale_x_continuous(expand = c(0.01,0)) +
+
+
 
 ```
 
