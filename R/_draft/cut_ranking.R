@@ -9,13 +9,11 @@ rank_pts <- week_points %>%
 
 cut_rank <- rank_pts
 
-for(dropWeek in 1:7){
+for(dropWeek in 1:.week){
 
   dropId <- cut_rank %>% 
-    filter(
-      week==dropWeek,
-      filter(pts==min(pts)) 
-    ) %>% 
+    filter(week==dropWeek) %>% 
+    filter(pts==min(pts)) %>% 
     pull(teamId)
   
   cut_rank <- cut_rank %>% 

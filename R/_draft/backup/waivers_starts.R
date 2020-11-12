@@ -1,14 +1,14 @@
 library(tidyverse)
 library(glue)
 
-.team <- "Limeira Dead Rabbits"
+#.team <- "Limeira Dead Rabbits"
 .team <- "Amparo Bikers"
-.team <- "Indaiatuba Riders"
-.week <- 8
+#.team <- "Indaiatuba Riders"
+.week <- 10
 
 players <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
   filter(
-    fantasy.team %in% c(.team, "*FreeAgent"),
+    fantasy.team %in% c(.team,"*FreeAgent"),
     week==.week
   )
   
@@ -27,7 +27,7 @@ starters <- tibble(
       # filter(!id %in% c(13604,8153, 530) ) %>%  # barkley 13604
       filter(position==.x$pos) %>%
       #filter(is.na(injuryStatus)) %>% 
-      top_n(.x$qtd, points)
+      top_n(.x$qtd, ceiling)
   }, .players=players)
 
 starters <- players %>% 
@@ -35,7 +35,7 @@ starters <- players %>%
   filter(pos %in% c("WR","RB")) %>% 
   filter(is.na(injuryGameStatus)) %>% 
   anti_join(starters) %>% 
-  top_n(1, floor) %>% 
+  top_n(1, ceiling) %>% 
   bind_rows(starters,.)
 
 ## bench
@@ -56,9 +56,9 @@ releases <- players %>%
   anti_join(starters) %>% 
   anti_join(bench)
 
-starters
-bench 
-releases
+starters %>% select(first_name, last_name, position, team, fantasy.team)
+bench  %>% select(first_name, last_name, position, team, fantasy.team)
+releases %>% select(first_name, last_name, position, team, fantasy.team)
 
 starters %>% 
   select(id, first_name, last_name, position, floor, points, ceiling, fantasy.team) %>% 
