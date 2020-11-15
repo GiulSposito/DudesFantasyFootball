@@ -20,7 +20,7 @@ resources:
   src: "bridgewater_jump.jpg"
 params:
   week: 10
-  prefix: "posTNF"
+  prefix: "preSundayGames"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -118,6 +118,7 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-SundayGames](/reports/2020/dudes_simulation_v5_week10_preSundayGames.html)
 - [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week10_posTNF.html)
 - [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week10_preTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week10_posWaiver.html)
