@@ -4,40 +4,40 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 13 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 08] Simulation Evaluation</title>
-      <link>/post/2020/week8_eval/</link>
+      <title>[Week 09] Projections and Simulation</title>
+      <link>/post/2020/week-09-projections-and-simulation/</link>
+      <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week-09-projections-and-simulation/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;em&gt;Last Update: 2020-11-09 09:00:13&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 08] League Standings</title>
+      <link>/post/2020/week08_standings/</link>
+      <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week08_standings/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;League Leaders: Giants, Mules, Wolfs, Farmers, Knights e Butchers&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 08] Coachs and Managers</title>
+      <link>/post/2020/week08_coachs/</link>
       <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/2020/week8_eval/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 86%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 08] Projections and Simulation</title>
-      <link>/post/2020/week-08-projections-and-simulation/</link>
-      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week-08-projections-and-simulation/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;em&gt;Last Update: 2020-11-02 21:39:47&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 07] Coachs and Managers</title>
-      <link>/post/2020/week07_coachs/</link>
-      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week07_coachs/</guid>
+      <guid>/post/2020/week08_coachs/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
@@ -46,16 +46,15 @@
 
 </description>
     </item><item>
-      <title>[Week 07] League Standings</title>
-      <link>/post/2020/week07_standings/</link>
-      <pubDate>Wed, 28 Oct 2020 00:00:00 +0000</pubDate>
+      <title>[Week 08] Matchups Recap</title>
+      <link>/post/2020/week08_recap/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/2020/week07_standings/</guid>
+      <guid>/post/2020/week08_recap/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;League Leaders: Giants, Mules, Knights, Butchers, Guara Wolfs e Blues&lt;/p&gt;
 </description>
     </item>
   </channel>

@@ -4,11 +4,41 @@
     <link>/categories/ranking/</link>
     <description>Recent content in ranking on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 12 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/ranking/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 02] Standings and Matchups Recap</title>
+      <link>/post/2020/week02_recap/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week02_recap/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;League Leaders: Butchers, Blues, Miners and Guara Wolfs&lt;/p&gt;
+</description>
+    </item><item>
+      <title>Trophy Room</title>
+      <link>/post/it-s-football-dudes-trophy-room-2019/</link>
+      <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/it-s-football-dudes-trophy-room-2019/</guid>
+      <description></description>
+    </item><item>
+      <title>Season 2019 Championship</title>
+      <link>/post/rank-week-16/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-16/</guid>
+      <description>
+
+
+&lt;p&gt;League Champion: &lt;em&gt;Indaiatuba Riders&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>Season 2019 MVPs</title>
       <link>/post/mvp-week-16/</link>
       <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
@@ -18,39 +48,6 @@
 
 
 &lt;p&gt;Top Players: CMC, Lamar Jackson, Michael Thomas, Deshaun Watson and Russell Wilson.&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 15] Semifinals</title>
-      <link>/post/rank-week-15/</link>
-      <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-15/</guid>
-      <description>
-
-
-&lt;p&gt;Fantasy Super Bowl: &lt;em&gt;Sorocaba Steelers vs Indaiatuba Riders&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 14] The Draft Wizards</title>
-      <link>/post/week-14-draft-wizards/</link>
-      <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-14-draft-wizards/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;strong&gt;The winners and the losers in draft.&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 14] Regular Season End</title>
-      <link>/post/rank-week-14/</link>
-      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-14/</guid>
-      <description>
-
-
-&lt;p&gt;Playoffs: &lt;em&gt;Campinas Giants, Paulinia Robots, Indaiatuba Riders and Sorocaba Steelers.&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>
