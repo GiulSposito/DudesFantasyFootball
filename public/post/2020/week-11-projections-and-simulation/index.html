@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>[Week 11] Projections and Simulation &middot; It&#39;s Football, Dudes!</title>
+  <meta name="description" content="" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  
+  
+  
+  
+  <link href="/css/concated.min.css" rel="stylesheet">
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-148711241-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  <style>
+    body {
+      background: #ecedef url("/img/wilson_background_w.jpg") repeat;
+    }
+  </style>
+</head>
+
+  <body class="single-body">
+    <nav class="nav-bar side-padding">
+  <h1 class="nav-header"><a href="/" class="nav-text">It&#39;s Football, Dudes! Fantasy League</a></h1>
+  <div class="hamburger-menu">
+    <button onclick="hamburgerMenuPressed.call(this)" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span>
+      <span></span>
+    </button>
+    <ul id="menu" class="hamburger-menu-overlay">
+      <li><a href="/" class="hamburger-menu-overlay-link">Home</a></li>
+      <li><a href="/post/it-s-football-dudes-trophy-room-2019/" class="hamburger-menu-overlay-link">Trophy Room</a></li>
+      <li><a href="/post/it-s-football-dudes-trophy-room/" class="hamburger-menu-overlay-link">Trophy Room</a></li>
+      <li><a href="/categories/about" class="hamburger-menu-overlay-link">About</a></li><li><a href="/categories/draft" class="hamburger-menu-overlay-link">Draft</a></li><li><a href="/categories/evaluation" class="hamburger-menu-overlay-link">Evaluation</a></li><li><a href="/categories/projection" class="hamburger-menu-overlay-link">Projection</a></li><li><a href="/categories/ranking" class="hamburger-menu-overlay-link">Ranking</a></li><li><a href="/categories/recap" class="hamburger-menu-overlay-link">Recap</a></li><li><a href="/categories/simulation" class="hamburger-menu-overlay-link">Simulation</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+    <main class="content side-text-padding">
+      <article class="post ">
+        <header class="post-header">
+        	<h1 class="post-title">[Week 11] Projections and Simulation</h1>
+          <p class="post-date">Posted <time datetime="2020-11-19">Nov 19, 2020</time></p>
+        </header>
+        
+        <picture class="post-figure">
+          
+          
+          <source srcset="/post/2020/week-11-projections-and-simulation/josh_allen_hu22e254a2e6764bbaa7dcf8b137f1088d_67568_800x0_resize_q75_lanczos.jpg">
+          <img src="/post/2020/week-11-projections-and-simulation/josh_allen_hu22e254a2e6764bbaa7dcf8b137f1088d_67568_800x0_resize_q75_lanczos.jpg" alt="Tua Fumble">
+        </picture>
+        
+        <div id="games" class="section level2">
+<h2>Games</h2>
+<table style="border-collapse:collapse;border-spacing:0" width="100%" class="tg">
+<tbody>
+<tr>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_HOU_1.png' style='width:60px;height:60px' alt=''>
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" colspan="5">
+Paulinia Robots @ Brotas Alligators
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://image.fantasy.nfl.com/image/c805d06d781a22a4b0f26c71d74dcf68.jpg?x=50&y=50&sig=0754cc0f67d68c1038b78dae83bd6603' style='width:60px;height:60px' alt=''>
+</th>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Robots</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>@</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Alligators</td>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>98%</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'>145.8</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'>94.8</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>2%</td>
+</tr>
+<tr>
+<td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal" colspan="7">
+</td>
+</tr>
+<tr>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://image.fantasy.nfl.com/image/e9581c5cb898a312356db64bde1176f1.jpg?x=50&y=50&sig=3ff869f3e53f6a30f094c0d6ad54695e' style='width:60px;height:60px' alt=''>
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" colspan="5">
+Limeira Dead Rabbits @ Campinas Giants
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_NYG_5.png' style='width:60px;height:60px' alt=''>
+</th>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Rabbits</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>@</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Giants</td>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>36%</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'>111.3</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'>122.8</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>64%</td>
+</tr>
+<tr>
+<td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal" colspan="7">
+</td>
+</tr>
+<tr>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_GB_1.png' style='width:60px;height:60px' alt=''>
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" colspan="5">
+Barao Butchers @ Goncalves Miners
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://image.fantasy.nfl.com/image/2e2e87f937ca70cc5ce0ec49133f1ee1.jpg?x=50&y=50&sig=bfbec6257f27b92a4b3e9bd9b7db7006' style='width:60px;height:60px' alt=''>
+</th>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Butchers</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>@</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Miners</td>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>27%</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'>116.8</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'>134.2</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>73%</td>
+</tr>
+<tr>
+<td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal" colspan="7">
+</td>
+</tr>
+<tr>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_PHI_4.png' style='width:60px;height:60px' alt=''>
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" colspan="5">
+Sorocaba Wild Mules @ Indaiatuba Blues
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_NYG_4.png' style='width:60px;height:60px' alt=''>
+</th>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Mules</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>@</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Blues</td>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>60%</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'>128.2</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'>121.6</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>40%</td>
+</tr>
+<tr>
+<td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal" colspan="7">
+</td>
+</tr>
+<tr>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_CAR_4.png' style='width:60px;height:60px' alt=''>
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" colspan="5">
+Indaiatuba Riders @ Limeira Guara Wolf
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_JAX_4.png' style='width:60px;height:60px' alt=''>
+</th>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Riders</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>@</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Wolf</td>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>38%</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'>104.8</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'>112.6</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>62%</td>
+</tr>
+<tr>
+<td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal" colspan="7">
+</td>
+</tr>
+<tr>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_SF_1.png' style='width:60px;height:60px' alt=''>
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" colspan="5">
+Amparo Bikers @ London Knights
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_OAK_1.png' style='width:60px;height:60px' alt=''>
+</th>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Bikers</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>@</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Knights</td>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>84%</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'>130.4</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'>101.6</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>16%</td>
+</tr>
+<tr>
+<td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal" colspan="7">
+</td>
+</tr>
+<tr>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_CAR_1.png' style='width:60px;height:60px' alt=''>
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" colspan="5">
+Sorocaba Steelers @ Rio Claro Farmers
+</th>
+<th style="border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal" rowspan="2">
+<img src='https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_NYG_2.png' style='width:60px;height:60px' alt=''>
+</th>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Steelers</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>@</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'><span style='font-weight:bold'>0</span></td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>Farmers</td>
+</tr>
+<tr>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>65%</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'>138.1</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'>125.9</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>(0/9)</td>
+<td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>35%</td>
+</tr>
+<tr>
+<td style="border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal" colspan="7">
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>Last Update: 2020-11-18 20:06:54</em></p>
+</div>
+<div id="projections" class="section level2">
+<h2>Projections</h2>
+<ul>
+<li><a href="/reports/2020/ffa_players_projection_week11.html">Individual Players Projections</a></li>
+</ul>
+</div>
+<div id="simulation" class="section level2">
+<h2>Simulation</h2>
+<ul>
+<li><a href="/reports/2020/dudes_simulation_v5_week11_posWaivers.html">Matchup Simulations Pos-Waiver</a></li>
+</ul>
+</div>
+
+      </article>
+      
+    </main>
+    <nav class="end-nav side-padding">
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/post/2020/week10_coachs/" class="card blog-card" rel="bookmark" >
+  
+  <div class="card-img-container">
+    <p class="card-img-overlay">Next Article</p>
+    <picture>
+      
+      <source srcset="/post/2020/week10_coachs/rob_ryans.jpg">
+      <img src="/post/2020/week10_coachs/rob_ryans.jpg" class="card-img" alt="Rob Ryans">
+    </picture>
+  </div>
+  
+  <article class="card-body">
+    <h2 class="card-title">[Week 10] Coachs and Managers</h2>
+    <p class="card-text">
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
+
+
+</p>
+    <div class="card-subtext muted-text">
+      <p>Posted <time datetime="2020-11-18 1118:00">Nov 18, 2020</time></p>
+      <p>#recap #ranking </p>
+    </div>
+  </article>
+</a>
+      
+      <a ontouchstart="cardPressed.call(this)" ontouchend="cardReleased.call(this)" ontouchmove="cardReleased.call(this)" 
+  href="/" class="card home-card" style="background-image: url( /img/grey-cloud.jpg )" rel="bookmark" >
+  Home
+</a>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+  
+  <script src="/js/core.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+  </body>
+</html>

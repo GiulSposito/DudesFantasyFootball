@@ -9,32 +9,32 @@
         <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>projection</title>
+      <link>/categories/projection/</link>
+      <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/projection/</guid>
+      <description></description>
+    </item><item>
+      <title>simulation</title>
+      <link>/categories/simulation/</link>
+      <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/simulation/</guid>
+      <description></description>
+    </item><item>
       <title>ranking</title>
       <link>/categories/ranking/</link>
-      <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>/categories/ranking/</guid>
       <description></description>
     </item><item>
       <title>recap</title>
       <link>/categories/recap/</link>
-      <pubDate>Thu, 19 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>/categories/recap/</guid>
-      <description></description>
-    </item><item>
-      <title>evaluation</title>
-      <link>/categories/evaluation/</link>
-      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/evaluation/</guid>
-      <description></description>
-    </item><item>
-      <title>simulation</title>
-      <link>/categories/simulation/</link>
-      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/simulation/</guid>
       <description></description>
     </item>
   </channel>
