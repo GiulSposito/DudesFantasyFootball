@@ -20,7 +20,7 @@ resources:
   src: "josh_allen.jpg"
 params:
   week: 11
-  prefix: "posWaivers"
+  prefix: "posTNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -116,4 +116,5 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week11_posTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week11_posWaivers.html)
