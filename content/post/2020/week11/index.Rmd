@@ -20,7 +20,7 @@ resources:
   src: "josh_allen.jpg"
 params:
   week: 11
-  prefix: "preSNF"
+  prefix: "preMNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -116,6 +116,7 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-MNF](/reports/2020/dudes_simulation_v5_week11_preMNF.html)
 - [Matchup Simulations Pre-SNF](/reports/2020/dudes_simulation_v5_week11_preSNF.html)
 - [Matchup Simulations Pre Sunday Games](/reports/2020/dudes_simulation_v5_week11_preSundayGames.html)
 - [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week11_posTNF.html)
