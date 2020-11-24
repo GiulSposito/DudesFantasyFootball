@@ -4,11 +4,22 @@
     <link>/categories/ranking/</link>
     <description>Recent content in ranking on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 18 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/ranking/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 04] Matchups Recap</title>
+      <link>/post/2020/week04_recap/</link>
+      <pubDate>Tue, 06 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week04_recap/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item><item>
       <title>[Week 03] Standings and Matchups Recap</title>
       <link>/post/2020/week03_recap/</link>
       <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
@@ -39,17 +50,6 @@
       
       <guid>/post/it-s-football-dudes-trophy-room-2019/</guid>
       <description></description>
-    </item><item>
-      <title>Season 2019 Championship</title>
-      <link>/post/rank-week-16/</link>
-      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-16/</guid>
-      <description>
-
-
-&lt;p&gt;League Champion: &lt;em&gt;Indaiatuba Riders&lt;/em&gt;&lt;/p&gt;
-</description>
     </item>
   </channel>
 </rss>

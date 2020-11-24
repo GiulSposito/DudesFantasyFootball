@@ -4,11 +4,22 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 24 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 12] League MVPs</title>
+      <link>/post/mvp-week-12/</link>
+      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mvp-week-12/</guid>
+      <description>
+
+
+&lt;p&gt;Top Players: CMC, Lamar, Thomas, Cook and Wilson&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 12] League Standings</title>
       <link>/post/rank-week-12/</link>
       <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
@@ -43,13 +54,6 @@ Playoffs contenders: &lt;em&gt;Indaiatuba Riders, Sorocaba Steelers and Paulinia
 
 &lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
 </description>
-    </item><item>
-      <title>[Week 11] League Standings</title>
-      <link>/post/rank-week-11/</link>
-      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-11/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
