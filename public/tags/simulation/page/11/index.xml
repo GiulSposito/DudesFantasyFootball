@@ -4,11 +4,22 @@
     <link>/tags/simulation/</link>
     <description>Recent content in simulation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 19 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 07] Simulation Evaluation</title>
+      <link>/post/week-7-simulation-evaluation/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week-7-simulation-evaluation/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 20%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 07] Players Projection and Matchups Simulation</title>
       <link>/post/week07/</link>
       <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
@@ -33,17 +44,6 @@
       
       <guid>/post/week06/</guid>
       <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
-    </item><item>
-      <title>[Week 05] Simulation Evaluation</title>
-      <link>/post/week-5-simulation-evaluation/</link>
-      <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-5-simulation-evaluation/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 80%&lt;/strong&gt;&lt;/p&gt;
-</description>
     </item>
   </channel>
 </rss>
