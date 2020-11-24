@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/2020/week11_coachs/</loc>
+    <lastmod>2020-11-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020/week11_standings/</loc>
     <lastmod>2020-11-25T00:00:00+00:00</lastmod>
   </url>
@@ -14,6 +19,16 @@
   
   <url>
     <loc>/categories/</loc>
+    <lastmod>2020-11-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/coachs/</loc>
+    <lastmod>2020-11-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/managers/</loc>
     <lastmod>2020-11-25T00:00:00+00:00</lastmod>
   </url>
   
@@ -114,16 +129,6 @@
   
   <url>
     <loc>/post/2020/week10_standings/</loc>
-    <lastmod>2020-11-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/coachs/</loc>
-    <lastmod>2020-11-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/managers/</loc>
     <lastmod>2020-11-18T00:00:00+00:00</lastmod>
   </url>
   

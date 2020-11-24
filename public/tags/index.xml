@@ -9,6 +9,20 @@
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>coachs</title>
+      <link>/tags/coachs/</link>
+      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/coachs/</guid>
+      <description></description>
+    </item><item>
+      <title>managers</title>
+      <link>/tags/managers/</link>
+      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/managers/</guid>
+      <description></description>
+    </item><item>
       <title>rank</title>
       <link>/tags/rank/</link>
       <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
@@ -21,20 +35,6 @@
       <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/recap/</guid>
-      <description></description>
-    </item><item>
-      <title>evaluation</title>
-      <link>/tags/evaluation/</link>
-      <pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/evaluation/</guid>
-      <description></description>
-    </item><item>
-      <title>points</title>
-      <link>/tags/points/</link>
-      <pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/points/</guid>
       <description></description>
     </item>
   </channel>
