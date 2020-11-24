@@ -9,6 +9,18 @@
         <atom:link href="/tags/rank/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 02] Standings and Matchups Recap</title>
+      <link>/post/2020/week02_recap/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week02_recap/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;League Leaders: Butchers, Blues, Miners and Guara Wolfs&lt;/p&gt;
+</description>
+    </item><item>
       <title>Draft Day | Season 2020 is Here</title>
       <link>/post/2020/draft-day-season-2020-is-here/</link>
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
@@ -43,17 +55,6 @@
 
 
 &lt;p&gt;Top Players: CMC, Lamar Jackson, Michael Thomas, Deshaun Watson and Russell Wilson.&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 15] Semifinals</title>
-      <link>/post/rank-week-15/</link>
-      <pubDate>Wed, 18 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/rank-week-15/</guid>
-      <description>
-
-
-&lt;p&gt;Fantasy Super Bowl: &lt;em&gt;Sorocaba Steelers vs Indaiatuba Riders&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>
