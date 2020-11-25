@@ -1,0 +1,121 @@
+---
+title: '[Week 12] Projections and Simulation'
+author: Giuliano Sposito
+date: '2020-11-26'
+slug: week-12-projections-and-simulation
+categories:
+  - projection
+  - simulation
+tags:
+  - montecarlo
+  - projection
+  - simulation
+dropCap: no
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  params:
+    description: Claypool
+  src: "claypool.jpg"
+params:
+  week: 12
+  prefix: "preWaivers"
+---
+
+_Last Update: `r lubridate::now()`_
+
+<!--more-->
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Fighting Irish ☘️ <a href="https://t.co/RGnRuuoF4q">pic.twitter.com/RGnRuuoF4q</a></p>&mdash; 💪🏿♉️💪🏽(LONE🐺WOLF)👊🏽🃏👊🏿 (@JOKER_KING27) <a href="https://twitter.com/JOKER_KING27/status/1331395345629257729?ref_src=twsrc%5Etfw">November 25, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Games
+
+```{r setup, include=FALSE}
+
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+```
+
+```{r gamecenter, results='asis'}
+library(tidyverse)
+library(glue)
+
+.week <- params$week
+.prefix <- params$prefix
+
+sim <- readRDS(glue("./data/simulation_v5_week{.week}_{.prefix}.rds"))
+
+# game summary in long form
+teams_sims <- bind_rows(
+  select(sim$matchup_sim, teamId=awayTeam.teamId, winProb=awayTeam.winProb, winProb.org=awayTeam.winProb.org, pred.Pts=awayTeam.totalPts, sim.pts=awayTeam.simulation, sim.pts.org=awayTeam.simulation.org),
+  select(sim$matchup_sim, teamId=homeTeam.teamId, winProb=homeTeam.winProb, winProb.org=homeTeam.winProb.org, pred.Pts=homeTeam.totalPts, sim.pts=awayTeam.simulation, sim.pts.org=homeTeam.simulation.org)
+) %>% mutate(
+  pred.Pts.org = map_dbl(sim.pts.org, median, na.rm=T)
+)
+
+# obtem nome e pontuacao dos times
+teams_stats <- sim$teams %>% 
+  unnest( rosters ) %>% 
+  filter( rosterSlotId < 20 ) %>%
+  select( teamId, playerId, isEditable ) %>% 
+  inner_join( sim$players_stats, by = "playerId" ) %>% 
+  unnest( weekPts ) %>% 
+  filter( week==.week ) %>% 
+  select( teamId, playerId, isEditable, weekPts ) %>% 
+  group_by( teamId ) %>% 
+  summarise(
+    players = n(),
+    played  = sum(!isEditable),
+    points = sum(weekPts, na.rm = T)
+  ) %>% 
+  ungroup()
+
+teams <- sim$teams %>% 
+  select(teamId, name, imageUrl, rank) %>% 
+  inner_join(teams_sims, by = "teamId") %>% 
+  inner_join(teams_stats, by = "teamId")
+
+
+games_summary <- sim$matchup_sim %>% 
+  inner_join(set_names(teams, paste0("away.",names(teams))), by=c("awayTeam.teamId"="away.teamId")) %>% 
+  inner_join(set_names(teams, paste0("home.",names(teams))), by=c("homeTeam.teamId"="home.teamId")) %>% 
+  mutate(game=paste0(away.name, " @ ", home.name)) %>% 
+  mutate( away.nickname = gsub("([a-zA-Z\']+ )?", "", away.name),
+          home.nickname = gsub("([a-zA-Z\']+ )?", "", home.name)) %>% 
+  mutate( game.nickname = paste0(away.nickname, " @ ", home.nickname))
+
+table_htmlcss_template <- "<tr><th style='border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>{away.img}</th><th style='border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' colspan='5'>{game}</th><th style='border-color:#000000;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>{home.img}</th></tr><tr><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>{away.nickname}</td><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'><span style='font-weight:bold'>{away.points}</span></td><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal' rowspan='2'>@</td><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'><span style='font-weight:bold'>{home.points}</span></td><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:15px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>{home.nickname}</td></tr><tr><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>{away.winProb}</td><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>{away.remaining}</td><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:right;vertical-align:top;word-break:normal'>{away.pred.Pts}</td><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal'>{home.pred.Pts}</td><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>{home.remaining}</td><td style='border-color:#000000;border-style:solid;border-width:1px;font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important;;font-size:12px;overflow:hidden;padding:10px 5px;text-align:center;vertical-align:top;word-break:normal'>{home.winProb}</td></tr><tr><td style='border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;text-align:left;vertical-align:top;word-break:normal' colspan='7'></td></tr>"
+
+game_center <- games_summary %>%
+  select(game, away.imageUrl, away.nickname, away.points, home.points, home.nickname, home.imageUrl,
+         away.winProb, away.played, away.players, away.pred.Pts, 
+         home.winProb, home.played, home.players, home.pred.Pts) %>% 
+  mutate(
+    across(c(away.points, home.points, away.pred.Pts, home.pred.Pts), round, digits=1),
+    across(c(away.winProb, home.winProb), function(.x){ paste0(round(100*.x),"%") }),
+    away.img = glue("<img src='{away.imageUrl}' style='width:60px;height:60px' alt=''>"),
+    home.img = glue("<img src='{home.imageUrl}' style='width:60px;height:60px' alt=''>"),
+    away.remaining = glue("({away.played}/{away.players})"),
+    home.remaining = glue("({home.played}/{home.players})")
+  ) %>% 
+  mutate(
+    htmlTable = glue(table_htmlcss_template)
+  )
+
+
+cat("<table style='border-collapse:collapse;border-spacing:0' width='100%' class='tg'><tbody>")
+resp <- game_center$htmlTable %>% map(cat)
+cat("</tbody></table>")
+```
+_Last Update: `r lubridate::now()`_
+ 
+## Projections
+
+- [Individual Players Projections](/reports/2020/ffa_players_projection_week12.html)
+
+## Simulation
+
+- [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week12_posWaivers.html)

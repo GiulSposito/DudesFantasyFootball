@@ -4,11 +4,18 @@
     <link>/categories/projection/</link>
     <description>Recent content in projection on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 19 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/projection/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 04] Players Projection and Matchups Simulation</title>
+      <link>/post/week04/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week04/</guid>
+      <description></description>
+    </item><item>
       <title>[Week 03] Players Projection and Matchups Simulation</title>
       <link>/post/week03/</link>
       <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
@@ -28,13 +35,6 @@
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/week1-players-projection-and-matchups-simulation/</guid>
-      <description></description>
-    </item><item>
-      <title>Draft Week</title>
-      <link>/post/draft-week/</link>
-      <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/draft-week/</guid>
       <description></description>
     </item>
   </channel>

@@ -4,11 +4,23 @@
     <link>/categories/projection/</link>
     <description>Recent content in projection on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 19 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/projection/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 04] Projections and Simulation</title>
+      <link>/post/2020/week-04-projections-and-simulation/</link>
+      <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week-04-projections-and-simulation/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;em&gt;Last Update: 2020-10-05 01:27:16&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 03] Projections and Simulation</title>
       <link>/post/2020/week-03-projections-and-simulation/</link>
       <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
@@ -34,17 +46,6 @@
       
       <guid>/post/2020/week01/</guid>
       <description></description>
-    </item><item>
-      <title>[Week 16] Players Projection and Matchups Simulation</title>
-      <link>/post/week16/</link>
-      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week16/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;em&gt;Last Update: Pre MNF&lt;/em&gt;&lt;/p&gt;
-</description>
     </item>
   </channel>
 </rss>
