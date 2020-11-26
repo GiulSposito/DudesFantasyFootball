@@ -20,7 +20,7 @@ resources:
   src: "claypool.jpg"
 params:
   week: 12
-  prefix: "posWaivers"
+  prefix: "preThursdayGames"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -118,5 +118,6 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre Thursday Games](/reports/2020/dudes_simulation_v5_week12_preThursdayGames.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week12_posWaivers.html)
 - [Matchup Simulations Pre-Waiver](/reports/2020/dudes_simulation_v5_week12_preWaivers.html)
