@@ -20,7 +20,7 @@ resources:
   src: "claypool.jpg"
 params:
   week: 12
-  prefix: "preMNF"
+  prefix: "posMNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -119,6 +119,7 @@ _Last Update: `r lubridate::now()`_
 ## Simulation
 posThursdayGames
 
+- [Matchup Simulations Pos MNF](/reports/2020/dudes_simulation_v5_week12_posMNF.html)
 - [Matchup Simulations Pre MNF](/reports/2020/dudes_simulation_v5_week12_preMNF.html)
 - [Matchup Simulations Pre SNF](/reports/2020/dudes_simulation_v5_week12_preSNF.html)
 - [Matchup Simulations Pre Sunday Games](/reports/2020/dudes_simulation_v5_week12_preSundayGames.html)
