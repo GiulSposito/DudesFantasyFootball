@@ -1,8 +1,8 @@
 ---
-title: '[Week 11] Fantasy Top Players'
+title: '[Week 12] Fantasy Top Players'
 author: "Giuliano Sposito"
-date: '2020-11-24'
-slug: '2020_w11_top_players'
+date: '2020-12-03'
+slug: '2020_w12_top_players'
 categories:
   - ranking
 tags:
@@ -13,17 +13,17 @@ displayInMenu: no
 displayInList: yes
 resources:
 - name: featuredImage
-  src: ceedee_catch.jpg
+  src: hill_td.jpg
   params:
-    description: Cee Dee Lamb Catch
+    description: Hill TD
 params:
-  week: 11
+  week: 12
   ranksize: 10
 ---
 
 <!--more-->
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">AJ BROWN 💪<br><br>One of the best catch and runs of 2020!<br><br>(🎥 <a href="https://twitter.com/NFL?ref_src=twsrc%5Etfw">@NFL</a>) | <a href="https://twitter.com/hashtag/Titans?src=hash&amp;ref_src=twsrc%5Etfw">#Titans</a> <a href="https://t.co/3X23kF0t2O">pic.twitter.com/3X23kF0t2O</a></p>&mdash; CBS Sports HQ (@CBSSportsHQ) <a href="https://twitter.com/CBSSportsHQ/status/1330617153834217474?ref_src=twsrc%5Etfw">November 22, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">MAHOMES &amp; TYREEK AGAIN 🤯🤯🤯<br><br>Mahomes (11/14, 229 YDS, 2 TD)<br>Hill (7 REC, 203 YDS, 2 TD)<br><br>IN THE FIRST QUARTER 😳 (via <a href="https://twitter.com/NFL?ref_src=twsrc%5Etfw">@NFL</a>)<br> <a href="https://t.co/s6mvjAjGFZ">pic.twitter.com/s6mvjAjGFZ</a></p>&mdash; Overtime (@overtime) <a href="https://twitter.com/overtime/status/1333171008715563010?ref_src=twsrc%5Etfw">November 29, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
 # put rnotbook in the same workdir
