@@ -4,11 +4,18 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 01] Simulation Evaluation</title>
+      <link>/post/week01_eval/</link>
+      <pubDate>Tue, 10 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week01_eval/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 80%&lt;/strong&gt;&lt;/p&gt;</description>
+    </item><item>
       <title>[Week 01] Players Projection and Matchups Simulation</title>
       <link>/post/week1-players-projection-and-matchups-simulation/</link>
       <pubDate>Wed, 04 Sep 2019 00:00:00 +0000</pubDate>
@@ -28,13 +35,6 @@
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/it-s-football-dudes-trophy-room/</guid>
-      <description></description>
-    </item><item>
-      <title>About This Site</title>
-      <link>/post/about-this-site/</link>
-      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/about-this-site/</guid>
       <description></description>
     </item>
   </channel>
