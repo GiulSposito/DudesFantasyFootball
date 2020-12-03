@@ -1,0 +1,247 @@
+---
+title: '[Week 12] Coachs and Managers'
+author: Giuliano Sposito
+date: '2020-12-04'
+slug: week12_coachs
+categories:
+  - recap
+  - ranking
+tags:
+  - recap
+  - coachs
+  - managers
+dropCap: yes
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "mike_tomlin.jpg"
+  params:
+    description: Mike Tomlin
+params:
+  week: 12
+---
+
+<!--more-->
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+## Best Coachs: Roster Ranking
+
+Total de pontos que foram deixados de ganhar na melhor escalação possível, acumulado ao longo das rodadas.
+
+```{r bestCoachChart}
+library(tidyverse)
+library(ggimage)
+library(glue)
+library(kableExtra)
+library(knitr)
+
+.week <- params$week
+
+resp <- 1:.week %>% 
+  map_df(function(.w){
+    sim <- readRDS(glue("./data/simulation_v5_week{.week}_final.rds"))
+    
+    roster <- sim$teams %>% 
+      unnest(rosters) %>% 
+      select(teamId, teamName=name, imageUrl, rosterSlotId, playerId) %>% 
+      mutate(week=.w)
+    
+    players <- sim$players_stats %>% 
+      select(playerId, playerName=name, position, weekPts) %>% 
+      unnest(weekPts) %>% 
+      filter(week==.w)
+    
+    teamRoster <- inner_join(roster, players, by=c("playerId","week"))
+    
+    teamPoints <- teamRoster %>% 
+      filter(rosterSlotId<20) %>% 
+      group_by(teamId, teamName, imageUrl) %>% 
+      summarise( pointsMade = sum(weekPts, na.rm = T))
+    
+    
+    bestTeam <- teamRoster$teamId %>% 
+      unique() %>% 
+      map_df(function(.id, .tm){
+        .tr <- filter(.tm, teamId==.id)
+        
+        st1 <- tibble(
+          pos=c("QB","RB","WR","TE","K","DEF"),
+          qtd=c(1,2,2,1,1,1)
+        ) %>% 
+          split(1:nrow(.)) %>% 
+          map_df(function(.x,.tr){
+            .tr %>%
+              filter(position==.x$pos) %>%
+              top_n(.x$qtd, weekPts) %>%
+              return()
+          },.tr=.tr)
+        
+        .tr %>% 
+          anti_join(st1) %>% 
+          filter(position %in% c("RB","WR")) %>% 
+          top_n(1, weekPts) %>% 
+          bind_rows(st1) %>% 
+          return()
+        
+      }, .tm=teamRoster)
+    
+    bestTeamPoints <- bestTeam %>% 
+      group_by(teamId, teamName) %>% 
+      summarise(bestPoints=sum(weekPts, na.rm = T))
+    
+    teamPoints %>% 
+      inner_join(bestTeamPoints) %>% 
+      mutate(gain=bestPoints-pointsMade) %>% 
+      mutate(week=.w) %>% 
+      return()
+  
+        
+  })
+
+TEAMS_COLOR_SCALE <- c("#B3995D","black","#03202F","#0B2265","#fb9a99","#A5ACAF","#0085CA",
+                       "#ff7f00","#203731","#6a3d9a","#A71930","#A71930","#FFB612","#004953")
+
+
+resp %>%
+  group_by(week) %>% 
+  arrange(week, gain, pointsMade) %>% 
+  mutate(wrank=1:14) %>% 
+  ungroup() %>%
+  group_by(teamId) %>% 
+  arrange(week) %>% 
+  mutate(
+    cum_gain=round(cumsum(gain),1),
+    cum_pointsMade=cumsum(pointsMade)
+  ) %>% 
+  ungroup() %>% 
+  group_by(week) %>% 
+  arrange(week, cum_gain, cum_pointsMade) %>% 
+  mutate(rank=1:14) %>% 
+  ungroup() %>% 
+  ggplot(aes(x=week, y=reorder(rank,-rank), group=teamName)) +
+  geom_line(aes(color=teamName), size=2, alpha=.6) +
+  geom_image(aes(image=imageUrl), size=.04) +
+  geom_text(aes(label=cum_gain), size=2.5, color="black", nudge_y = -.33) +
+  scale_colour_manual(values = TEAMS_COLOR_SCALE) +
+  ylab("rank") +
+  theme_void()
+
+```
+
+## Points not taken by week
+
+```{r byWeekTable}
+resp %>% 
+  pivot_wider(id_cols = c(teamId, teamName), names_from=week, values_from=gain) %>%
+  ungroup() %>% 
+  select(-teamId) %>% 
+  kable() %>% 
+  kable_styling(font_size = 12)
+```
+
+## Best Managers: trade, release and new contracts points balance
+
+```{r bestManagerChart}
+
+teams_changes_balance <- 2:.week %>% 
+  map_df(function(week){
+    w1 = week-1
+    w2 = week
+    
+    sim_w1 <- readRDS(glue("./data/simulation_v5_week{w1}_final.rds"))
+    sim_w2 <- readRDS(glue("./data/simulation_v5_week{w2}_final.rds"))
+    
+    team_w1 <- sim_w1$teams %>% 
+      unnest(rosters) %>% 
+      select(teamId, playerId)
+    
+    team_w2 <- sim_w2$teams %>% 
+      unnest(rosters) %>% 
+      select(teamId, playerId)
+    
+    mantidos <- team_w1 %>% 
+      inner_join(team_w2, by = c("teamId", "playerId"))
+    
+    liberados <- team_w1 %>% 
+      anti_join(mantidos, by = c("teamId", "playerId")) %>% 
+      mutate( status = "liberado" )
+    
+    contratados <- team_w2 %>% 
+      anti_join(mantidos, by = c("teamId", "playerId")) %>% 
+      mutate( status = "contratado" )
+    
+    changes <- bind_rows(liberados, contratados)
+    
+    # saldo
+    changed_teams <- sim_w2$players_stats %>% 
+      unnest(weekPts) %>% 
+      filter(week==w2) %>% 
+      select(playerId, name, weekPts) %>% 
+      inner_join(changes, by = "playerId") %>% 
+      mutate( weekPts = if_else(status=="contratado", weekPts, -weekPts)) %>% 
+      group_by(teamId) %>% 
+      summarise(
+        balance = sum(weekPts, na.rm = T),
+        changes=n(),
+        .groups="drop"
+      ) %>% 
+      inner_join(select(sim_w1$teams, teamId, name, imageUrl), by = "teamId") %>% 
+      select(teamId, name, imageUrl, balance, changes)
+    
+    sim_w2$teams %>% 
+      select(teamId, name, imageUrl) %>% 
+      anti_join(changed_teams, by="teamId") %>% 
+      mutate(balance=0, changes=0) %>% 
+      bind_rows(changed_teams) %>% 
+      arrange(desc(balance)) %>% 
+      mutate(
+        wrank=1:nrow(.),
+        week=w2
+      )
+  })
+
+rank_history <- teams_changes_balance %>% 
+  group_by(teamId) %>% 
+  arrange(week) %>% 
+  mutate( cum_balance = cumsum(balance) ) %>% 
+  ungroup() %>% 
+  group_by(week) %>% 
+  arrange(desc(cum_balance)) %>% 
+  mutate(rank = 1:14) %>% 
+  ungroup() %>% 
+  arrange(week, rank) %>% 
+  rename(team=name)
+
+
+TEAMS_COLOR_SCALE <- c("#B3995D","black","#03202F","#0B2265","#fb9a99","#A5ACAF","#0085CA",
+                       "#ff7f00","#203731","#6a3d9a","#A71930","#A71930","#FFB612","#004953")
+
+
+rank_history %>% 
+  mutate(cum_balance=round(cum_balance,1)) %>% 
+  ggplot(aes(x=week, y=reorder(rank,-rank), group=team)) +
+  geom_line(aes(color=team), size=2) +
+  geom_image(aes(image=imageUrl), size=.04) +
+  geom_text(aes(label=cum_balance), size=2.5, color="black", nudge_y = -.33) +
+  scale_colour_manual(values = TEAMS_COLOR_SCALE) +
+  ylab("rank") +
+  theme_void()
+
+```
+
+## Point Ballance by week
+
+```{r balanceWeekTable}
+rank_history %>% 
+  pivot_wider(id_cols = c(teamId, team), names_from=week, values_from=balance) %>%
+  ungroup() %>% 
+  select(-teamId) %>% 
+  kable() %>% 
+  kable_styling(font_size = 12)
+```
