@@ -15,7 +15,7 @@ library(yaml)
 options(dplyr.summarise.inform = FALSE)
 
 # EXECUTION PARAMETERS ####
-week <- 9
+week <- 12
 season <- 2020
 config <- read_yaml("./config/config.yml")
 prefix <- "final"

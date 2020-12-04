@@ -8,4 +8,5 @@ teams_rosters %>%
     across(c(pts, ptsAgainst), as.numeric)
   ) %>% 
   rename(season.pts=pts, season.ptsAgainst=ptsAgainst) %>% 
-  saveRDS("./data/rank_week09.rds")
+  saveRDS(glue("./data/rank_week{week}.rds"))
+
