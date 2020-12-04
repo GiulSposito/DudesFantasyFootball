@@ -23,7 +23,7 @@ library(plotly)
 library(glue)
 library(ggrepel)
 
-week <- params$week
+.week <- params$week
 TEAMS_COLOR_SCALE <- c("grey", "#B3995D","black","#03202F","#0B2265","#fb9a99","#A5ACAF","#0085CA",
   "#ff7f00","#203731","#6a3d9a","#A71930","#A71930","#FFB612","#004953")
 
@@ -32,7 +32,8 @@ TEAMS_COLOR_SCALE <- c("grey", "#B3995D","black","#03202F","#0B2265","#fb9a99","
 ```{r loaddata, cache=FALSE}
 
 # pega projecoes cria algumas colunas auxiliares
-pprojs <- readRDS(glue("./data/week{week}_players_projections.rds")) %>% 
+pprojs <- readRDS(glue("./data/week{.week}_players_projections.rds")) %>% 
+  filter(week==.week) %>% 
   mutate(injuryCod = str_extract_all(injuryGameStatus, "[A-Z]")) %>% 
   mutate(injuryCod = map_chr(injuryCod, paste, sep="", collapse="")) %>% 
   mutate( full_name = paste0(first_name, " ", last_name),
@@ -49,6 +50,7 @@ pprojs <- readRDS(glue("./data/week{week}_players_projections.rds")) %>%
   filter( !(team %in% c("FA","FA*")) )  # havia lixo em alguns
 
 ppoints <- readRDS("./data/players_points.rds") %>%
+  filter(week==.week) %>% 
   mutate(id = as.integer(id)) %>% 
   #filter( points !=0 ) %>% 
   rename( pts = weekPts ) %>% 
