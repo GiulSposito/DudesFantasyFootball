@@ -4,11 +4,22 @@
     <link>/tags/simulation/</link>
     <description>Recent content in simulation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 06 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 13] Players Projection and Matchups Simulation</title>
+      <link>/post/week13/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/week13/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 12] Simulation Evaluation</title>
       <link>/post/week-12-simulation-evaluation/</link>
       <pubDate>Tue, 26 Nov 2019 00:00:00 +0000</pubDate>
@@ -42,17 +53,6 @@
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 11] Players Projection and Matchups Simulation</title>
-      <link>/post/week11/</link>
-      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week11/</guid>
-      <description>
-
-
-&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>

@@ -4,11 +4,22 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 06 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 06] Players and Teams Peformances</title>
+      <link>/post/2020/week06_performances/</link>
+      <pubDate>Wed, 21 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week06_performances/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item><item>
       <title>[Week 06] Matchups Recap</title>
       <link>/post/2020/week06_recap/</link>
       <pubDate>Tue, 20 Oct 2020 00:00:00 +0000</pubDate>
@@ -42,18 +53,6 @@
 
 
 &lt;p&gt;&lt;em&gt;Last Update: 2020-10-19 21:02:10&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 05] League Standings</title>
-      <link>/post/2020/week05_standings/</link>
-      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week05_standings/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;League Leaders: Giants, Butchers, Mules, Miners, Blues e Farmers&lt;/p&gt;
 </description>
     </item>
   </channel>
