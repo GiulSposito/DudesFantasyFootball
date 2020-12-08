@@ -112,6 +112,8 @@ h2h_rank
 
 #### REPEAT UNTIL THE CLASSIFICATION DO NO CHANGE ANYMORE
 
+org.rank <- h2h_rank$rank
+
 # BUILD A TIE BREAKING RANK (VICTORY WITHIN GROUP)
 t1_rank <- h2h_rank %>% 
   filter(n>1) %>% 
@@ -141,6 +143,9 @@ h2h_rank <- h2h_rank %>%
 
 h2h_rank
 
+all(org.rank == h2h_rank$rank)
+
+
 ##### IF THE RANK DON'T CHANGE AND IF WE HAVE A TIE USES POINTS FOR AND AGAINT
 
 # BUILD A RANK FOR POINTS
@@ -161,8 +166,8 @@ t2_rank <- h2h_rank %>%
   rename(team.id=t2.team.id)
 
 # UPDATE GLOBAL RANK
-h2h_rank %>% 
-  left_join(t2_rank) %>% 
+h2h_rank <- h2h_rank %>% 
+  left_join(t2_rank, by = "team.id") %>% 
   mutate( t2.rank = if_else(is.na(t2.rank),0,t2.rank)) %>% 
   mutate( rank = rank+t2.rank ) %>% 
   select(-t2.rank, -n) %>% 
