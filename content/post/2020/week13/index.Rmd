@@ -20,7 +20,7 @@ resources:
   src: "alex_smith.jpg"
 params:
   week: 13
-  prefix: "posSNF"
+  prefix: "posMNF"
 ---
 
 _Last Update: `r lubridate::now()`_
@@ -116,7 +116,7 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
-- [Matchup Simulations Pos SNF](/reports/2020/dudes_simulation_v5_week13_posSNF.html)
+- [Matchup Simulations Pos MNF](/reports/2020/dudes_simulation_v5_week13_posMNF.html)
 - [Matchup Simulations Pre SNF](/reports/2020/dudes_simulation_v5_week13_preSNF.html)
 - [Matchup Simulations Pre Sunday Games](/reports/2020/dudes_simulation_v5_week13_preSundayGames.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week13_posWaivers.html)
