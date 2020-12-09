@@ -62,6 +62,14 @@ Playoff Contenders: `r leaders`.
 
 <!--more-->
 
+## 2020 Regular Season Champion
+
+![Season Champion](/img/2020/reg_season_champion.jpg)
+
+## 2020 Regular Season Highest Scoring Team
+
+![Highest Score](/img/2020/reg_season_highscore.jpg)
+
 ## League Ranking
 
 
