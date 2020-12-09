@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>/post/2020/week13_recap/</loc>
+    <lastmod>2020-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020/week13_eval/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
   </url>
@@ -48,6 +53,16 @@
   </url>
   
   <url>
+    <loc>/tags/recap/</loc>
+    <lastmod>2020-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/recap/</loc>
+    <lastmod>2020-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/simulation/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
   </url>
@@ -84,16 +99,6 @@
   
   <url>
     <loc>/post/2020/week12_standings/</loc>
-    <lastmod>2020-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/recap/</loc>
-    <lastmod>2020-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/recap/</loc>
     <lastmod>2020-12-05T00:00:00+00:00</lastmod>
   </url>
   

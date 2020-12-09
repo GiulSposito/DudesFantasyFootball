@@ -1,0 +1,184 @@
+---
+title: '[Week 13] Matchups Recap and Teams Performances'
+author: Giuliano Sposito
+date: '2020-12-09'
+slug: week13_recap
+categories:
+  - recap
+  - ranking
+tags:
+  - rank
+  - recap
+dropCap: yes
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: "wentz.jpg"
+  params:
+    description: Wentz 
+params:
+  week: 13
+---
+
+<!--more-->
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r ranking}
+
+library(yaml)
+library(tidyverse)
+library(glue)
+library(ggimage)
+library(ggridges)
+
+# parameters
+.week  <- params$week
+config <- yaml.load_file("./config/config.yml")
+
+```
+
+
+```{r getRecap, results='hide'}
+source("./R/api/ffa_league.R")
+
+# RECAP
+
+teams <- ffa_league_teams(config$authToken, config$leagueId) %>% 
+  ffa_extractTeams()
+
+recapResps <- teams$teamId %>% 
+  map(~ffa_league_matchups_recap(config$authToken, config$leagueId, .week=.week, .teamId = .x))
+
+recaps <- recapResps %>% 
+  map_df(ffa_extractRecap) %>% 
+  distinct()
+
+# Performances
+
+sim <- readRDS(glue("./data/simulation_v5_week{.week}_final.rds"))
+
+player_performances <- inner_join(
+  select(sim$players_sim, teamId, teamName, playerId, rosterSlotId, simulation.org),
+  select(sim$players_stats, playerId, name, position, weekPts),
+  by="playerId"
+) %>% 
+  unnest(weekPts) %>% 
+  filter(week==.week, rosterSlotId < 20) %>% 
+  unnest(simulation.org) %>% 
+  #filter(teamId==10) %>% 
+  mutate(name=glue("{name} ({position})")) %>% 
+  mutate(position2=factor(position, levels = c("QB","WR","RB", "TE", "K", "DEF"),ordered = T)) %>% 
+  # mutate(name=fct_reorder(name, -as.integer(position2))) %>% 
+  mutate(name=fct_reorder(name, simulation.org))
+
+
+```
+## Teams Performances
+
+```{r teamPerf}
+sim$teams %>% 
+  select(teamId, name, imageUrl, week.stats) %>% 
+  unnest(week.stats) %>% 
+  filter(week==.week) %>% 
+  inner_join(sim$teams_sim, by="teamId") %>% 
+  select(-simulation) %>% 
+  rename(sim=simulation.org) %>%
+  unnest(sim) %>% 
+  mutate(name=fct_reorder(name, pts)) %>% 
+  ggplot(aes(x=sim, y=name, fill=name)) +
+  stat_density_ridges(quantile_lines = TRUE, quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+  geom_point(aes(x=pts, y=name), color="black", fill="red", shape=24) +
+  theme_ridges() +
+  theme( legend.position = "none" ) +
+  scale_y_discrete(expand=c(0.,0)) +
+  scale_x_continuous(expand = c(0.01,0)) +
+  labs(x="points",y="")
+```
+
+
+## League Highlights
+
+```{r highligths, results='asis'}
+resp <- recaps[1,]$leagueHighligths[[1]]$text %>%
+  map(function(.txt){
+      .txt %>% paste0("\n\n") %>% cat()
+  })
+
+```
+
+
+## Weekly Trophies
+
+![Trophies](/img/2020/trophies_week13.jpg)
+
+
+## Matchups Recap
+
+```{r listRecap, results='asis'}
+resps <- recaps %>% 
+  split(1:nrow(.)) %>% 
+  map(function(.recap, .pperf, .sim){
+    
+    # gp <- .sim$teams %>% 
+    #   filter(teamId %in% c(.recap$teamId.away, .recap$teamId.home)) %>% 
+    #   select(teamId, name, imageUrl, week.stats) %>% 
+    #   unnest(week.stats) %>% 
+    #   filter(week==.week) %>% 
+    #   inner_join(sim$teams_sim, by="teamId") %>% 
+    #   select(-simulation) %>% 
+    #   rename(sim=simulation.org) %>%
+    #   unnest(sim) %>% 
+    #   mutate(name=fct_reorder(name, pts)) %>% 
+    #   ggplot(aes(x=sim, y=name, fill=name)) +
+    #   stat_density_ridges(quantile_lines = TRUE, quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+    #   geom_point(aes(x=pts, y=name), color="black", fill="red", shape=24) +
+    #   theme_ridges() +
+    #   theme( legend.position = "none" ) +
+    #   #scale_y_discrete(expand=c(0.,0)) +
+    #   scale_x_continuous(expand = c(0.01,0)) +
+    #   labs(x="points",y="")
+    
+    # recap
+    cat(paste0("### ", .recap$title), "\n\n")
+    
+    # print(gp)
+    # cat("\n\n")    
+    
+    .recap$paragraphs %>% map(function(.par){
+      .par$text %>% paste0("\n\n") %>% cat()
+    })
+    
+    # perform
+    c(.recap$teamId.away, .recap$teamId.home) %>% 
+      map(function(.teamId, .pperf){
+        
+        perf <- .pperf %>% 
+          filter(teamId==.teamId)
+        
+        g <- perf %>% 
+          mutate(name=fct_reorder(name, weekPts)) %>%
+          ggplot(aes(x=simulation.org, y=name, fill=position)) +
+            stat_density_ridges(quantile_lines = TRUE, 
+                                quantiles = c(0.1,0.5,0.9), scale=1, alpha=.6) +
+            geom_point(aes(x=weekPts, y=name), color="black", fill="red", shape=24) +
+            theme_ridges() +
+            theme( legend.position = "none" ) +
+            scale_y_discrete(expand=c(0.1,0)) +
+            scale_x_continuous(expand = c(0.01,0)) +
+            labs(x="points",y="")
+        
+        cat(glue("#### {team}\n\n", team=perf[1,]$teamName))    
+        print(g)
+        cat("\n\n")
+      
+      }, .pperf=.pperf)
+    
+  }, .pperf = player_performances, .sim=sim)
+```
+
