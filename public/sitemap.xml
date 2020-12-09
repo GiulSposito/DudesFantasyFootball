@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>/post/2020/week13_coachs/</loc>
+    <lastmod>2020-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020/2020_w13_top_players/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
   </url>
@@ -58,12 +63,22 @@
   </url>
   
   <url>
+    <loc>/tags/coachs/</loc>
+    <lastmod>2020-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/evaluation/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/evaluation/</loc>
+    <lastmod>2020-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/managers/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
   </url>
   
@@ -114,16 +129,6 @@
   
   <url>
     <loc>/post/2020/week12_recap/</loc>
-    <lastmod>2020-12-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/coachs/</loc>
-    <lastmod>2020-12-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/managers/</loc>
     <lastmod>2020-12-04T00:00:00+00:00</lastmod>
   </url>
   

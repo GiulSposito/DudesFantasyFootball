@@ -9,6 +9,19 @@
         <atom:link href="/tags/recap/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 12] Coachs and Managers</title>
+      <link>/post/2020/week12_coachs/</link>
+      <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week12_coachs/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+
+
+</description>
+    </item><item>
       <title>[Week 12] Matchups Recap and Teams Performances</title>
       <link>/post/2020/week12_recap/</link>
       <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
@@ -43,17 +56,6 @@
 
 
 &lt;p&gt;League Leaders: Mules, Wolf, Farmers, Rabbits, Giants, Robots.&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 11] Matchups Recap and Teams Performances</title>
-      <link>/post/2020/week11_recap/</link>
-      <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week11_recap/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
 </description>
     </item>
   </channel>

@@ -9,11 +9,11 @@
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>managers</title>
-      <link>/tags/managers/</link>
-      <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
+      <title>projection</title>
+      <link>/tags/projection/</link>
+      <pubDate>Sun, 06 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/managers/</guid>
+      <guid>/tags/projection/</guid>
       <description></description>
     </item><item>
       <title>datascience</title>
