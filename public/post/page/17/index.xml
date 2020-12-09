@@ -4,11 +4,22 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 06 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Season 2019 MVPs</title>
+      <link>/post/mvp-week-16/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/mvp-week-16/</guid>
+      <description>
+
+
+&lt;p&gt;Top Players: CMC, Lamar Jackson, Michael Thomas, Deshaun Watson and Russell Wilson.&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 16] Simulation Evaluation</title>
       <link>/post/week-16-simulation-evaluation/</link>
       <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
@@ -41,18 +52,6 @@
 
 
 &lt;p&gt;Fantasy Super Bowl: &lt;em&gt;Sorocaba Steelers vs Indaiatuba Riders&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 15] Simulation Evaluation</title>
-      <link>/post/week-15-simulation-evaluation/</link>
-      <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-15-simulation-evaluation/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 25%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>

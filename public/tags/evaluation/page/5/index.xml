@@ -4,11 +4,23 @@
     <link>/tags/evaluation/</link>
     <description>Recent content in evaluation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/evaluation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 02] Simulation Evaluation</title>
+      <link>/post/2020/week02_eval/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week02_eval/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 43%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 01] Simulation Evaluation</title>
       <link>/post/2020/week01_eval/</link>
       <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
@@ -43,18 +55,6 @@
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 25%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 14] Simulation Evaluation</title>
-      <link>/post/week-14-simulation-evaluation/</link>
-      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/week-14-simulation-evaluation/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>
