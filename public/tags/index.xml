@@ -16,25 +16,25 @@
       <guid>/tags/evaluation/</guid>
       <description></description>
     </item><item>
+      <title>points</title>
+      <link>/tags/points/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/points/</guid>
+      <description></description>
+    </item><item>
+      <title>rank</title>
+      <link>/tags/rank/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rank/</guid>
+      <description></description>
+    </item><item>
       <title>simulation</title>
       <link>/tags/simulation/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/simulation/</guid>
-      <description></description>
-    </item><item>
-      <title>montecarlo</title>
-      <link>/tags/montecarlo/</link>
-      <pubDate>Sun, 06 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/montecarlo/</guid>
-      <description></description>
-    </item><item>
-      <title>projection</title>
-      <link>/tags/projection/</link>
-      <pubDate>Sun, 06 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/projection/</guid>
       <description></description>
     </item>
   </channel>
