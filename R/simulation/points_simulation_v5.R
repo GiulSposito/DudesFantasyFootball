@@ -106,7 +106,8 @@ simulateGames <- function(.week, .season, .ptsproj, .matchup_games, .teams_roste
     select(-data)
   
   # pivot para longo para fazer o bind da simulacao mais facil
-  matchup_sim <- mtch %>% 
+  matchup_sim <- mtch %>%
+    filter(complete.cases(.)) %>% 
     pivot_longer(c(-matchupId, -week), names_to="name", values_to="teamId") %>% 
     mutate(name=str_remove(name, "\\.teamId")) %>% 
     inner_join(teams_sim, by="teamId") %>% 

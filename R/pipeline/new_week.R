@@ -142,17 +142,3 @@ rmarkdown::render(
     params = list(week=week, prefix=prefix)
   )
  
-
-## simulation history 
-# 
-# hist <- readRDS("./data/simulations_history.rds")
-# sim %>% 
-#   mutate(
-#     week = week,
-#     timestamp = now(),
-#     prefix = prefix
-#   ) %>% 
-#   bind_rows(hist) %>%
-#   saveRDS("./data/simulations_history.rds")
-# 
-# 

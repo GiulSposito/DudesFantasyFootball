@@ -35,7 +35,8 @@ ffa_league_matchups <- function(.authToken, .leagueId, .week){
       "authToken" = .authToken,
       "leagueId"  = .leagueId,
       "week"      =  .week,
-      "includeRosters" = 1
+      "includeRosters" = 1,
+      "forcePlayoffs" = 1
     ))
   
 }
