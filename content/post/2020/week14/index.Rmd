@@ -117,5 +117,5 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
-- [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week14_posTNF.html)
+- [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week14_posTNF.html)
 - [Matchup Simulations Pos-Waiver](/reports/2020/dudes_simulation_v5_week14_preWaivers.html)
