@@ -12,7 +12,7 @@ options(dplyr.summarise.inform = FALSE)
 week <- 14
 season <- 2020
 config <- read_yaml("./config/config.yml")
-prefix <- "preWaivers"
+prefix <- "posTNF"
 destPath <- "static/reports/2020"
 sim.version <- 5
 
