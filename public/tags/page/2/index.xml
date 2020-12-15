@@ -9,11 +9,18 @@
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>simulation</title>
-      <link>/tags/simulation/</link>
+      <title>montecarlo</title>
+      <link>/tags/montecarlo/</link>
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/tags/simulation/</guid>
+      <guid>/tags/montecarlo/</guid>
+      <description></description>
+    </item><item>
+      <title>projection</title>
+      <link>/tags/projection/</link>
+      <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/projection/</guid>
       <description></description>
     </item><item>
       <title>coachs</title>
@@ -21,13 +28,6 @@
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/coachs/</guid>
-      <description></description>
-    </item><item>
-      <title>evaluation</title>
-      <link>/tags/evaluation/</link>
-      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/evaluation/</guid>
       <description></description>
     </item><item>
       <title>managers</title>
