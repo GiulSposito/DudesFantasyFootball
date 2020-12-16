@@ -1,5 +1,5 @@
 ---
-title: '[Week 14] Standings - Quarter Finals'
+title: '[Week 14] Quarter Finals - Top Players'
 author: "Giuliano Sposito"
 date: '2020-12-16'
 slug: week14_standings
@@ -58,27 +58,7 @@ leaders <- ranking %>%
   paste(collapse = ", ")
 ```
 
-Playoff Contenders: `r leaders`.
-
 <!--more-->
-
-## League Ranking
-
-
-```{r ranking}
-ranking %>% 
-  filter(week==.week) %>% 
-  mutate( 
-    rankChange = as.integer(rankChange),
-    pct=round(wins/(wins+losses),3),
-    img=glue("<img src='{imageUrl}' style='width:40px;height:40px' alt=''>")
-  ) %>% 
-  select(rank, chg=rankChange, img, name, record, pts=season.pts, agains=season.ptsAgainst ) %>% 
-  arrange(rank) %>% 
-  knitr::kable()
-
-```
-
 
 ## Best Players of the Week
 
