@@ -1,0 +1,160 @@
+---
+title: '[Week 14] Standings - Quarter Finals'
+author: "Giuliano Sposito"
+date: '2020-12-16'
+slug: week14_standings
+categories:
+- recap
+- ranking
+tags:
+- rank
+- recap
+dropCap: yes
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: goff_lar.jpg
+  params:
+    description: Goff
+params:
+  week: 14
+---
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+
+```{r dataload}
+
+library(yaml)
+library(tidyverse)
+library(glue)
+library(ggimage)
+
+# parameters
+.week  <- params$week
+config <- yaml.load_file("./config/config.yml")
+
+
+# pega o resultado pos semana
+sim <- readRDS(glue("./data/simulation_v5_week{.week}_final.rds"))
+
+ranking <- 1:.week %>% 
+  map(formatC, width = 2, flag = "0") %>% 
+  map(~glue("./data/rank_week{.x}.rds")) %>% 
+  map_df(readRDS)
+
+
+leaders <- ranking %>% 
+  filter(week==.week) %>% 
+  arrange(rank) %>% 
+  slice(1:6) %>% 
+  pull(name) %>% 
+  str_extract("\\b(\\w+)$") %>% 
+  paste(collapse = ", ")
+```
+
+Playoff Contenders: `r leaders`.
+
+<!--more-->
+
+## League Ranking
+
+
+```{r ranking}
+ranking %>% 
+  filter(week==.week) %>% 
+  mutate( 
+    rankChange = as.integer(rankChange),
+    pct=round(wins/(wins+losses),3),
+    img=glue("<img src='{imageUrl}' style='width:40px;height:40px' alt=''>")
+  ) %>% 
+  select(rank, chg=rankChange, img, name, record, pts=season.pts, agains=season.ptsAgainst ) %>% 
+  arrange(rank) %>% 
+  knitr::kable()
+
+```
+
+
+## Best Players of the Week
+
+### Team Players
+
+```{r bestTeamPlayers}
+
+# que jogador pertence a qual time
+rosters <- sim$teams %>% 
+  select(teamId, teamName=name, teamImg=imageUrl, rosters) %>% 
+  unnest(rosters) %>%
+  mutate(playedStatus=rosterSlotId<20)
+  
+# pontuacao dos jogadores na semana
+players <- sim$players_stats %>% 
+  select(playerId, playerName=name, nflTeam=nflTeamAbbr, playerImg=smallImageUrl, position, weekPts) %>% 
+  unnest(weekPts) %>% 
+  filter(week==.week) %>% 
+  # atribui time (se houver)
+  left_join(rosters, by="playerId") %>% 
+  select(playerId, position, playerName, nflTeam, points=weekPts, fantasyTeam=teamName, playerImg, teamImg, playedStatus) %>%
+  # apelida time e converte imagem
+  mutate(team=str_remove(fantasyTeam, "[a-zA-Z]+ ?")) %>%
+  mutate(img = glue("<img src='{playerImg}' style='width:36px;height:50px'>")) %>%
+  mutate(teamLogo = glue("<img src='{teamImg}' style='width:40px;height:40px' alt='{team}'>")) %>%
+  mutate(played = if_else(playedStatus, "S", "N"))
+
+# dado um conjunto de jogadores, acha o time de melhor pontuacao
+findBestTeam <- function(.players){
+
+  # posicoes definidas
+  best_teamPlayers <- tibble(
+    pos=c("QB","RB","WR","TE","K","DEF"),
+    qtd=c(1,2,2,1,1,1)
+  ) %>% 
+    # para cada uma dela, seleciona os top N
+    split(1:nrow(.)) %>% 
+    map_df(function(.x, .plrs){
+      .plrs %>%
+        filter(position==.x$pos) %>%
+        top_n(.x$qtd, points) %>%
+        return()
+    }, .plrs=.players)
+  
+  # tem que escolher a posicao coringa
+  best_teamPlayerWR <- .players %>% 
+    filter(position %in% c("RB","WR")) %>% 
+    # exclui os já escolhido no passo acima
+    anti_join(best_teamPlayers, by="playerId") %>% 
+    top_n(1, points) %>% 
+    mutate( position = paste0("W/R (",position,")"))
+  
+  # melhor time
+  best_teamPlayers %>% 
+    bind_rows(best_teamPlayerWR) %>% 
+    return()
+}
+
+# melhores jogadores
+  players %>% 
+  filter(!is.na(fantasyTeam)) %>% 
+  findBestTeam() %>%
+  select(player=img, position, playerName, nflTeam, points, team=teamLogo) %>%
+  knitr::kable()
+```
+
+### Free Agents
+
+```{r bestFA}
+
+# melhores jogadores FA
+  players %>% 
+  filter(is.na(fantasyTeam)) %>% 
+  findBestTeam() %>%
+  select(player=img, position, playerName, nflTeam, points) %>%
+  knitr::kable()
+
+```
+

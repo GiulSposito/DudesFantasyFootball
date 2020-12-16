@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/2020/week14_standings/</loc>
+    <lastmod>2020-12-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020/2020_w14_top_players/</loc>
     <lastmod>2020-12-16T00:00:00+00:00</lastmod>
   </url>
@@ -33,6 +38,16 @@
   </url>
   
   <url>
+    <loc>/tags/recap/</loc>
+    <lastmod>2020-12-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/recap/</loc>
+    <lastmod>2020-12-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
     <lastmod>2020-12-16T00:00:00+00:00</lastmod>
   </url>
@@ -54,16 +69,6 @@
   
   <url>
     <loc>/categories/evaluation/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/recap/</loc>
-    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/recap/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url>
   
