@@ -86,6 +86,7 @@ ffa_league_matchups_recap <- function(.authToken, .leagueId, .week,.teamId){
 }
 
 ffa_extractRecap <- function(recapResp){
+  if (length(recapResp$content)==0) return(NULL)
   tibble(
     team   = c("away","home"),
     teamId = recapResp$content$teams$id,
