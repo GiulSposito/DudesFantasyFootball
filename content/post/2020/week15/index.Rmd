@@ -20,11 +20,12 @@ resources:
   src: "diggs.jpg"
 params:
   week: 15
-  prefix: "posWaivers"
+  prefix: "preTNF"
 ---
 
 Semi finals: Mules @ Giants | Farmers @ Wolfs
 Consolation: Miners @ Knights | Alligators @ Blues
+
 _Last Update: `r lubridate::now()`_
 
 <!--more-->
@@ -119,4 +120,5 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week15_preTNF.html)
 - [Matchup Simulations Pos-Waivers](/reports/2020/dudes_simulation_v5_week15_posWaivers.html)
