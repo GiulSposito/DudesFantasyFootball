@@ -20,7 +20,7 @@ resources:
   src: "diggs.jpg"
 params:
   week: 15
-  prefix: "posSaturdayGames"
+  prefix: "preSNF"
 ---
 
 Semi finals: Mules @ Giants | Farmers @ Wolfs
@@ -120,6 +120,7 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-SNF](/reports/2020/dudes_simulation_v5_week15_preSNF.html)
 - [Matchup Simulations Pos Saturday Games](/reports/2020/dudes_simulation_v5_week15_posSaturdayGames.html)
 - [Matchup Simulations Pos-TNF](/reports/2020/dudes_simulation_v5_week15_posTNF.html)
 - [Matchup Simulations Pre-TNF](/reports/2020/dudes_simulation_v5_week15_preTNF.html)
