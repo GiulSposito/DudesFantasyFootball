@@ -1,0 +1,133 @@
+---
+title: '[Week 15] Top Players'
+author: "Giuliano Sposito"
+date: '2020-12-23'
+slug: '2020_w15_top_players'
+categories:
+  - ranking
+tags:
+  - points
+  - rank
+dropCap: yes
+displayInMenu: no
+displayInList: yes
+resources:
+- name: featuredImage
+  src: steelers_at_bengals.jpg
+  params:
+    description: Padeiro
+params:
+  week: 15
+  ranksize: 10
+---
+
+<!--more-->
+
+```{r setup, echo = FALSE, warning = FALSE, message = FALSE}
+# put rnotbook in the same workdir
+knitr::opts_knit$set(root.dir = normalizePath(rprojroot::find_rstudio_root_file())) 
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r loadData}
+
+library(tidyverse)
+library(glue)
+
+.week <- params$week
+.ranksize <- params$ranksize
+sim <- readRDS(glue("./data/simulation_v5_week{.week}_final.rds"))
+
+players <- sim$players_stats %>% 
+  select(playerId, name, nflTeam=nflTeamAbbr, position, weekPts, smallImageUrl) %>% 
+  unnest(weekPts) %>% 
+  filter(week==.week) %>% 
+  select(-week, -weekPts) %>% 
+  rename(seasonPts = weekSeasonPts) 
+
+teams <- sim$teams %>% 
+  unnest(rosters) %>% 
+  select(playerId, teamId, team=name, imageUrl)
+
+top_players <- players %>% 
+  left_join(teams, by="playerId") %>% 
+  group_by(position) %>% 
+  top_n(.ranksize, seasonPts) %>% 
+  arrange(position, desc(seasonPts)) %>% 
+  ungroup() %>% 
+  mutate(img = glue("<img src='{smallImageUrl}' style='width:45px;height:60px'>")) %>%
+  mutate(imageUrl = if_else(is.na(imageUrl), "https://static.nfl.com/static/content/public/static/img/fantasy/avatar/240x240/fan_avatars_NFL.png", imageUrl)) %>% 
+  mutate(teamLogo = glue("<img src='{imageUrl}' style='width:50px;height:50px' alt='{team}'>"))
+
+```
+
+## Overall
+
+```{r}
+top_players %>% 
+  top_n(.ranksize, seasonPts) %>% 
+  arrange(desc(seasonPts)) %>% 
+  select(player=img, name, position, nflTeam, seasonPts, fantasyTeam=teamLogo) %>%
+  knitr::kable() 
+```
+
+
+## By Position
+
+### Quaterback
+
+```{r qb}
+top_players %>% 
+  filter(position=="QB") %>% 
+  select(player=img, name, nflTeam, seasonPts, fantasyTeam=teamLogo) %>%
+  knitr::kable()
+```
+
+### Wide Receier
+
+```{r wr}
+top_players %>% 
+  filter(position=="WR") %>% 
+  select(player=img, name, nflTeam, seasonPts, fantasyTeam=teamLogo) %>%
+  knitr::kable()
+```
+
+### Running Back
+
+```{r rb}
+top_players %>% 
+  filter(position=="RB") %>% 
+  select(player=img, name, nflTeam, seasonPts, fantasyTeam=teamLogo) %>%
+  knitr::kable()
+```
+
+
+### Tight End
+
+```{r}
+top_players %>% 
+  filter(position=="TE") %>% 
+  select(player=img, name, nflTeam, seasonPts, fantasyTeam=teamLogo) %>%
+  knitr::kable()
+```
+
+
+### Kicker
+
+```{r k}
+top_players %>%
+  filter(position=="K") %>%
+  select(player=img, name, nflTeam, seasonPts, fantasyTeam=teamLogo) %>%
+  knitr::kable()
+```
+
+
+### Defense
+
+```{r def}
+top_players %>% 
+  filter(position=="DEF") %>% 
+  select(player=img, name, nflTeam, seasonPts, fantasyTeam=teamLogo) %>%
+  knitr::kable()
+```
+
