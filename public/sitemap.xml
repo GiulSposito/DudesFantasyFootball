@@ -38,6 +38,11 @@
   </url>
   
   <url>
+    <loc>/post/2020/week14_recap/</loc>
+    <lastmod>2020-12-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/2020/week15_eval/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
   </url>
@@ -49,6 +54,16 @@
   
   <url>
     <loc>/categories/evaluation/</loc>
+    <lastmod>2020-12-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/recap/</loc>
+    <lastmod>2020-12-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/recap/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -89,16 +104,6 @@
   
   <url>
     <loc>/post/2020/2020_w14_top_players/</loc>
-    <lastmod>2020-12-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/recap/</loc>
-    <lastmod>2020-12-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/recap/</loc>
     <lastmod>2020-12-16T00:00:00+00:00</lastmod>
   </url>
   
