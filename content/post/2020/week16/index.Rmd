@@ -20,7 +20,7 @@ resources:
   src: "giants_vs_browns.jpg"
 params:
   week: 16
-  prefix: "preWaivers"
+  prefix: "posWaivers"
 ---
 
 **Farmers vs Giants**
@@ -119,5 +119,6 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pos-Waivers](/reports/2020/dudes_simulation_v5_week16_posWaivers.html)
 - [Matchup Simulations Pre-Waivers](/reports/2020/dudes_simulation_v5_week16_preWaivers.html)
 
