@@ -20,7 +20,7 @@ resources:
   src: "giants_vs_browns.jpg"
 params:
   week: 16
-  prefix: "preSNF"
+  prefix: "preMNF"
 ---
 
 **Farmers vs Giants**
@@ -119,6 +119,7 @@ _Last Update: `r lubridate::now()`_
 
 ## Simulation
 
+- [Matchup Simulations Pre-MNF](/reports/2020/dudes_simulation_v5_week16_preMNF.html)
 - [Matchup Simulations Pre-SNF](/reports/2020/dudes_simulation_v5_week16_preSNF.html)
 - [Matchup Simulations Pre Sunday Games](/reports/2020/dudes_simulation_v5_week16_preSundayGames.html)
 - [Matchup Simulations Pos Saturday 1st Games](/reports/2020/dudes_simulation_v5_week16_posSaturday1stGames.html)
