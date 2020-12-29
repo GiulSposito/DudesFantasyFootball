@@ -4,11 +4,23 @@
     <link>/categories/evaluation/</link>
     <description>Recent content in evaluation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 22 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/evaluation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 12] Simulation Evaluation</title>
+      <link>/post/2020/week12_eval/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week12_eval/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 43%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 11] Simulation Evaluation</title>
       <link>/post/2020/week11_eval/</link>
       <pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate>
@@ -42,17 +54,6 @@
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 71%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 09] Players and Teams Peformances</title>
-      <link>/post/2020/week09_performances/</link>
-      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week09_performances/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
 </description>
     </item>
   </channel>
