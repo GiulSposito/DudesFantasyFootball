@@ -4,11 +4,22 @@
     <link>/categories/ranking/</link>
     <description>Recent content in ranking on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/ranking/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 14] Regular Season End</title>
+      <link>/post/rank-week-14/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/rank-week-14/</guid>
+      <description>
+
+
+&lt;p&gt;Playoffs: &lt;em&gt;Campinas Giants, Paulinia Robots, Indaiatuba Riders and Sorocaba Steelers.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 14] Regular Season MVPs</title>
       <link>/post/mvp-week-14/</link>
       <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
@@ -41,17 +52,6 @@
 
 &lt;p&gt;Leader: &lt;em&gt;Campinas Giants&lt;/em&gt; &lt;br&gt;
 Playoffs contenders: &lt;em&gt;Paulinia Robots, Indaiatuba Riders and Amparo Bikers.&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 12] League MVPs</title>
-      <link>/post/mvp-week-12/</link>
-      <pubDate>Wed, 27 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/mvp-week-12/</guid>
-      <description>
-
-
-&lt;p&gt;Top Players: CMC, Lamar, Thomas, Cook and Wilson&lt;/p&gt;
 </description>
     </item>
   </channel>

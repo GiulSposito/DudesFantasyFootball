@@ -4,11 +4,23 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 09] League Standings</title>
+      <link>/post/2020/week09_standings/</link>
+      <pubDate>Thu, 12 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week09_standings/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;League Leaders: Mules, Wolfs, Giants, Farmers, Robots e Rabbits&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 09] Coachs and Managers</title>
       <link>/post/2020/week09_coachs/</link>
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
@@ -38,17 +50,6 @@
       <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>/post/2020/week09_recap/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-</description>
-    </item><item>
-      <title>[Week 09] Players and Teams Peformances</title>
-      <link>/post/2020/week09_performances/</link>
-      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week09_performances/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 

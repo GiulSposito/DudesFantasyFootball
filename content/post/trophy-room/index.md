@@ -4,7 +4,7 @@ author: Giuliano Sposito
 date: '2019-08-01'
 slug: it-s-football-dudes-trophy-room
 displayInList: true
-displayInMenu: true
+displayInMenu: false
 draft: false
 dropCap: false
 categories:
