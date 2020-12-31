@@ -4,11 +4,18 @@
     <link>/tags/</link>
     <description>Recent content in Tags on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>coachs</title>
+      <link>/tags/coachs/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/coachs/</guid>
+      <description></description>
+    </item><item>
       <title>managers</title>
       <link>/tags/managers/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
@@ -28,13 +35,6 @@
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/draft/</guid>
-      <description></description>
-    </item><item>
-      <title>championship</title>
-      <link>/tags/championship/</link>
-      <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/championship/</guid>
       <description></description>
     </item>
   </channel>

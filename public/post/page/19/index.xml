@@ -4,11 +4,47 @@
     <link>/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 03] Standings and Matchups Recap</title>
+      <link>/post/2020/week03_recap/</link>
+      <pubDate>Tue, 29 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week03_recap/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;League Leaders: London Knights, Wild Mules, Barão Butchers e Campinas Giants&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 03] Projections and Simulation</title>
+      <link>/post/2020/week-03-projections-and-simulation/</link>
+      <pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week-03-projections-and-simulation/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Last Update: 2020-09-28 08:00:35&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 02] Simulation Evaluation</title>
+      <link>/post/2020/week02_eval/</link>
+      <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week02_eval/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 43%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 02] Standings and Matchups Recap</title>
       <link>/post/2020/week02_recap/</link>
       <pubDate>Tue, 22 Sep 2020 00:00:00 +0000</pubDate>
@@ -20,32 +56,6 @@
 
 &lt;p&gt;League Leaders: Butchers, Blues, Miners and Guara Wolfs&lt;/p&gt;
 </description>
-    </item><item>
-      <title>[Week 02] Players Projection and Matchups Simulation</title>
-      <link>/post/2020/week02/</link>
-      <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week02/</guid>
-      <description></description>
-    </item><item>
-      <title>[Week 01] Simulation Evaluation</title>
-      <link>/post/2020/week01_eval/</link>
-      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week01_eval/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 14%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 01] Players Projection and Matchups Simulation</title>
-      <link>/post/2020/week01/</link>
-      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week01/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>

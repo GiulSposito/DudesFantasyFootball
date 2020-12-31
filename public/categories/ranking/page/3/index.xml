@@ -4,39 +4,28 @@
     <link>/categories/ranking/</link>
     <description>Recent content in ranking on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 23 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2020 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="/categories/ranking/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 13] Matchups Recap and Teams Performances</title>
-      <link>/post/2020/week13_recap/</link>
+      <title>[Week 13] Standings - End of Regular Season</title>
+      <link>/post/2020/week13_standings/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week13_standings/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;Playoff Contenders: Mules, Wolf, Farmers, Rabbits, Giants, Robots.&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 13] End of Regular Season - Coachs and Managers</title>
+      <link>/post/2020/week13_coachs/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/2020/week13_recap/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-</description>
-    </item><item>
-      <title>[Week 12] League Standings</title>
-      <link>/post/2020/week12_standings/</link>
-      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week12_standings/</guid>
-      <description>
-&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;League Leaders: Mules, Wolf, Farmers, Robots, Giants, Rabbits.&lt;/p&gt;
-</description>
-    </item><item>
-      <title>[Week 12] Coachs and Managers</title>
-      <link>/post/2020/week12_coachs/</link>
-      <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2020/week12_coachs/</guid>
+      <guid>/post/2020/week13_coachs/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
@@ -45,11 +34,22 @@
 
 </description>
     </item><item>
-      <title>[Week 12] Matchups Recap and Teams Performances</title>
-      <link>/post/2020/week12_recap/</link>
-      <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
+      <title>[Week 13] End of Regular Season - MVPs</title>
+      <link>/post/2020/2020_w13_top_players/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/2020/week12_recap/</guid>
+      <guid>/post/2020/2020_w13_top_players/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+</description>
+    </item><item>
+      <title>[Week 13] Matchups Recap and Teams Performances</title>
+      <link>/post/2020/week13_recap/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2020/week13_recap/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
