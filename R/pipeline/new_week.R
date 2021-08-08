@@ -9,11 +9,11 @@ library(yaml)
 options(dplyr.summarise.inform = FALSE)
 
 # EXECUTION PARAMETERS ####
-week <- 15
-season <- 2020
+week <- 1
+season <- 2021
 config <- read_yaml("./config/config.yml")
-prefix <- "posWaivers"
-destPath <- "static/reports/2020"
+prefix <- "season"
+destPath <- "static/reports/2021"
 sim.version <- 5
 
 # API ACCESS CHECK ####
@@ -28,7 +28,7 @@ webScraps <- scrapPlayersPredictions(week, season)
 
 # SCRAPPING NFL FANTASY ###
 source("./R/import/scrap_nfl_fantasy_projections.R")
-nflScrap <- scrapNflFantasyProjection(config$authToken, config$leagueId, 2020, week)
+nflScrap <- scrapNflFantasyProjection(config$authToken, config$leagueId, season, week)
 
 source("./R/import/scrap_yahoo_fantasy_projection.R")
 yahooScrap <- scrapYahooProjection(week, config$yahooCokies)
