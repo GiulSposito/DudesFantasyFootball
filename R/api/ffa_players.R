@@ -44,6 +44,46 @@ ffa_players_stats <- function(.authToken, .leagueId, .season, .weeks){
     .path = "v2/league/players",
     .query = list(
       "appKey"    = "internalemailuse",
+      #"authToken" = .authToken,
+      "leagueId"  = .leagueId,
+      "stats"     = stats_str,
+      "count"     = 3000
+    ),
+    .auth=.authToken)
+  
+}
+
+# return the league player with stats
+ffa_players_stats_adv <- function(.authToken, .leagueId, .season, .weeks, .stats){
+  
+  # # stats reference
+  # 
+  # [
+  #   {"type":"researchStats","season":"2015","week":"1"},
+  #   {"type":"ranks","season":"2015","week":"1"},
+  #   {"type":"stats","season":"2015","week":"1"},
+  #   {"type":"stats","season":"2015"},
+  #   {"type":"projectedStats","season":"2015","week":"1"},
+  #   {"type":"nflGames","season":"2015","week":"1"}
+  # ]
+  
+  # The possible types are: 'stats', 'twoWeekStats', 'fourWeekStats',
+  # 'projectedStats', 'restOfSeasonProjectedStats', 'researchStats',
+  # 'ranks', 'nflGames', 'advanced', 'rankAgainstPosition'.
+  
+  
+  # define estatísticas para retorno
+  stats_str <- .weeks %>% 
+    map_chr(~glue('{"type":"<<.stats>>","season":"<<.season>>","week":"<<.x>>"}', .open = "<<", .close = ">>")) %>% 
+    c(.,glue('{"type":"<<.stats>>","season":"<<.season>>"}', .open = "<<", .close = ">>")) %>% 
+    paste(collapse = ",") %>% 
+    paste0("[",.,"]")
+  
+  
+  players <- ffa_api(
+    .path = "v2/league/players",
+    .query = list(
+      "appKey"    = "internalemailuse",
       "authToken" = .authToken,
       "leagueId"  = .leagueId,
       "stats"     = stats_str,
@@ -51,6 +91,7 @@ ffa_players_stats <- function(.authToken, .leagueId, .season, .weeks){
     ))
   
 }
+
 
 
 # convert uma resposta em um dataframe
@@ -90,4 +131,5 @@ ffa_extractPlayers <- function(playersResp){
     return()
   
 }
+
 
