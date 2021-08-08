@@ -10,10 +10,10 @@ ffa_players <- function(.authToken, .leagueId){
     .path = "v2/league/players",
     .query = list(
       "appKey"    = "internalemailuse",
-      "authToken" = .authToken,
       "leagueId"  = .leagueId,
       "count"     = 3000
-    ))
+    ),
+    .auth=.authToken)
   
 }
 
@@ -44,7 +44,6 @@ ffa_players_stats <- function(.authToken, .leagueId, .season, .weeks){
     .path = "v2/league/players",
     .query = list(
       "appKey"    = "internalemailuse",
-      #"authToken" = .authToken,
       "leagueId"  = .leagueId,
       "stats"     = stats_str,
       "count"     = 3000
@@ -84,11 +83,11 @@ ffa_players_stats_adv <- function(.authToken, .leagueId, .season, .weeks, .stats
     .path = "v2/league/players",
     .query = list(
       "appKey"    = "internalemailuse",
-      "authToken" = .authToken,
       "leagueId"  = .leagueId,
       "stats"     = stats_str,
       "count"     = 3000
-    ))
+    ),
+    .auth=.authToken)
   
 }
 

@@ -5,9 +5,9 @@ ffa_league_settings <- function(.authToken, .leagueId){
     .path = "/v2/league/settings",
     .query = list(
       "appKey"    = "internalemailuse",
-      "authToken" = .authToken,
       "leagueId"  = .leagueId
-    ))
+    ),
+    .auth=.authToken)
 }
 
 
@@ -18,9 +18,9 @@ ffa_league_teams <- function(.authToken, .leagueId){
     .path = "/v2/league/teams",
     .query = list(
       "appKey"    = "internalemailuse",
-      "authToken" = .authToken,
       "leagueId"  = .leagueId
-    ))
+    ),
+    .auth=.authToken)
   
 }
 
@@ -32,12 +32,12 @@ ffa_league_matchups <- function(.authToken, .leagueId, .week){
     .path = "/v2/league/matchups",
     .query = list(
       "appKey"    = "internalemailuse",
-      "authToken" = .authToken,
       "leagueId"  = .leagueId,
       "week"      =  .week,
       "includeRosters" = 1,
       "forcePlayoffs" = 1
-    ))
+    ),
+    .auth=.authToken)
   
 }
 
@@ -48,10 +48,10 @@ ffa_league_standings <- function(.authToken, .leagueId, .week){
     .path = "/v2/league/standings",
     .query = list(
       "appKey"    = "internalemailuse",
-      "authToken" = .authToken,
       "week"      = .week, 
       "leagueId"  = .leagueId
-    ))
+    ),
+    .auth=.authToken)
   
 }
 
@@ -62,11 +62,11 @@ ffa_league_team_roster <- function(.authToken, .leagueId, .teamId, .week){
     .path = "/v2/league/teams",
     .query = list(
       "appKey"    = "internalemailuse",
-      "authToken" = .authToken,
       "leagueId"  = .leagueId,
       "teamId"    = .teamId,
       "week"      = .week
-    ))
+    ),
+    .auth=.authToken)
   
 }
 
@@ -77,11 +77,11 @@ ffa_league_matchups_recap <- function(.authToken, .leagueId, .week,.teamId){
     .path = "/v2/league/team/matchuprecap",
     .query = list(
       "appKey"    = "internalemailuse",
-      "authToken" = .authToken,
       "leagueId"  = .leagueId,
       "week"      = .week,
       "teamId"    = .teamId
-    ))
+    ),
+    .auth=.authToken)
   
 }
 
@@ -166,8 +166,3 @@ ffa_extractMatchups <- function(leagueMatchupsResp){
     return()
   
 }
-
-
-
-
-
