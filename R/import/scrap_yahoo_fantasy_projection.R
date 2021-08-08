@@ -10,7 +10,7 @@ library(ffanalytics)
   scrp_data <- seq(0,.size,25) %>%
     map_df(function(.i, .pos, .week, .cookies){
 
-      yahooUrl <- glue("https://football.fantasysports.yahoo.com/f1/1196449/players?status=ALL&pos={.pos}&cut_type=9&stat1=S_PW_{.week}&myteam=0&sort=AR&sdir=1&count={.i}")
+      yahooUrl <- glue("https://football.fantasysports.yahoo.com/f1/992851/players?status=ALL&pos={.pos}&cut_type=9&stat1=S_PW_{.week}&myteam=0&sort=AR&sdir=1&count={.i}")
       print(paste0(yahooUrl,"\n"))
       
       resp <- GET(
@@ -94,7 +94,7 @@ scrapYahooProjection <- function(.week, .yahooCokies){
     map_df(function(.position, .week, .cookies){
       .scrapYahooPosition(.position$pos, .position$size, .week=.week, .cookies = .cookies)
     }, .week=.week, .cookies=.yahooCokies) %>%
-    select(-forecast, -na, -injuryStatus)
+    select(-na, -injuryStatus)
   
   ffa_columns = tibble(
     colName = names(projection_sources[["Yahoo"]]$stat_cols),
