@@ -19,7 +19,7 @@ teams <- sim$teams %>%
   mutate(nickname=janitor::make_clean_names(nickname)) %>% 
   select(id=teamId, name=nickname)
 
-h2h <- 1:12 %>% 
+h2h <- 1:14 %>% 
   map_df(function(.w){
     
     sim <- glue("./data/simulation_v5_week{.w}_final.rds") %T>% 
@@ -110,4 +110,59 @@ team.hist %>%
   filter(week==12) %>% 
   select(team.nm, team.elo) %>% 
   arrange(desc(team.elo))
+
+bind_rows(
+  select(team.hist, week, team.nm, team.win, team.pts, team.elo),
+  select(team.hist, week, team.nm=opp.nm, team.win=opp.win, team.pts=opp.pts, team.elo=opp.elo)
+) %>% 
+  filter(week>1) %>% 
+  mutate(team.win = (team.win==1)) %>% 
+  ggplot(aes(x=team.pts, y=team.elo)) +
+  geom_point(aes(color=team.win), size=2) +
+  geom_hline(yintercept = 1500, color="grey", linetype="dashed") +
+  stat_smooth(method = "lm", se = F) +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+z <- team.hist %>% 
+  mutate( across(c(team.elo, opp.elo), lag, 14)) %>% 
+  filter(complete.cases(.)) %>% 
+  mutate(
+    elo.delta = team.elo-opp.elo,
+    pts.delta = team.pts-opp.pts,
+    pr.a=1/(10^(-elo.delta/400)+1)
+  ) %>% 
+  mutate(
+    outcome = team.win==1, #if_else (team.win==1, "home.team","away.team"),
+    prediction = pr.a>.5
+    # prediction = case_when(
+    #   pr.a >  .5  ~ "home.team",
+    #   pr.a == .5 ~ "undefined", 
+    #   pr.a <= .5 ~ "away.team")
+  )
+
+z %>% 
+  select(prediction, outcome) %>% 
+  mutate(across(c(prediction, outcome), factor, levels = c(T,F), labels = c("home win", "away win"))) %>% 
+  caret::confusionMatrix(.$prediction, .$outcome)
+
+  
+  ggplot(aes(pr.a)) +
+  geom_density(aes(color=(team.win==1))) +
+  theme_minimal()
+
+
+
+z <- team.hist %>% 
+  mutate( elo.delta = team.elo-opp.elo,
+          outcome = if_else (team.win==1, "home.team","away.team"),
+          prediction = case_when(
+            elo.delta > 0  ~ "home.team",
+            elo.delta ==0 ~ "undefined", 
+            elo.delta < 0 ~ "away.team"
+          )) %>% 
+  mutate(across(c(prediction,outcome), as.factor)) %>% 
+  select(week, prediction, outcome)
+
+
 
