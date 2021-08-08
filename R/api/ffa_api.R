@@ -3,7 +3,7 @@ library(jsonlite)
 library(purrr)
 
 # Fantasy Football API Core GET
-ffa_api_endpoint <- function(.url, .path, .query){
+ffa_api_endpoint <- function(.url, .path, .query, .auth){
   
   # always return json
   .query = append(.query, list("format"="json"))
@@ -19,7 +19,8 @@ ffa_api_endpoint <- function(.url, .path, .query){
   cat(str(.query))
   
   # invoke
-  resp <- GET(url,ua)
+  resp <- GET(url,ua,
+              add_headers(Authorization=.auth))
   
   # check formation type
   if (http_type(resp) != "application/json") {
@@ -59,7 +60,7 @@ ffa_api_endpoint <- function(.url, .path, .query){
 }
 
 
-ffa_api <- function(.path, .query) ffa_api_endpoint("https://api.fantasy.nfl.com/", .path, .query)
+ffa_api <- function(.path, .query, .auth) ffa_api_endpoint("https://api.fantasy.nfl.com/", .path, .query, .auth)
 
 # S3 class = "ffa_api" print
 print.ffa_api <- function(x, ...) {
