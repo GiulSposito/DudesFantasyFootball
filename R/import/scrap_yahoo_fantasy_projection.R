@@ -116,19 +116,37 @@ scrapYahooProjection <- function(.week, .yahooCookies){
     
   scrp <- scrp_df %>%
     mutate(trends_percent_rostered=as.numeric(str_remove_all(trends_percent_rostered,"%"))/100) %>%
-    mutate(across(c(5:table_cols), as.numeric)) %>% 
+    mutate(across(all_of(5:table_cols), as.numeric)) %>% 
     pivot_longer(cols = -c(src_id, player, position, team), names_to="janName", values_to="value") %>%
     inner_join(ffa_columns, by="janName") %>%
     pivot_wider(id_cols=c(src_id, player, position, team), names_from=colName, values_from=value) %>%
     mutate(data_src="Yahoo") %>%
+    # modifica chave do src_id quando o time é de defesa (há dois "bay")
+    mutate( src_id = case_when(
+      position=="DEF" ~ str_c(src_id, team, sep="-"),
+      T ~ src_id
+    )) %>% 
     select(data_src, everything())
   
   ## IDS do FFA
   # carregando tabelas de "de para" de IDs de Jogadores
   load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 
+  # scrp %>% 
+  #   inner_join(player_ids, by=c("src_id"="stats_id"))
+  
+  # mapeamento de src_ids (como yahoo_id)
+  yahoo_id_map <- readRDS("./data/yahoo_id_map.rds") %>% 
+    inner_join(player_ids, by="id")
+  
+  # salva yahoo players "scrapeados" sem mapeamento para o ffa_id
   scrp %>% 
-    inner_join(player_ids, by=c("src_id"="stats_id")) %>% 
+    anti_join(yahoo_id_map, by=c("src_id"="yahoo_id")) %>% 
+    saveRDS("./data/yahoo_players_not_imported.rds")
+  
+  # bind scrap do yahoo com o player id (ffa)
+  scrp %>% 
+    inner_join(yahoo_id_map, by=c("src_id"="yahoo_id")) %>% 
     mutate(position = if_else(position=="DEF","DST",position)) %>% 
     select(data_src, id, src_id, player, position, team, everything()) %>% 
     filter(!is.na(id)) %>% 
