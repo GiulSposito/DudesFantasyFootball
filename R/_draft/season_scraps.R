@@ -32,51 +32,36 @@ config <- read_yaml("./config/config.yml")
 source("./R/import/scrap_yahoo_fantasy_projection.R")
 yahooScrap <- scrapYahooProjection(0, config$yahooCookies)
 
-yahooScrap %>% 
-  count(data_src,position)
+yScrp <- yahooScrap %>% 
+  separate_rows(position, sep=",")
 
+source("./R/import/scrap_nfl_fantasy_projections.R")
 
-#source("./R/import/scrap_nfl_fantasy_projections.R")
 scrp %>% 
-  addScrapTable(yahooScrap) %>% 
+  addScrapTable(yScrp) %>% 
   map_df(~select(.x, data_src, id), .id="pos") %>% 
   count(data_src, pos) %>% 
   pivot_wider(names_from = "pos",values_from="n")
 
+proj <- scrp %>% 
+  addScrapTable(yScrp) %>% 
+  projections_table(scoring_rules = read_yaml("./config/score_settings.yml"))
+
+season_proj <- proj %>% 
+  add_player_info() %>% 
+  add_ecr() %>%
+  add_risk() %>%
+  add_adp() %>% 
+  add_aav()
+
 scrp %>% 
-  addScrapTable(yahooScrap) %>% 
-  map_df(~select(.x, data_src, team), .id="pos") %>% 
-  distinct() %>% 
-  count(data_src, pos) %>% 
-  pivot_wider(names_from = "pos",values_from="n")
+  addScrapTable(yScrp) %>% 
+  saveRDS("./data/season_scrap.rds")
 
+season_proj %>% 
+  saveRDS("./data/season_projtable.rds")
 
-scrp$DST %>% 
-  filter(data_src=="FantasyPros") %>% 
-  select(data_src, id, team)
-
-yahooScrap %>% 
-  filter(position=="DST") %>% 
-  arrange(desc(site_pts))
-
-# saveRDS(scrp, "./data/season_scrap_yahoo.rds")
-# 
-# readRDS("./data/season_scrap.rds") %>% 
-#   addScrapTable(scrp)
-# yahooScrap
-# 
-# 
-# scrp <- readRDS("./data/season_scrap.rds") 
-# scrp_ff <- readRDS("./data/season_scrap_fleaflicker.rds")
-# scrp_yahoo <- readRDS("./data/season_scrap_yahoo.rds")
-
-# scrp %>% 
-#   map2(scrp_ff, ~bind_rows(.x, .y)) %>% 
-#   addScrapTable(scrp_yahoo) %>% 
-scrp_ff %>% 
-  map_df(~select(.x, data_src, id), .id="pos") %>% 
-  count(data_src, pos) %>% 
-  pivot_wider(names_from = "pos",values_from="n")
-
-
-
+season_proj %>% 
+  filter(avg_type=="average") %>% 
+  arrange(desc(floor_vor)) %>% 
+  View()
