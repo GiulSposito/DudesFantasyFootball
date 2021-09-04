@@ -138,7 +138,7 @@ ffa_extractTeamsFromMatchups <- function(leagueMatchupsResp){
     })) %>% 
     # transform as estatisticas semanais em tibble
     mutate( week.stats = map(stats, function(.stat){
-      .stat$week$`2020` %>%
+      .stat$week$`2021` %>%
         tibble(week=names(.), week.stats=.) %>%
         unnest_wider(week.stats) %>% 
         mutate( week = as.integer(week) ) %>% 
