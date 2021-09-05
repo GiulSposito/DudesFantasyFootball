@@ -4,23 +4,11 @@
     <link>https://dudesfootball.netlify.com/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://dudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 15] Simulation Evaluation</title>
-      <link>https://dudesfootball.netlify.com/post/week-15-simulation-evaluation/</link>
-      <pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/week-15-simulation-evaluation/</guid>
-      <description>
-&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 25%&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item><item>
       <title>[Week 15] Players Projection and Matchups Simulation</title>
       <link>https://dudesfootball.netlify.com/post/week15/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
@@ -52,6 +40,17 @@
 
 
 &lt;p&gt;Playoffs: &lt;em&gt;Campinas Giants, Paulinia Robots, Indaiatuba Riders and Sorocaba Steelers.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 14] Regular Season MVPs</title>
+      <link>https://dudesfootball.netlify.com/post/mvp-week-14/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/post/mvp-week-14/</guid>
+      <description>
+
+
+&lt;p&gt;Top Players: CMC, Lamar Jackson, Michael Thomas, Deshaun Watson and Dalvin Cook.&lt;/p&gt;
 </description>
     </item>
   </channel>

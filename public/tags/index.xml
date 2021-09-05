@@ -4,25 +4,11 @@
     <link>https://dudesfootball.netlify.com/tags/</link>
     <description>Recent content in Tags on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://dudesfootball.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>draft</title>
-      <link>https://dudesfootball.netlify.com/tags/draft/</link>
-      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/tags/draft/</guid>
-      <description></description>
-    </item><item>
-      <title>rank</title>
-      <link>https://dudesfootball.netlify.com/tags/rank/</link>
-      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/tags/rank/</guid>
-      <description></description>
-    </item><item>
       <title>championship</title>
       <link>https://dudesfootball.netlify.com/tags/championship/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
@@ -30,11 +16,25 @@
       <guid>https://dudesfootball.netlify.com/tags/championship/</guid>
       <description></description>
     </item><item>
+      <title>rank</title>
+      <link>https://dudesfootball.netlify.com/tags/rank/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/tags/rank/</guid>
+      <description></description>
+    </item><item>
       <title>points</title>
       <link>https://dudesfootball.netlify.com/tags/points/</link>
       <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://dudesfootball.netlify.com/tags/points/</guid>
+      <description></description>
+    </item><item>
+      <title>evaluation</title>
+      <link>https://dudesfootball.netlify.com/tags/evaluation/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/tags/evaluation/</guid>
       <description></description>
     </item>
   </channel>

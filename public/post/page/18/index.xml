@@ -4,23 +4,11 @@
     <link>https://dudesfootball.netlify.com/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://dudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 05] Projections and Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/2020/week-05-projections-and-simulation/</link>
-      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/2020/week-05-projections-and-simulation/</guid>
-      <description>
-&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;em&gt;Last Update: 2020-10-13 00:43:48&lt;/em&gt;&lt;/p&gt;
-</description>
-    </item><item>
       <title>[Week 04] League Standings</title>
       <link>https://dudesfootball.netlify.com/post/2020/week04_standings/</link>
       <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
@@ -54,6 +42,18 @@
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 14%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 04] Projections and Simulation</title>
+      <link>https://dudesfootball.netlify.com/post/2020/week-04-projections-and-simulation/</link>
+      <pubDate>Wed, 30 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/post/2020/week-04-projections-and-simulation/</guid>
+      <description>
+&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;em&gt;Last Update: 2020-10-05 01:27:16&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
   </channel>
