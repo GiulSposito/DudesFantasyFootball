@@ -3,25 +3,22 @@ title: Draft Day | Season 2021
 author: Giuliano Sposito
 date: '2021-09-03'
 slug: fantasy_draft_2021
+displayInList: yes
+displayInMenu: no
+dropCap: no
+draft: no
+resources:
+- name: featuredImage
+  params:
+    description: NFL Draft QBs
+  src: nfl_draft_2021_qbs.jpg
 categories:
   - draft
-  - recap
-  - ranking
 tags:
   - draft
-  - projection
-  - points
   - rank
-  - recap
-description: ''
-dropCap: yes
-displayInMenu: no
-displayInList: yes
-resources:
-  name: featuredImage
-  src: ''
-  params:
-    description: ''
+editor_options: 
+  chunk_output_type: console
 ---
 
 Season 2021 is here! See the league draft winners and losers according NFL Fantasy.

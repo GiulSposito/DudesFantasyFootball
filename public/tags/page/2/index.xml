@@ -4,11 +4,18 @@
     <link>https://dudesfootball.netlify.com/tags/</link>
     <description>Recent content in Tags on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://dudesfootball.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>evaluation</title>
+      <link>https://dudesfootball.netlify.com/tags/evaluation/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/tags/evaluation/</guid>
+      <description></description>
+    </item><item>
       <title>recap</title>
       <link>https://dudesfootball.netlify.com/tags/recap/</link>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
@@ -28,13 +35,6 @@
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://dudesfootball.netlify.com/tags/montecarlo/</guid>
-      <description></description>
-    </item><item>
-      <title>projection</title>
-      <link>https://dudesfootball.netlify.com/tags/projection/</link>
-      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/tags/projection/</guid>
       <description></description>
     </item>
   </channel>

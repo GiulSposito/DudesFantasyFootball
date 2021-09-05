@@ -4,11 +4,22 @@
     <link>https://dudesfootball.netlify.com/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://dudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 10] Players Projection and Matchups Simulation</title>
+      <link>https://dudesfootball.netlify.com/post/week10/</link>
+      <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/post/week10/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
       <title>[Week 09] Simulation Evaluation</title>
       <link>https://dudesfootball.netlify.com/post/week-9-simulation-evaluation/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
@@ -34,13 +45,6 @@
       
       <guid>https://dudesfootball.netlify.com/post/week09/</guid>
       <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
-    </item><item>
-      <title>[Week 08] League Standings</title>
-      <link>https://dudesfootball.netlify.com/post/rank-week-8/</link>
-      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/rank-week-8/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
