@@ -1,33 +1,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories - It&#39;s Football, Dudes!</title>
-    <link>/categories/</link>
+    <link>https://dudesfootball.netlify.com/categories/</link>
     <description>Recent content in Categories on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://dudesfootball.netlify.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>projection</title>
-      <link>/categories/projection/</link>
-      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <title>simulation</title>
+      <link>https://dudesfootball.netlify.com/categories/simulation/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/projection/</guid>
+      <guid>https://dudesfootball.netlify.com/categories/simulation/</guid>
       <description></description>
     </item><item>
-      <title>draft</title>
-      <link>/categories/draft/</link>
-      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      <title>projection</title>
+      <link>https://dudesfootball.netlify.com/categories/projection/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/draft/</guid>
+      <guid>https://dudesfootball.netlify.com/categories/projection/</guid>
       <description></description>
     </item><item>
       <title>about</title>
-      <link>/categories/about/</link>
+      <link>https://dudesfootball.netlify.com/categories/about/</link>
       <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/about/</guid>
+      <guid>https://dudesfootball.netlify.com/categories/about/</guid>
       <description></description>
     </item>
   </channel>

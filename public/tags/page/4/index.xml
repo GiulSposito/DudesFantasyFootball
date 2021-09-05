@@ -1,40 +1,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags - It&#39;s Football, Dudes!</title>
-    <link>/tags/</link>
+    <link>https://dudesfootball.netlify.com/tags/</link>
     <description>Recent content in Tags on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://dudesfootball.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>playoffs</title>
-      <link>/tags/playoffs/</link>
+      <link>https://dudesfootball.netlify.com/tags/playoffs/</link>
       <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/playoffs/</guid>
+      <guid>https://dudesfootball.netlify.com/tags/playoffs/</guid>
       <description></description>
     </item><item>
       <title>wins and losses</title>
-      <link>/tags/wins-and-losses/</link>
+      <link>https://dudesfootball.netlify.com/tags/wins-and-losses/</link>
       <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/wins-and-losses/</guid>
+      <guid>https://dudesfootball.netlify.com/tags/wins-and-losses/</guid>
       <description></description>
     </item><item>
       <title>about</title>
-      <link>/tags/about/</link>
+      <link>https://dudesfootball.netlify.com/tags/about/</link>
       <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/about/</guid>
+      <guid>https://dudesfootball.netlify.com/tags/about/</guid>
       <description></description>
     </item><item>
       <title>rstats</title>
-      <link>/tags/rstats/</link>
+      <link>https://dudesfootball.netlify.com/tags/rstats/</link>
       <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rstats/</guid>
+      <guid>https://dudesfootball.netlify.com/tags/rstats/</guid>
       <description></description>
     </item>
   </channel>

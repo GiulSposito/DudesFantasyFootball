@@ -1,19 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>points - It&#39;s Football, Dudes!</title>
-    <link>/tags/points/</link>
+    <link>https://dudesfootball.netlify.com/tags/points/</link>
     <description>Recent content in points on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 30 Dec 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/tags/points/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://dudesfootball.netlify.com/tags/points/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 14] The Draft Wizards</title>
-      <link>/post/week-14-draft-wizards/</link>
+      <link>https://dudesfootball.netlify.com/post/week-14-draft-wizards/</link>
       <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-14-draft-wizards/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week-14-draft-wizards/</guid>
       <description>
 
 
@@ -21,10 +21,10 @@
 </description>
     </item><item>
       <title>[Week 14] Regular Season End</title>
-      <link>/post/rank-week-14/</link>
+      <link>https://dudesfootball.netlify.com/post/rank-week-14/</link>
       <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/rank-week-14/</guid>
+      <guid>https://dudesfootball.netlify.com/post/rank-week-14/</guid>
       <description>
 
 
@@ -32,10 +32,10 @@
 </description>
     </item><item>
       <title>[Week 14] Regular Season MVPs</title>
-      <link>/post/mvp-week-14/</link>
+      <link>https://dudesfootball.netlify.com/post/mvp-week-14/</link>
       <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/mvp-week-14/</guid>
+      <guid>https://dudesfootball.netlify.com/post/mvp-week-14/</guid>
       <description>
 
 
@@ -43,10 +43,10 @@
 </description>
     </item><item>
       <title>[Week 13] League MVPs</title>
-      <link>/post/mvp-week-13/</link>
+      <link>https://dudesfootball.netlify.com/post/mvp-week-13/</link>
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/mvp-week-13/</guid>
+      <guid>https://dudesfootball.netlify.com/post/mvp-week-13/</guid>
       <description>
 
 

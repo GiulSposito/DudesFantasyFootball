@@ -1,26 +1,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts - It&#39;s Football, Dudes!</title>
-    <link>/post/</link>
+    <link>https://dudesfootball.netlify.com/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://dudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 06] Players Projection and Matchups Simulation</title>
-      <link>/post/week06/</link>
+      <link>https://dudesfootball.netlify.com/post/week06/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week06/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week06/</guid>
       <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
     </item><item>
       <title>[Week 05] Simulation Evaluation</title>
-      <link>/post/week-5-simulation-evaluation/</link>
+      <link>https://dudesfootball.netlify.com/post/week-5-simulation-evaluation/</link>
       <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-5-simulation-evaluation/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week-5-simulation-evaluation/</guid>
       <description>
 
 
@@ -28,17 +28,17 @@
 </description>
     </item><item>
       <title>[Week 05] League Standings</title>
-      <link>/post/rank-week-5/</link>
+      <link>https://dudesfootball.netlify.com/post/rank-week-5/</link>
       <pubDate>Tue, 08 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/rank-week-5/</guid>
+      <guid>https://dudesfootball.netlify.com/post/rank-week-5/</guid>
       <description></description>
     </item><item>
       <title>[Week 05] Players Projection and Matchups Simulation</title>
-      <link>/post/week05/</link>
+      <link>https://dudesfootball.netlify.com/post/week05/</link>
       <pubDate>Thu, 03 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week05/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week05/</guid>
       <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>

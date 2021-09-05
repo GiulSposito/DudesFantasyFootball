@@ -1,43 +1,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>evaluation - It&#39;s Football, Dudes!</title>
-    <link>/categories/evaluation/</link>
+    <link>https://dudesfootball.netlify.com/categories/evaluation/</link>
     <description>Recent content in evaluation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="/categories/evaluation/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://dudesfootball.netlify.com/categories/evaluation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 09] Simulation Evaluation</title>
-      <link>/post/week-9-simulation-evaluation/</link>
+      <link>https://dudesfootball.netlify.com/post/week-9-simulation-evaluation/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-9-simulation-evaluation/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week-9-simulation-evaluation/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 20%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item><item>
       <title>[Week 08] Simulation Evaluation</title>
-      <link>/post/week-8-simulation-evaluation/</link>
+      <link>https://dudesfootball.netlify.com/post/week-8-simulation-evaluation/</link>
       <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-8-simulation-evaluation/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week-8-simulation-evaluation/</guid>
       <description>
-&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item><item>
       <title>[Week 07] Simulation Evaluation</title>
-      <link>/post/week-7-simulation-evaluation/</link>
+      <link>https://dudesfootball.netlify.com/post/week-7-simulation-evaluation/</link>
       <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-7-simulation-evaluation/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week-7-simulation-evaluation/</guid>
       <description>
 
 
@@ -45,10 +45,10 @@
 </description>
     </item><item>
       <title>[Week 06] Simulation Evaluation</title>
-      <link>/post/week-6-simulation-evaluation/</link>
+      <link>https://dudesfootball.netlify.com/post/week-6-simulation-evaluation/</link>
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/week-6-simulation-evaluation/</guid>
+      <guid>https://dudesfootball.netlify.com/post/week-6-simulation-evaluation/</guid>
       <description>
 
 

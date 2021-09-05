@@ -5,9 +5,14 @@ canonifyurls = true
 paginate = 4
 theme = "aether"
 googleAnalytics = "UA-148711241-1"
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", "\\.rds$"]
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.rds$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 
 [params]
 brand = "It's Football, Dudes! Fantasy League"
 description = "Fantasy Football Analytics"
 bgimg = "img/wilson_background_w.jpg"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

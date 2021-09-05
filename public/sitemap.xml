@@ -1,825 +1,497 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>/categories/</loc>
+    <loc>https://dudesfootball.netlify.com/categories/</loc>
+    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/draft/</loc>
+    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/categories/draft/</loc>
+    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2021/draft-day-season-2021/</loc>
+    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/</loc>
+    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/rank/</loc>
+    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/</loc>
+    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/championship/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/championship/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/categories/ranking/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/it-s-football-dudes-trophy-room-2020/</loc>
     <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/ranking/</loc>
-    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/it-s-football-dudes-trophy-room-2020/</loc>
-    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/season2020_champion/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/season2020_champion/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/rank/</loc>
-    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/2020_w16_top_players/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/2020_w16_top_players/</loc>
     <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/points/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/points/</loc>
     <lastmod>2020-12-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week16_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week16_recap/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week16_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week16_eval/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/evaluation/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/categories/evaluation/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/recap/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/categories/recap/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/simulation/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/categories/simulation/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-16-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-16-projections-and-simulation/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/montecarlo/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/montecarlo/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/projection/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/projection/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/projection/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/categories/projection/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/2020_w15_top_players/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/2020_w15_top_players/</loc>
     <lastmod>2020-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week14_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week14_recap/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week15_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week15_eval/</loc>
     <lastmod>2020-12-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-15-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-15-projections-and-simulation/</loc>
     <lastmod>2020-12-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week14_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week14_standings/</loc>
     <lastmod>2020-12-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/2020_w14_top_players/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/2020_w14_top_players/</loc>
     <lastmod>2020-12-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week14_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week14_recap/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week14_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week14_eval/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-14-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-14-projections-and-simulation/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week13_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week13_standings/</loc>
     <lastmod>2020-12-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week13_coachs/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week13_coachs/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/2020_w13_top_players/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/2020_w13_top_players/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week13_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week13_recap/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week13_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week13_eval/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/coachs/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/coachs/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/managers/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/managers/</loc>
     <lastmod>2020-12-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-13-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-13-projections-and-simulation/</loc>
     <lastmod>2020-12-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week12_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week12_standings/</loc>
     <lastmod>2020-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week12_coachs/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week12_coachs/</loc>
     <lastmod>2020-12-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week12_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week12_recap/</loc>
     <lastmod>2020-12-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/2020_w12_top_players/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/2020_w12_top_players/</loc>
     <lastmod>2020-12-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week12_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week12_eval/</loc>
     <lastmod>2020-12-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-12-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-12-projections-and-simulation/</loc>
     <lastmod>2020-11-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week11_coachs/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week11_coachs/</loc>
     <lastmod>2020-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week11_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week11_standings/</loc>
     <lastmod>2020-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week11_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week11_recap/</loc>
     <lastmod>2020-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/2020_w11_top_players/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/2020_w11_top_players/</loc>
     <lastmod>2020-11-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week11_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week11_eval/</loc>
     <lastmod>2020-11-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-11-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-11-projections-and-simulation/</loc>
     <lastmod>2020-11-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week10_coachs/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week10_coachs/</loc>
     <lastmod>2020-11-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/2020_w10_top_players/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/2020_w10_top_players/</loc>
     <lastmod>2020-11-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week10_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week10_standings/</loc>
     <lastmod>2020-11-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week10_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week10_recap/</loc>
     <lastmod>2020-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week10_performances/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week10_performances/</loc>
     <lastmod>2020-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week10_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week10_eval/</loc>
     <lastmod>2020-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/datascience/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/datascience/</loc>
     <lastmod>2020-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-10-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-10-projections-and-simulation/</loc>
     <lastmod>2020-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week09_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week09_standings/</loc>
     <lastmod>2020-11-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week09_coachs/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week09_coachs/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/2020_w9_top_players/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/2020_w9_top_players/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week09_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week09_recap/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week09_performances/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week09_performances/</loc>
     <lastmod>2020-11-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week9_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week9_eval/</loc>
     <lastmod>2020-11-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-09-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-09-projections-and-simulation/</loc>
     <lastmod>2020-11-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week08_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week08_standings/</loc>
     <lastmod>2020-11-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week08_coachs/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week08_coachs/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week08_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week08_recap/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week08_performances/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week08_performances/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week8_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week8_eval/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-08-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-08-projections-and-simulation/</loc>
     <lastmod>2020-10-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week07_coachs/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week07_coachs/</loc>
     <lastmod>2020-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week07_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week07_standings/</loc>
     <lastmod>2020-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week07_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week07_recap/</loc>
     <lastmod>2020-10-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week07_performances/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week07_performances/</loc>
     <lastmod>2020-10-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week7_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week7_eval/</loc>
     <lastmod>2020-10-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-07-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-07-projections-and-simulation/</loc>
     <lastmod>2020-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week06_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week06_standings/</loc>
     <lastmod>2020-10-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week06_performances/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week06_performances/</loc>
     <lastmod>2020-10-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week06_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week06_recap/</loc>
     <lastmod>2020-10-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week6_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week6_eval/</loc>
     <lastmod>2020-10-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-06-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-06-projections-and-simulation/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week05_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week05_standings/</loc>
     <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week05_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week05_recap/</loc>
     <lastmod>2020-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week5_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week5_eval/</loc>
     <lastmod>2020-10-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-05-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-05-projections-and-simulation/</loc>
     <lastmod>2020-10-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week04_standings/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week04_standings/</loc>
     <lastmod>2020-10-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week04_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week04_recap/</loc>
     <lastmod>2020-10-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week04_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week04_eval/</loc>
     <lastmod>2020-10-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-04-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-04-projections-and-simulation/</loc>
     <lastmod>2020-09-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week03_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week03_eval/</loc>
     <lastmod>2020-09-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week03_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week03_recap/</loc>
     <lastmod>2020-09-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week-03-projections-and-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week-03-projections-and-simulation/</loc>
     <lastmod>2020-09-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week02_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week02_eval/</loc>
     <lastmod>2020-09-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week02_recap/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week02_recap/</loc>
     <lastmod>2020-09-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week02/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week02/</loc>
     <lastmod>2020-09-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week01_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week01_eval/</loc>
     <lastmod>2020-09-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/week01/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/week01/</loc>
     <lastmod>2020-09-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/draft/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/2020/draft-day-season-2020-is-here/</loc>
     <lastmod>2020-09-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/draft/</loc>
-    <lastmod>2020-09-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2020/draft-day-season-2020-is-here/</loc>
-    <lastmod>2020-09-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/it-s-football-dudes-trophy-room-2019/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/it-s-football-dudes-trophy-room-2019/</loc>
     <lastmod>2019-12-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/playoffs/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/playoffs/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-16/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-16/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/mvp-week-16/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/mvp-week-16/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/wins-and-losses/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/wins-and-losses/</loc>
     <lastmod>2019-12-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-16-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-16-simulation-evaluation/</loc>
     <lastmod>2019-12-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week16/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week16/</loc>
     <lastmod>2019-12-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-15/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-15/</loc>
     <lastmod>2019-12-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-15-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-15-simulation-evaluation/</loc>
     <lastmod>2019-12-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week15/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week15/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-14-draft-wizards/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-14-draft-wizards/</loc>
     <lastmod>2019-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-14/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-14/</loc>
     <lastmod>2019-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/mvp-week-14/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/mvp-week-14/</loc>
     <lastmod>2019-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-14-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-14-simulation-evaluation/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week14/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week14/</loc>
     <lastmod>2019-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/mvp-week-13/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/mvp-week-13/</loc>
     <lastmod>2019-12-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-13/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-13/</loc>
     <lastmod>2019-12-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-13-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-13-simulation-evaluation/</loc>
     <lastmod>2019-12-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week13/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week13/</loc>
     <lastmod>2019-11-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/mvp-week-12/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/mvp-week-12/</loc>
     <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-12/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-12/</loc>
     <lastmod>2019-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-12-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-12-simulation-evaluation/</loc>
     <lastmod>2019-11-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week12/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week12/</loc>
     <lastmod>2019-11-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-11/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-11/</loc>
     <lastmod>2019-11-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-11-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-11-simulation-evaluation/</loc>
     <lastmod>2019-11-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week11/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week11/</loc>
     <lastmod>2019-11-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-10/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-10/</loc>
     <lastmod>2019-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-10-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-10-simulation-evaluation/</loc>
     <lastmod>2019-11-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week10/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week10/</loc>
     <lastmod>2019-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-9-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-9-simulation-evaluation/</loc>
     <lastmod>2019-11-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-9/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-9/</loc>
     <lastmod>2019-11-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week09/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week09/</loc>
     <lastmod>2019-10-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-8/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-8/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-8-draft-wizards/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-8-draft-wizards/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-8-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-8-simulation-evaluation/</loc>
     <lastmod>2019-10-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week08/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week08/</loc>
     <lastmod>2019-10-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-7/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-7/</loc>
     <lastmod>2019-10-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-7-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-7-simulation-evaluation/</loc>
     <lastmod>2019-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week07/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week07/</loc>
     <lastmod>2019-10-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-6/</loc>
-    <lastmod>2019-10-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-6-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-6-simulation-evaluation/</loc>
     <lastmod>2019-10-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week06/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week06/</loc>
     <lastmod>2019-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-5-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-5-simulation-evaluation/</loc>
     <lastmod>2019-10-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-5/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-5/</loc>
     <lastmod>2019-10-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week05/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week05/</loc>
     <lastmod>2019-10-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/rank-week-4/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/rank-week-4/</loc>
     <lastmod>2019-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-4-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-4-simulation-evaluation/</loc>
     <lastmod>2019-10-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week04/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week04/</loc>
     <lastmod>2019-09-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-3-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-3-simulation-evaluation/</loc>
     <lastmod>2019-09-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week03/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week03/</loc>
     <lastmod>2019-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week-2-simulation-evaluation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week-2-simulation-evaluation/</loc>
     <lastmod>2019-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week02/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week02/</loc>
     <lastmod>2019-09-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week01_eval/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week01_eval/</loc>
     <lastmod>2019-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/week1-players-projection-and-matchups-simulation/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/week1-players-projection-and-matchups-simulation/</loc>
     <lastmod>2019-09-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/draft-week/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/draft-week/</loc>
     <lastmod>2019-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/it-s-football-dudes-trophy-room/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/it-s-football-dudes-trophy-room/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/about/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/about/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/categories/about/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/about-this-site/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/about-this-site/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/rstats/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/rstats/</loc>
     <lastmod>2018-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/</loc>
     <lastmod>2018-04-27T09:46:15-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/about/</loc>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
-  
 </urlset>
