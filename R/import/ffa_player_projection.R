@@ -8,8 +8,8 @@ scrapPlayersPredictions <- function(.week, .season) {
   #  
   # 
   sources <- c("CBS", "ESPN", "FantasyData", "FantasyPros", "FantasySharks", "FFToday",
-               "FleaFlicker", "NumberFire", "Yahoo", "FantasyFootballNerd", "NFL",
-               "RTSports","Walterfootball")
+               "FleaFlicker", "NumberFire", "Yahoo", "FantasyFootballNerd", "NFL", 
+               "RTSports")
   
   scrap <- scrape_data(
     src = sources,

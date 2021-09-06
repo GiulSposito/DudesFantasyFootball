@@ -12,7 +12,7 @@ options(dplyr.summarise.inform = FALSE)
 week <- 1
 season <- 2021
 config <- read_yaml("./config/config.yml")
-prefix <- "season"
+prefix <- "preTNF"
 destPath <- "static/reports/2021"
 sim.version <- 5
 
@@ -26,16 +26,23 @@ if(!checkFantasyAPI(config$authToken, config$leagueId, week)) stop("Unable to ac
 source("./R/import/ffa_player_projection.R")
 webScraps <- scrapPlayersPredictions(week, season)
 
-# SCRAPPING NFL FANTASY ###
-source("./R/import/scrap_nfl_fantasy_projections.R")
-nflScrap <- scrapNflFantasyProjection(config$authToken, config$leagueId, season, week)
+# checking
+webScraps %>% 
+  map_df(~select(.x, data_src, team, id), .id="pos") %>% 
+  count(data_src, pos) %>% 
+  pivot_wider(names_from = "pos",values_from="n")
 
-source("./R/import/scrap_yahoo_fantasy_projection.R")
-yahooScrap <- scrapYahooProjection(week, config$yahooCokies)
+# # SCRAPPING NFL FANTASY ###
+# source("./R/import/scrap_nfl_fantasy_projections.R")
+# nflScrap <- scrapNflFantasyProjection(config$authToken, config$leagueId, season, week)
+# 
+# source("./R/import/scrap_yahoo_fantasy_projection.R")
+# yahooScrap <- scrapYahooProjection(week, config$yahooCokies)
 
-scraps <- webScraps %>% 
-  addScrapTable(nflScrap) %>% 
-  addScrapTable(yahooScrap) 
+scraps <- webScraps 
+  # %>% 
+  # addScrapTable(nflScrap) %>% 
+  # addScrapTable(yahooScrap) 
 
 saveScraps(week, scraps)
 
@@ -59,10 +66,8 @@ load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 my_player_ids <- player_ids %>%
   mutate(
     id = as.integer(id), 
-    nfl_id = as.integer(nfl_id)) %>%
-  as_tibble() %>% 
-  # completa a tabela de mapeamento de projecoes do ffanalytics
-  bind_rows(readRDS("./data/playerIds_not_mapped.rds"))
+    nfl_id = as.integer(nfl_id))
+
 
 # TEST BRANCH: TEAM ROSTERS ####
 team_allocation <- teams_rosters %>% 
@@ -120,12 +125,13 @@ rmarkdown::render(
 source("./R/simulation/players_projections.R")
 site_ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml"))
 pts_errors <- projectErrorPoints(players_stats, site_ptsproj, my_player_ids, week)
-pts_flcl <- projectFloorCeiling(proj_table, week, season)
+# pts_flcl <- projectFloorCeiling(proj_table, week, season)
 
 # adiciona os erros de projeções passadas
 ptsproj <- site_ptsproj %>% # projecao dos sites
-  bind_rows(pts_errors) %>% # erros das projecoes nas semanas passadas
-  bind_rows(pts_flcl)       # floor e ceiling da projecao dos sites
+  bind_rows(pts_errors) 
+  # %>% # erros das projecoes nas semanas passadas
+  # bind_rows(pts_flcl)       # floor e ceiling da projecao dos sites
 
 # simulação das partidas
 source(glue("./R/simulation/points_simulation_v{sim.version}.R"))

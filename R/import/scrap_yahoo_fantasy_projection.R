@@ -14,6 +14,7 @@ library(ffanalytics)
       if (.week!=0) {
         # weekly projection
         yahooUrl <- glue("https://football.fantasysports.yahoo.com/f1/992851/players?status=ALL&pos={.pos}&cut_type=9&stat1=S_PW_{.week}&myteam=0&sort=AR&sdir=1&count={.i}")
+        #yahooUrl <- glue("https://football.fantasysports.yahoo.com/f1/992851/players?status=ALL&pos={.pos}&cut_type=9&stat1=S_PW_{.week}&myteam=0&sort=AR&sdir=1&count={.i}")
       } else {
         # season projection
         yahooUrl <- glue("https://football.fantasysports.yahoo.com/f1/992851/players?status=A&pos={.pos}&cut_type=9&stat1=S_PS_2021&myteam=0&sort=AR&sdir=1&count={.i}")
