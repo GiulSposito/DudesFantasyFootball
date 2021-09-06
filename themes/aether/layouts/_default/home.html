@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" dir="ltr">
+  {{ partial "head.html" . }}
+  <body class="list-body">
+    {{ partial "nav-bar.html" . }}
+    <main class="card-container side-gutter">
+      {{ if or (not (eq .Description "")) (not (eq .Title "")) -}}
+      <header class="home-header" style="background-image: url('{{ "img/home-blob.svg" | absURL }}');">
+        <div class="home-blob-text-container">
+        {{ with .Title }}<h1 class="home-blob-title">{{ . }}</h1>{{ end }}
+        {{ with .Description }}<p class="home-blob-text">{{ . }}</p>{{ end }}
+        </div>
+        {{ with resources.GetMatch .Site.Params.headshotimg -}}
+        <div class="home-faceshot-card">
+          <picture>
+            {{ $faceshot := .Resize "272x Lanczos" }}
+            {{ $faceshot_x2 := .Resize "544x Lanczos" }}
+            {{ $faceshot_x3 := .Resize "816x Lanczos" }}
+            <source srcset="{{ $faceshot.Permalink }} 1x, {{ $faceshot_x2.Permalink }} 2x, {{ $faceshot_x3.Permalink }} 3x">
+            <img class="home-faceshot" src="{{ $faceshot.Permalink }}" {{ with .Params.description -}} alt="{{ . }}" {{- end }}>
+          </picture>
+        </div>
+        {{ end -}}
+      </header>
+      {{- end }}
+      {{ with .Content -}}
+      <section class="list-header-content">
+        {{ . }}
+      </section>
+      {{- end }}
+      {{ $pages := .Pages }}
+      {{ if .IsHome }}
+      {{ $pages = .Site.RegularPages }}
+      {{ end }}
+      {{ $paginator := .Paginate (where $pages "Params.displayinlist" "!=" false) -}}
+      {{- range $paginator.Pages -}}
+        {{ .Render "li" }}
+      {{- end }}
+    </main>
+    {{ if or ($paginator.HasPrev) ($paginator.HasNext) -}}
+    <nav class="pagination-nav side-padding">
+      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}" class="pagination-newer pagination-text">&lt; Newer Posts</a>{{ end }}
+      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}" class="pagination-older pagination-text">Older Posts &gt;</a>{{ end }}
+    </nav>
+    {{- end }}
+    {{ partial "scripts.html" . }}
+  </body>
+</html>
