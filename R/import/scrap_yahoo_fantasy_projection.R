@@ -5,7 +5,7 @@ library(rvest)
 library(janitor)
 library(ffanalytics)
 
-.scrapYahooPosition <- function(.pos, .size, .week, .cookies){
+scrapYahooPosition <- function(.pos, .size, .week, .cookies){
 
   scrp_data <- seq(0,.size,25) %>%
     map_df(function(.i, .pos, .week, .cookies){
@@ -100,7 +100,7 @@ scrapYahooProjection <- function(.week, .yahooCookies){
     ) %>%
     split(1:nrow(.)) %>%
     map_df(function(.position, .week, .cookies){
-      .scrapYahooPosition(.position$pos, .position$size, .week=.week, .cookies = .cookies)
+      scrapYahooPosition(.position$pos, .position$size, .week=.week, .cookies = .cookies)
     }, .week=.week, .cookies=.yahooCookies) %>%
     select(-na, -injuryStatus) %>% 
     select(-one_of("forecast"))

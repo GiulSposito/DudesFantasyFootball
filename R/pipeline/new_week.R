@@ -33,16 +33,14 @@ webScraps %>%
   pivot_wider(names_from = "pos",values_from="n")
 
 # # SCRAPPING NFL FANTASY ###
-# source("./R/import/scrap_nfl_fantasy_projections.R")
+source("./R/import/scrap_nfl_fantasy_projections.R")
 # nflScrap <- scrapNflFantasyProjection(config$authToken, config$leagueId, season, week)
 # 
-# source("./R/import/scrap_yahoo_fantasy_projection.R")
-# yahooScrap <- scrapYahooProjection(week, config$yahooCokies)
+source("./R/import/scrap_yahoo_fantasy_projection.R")
+yahooScrap <- scrapYahooProjection(week, config$yahooCokies)
 
-scraps <- webScraps 
-  # %>% 
-  # addScrapTable(nflScrap) %>% 
-  # addScrapTable(yahooScrap) 
+scraps <- webScraps %>% 
+  addScrapTable(yahooScrap) 
 
 saveScraps(week, scraps)
 

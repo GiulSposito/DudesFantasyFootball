@@ -4,7 +4,7 @@ library(httr)
 library(glue)
 library(ffanalytics)
 
-scrapNflFantasyProjection <- function(.authToken, .leagueId, .season=2020, .week) {
+scrapNflFantasyProjection <- function(.authToken, .leagueId, .season=2021, .week) {
   
   # test parameters
   # .config    = yaml::read_yaml("./config/config.yml")
@@ -32,7 +32,7 @@ scrapNflFantasyProjection <- function(.authToken, .leagueId, .season=2020, .week
   json_stat_id <- resp %>%
     jsonlite::fromJSON(flatten = T, simplifyDataFrame = T)
   
-  stat_ids <- json_stat_id$games$`102020`$stats %>%
+  stat_ids <- json_stat_id$games$`102021`$stats %>%
     map_df(function(.stat){
       .stat %>%
         keep(~!is.null(.x)) %>%
@@ -47,7 +47,7 @@ scrapNflFantasyProjection <- function(.authToken, .leagueId, .season=2020, .week
   json_stats <- resp %>%
     fromJSON(flatten = T, simplifyDataFrame = T)
   
-  stats <- json_stats$games$`102020`$players %>%
+  stats <- json_stats$games$`102021`$players %>%
     tibble(id=names(.),
            values=.) %>%
     mutate(values = map(values, function(.x){
@@ -85,16 +85,16 @@ scrapNflFantasyProjection <- function(.authToken, .leagueId, .season=2020, .week
   ## IDS do FFA
   # carregando tabelas de "de para" de IDs de Jogadores
   load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
-  miss_ids <- readRDS("./data/playerIds_not_mapped.rds") %>% 
-    mutate( 
-      id = as.character(id), 
-      nfl_id = as.character(nfl_id)
-    )
+  # miss_ids <- readRDS("./data/playerIds_not_mapped.rds") %>% 
+  #   mutate( 
+  #     id = as.character(id), 
+  #     nfl_id = as.character(nfl_id)
+  #   )
   
-  ffa_player_ids <- player_ids %>%
-    # completa a tabela de mapeamento de projecoes do ffanalytics
-    bind_rows(miss_ids) %>% 
-    as_tibble()
+  # ffa_player_ids <- player_ids %>%
+  #   # completa a tabela de mapeamento de projecoes do ffanalytics
+  #   bind_rows(miss_ids) %>% 
+  #   as_tibble()
   
   
   ## gerando uma tabela de scraping igual da FFA
@@ -105,10 +105,10 @@ scrapNflFantasyProjection <- function(.authToken, .leagueId, .season=2020, .week
     filter(complete.cases(.)) %>%
     distinct() %>%
     pivot_wider(id_cols=src_id, names_from=colName, values_from=value) %>% 
-    inner_join(select(ffa_player_ids, id, nfl_id), by=c("src_id"="nfl_id")) %>% 
+    inner_join(select(player_ids, id, nfl_id), by=c("src_id"="nfl_id")) %>% 
     inner_join(nflPlayers, by="src_id") %>% 
     mutate(
-      data_src="NFL",
+      data_src="NFL_FANTASY",
       week=as.character(.week),
       position = if_else(position=="DEF","DST",position)
     ) %>% 
