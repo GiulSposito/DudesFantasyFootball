@@ -4,11 +4,18 @@
     <link>https://dudesfootball.netlify.com/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 03 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Sep 2021 00:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://dudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>[Week 11] League Standings</title>
+      <link>https://dudesfootball.netlify.com/post/rank-week-11/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://dudesfootball.netlify.com/post/rank-week-11/</guid>
+      <description></description>
+    </item><item>
       <title>[Week 11] Simulation Evaluation</title>
       <link>https://dudesfootball.netlify.com/post/week-11-simulation-evaluation/</link>
       <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
@@ -38,18 +45,6 @@
       
       <guid>https://dudesfootball.netlify.com/post/rank-week-10/</guid>
       <description></description>
-    </item><item>
-      <title>[Week 10] Simulation Evaluation</title>
-      <link>https://dudesfootball.netlify.com/post/week-10-simulation-evaluation/</link>
-      <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/week-10-simulation-evaluation/</guid>
-      <description>
-&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-
-
-&lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 40%&lt;/strong&gt;&lt;/p&gt;
-</description>
     </item>
   </channel>
 </rss>

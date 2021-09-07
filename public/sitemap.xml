@@ -2,8 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://dudesfootball.netlify.com/post/2021/week-01-21-projections-and-simulation/</loc>
+    <lastmod>2021-09-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://dudesfootball.netlify.com/categories/</loc>
-    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/montecarlo/</loc>
+    <lastmod>2021-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/post/</loc>
+    <lastmod>2021-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/projection/</loc>
+    <lastmod>2021-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/categories/projection/</loc>
+    <lastmod>2021-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/simulation/</loc>
+    <lastmod>2021-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/categories/simulation/</loc>
+    <lastmod>2021-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dudesfootball.netlify.com/tags/</loc>
+    <lastmod>2021-09-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://dudesfootball.netlify.com/tags/draft/</loc>
     <lastmod>2021-09-03T00:00:00+00:00</lastmod>
@@ -14,13 +38,7 @@
     <loc>https://dudesfootball.netlify.com/post/2021/fantasy_draft_2021/</loc>
     <lastmod>2021-09-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://dudesfootball.netlify.com/post/</loc>
-    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://dudesfootball.netlify.com/tags/rank/</loc>
-    <lastmod>2021-09-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://dudesfootball.netlify.com/tags/</loc>
     <lastmod>2021-09-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://dudesfootball.netlify.com/tags/championship/</loc>
@@ -59,22 +77,7 @@
     <loc>https://dudesfootball.netlify.com/categories/recap/</loc>
     <lastmod>2020-12-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://dudesfootball.netlify.com/tags/simulation/</loc>
-    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://dudesfootball.netlify.com/categories/simulation/</loc>
-    <lastmod>2020-12-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://dudesfootball.netlify.com/post/2020/week-16-projections-and-simulation/</loc>
-    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://dudesfootball.netlify.com/tags/montecarlo/</loc>
-    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://dudesfootball.netlify.com/tags/projection/</loc>
-    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://dudesfootball.netlify.com/categories/projection/</loc>
     <lastmod>2020-12-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://dudesfootball.netlify.com/post/2020/2020_w15_top_players/</loc>

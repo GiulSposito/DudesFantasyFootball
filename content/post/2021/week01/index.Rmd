@@ -1,15 +1,15 @@
 ---
 title: '[Week 01] Projections and Simulation'
-author: Giuliano Sposito
+author: "Giuliano Sposito"
 date: '2021-09-06'
 slug: week-01-21-projections-and-simulation
 categories:
-  - projection
-  - simulation
+- projection
+- simulation
 tags:
-  - montecarlo
-  - projection
-  - simulation
+- montecarlo
+- projection
+- simulation
 dropCap: no
 displayInMenu: no
 displayInList: yes
@@ -17,10 +17,10 @@ resources:
 - name: featuredImage
   params:
     description: NFL Kickoff
-  src: "kickoff.jpg"
+  src: kickoff.jpg
 params:
-  week: 01
-  prefix: "preTNF"
+  week: 1
+  prefix: preTNF
 ---
 
 _Last Update: `r lubridate::now()`_
