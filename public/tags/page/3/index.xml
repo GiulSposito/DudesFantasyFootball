@@ -1,40 +1,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags - It&#39;s Football, Dudes!</title>
-    <link>https://dudesfootball.netlify.com/tags/</link>
+    <link>https://olddudesfootball.netlify.com/tags/</link>
     <description>Recent content in Tags on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://dudesfootball.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>recap</title>
-      <link>https://dudesfootball.netlify.com/tags/recap/</link>
-      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/tags/recap/</guid>
-      <description></description>
-    </item><item>
       <title>coachs</title>
-      <link>https://dudesfootball.netlify.com/tags/coachs/</link>
+      <link>https://olddudesfootball.netlify.com/tags/coachs/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/tags/coachs/</guid>
+      <guid>https://olddudesfootball.netlify.com/tags/coachs/</guid>
       <description></description>
     </item><item>
       <title>managers</title>
-      <link>https://dudesfootball.netlify.com/tags/managers/</link>
+      <link>https://olddudesfootball.netlify.com/tags/managers/</link>
       <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/tags/managers/</guid>
+      <guid>https://olddudesfootball.netlify.com/tags/managers/</guid>
       <description></description>
     </item><item>
       <title>datascience</title>
-      <link>https://dudesfootball.netlify.com/tags/datascience/</link>
+      <link>https://olddudesfootball.netlify.com/tags/datascience/</link>
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/tags/datascience/</guid>
+      <guid>https://olddudesfootball.netlify.com/tags/datascience/</guid>
+      <description></description>
+    </item><item>
+      <title>draft</title>
+      <link>https://olddudesfootball.netlify.com/tags/draft/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://olddudesfootball.netlify.com/tags/draft/</guid>
       <description></description>
     </item>
   </channel>

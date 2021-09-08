@@ -1,57 +1,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts - It&#39;s Football, Dudes!</title>
-    <link>https://dudesfootball.netlify.com/post/</link>
+    <link>https://olddudesfootball.netlify.com/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://dudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 09] Fantasy Top Players</title>
-      <link>https://dudesfootball.netlify.com/post/2020/2020_w9_top_players/</link>
-      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/2020/2020_w9_top_players/</guid>
-      <description>
-&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-</description>
-    </item><item>
-      <title>[Week 09] Matchups Recap</title>
-      <link>https://dudesfootball.netlify.com/post/2020/week09_recap/</link>
-      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/2020/week09_recap/</guid>
-      <description>
-&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-
-
-</description>
-    </item><item>
       <title>[Week 09] Players and Teams Peformances</title>
-      <link>https://dudesfootball.netlify.com/post/2020/week09_performances/</link>
+      <link>https://olddudesfootball.netlify.com/post/2020/week09_performances/</link>
       <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/2020/week09_performances/</guid>
+      <guid>https://olddudesfootball.netlify.com/post/2020/week09_performances/</guid>
       <description>
-&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 </description>
     </item><item>
       <title>[Week 09] Simulation Evaluation</title>
-      <link>https://dudesfootball.netlify.com/post/2020/week9_eval/</link>
+      <link>https://olddudesfootball.netlify.com/post/2020/week9_eval/</link>
       <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/2020/week9_eval/</guid>
+      <guid>https://olddudesfootball.netlify.com/post/2020/week9_eval/</guid>
       <description>
-&lt;script src=&#34;https://dudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 57%&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 09] Projections and Simulation</title>
+      <link>https://olddudesfootball.netlify.com/post/2020/week-09-projections-and-simulation/</link>
+      <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://olddudesfootball.netlify.com/post/2020/week-09-projections-and-simulation/</guid>
+      <description>
+&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;em&gt;Last Update: 2020-11-09 09:00:13&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 08] League Standings</title>
+      <link>https://olddudesfootball.netlify.com/post/2020/week08_standings/</link>
+      <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://olddudesfootball.netlify.com/post/2020/week08_standings/</guid>
+      <description>
+&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;League Leaders: Giants, Mules, Wolfs, Farmers, Knights e Butchers&lt;/p&gt;
 </description>
     </item>
   </channel>

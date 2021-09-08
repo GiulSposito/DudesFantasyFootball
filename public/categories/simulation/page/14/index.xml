@@ -1,26 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>simulation - It&#39;s Football, Dudes!</title>
-    <link>https://dudesfootball.netlify.com/categories/simulation/</link>
+    <link>https://olddudesfootball.netlify.com/categories/simulation/</link>
     <description>Recent content in simulation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://dudesfootball.netlify.com/categories/simulation/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.com/categories/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 07] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week07/</link>
-      <pubDate>Wed, 16 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/week07/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
-    </item><item>
       <title>[Week 06] Simulation Evaluation</title>
-      <link>https://dudesfootball.netlify.com/post/week-6-simulation-evaluation/</link>
+      <link>https://olddudesfootball.netlify.com/post/week-6-simulation-evaluation/</link>
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week-6-simulation-evaluation/</guid>
+      <guid>https://olddudesfootball.netlify.com/post/week-6-simulation-evaluation/</guid>
       <description>
 
 
@@ -28,22 +21,29 @@
 </description>
     </item><item>
       <title>[Week 06] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week06/</link>
+      <link>https://olddudesfootball.netlify.com/post/week06/</link>
       <pubDate>Thu, 10 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week06/</guid>
+      <guid>https://olddudesfootball.netlify.com/post/week06/</guid>
       <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
     </item><item>
       <title>[Week 05] Simulation Evaluation</title>
-      <link>https://dudesfootball.netlify.com/post/week-5-simulation-evaluation/</link>
+      <link>https://olddudesfootball.netlify.com/post/week-5-simulation-evaluation/</link>
       <pubDate>Wed, 09 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week-5-simulation-evaluation/</guid>
+      <guid>https://olddudesfootball.netlify.com/post/week-5-simulation-evaluation/</guid>
       <description>
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 80%&lt;/strong&gt;&lt;/p&gt;
 </description>
+    </item><item>
+      <title>[Week 05] Players Projection and Matchups Simulation</title>
+      <link>https://olddudesfootball.netlify.com/post/week05/</link>
+      <pubDate>Thu, 03 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://olddudesfootball.netlify.com/post/week05/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

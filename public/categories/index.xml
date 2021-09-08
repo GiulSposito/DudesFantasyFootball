@@ -1,40 +1,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories - It&#39;s Football, Dudes!</title>
-    <link>https://dudesfootball.netlify.com/categories/</link>
+    <link>https://olddudesfootball.netlify.com/categories/</link>
     <description>Recent content in Categories on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://dudesfootball.netlify.com/categories/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>projection</title>
-      <link>https://dudesfootball.netlify.com/categories/projection/</link>
-      <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
+      <title>ranking</title>
+      <link>https://olddudesfootball.netlify.com/categories/ranking/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/categories/projection/</guid>
+      <guid>https://olddudesfootball.netlify.com/categories/ranking/</guid>
+      <description></description>
+    </item><item>
+      <title>evaluation</title>
+      <link>https://olddudesfootball.netlify.com/categories/evaluation/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://olddudesfootball.netlify.com/categories/evaluation/</guid>
+      <description></description>
+    </item><item>
+      <title>recap</title>
+      <link>https://olddudesfootball.netlify.com/categories/recap/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://olddudesfootball.netlify.com/categories/recap/</guid>
       <description></description>
     </item><item>
       <title>simulation</title>
-      <link>https://dudesfootball.netlify.com/categories/simulation/</link>
-      <pubDate>Mon, 06 Sep 2021 00:00:00 +0000</pubDate>
+      <link>https://olddudesfootball.netlify.com/categories/simulation/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/categories/simulation/</guid>
-      <description></description>
-    </item><item>
-      <title>draft</title>
-      <link>https://dudesfootball.netlify.com/categories/draft/</link>
-      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/categories/draft/</guid>
-      <description></description>
-    </item><item>
-      <title>ranking</title>
-      <link>https://dudesfootball.netlify.com/categories/ranking/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/categories/ranking/</guid>
+      <guid>https://olddudesfootball.netlify.com/categories/simulation/</guid>
       <description></description>
     </item>
   </channel>

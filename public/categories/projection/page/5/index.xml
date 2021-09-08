@@ -1,26 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>projection - It&#39;s Football, Dudes!</title>
-    <link>https://dudesfootball.netlify.com/categories/projection/</link>
+    <link>https://olddudesfootball.netlify.com/categories/projection/</link>
     <description>Recent content in projection on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://dudesfootball.netlify.com/categories/projection/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.com/categories/projection/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>[Week 01] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/2020/week01/</link>
-      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://dudesfootball.netlify.com/post/2020/week01/</guid>
-      <description></description>
-    </item><item>
       <title>[Week 16] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week16/</link>
+      <link>https://olddudesfootball.netlify.com/post/week16/</link>
       <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week16/</guid>
+      <guid>https://olddudesfootball.netlify.com/post/week16/</guid>
       <description>
 
 
@@ -28,10 +21,10 @@
 </description>
     </item><item>
       <title>[Week 15] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week15/</link>
+      <link>https://olddudesfootball.netlify.com/post/week15/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week15/</guid>
+      <guid>https://olddudesfootball.netlify.com/post/week15/</guid>
       <description>
 
 
@@ -39,10 +32,21 @@
 </description>
     </item><item>
       <title>[Week 14] Players Projection and Matchups Simulation</title>
-      <link>https://dudesfootball.netlify.com/post/week14/</link>
+      <link>https://olddudesfootball.netlify.com/post/week14/</link>
       <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://dudesfootball.netlify.com/post/week14/</guid>
+      <guid>https://olddudesfootball.netlify.com/post/week14/</guid>
+      <description>
+
+
+&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item><item>
+      <title>[Week 13] Players Projection and Matchups Simulation</title>
+      <link>https://olddudesfootball.netlify.com/post/week13/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://olddudesfootball.netlify.com/post/week13/</guid>
       <description>
 
 

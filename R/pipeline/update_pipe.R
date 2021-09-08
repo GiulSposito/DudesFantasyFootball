@@ -15,11 +15,11 @@ library(yaml)
 options(dplyr.summarise.inform = FALSE)
 
 # EXECUTION PARAMETERS ####
-week <- 16
-season <- 2020
+week <- 1
+season <- 2021
 config <- read_yaml("./config/config.yml")
-prefix <- "final"
-destPath <- "static/reports/2020"
+prefix <- "preTNF"
+destPath <- "static/reports/2021"
 sim.version <- 5
 
 # API ACCESS CHECK ####
@@ -48,10 +48,7 @@ load("../ffanalytics/R/sysdata.rda") # <<- Players IDs !!!
 my_player_ids <- player_ids %>%
   mutate(
     id = as.integer(id), 
-    nfl_id = as.integer(nfl_id)) %>%
-  as_tibble() %>% 
-  # completa a tabela de mapeamento de projecoes do ffanalytics
-  bind_rows(readRDS("./data/playerIds_not_mapped.rds"))
+    nfl_id = as.integer(nfl_id))
 
 
 # SIMULACAO ####
@@ -60,12 +57,11 @@ my_player_ids <- player_ids %>%
 source("./R/simulation/players_projections.R")
 site_ptsproj <- calcPointsProjection(season, read_yaml("./config/score_settings.yml"))
 pts_errors <- projectErrorPoints(players_stats, site_ptsproj, my_player_ids, week)
-pts_flcl <- projectFloorCeiling(proj_table, week, season)
+# pts_flcl <- projectFloorCeiling(proj_table, week, season)
 
 # adiciona os erros de projeções passadas
 ptsproj <- site_ptsproj %>% # projecao dos sites
-  bind_rows(pts_errors) %>% # erros das projecoes nas semanas passadas
-  bind_rows(pts_flcl)       # floor e ceiling da projecao dos sites
+  bind_rows(pts_errors) # erros das projecoes nas semanas passadas
 
 # simulação das partidas
 source(glue("./R/simulation/points_simulation_v{sim.version}.R"))
