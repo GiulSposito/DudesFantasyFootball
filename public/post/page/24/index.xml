@@ -1,31 +1,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts - It&#39;s Football, Dudes!</title>
-    <link>https://olddudesfootball.netlify.com/post/</link>
+    <link>https://olddudesfootball.netlify.app/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://olddudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 14] Simulation Evaluation</title>
-      <link>https://olddudesfootball.netlify.com/post/week-14-simulation-evaluation/</link>
+      <link>https://olddudesfootball.netlify.app/post/week-14-simulation-evaluation/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/week-14-simulation-evaluation/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/week-14-simulation-evaluation/</guid>
       <description>
-&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 60%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item><item>
       <title>[Week 14] Players Projection and Matchups Simulation</title>
-      <link>https://olddudesfootball.netlify.com/post/week14/</link>
+      <link>https://olddudesfootball.netlify.app/post/week14/</link>
       <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/week14/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/week14/</guid>
       <description>
 
 
@@ -33,10 +33,10 @@
 </description>
     </item><item>
       <title>[Week 13] League MVPs</title>
-      <link>https://olddudesfootball.netlify.com/post/mvp-week-13/</link>
+      <link>https://olddudesfootball.netlify.app/post/mvp-week-13/</link>
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/mvp-week-13/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/mvp-week-13/</guid>
       <description>
 
 
@@ -44,10 +44,10 @@
 </description>
     </item><item>
       <title>[Week 13] League Standings</title>
-      <link>https://olddudesfootball.netlify.com/post/rank-week-13/</link>
+      <link>https://olddudesfootball.netlify.app/post/rank-week-13/</link>
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/rank-week-13/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/rank-week-13/</guid>
       <description>
 
 

@@ -1,31 +1,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>simulation - It&#39;s Football, Dudes!</title>
-    <link>https://olddudesfootball.netlify.com/categories/simulation/</link>
+    <link>https://olddudesfootball.netlify.app/categories/simulation/</link>
     <description>Recent content in simulation on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://olddudesfootball.netlify.com/categories/simulation/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.app/categories/simulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 10] Simulation Evaluation</title>
-      <link>https://olddudesfootball.netlify.com/post/week-10-simulation-evaluation/</link>
+      <link>https://olddudesfootball.netlify.app/post/week-10-simulation-evaluation/</link>
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/week-10-simulation-evaluation/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/week-10-simulation-evaluation/</guid>
       <description>
-&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 40%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item><item>
       <title>[Week 10] Players Projection and Matchups Simulation</title>
-      <link>https://olddudesfootball.netlify.com/post/week10/</link>
+      <link>https://olddudesfootball.netlify.app/post/week10/</link>
       <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/week10/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/week10/</guid>
       <description>
 
 
@@ -33,22 +33,22 @@
 </description>
     </item><item>
       <title>[Week 09] Simulation Evaluation</title>
-      <link>https://olddudesfootball.netlify.com/post/week-9-simulation-evaluation/</link>
+      <link>https://olddudesfootball.netlify.app/post/week-9-simulation-evaluation/</link>
       <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/week-9-simulation-evaluation/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/week-9-simulation-evaluation/</guid>
       <description>
-&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 20%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item><item>
       <title>[Week 09] Players Projection and Matchups Simulation</title>
-      <link>https://olddudesfootball.netlify.com/post/week09/</link>
+      <link>https://olddudesfootball.netlify.app/post/week09/</link>
       <pubDate>Thu, 31 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/week09/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/week09/</guid>
       <description>&lt;p&gt;&lt;em&gt;Last Update: Pos SNF&lt;/em&gt;&lt;/p&gt;</description>
     </item>
   </channel>

@@ -1,33 +1,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts - It&#39;s Football, Dudes!</title>
-    <link>https://olddudesfootball.netlify.com/post/</link>
+    <link>https://olddudesfootball.netlify.app/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://olddudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Draft Week</title>
-      <link>https://olddudesfootball.netlify.com/post/draft-week/</link>
+      <link>https://olddudesfootball.netlify.app/post/draft-week/</link>
       <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/draft-week/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/draft-week/</guid>
       <description></description>
     </item><item>
       <title>Trophy Room</title>
-      <link>https://olddudesfootball.netlify.com/post/it-s-football-dudes-trophy-room/</link>
+      <link>https://olddudesfootball.netlify.app/post/it-s-football-dudes-trophy-room/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/it-s-football-dudes-trophy-room/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/it-s-football-dudes-trophy-room/</guid>
       <description></description>
     </item><item>
       <title>About This Site</title>
-      <link>https://olddudesfootball.netlify.com/post/about-this-site/</link>
+      <link>https://olddudesfootball.netlify.app/post/about-this-site/</link>
       <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/about-this-site/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/about-this-site/</guid>
       <description></description>
     </item>
   </channel>

@@ -1,40 +1,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories - It&#39;s Football, Dudes!</title>
-    <link>https://olddudesfootball.netlify.com/categories/</link>
+    <link>https://olddudesfootball.netlify.app/categories/</link>
     <description>Recent content in Categories on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://olddudesfootball.netlify.com/categories/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ranking</title>
-      <link>https://olddudesfootball.netlify.com/categories/ranking/</link>
+      <link>https://olddudesfootball.netlify.app/categories/ranking/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/categories/ranking/</guid>
+      <guid>https://olddudesfootball.netlify.app/categories/ranking/</guid>
       <description></description>
     </item><item>
       <title>evaluation</title>
-      <link>https://olddudesfootball.netlify.com/categories/evaluation/</link>
+      <link>https://olddudesfootball.netlify.app/categories/evaluation/</link>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/categories/evaluation/</guid>
+      <guid>https://olddudesfootball.netlify.app/categories/evaluation/</guid>
       <description></description>
     </item><item>
       <title>recap</title>
-      <link>https://olddudesfootball.netlify.com/categories/recap/</link>
+      <link>https://olddudesfootball.netlify.app/categories/recap/</link>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/categories/recap/</guid>
+      <guid>https://olddudesfootball.netlify.app/categories/recap/</guid>
       <description></description>
     </item><item>
       <title>simulation</title>
-      <link>https://olddudesfootball.netlify.com/categories/simulation/</link>
+      <link>https://olddudesfootball.netlify.app/categories/simulation/</link>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/categories/simulation/</guid>
+      <guid>https://olddudesfootball.netlify.app/categories/simulation/</guid>
       <description></description>
     </item>
   </channel>

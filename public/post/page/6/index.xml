@@ -1,58 +1,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts - It&#39;s Football, Dudes!</title>
-    <link>https://olddudesfootball.netlify.com/post/</link>
+    <link>https://olddudesfootball.netlify.app/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://olddudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 13] Projections and Simulation</title>
-      <link>https://olddudesfootball.netlify.com/post/2020/week-13-projections-and-simulation/</link>
+      <link>https://olddudesfootball.netlify.app/post/2020/week-13-projections-and-simulation/</link>
       <pubDate>Sun, 06 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/2020/week-13-projections-and-simulation/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/2020/week-13-projections-and-simulation/</guid>
       <description>
-&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;em&gt;Last Update: 2020-12-08 08:28:12&lt;/em&gt;&lt;/p&gt;
 </description>
     </item><item>
       <title>[Week 12] League Standings</title>
-      <link>https://olddudesfootball.netlify.com/post/2020/week12_standings/</link>
+      <link>https://olddudesfootball.netlify.app/post/2020/week12_standings/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/2020/week12_standings/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/2020/week12_standings/</guid>
       <description>
-&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;League Leaders: Mules, Wolf, Farmers, Robots, Giants, Rabbits.&lt;/p&gt;
 </description>
     </item><item>
       <title>[Week 12] Coachs and Managers</title>
-      <link>https://olddudesfootball.netlify.com/post/2020/week12_coachs/</link>
+      <link>https://olddudesfootball.netlify.app/post/2020/week12_coachs/</link>
       <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/2020/week12_coachs/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/2020/week12_coachs/</guid>
       <description>
-&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
 
 
 </description>
     </item><item>
       <title>[Week 12] Matchups Recap and Teams Performances</title>
-      <link>https://olddudesfootball.netlify.com/post/2020/week12_recap/</link>
+      <link>https://olddudesfootball.netlify.app/post/2020/week12_recap/</link>
       <pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/2020/week12_recap/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/2020/week12_recap/</guid>
       <description>
-&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
 </description>

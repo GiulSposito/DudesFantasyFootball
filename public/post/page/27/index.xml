@@ -1,19 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts - It&#39;s Football, Dudes!</title>
-    <link>https://olddudesfootball.netlify.com/post/</link>
+    <link>https://olddudesfootball.netlify.app/post/</link>
     <description>Recent content in Posts on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://olddudesfootball.netlify.com/post/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[Week 11] Players Projection and Matchups Simulation</title>
-      <link>https://olddudesfootball.netlify.com/post/week11/</link>
+      <link>https://olddudesfootball.netlify.app/post/week11/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/week11/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/week11/</guid>
       <description>
 
 
@@ -21,29 +21,29 @@
 </description>
     </item><item>
       <title>[Week 10] League Standings</title>
-      <link>https://olddudesfootball.netlify.com/post/rank-week-10/</link>
+      <link>https://olddudesfootball.netlify.app/post/rank-week-10/</link>
       <pubDate>Wed, 13 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/rank-week-10/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/rank-week-10/</guid>
       <description></description>
     </item><item>
       <title>[Week 10] Simulation Evaluation</title>
-      <link>https://olddudesfootball.netlify.com/post/week-10-simulation-evaluation/</link>
+      <link>https://olddudesfootball.netlify.app/post/week-10-simulation-evaluation/</link>
       <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/week-10-simulation-evaluation/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/week-10-simulation-evaluation/</guid>
       <description>
-&lt;script src=&#34;https://olddudesfootball.netlify.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://olddudesfootball.netlify.app/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Matchup Winner Accuracy: 40%&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item><item>
       <title>[Week 10] Players Projection and Matchups Simulation</title>
-      <link>https://olddudesfootball.netlify.com/post/week10/</link>
+      <link>https://olddudesfootball.netlify.app/post/week10/</link>
       <pubDate>Thu, 07 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/post/week10/</guid>
+      <guid>https://olddudesfootball.netlify.app/post/week10/</guid>
       <description>
 
 

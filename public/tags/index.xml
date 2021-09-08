@@ -1,40 +1,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags - It&#39;s Football, Dudes!</title>
-    <link>https://olddudesfootball.netlify.com/tags/</link>
+    <link>https://olddudesfootball.netlify.app/tags/</link>
     <description>Recent content in Tags on It&#39;s Football, Dudes!</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
     
-        <atom:link href="https://olddudesfootball.netlify.com/tags/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://olddudesfootball.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>championship</title>
-      <link>https://olddudesfootball.netlify.com/tags/championship/</link>
+      <link>https://olddudesfootball.netlify.app/tags/championship/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/tags/championship/</guid>
+      <guid>https://olddudesfootball.netlify.app/tags/championship/</guid>
       <description></description>
     </item><item>
       <title>rank</title>
-      <link>https://olddudesfootball.netlify.com/tags/rank/</link>
+      <link>https://olddudesfootball.netlify.app/tags/rank/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/tags/rank/</guid>
+      <guid>https://olddudesfootball.netlify.app/tags/rank/</guid>
       <description></description>
     </item><item>
       <title>points</title>
-      <link>https://olddudesfootball.netlify.com/tags/points/</link>
+      <link>https://olddudesfootball.netlify.app/tags/points/</link>
       <pubDate>Wed, 30 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/tags/points/</guid>
+      <guid>https://olddudesfootball.netlify.app/tags/points/</guid>
       <description></description>
     </item><item>
       <title>evaluation</title>
-      <link>https://olddudesfootball.netlify.com/tags/evaluation/</link>
+      <link>https://olddudesfootball.netlify.app/tags/evaluation/</link>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://olddudesfootball.netlify.com/tags/evaluation/</guid>
+      <guid>https://olddudesfootball.netlify.app/tags/evaluation/</guid>
       <description></description>
     </item>
   </channel>
